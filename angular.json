@@ -3,7 +3,7 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "institute": {
+    "institute-ng": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -20,7 +20,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/institute",
+            "outputPath": "dist/institute-ng",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -71,10 +71,10 @@
           "builder": "@angular-devkit/build-angular:dev-server",
           "configurations": {
             "production": {
-              "browserTarget": "sakai-ng:build:production"
+              "browserTarget": "institute-ng:build:production"
             },
             "development": {
-              "browserTarget": "sakai-ng:build:development"
+              "browserTarget": "institute-ng:build:development"
             }
           },
           "defaultConfiguration": "development"
@@ -82,7 +82,7 @@
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "sakai-ng:build"
+            "browserTarget": "institute-ng:build"
           }
         },
         "test": {
@@ -115,7 +115,7 @@
       }
     }
   },
-  "defaultProject": "sakai-ng",
+  "defaultProject": "institute-ng",
   "cli": {
     "analytics": false,
     "schematicCollections": [
