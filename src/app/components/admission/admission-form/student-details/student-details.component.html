@@ -1,33 +1,161 @@
 <div>
     <div class="col-12">
         <div class="card">
-            <h5>Advanced</h5>
-            <div class="p-fluid p-formgrid grid">
-                <div class="field col-12 md:col-6">
-                    <label htmlFor="firstname2">Firstname</label>
-                    <input pInputText id="firstname2" type="text" />
+            <form class="pt-4" [formGroup]="studentDetails">
+
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="firstname2">Firstname</label>
+                        <input pInputText id="firstname2" type="text" formControlName="firstname"
+                            placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
+                        <div
+                            *ngIf="studentDetails.controls['firstname'].touched && studentDetails.controls['firstname'].errors">
+                            <div *ngIf="studentDetails.controls['firstname'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter Institute name!
+                            </div>
+                            <div *ngIf="studentDetails.controls['firstname'].hasError('pattern')"
+                                style="color: red;text-align: left;">
+                                Enter a valid Institute name!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="lastname2">Lastname</label>
+                        <input pInputText id="lastname2" type="text" formControlName="lastname" placeholder="Lastname"
+                            pattern="^[A-Za-z]{2,}$" />
+                        <div *ngIf="studentDetails.controls['lastname'].touched ">
+                            <div *ngIf="studentDetails.controls['lastname'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your lastName name!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="email">Email</label>
+                        <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                        <div
+                            *ngIf="studentDetails.controls['email'].touched && studentDetails.controls['email'].errors">
+                            <div *ngIf="studentDetails.controls['email'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your email Id!
+                            </div>
+                            <div *ngIf="studentDetails.controls['email'].hasError('pattern')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter a valid email Id!
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="phone">Phone</label>
+                        <input pInputText id="phone" type="text" formControlName="phone" placeholder="Phone"
+                            minlength="10" maxlength="10" type="phone"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            placeholder="phone no" required pattern="[0-9 ]{10}" />
+                        <div
+                            *ngIf="studentDetails.controls['phone'].touched && studentDetails.controls['phone'].errors">
+                            <div *ngIf="studentDetails.controls['phone'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter Mobile No!
+
+                            </div>
+                            <div *ngIf="studentDetails.controls['phone'].hasError('pattern')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter Valid Mobile No!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="address">Address</label>
+                        <input pInputText id="address" type="text" formControlName="address" placeholder="Address"
+                            pattern="^[A-Za-z0-9]{2,}$" />
+                        <div *ngIf="studentDetails.controls['address'].touched ">
+                            <div *ngIf="studentDetails.controls['address'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your correct address!
+                            </div>
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="dob">DOB</label>
+                        <p-calendar inputId="calendar" [(ngModel)]="value5" formControlName="dob"
+                            placeholder="Date of Birth"></p-calendar>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="nationality">Nationality</label>
+                        <input pInputText id="nationality" type="text" formControlName="nationality"
+                            placeholder="Nationality" />
+                        <div *ngIf="studentDetails.controls['nationality'].touched ">
+                            <div *ngIf="studentDetails.controls['nationality'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your nationality!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="religion">Religion</label>
+                        <input pInputText id="religion" type="text" formControlName="religion" placeholder="Religion" />
+                        <div *ngIf="studentDetails.controls['religion'].touched ">
+                            <div *ngIf="studentDetails.controls['religion'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your religion!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="birthPlace">Birth Place</label>
+                        <input pInputText id="birthPlace" type="text" formControlName="birthPlace"
+                            placeholder="Birth Place" />
+                        <div *ngIf="studentDetails.controls['birthPlace'].touched ">
+                            <div *ngIf="studentDetails.controls['birthPlace'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your birth place!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="state">State</label>
+                        <input pInputText id="state" type="text" formControlName="state" placeholder="State" />
+                        <div *ngIf="studentDetails.controls['state'].touched ">
+                            <div *ngIf="studentDetails.controls['state'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your state!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="Std">Std</label>
+                        <input pInputText id="Std" type="text" formControlName="Std" placeholder="Standard" />
+                        <div *ngIf="studentDetails.controls['Std'].touched ">
+                            <div *ngIf="studentDetails.controls['Std'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your standard!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="gender">Gender</label>
+                        <p-dropdown optionLabel="Gender" placeholder="Gender"></p-dropdown>
+                    </div>
                 </div>
-                <div class="field col-12 md:col-6">
-                    <label htmlFor="lastname2">Lastname</label>
-                    <input pInputText id="lastname2" type="text" />
-                </div>
-                <div class="field col-12">
-                    <label htmlFor="address">Address</label>
-                    <input pInputTextarea id="address" rows="4" />
-                </div>
-                <div class="field col-12 md:col-6">
-                    <label htmlFor="city">City</label>
-                    <input pInputText id="city" type="text" />
-                </div>
-                <div class="field col-12 md:col-3">
-                    <label htmlFor="state">State</label>
-                    <p-dropdown optionLabel="name"></p-dropdown>
-                </div>
-                <div class="field col-12 md:col-3">
-                    <label htmlFor="zip">Zip</label>
-                    <input pInputText id="zip" type="text" />
-                </div>
-            </div>
+                <button pButton pRipple label="Submit" (click)="submit()"></button>
+
+            </form>
+
         </div>
+
     </div>
 </div>
