@@ -36,6 +36,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
 
+
 const arrays = [
   CommonModule,
   CarouselModule,
