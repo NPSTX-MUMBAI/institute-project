@@ -1,1 +1,13 @@
-<p>admission-form works!</p>
+<div class="card">
+    <p-tabMenu [model]="items" [activeItem]="activeItem" (activeItemChange)="onActiveItemChange($event)"></p-tabMenu>
+    <!-- <button type="button" pButton pRipple label="Activate Last" (click)="activateLast()" class="mb-3"></button> -->
+    <div *ngIf="index==0">
+        <app-student-details></app-student-details>
+    </div>
+    <div *ngIf="index==1">
+        <app-parent-details></app-parent-details>
+    </div>
+    <div *ngIf="index==2">
+        <app-kyc-details></app-kyc-details>
+    </div>
+</div>
