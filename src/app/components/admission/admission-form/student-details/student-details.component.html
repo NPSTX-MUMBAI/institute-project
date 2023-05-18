@@ -5,24 +5,25 @@
 
                 <div class="p-fluid p-formgrid grid">
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="firstname2">Firstname</label>
+                        <label htmlFor="firstname2">Firstname<span class="text-red-600"> *</span></label>
+
                         <input pInputText id="firstname2" type="text" formControlName="firstname"
                             placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
                         <div
                             *ngIf="studentDetails.controls['firstname'].touched && studentDetails.controls['firstname'].errors">
                             <div *ngIf="studentDetails.controls['firstname'].hasError('required')"
-                                style="color: red;text-align: left;">
+                                style="color: red;text-align: left;margin-top: 6px;">
                                 Enter Institute name!
                             </div>
                             <div *ngIf="studentDetails.controls['firstname'].hasError('pattern')"
-                                style="color: red;text-align: left;">
+                                style="color: red;text-align: left;margin-top: 6px;">
                                 Enter a valid Institute name!
                             </div>
                         </div>
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="lastname2">Lastname</label>
+                        <label htmlFor="lastname2">Lastname<span class="text-red-600"> *</span></label>
                         <input pInputText id="lastname2" type="text" formControlName="lastname" placeholder="Lastname"
                             pattern="^[A-Za-z]{2,}$" />
                         <div *ngIf="studentDetails.controls['lastname'].touched ">
@@ -34,7 +35,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="email">Email</label>
+                        <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
                         <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
                             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                         <div
@@ -51,7 +52,7 @@
                         </div>
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="phone">Phone</label>
+                        <label htmlFor="phone">Phone <span class="text-red-600"> *</span></label>
                         <input pInputText id="phone" type="text" formControlName="phone" placeholder="Phone"
                             minlength="10" maxlength="10" type="phone"
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
@@ -71,7 +72,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="address">Address</label>
+                        <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
                         <input pInputText id="address" type="text" formControlName="address" placeholder="Address"
                             pattern="^[A-Za-z0-9]{2,}$" />
                         <div *ngIf="studentDetails.controls['address'].touched ">
@@ -84,13 +85,13 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="dob">DOB</label>
+                        <label htmlFor="dob">DOB <span class="text-red-600"> *</span></label>
                         <p-calendar inputId="calendar" [(ngModel)]="value5" formControlName="dob"
                             placeholder="Date of Birth"></p-calendar>
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="nationality">Nationality</label>
+                        <label htmlFor="nationality">Nationality <span class="text-red-600"> *</span></label>
                         <input pInputText id="nationality" type="text" formControlName="nationality"
                             placeholder="Nationality" />
                         <div *ngIf="studentDetails.controls['nationality'].touched ">
@@ -102,7 +103,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="religion">Religion</label>
+                        <label htmlFor="religion">Religion <span class="text-red-600"> *</span></label>
                         <input pInputText id="religion" type="text" formControlName="religion" placeholder="Religion" />
                         <div *ngIf="studentDetails.controls['religion'].touched ">
                             <div *ngIf="studentDetails.controls['religion'].hasError('required')"
@@ -113,7 +114,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="birthPlace">Birth Place</label>
+                        <label htmlFor="birthPlace">Birth Place <span class="text-red-600"> *</span></label>
                         <input pInputText id="birthPlace" type="text" formControlName="birthPlace"
                             placeholder="Birth Place" />
                         <div *ngIf="studentDetails.controls['birthPlace'].touched ">
@@ -125,7 +126,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="state">State</label>
+                        <label htmlFor="state">State <span class="text-red-600"> *</span></label>
                         <input pInputText id="state" type="text" formControlName="state" placeholder="State" />
                         <div *ngIf="studentDetails.controls['state'].touched ">
                             <div *ngIf="studentDetails.controls['state'].hasError('required')"
@@ -136,7 +137,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="Std">Std</label>
+                        <label htmlFor="Std">Std <span class="text-red-600"> *</span></label>
                         <input pInputText id="Std" type="text" formControlName="Std" placeholder="Standard" />
                         <div *ngIf="studentDetails.controls['Std'].touched ">
                             <div *ngIf="studentDetails.controls['Std'].hasError('required')"
@@ -147,7 +148,7 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="gender">Gender</label>
+                        <label htmlFor="gender">Gender <span class="text-red-600"> *</span></label>
                         <p-dropdown optionLabel="Gender" placeholder="Gender"></p-dropdown>
                     </div>
                 </div>
@@ -158,4 +159,5 @@
         </div>
 
     </div>
+
 </div>
