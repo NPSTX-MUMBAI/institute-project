@@ -5,188 +5,336 @@
         <div>
             <div class="col-12">
                 <div class="card">
-                    
-                    <div class="p-fluid p-formgrid grid">
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor=" Father's firstname2"> Father's First Name</label>
-                            <input pInputText id=" Father's firstname2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor=" Father's lastname2"> Father's Last Name</label>
-                            <input pInputText id="Father's lastname2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="Father Email Id2"> Father's Email Id</label>
-                            <input pInputText id="Father Email Id2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="Father Mobile No2"> Father's Mobile No</label>
-                            <input pInputText id="Father Mobile No2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="Father Occupation2"> Father's Occupation</label>
-                            <input pInputText id="Father Occupation2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="Father Religion2"> Father's Religion</label>
-                            <input pInputText id="Father Religion2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="Father Nationalty2"> Father's Nationalty</label>
-                            <input pInputText id="Father Nationalty2" type="text" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor=" Father's address"> Father's Address</label>
-                            <input pInputTextarea id="address" rows="4" />
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="state">Country</label>
-                            <p-dropdown optionLabel="name"></p-dropdown>
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="state">State</label>
-                            <p-dropdown optionLabel="name"></p-dropdown>
-                        </div>
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="city">City</label>
-                            <input pInputText id="city" type="text" />
-                        </div>
-                        
-                        <div class="field col-12 md:col-4">
-                            <label htmlFor="zip">Zip</label>
-                            <input pInputText id="zip" type="text" />
-                        </div>
-                        <br>
-                    </div>
-                    
+                    <form class="pt-4" [formGroup]="ParentsDetails">
+
+                        <div class="p-fluid p-formgrid grid">
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="firstname2">Firstname</label>
+                                <input pInputText id="firstname2" type="text" formControlName="Fathername"
+                                    placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
+                                <div
+                                    *ngIf="ParentsDetails.controls['Fathername'].touched && ParentsDetails.controls['Fathername'].errors">
+                                    <div *ngIf="ParentsDetails.controls['Fathername'].hasError('required')"
+                                        style="color: red;text-align: left;">
+                                        Enter  your First name!
+                                    </div>
+                                    <div *ngIf="ParentsDetails.controls['Fathername'].hasError('pattern')"
+                                        style="color: red;text-align: left;">
+                                        Enter a valid Institute name!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="lastname2">Lastname</label>
+                                <input pInputText id="lastname2" type="text" formControlName="lastname" placeholder="Lastname"
+                                    pattern="^[A-Za-z]{2,}$" />
+                                <div *ngIf="ParentsDetails.controls['lastname'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['lastname'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your lastName !
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="email">Email</label>
+                                <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
+                                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                                <div
+                                    *ngIf="ParentsDetails.controls['email'].touched && ParentsDetails.controls['email'].errors">
+                                    <div *ngIf="ParentsDetails.controls['email'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your email Id!
+                                    </div>
+                                    <div *ngIf="ParentsDetails.controls['email'].hasError('pattern')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter a valid email Id!
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="phone">Mobile No</label>
+                                <input pInputText id="phone" type="text" formControlName="MobileNo" placeholder="MobileNo"
+                                    minlength="10" maxlength="10" type="phone"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    placeholder="Mobile No" required pattern="[0-9 ]{10}" />
+                                <div
+                                    *ngIf="ParentsDetails.controls['MobileNo'].touched && ParentsDetails.controls['MobileNo'].errors">
+                                    <div *ngIf="ParentsDetails.controls['MobileNo'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter a valid Mobile No!
+        
+                                    </div>
+                                    <div *ngIf="ParentsDetails.controls['MobileNo'].hasError('pattern')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter Valid Mobile No!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="address">Address</label>
+                                <input pInputText id="address" type="text" formControlName="Fatheraddress" placeholder="Address"
+                                    pattern="^[A-Za-z0-9]{2,}$" />
+                                <div *ngIf="ParentsDetails.controls['Fatheraddress'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['Fatheraddress'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your correct address!
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="nationality">Nationality</label>
+                                <input pInputText id="nationality" type="text" formControlName="FatherNationalty"
+                                    placeholder="Nationality" />
+                                <div *ngIf="ParentsDetails.controls['FatherNationalty'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['FatherNationalty'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your nationality!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="Occupation">Occupation</label>
+                                <input pInputText id="Occupation" type="text" formControlName="FatherOccupation"
+                                    placeholder="Occupation" />
+                                <div *ngIf="ParentsDetails.controls['FatherOccupation'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['FatherOccupation'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your Occupation!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="state">State</label>
+                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="State"></p-dropdown>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="city">City</label>
+                                <input pInputText id="city" type="text" formControlName="City" placeholder="City"/>
+                                <div *ngIf="ParentsDetails.controls['City'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['City'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your city!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="FatherReligion">Religion</label>
+                                <input pInputText id="FatherReligion" type="text" formControlName="FatherReligion" placeholder=" Religion"/>
+                                <div *ngIf="ParentsDetails.controls['FatherReligion'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['FatherReligion'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your Religion !
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="state">Country</label>
+                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="zip">Zip Code</label>
+                                <input pInputText id="zip" type="text" formControlName="Zip" placeholder="Zip Code" />
+                                <div *ngIf="ParentsDetails.controls['Zip'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['Zip'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your Zip Code!
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+
+                    </form>                   
                 </div>
             </div>
         </div>
         
     </p-accordionTab>
 
+
+    
+    <!--Mother's Details-->
     <p-accordionTab header="Mother's Details">
         <div>
             <div class="col-12">
                 <div class="card">
-                    
-                    <div class="p-fluid p-formgrid grid">
-          <div class="field col-12 md:col-4">
-            <label htmlFor=" Mother's firstname2"> Mother's First Name</label>
-            <input pInputText id=" Mother's firstname2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor=" Mother's lastname2"> Mother's Last Name</label>
-            <input pInputText id="Mother's lastname2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="Mother Email Id2"> Mother's Email Id</label>
-            <input pInputText id="Mother Email Id2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="Mother Mobile No2"> Mother's Mobile No</label>
-            <input pInputText id="Mother Mobile No2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="Mother Occupation2"> Mother's Occupation</label>
-            <input pInputText id="Mother Occupation2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="Mother Religion2"> Mother's Religion</label>
-            <input pInputText id="Mother Religion2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="Mother Nationalty2"> Mother's Nationalty</label>
-            <input pInputText id="Mother Nationalty2" type="text" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor=" Mother's address"> Mother's Address</label>
-            <input pInputTextarea id="address" rows="4" />
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="state">Country</label>
-            <p-dropdown optionLabel="name"></p-dropdown>
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="state">State</label>
-            <p-dropdown optionLabel="name"></p-dropdown>
-        </div>
-        <div class="field col-12 md:col-4">
-            <label htmlFor="city">City</label>
-            <input pInputText id="city" type="text" />
+                    <form class="pt-4" [formGroup]="ParentsDetails">
+
+                        <div class="p-fluid p-formgrid grid">
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="firstname2">Firstname</label>
+                                <input pInputText id="firstname2" type="text" formControlName="Mothername"
+                                    placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
+                                <div
+                                    *ngIf="ParentsDetails.controls['Mothername'].touched && ParentsDetails.controls['Mothername'].errors">
+                                    <div *ngIf="ParentsDetails.controls['Mothername'].hasError('required')"
+                                        style="color: red;text-align: left;">
+                                        Enter  your First name!
+                                    </div>
+                                    <div *ngIf="ParentsDetails.controls['Mothername'].hasError('pattern')"
+                                        style="color: red;text-align: left;">
+                                        Enter a valid Institute name!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="lastname2">Lastname</label>
+                                <input pInputText id="lastname2" type="text" formControlName="Mlastname" placeholder="Lastname"
+                                    pattern="^[A-Za-z]{2,}$" />
+                                <div *ngIf="ParentsDetails.controls['Mlastname'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['Mlastname'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your lastName !
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="email">Email</label>
+                                <input pInputTextarea id="email" rows="4" formControlName="Memail" placeholder="Email"
+                                    pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                                <div
+                                    *ngIf="ParentsDetails.controls['Memail'].touched && ParentsDetails.controls['Memail'].errors">
+                                    <div *ngIf="ParentsDetails.controls['Memail'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your email Id!
+                                    </div>
+                                    <div *ngIf="ParentsDetails.controls['Memail'].hasError('pattern')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter a valid email Id!
+        
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="phone">Mobile No</label>
+                                <input pInputText id="phone" type="text" formControlName="MMobileNo" placeholder="MMobileNo"
+                                    minlength="10" maxlength="10" type="phone"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    placeholder="Mobile No" required pattern="[0-9 ]{10}" />
+                                <div
+                                    *ngIf="ParentsDetails.controls['MMobileNo'].touched && ParentsDetails.controls['MMobileNo'].errors">
+                                    <div *ngIf="ParentsDetails.controls['MMobileNo'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter a valid Mobile No!
+        
+                                    </div>
+                                    <div *ngIf="ParentsDetails.controls['MobileNo'].hasError('pattern')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter Valid Mobile No!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="address">Address</label>
+                                <input pInputText id="address" type="text" formControlName="Maddress" placeholder="Address"
+                                    pattern="^[A-Za-z0-9]{2,}$" />
+                                <div *ngIf="ParentsDetails.controls['Maddress'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['Maddress'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your correct address!
+                                    </div>
+                                </div>
+                               
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="nationality">Nationality</label>
+                                <input pInputText id="nationality" type="text" formControlName="MNationalty"
+                                    placeholder="Nationality" />
+                                <div *ngIf="ParentsDetails.controls['MNationalty'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['MNationalty'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your nationality!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="Occupation">Occupation</label>
+                                <input pInputText id="Occupation" type="text" formControlName="MOccupation"
+                                    placeholder="Occupation" />
+                                <div *ngIf="ParentsDetails.controls['MOccupation'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['MOccupation'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your Occupation!
+                                    </div>
+                                </div>
+        
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="state">State</label>
+                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="State"></p-dropdown>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="city">City</label>
+                                <input pInputText id="city" type="text" formControlName="MCity" placeholder="City"/>
+                                <div *ngIf="ParentsDetails.controls['MCity'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['MCity'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your city!
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="FatherReligion">Religion</label>
+                                <input pInputText id="FatherReligion" type="text" formControlName="MReligion" placeholder=" Religion"/>
+                                <div *ngIf="ParentsDetails.controls['MReligion'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['MReligion'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your Religion !
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="state">Country</label>
+                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
+                            </div>
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="zip">Zip Code</label>
+                                <input pInputText id="zip" type="text" formControlName="MZip" placeholder="Zip Code" />
+                                <div *ngIf="ParentsDetails.controls['MZip'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['MZip'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Enter your Zip Code!
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                        <button pButton pRipple label="Submit" (click)="submit()"></button>
+
+
+                    </form>                   
+                </div>
+            </div>
         </div>
         
-        <div class="field col-12 md:col-4">
-            <label htmlFor="zip">Zip</label>
-            <input pInputText id="zip" type="text" />
-        </div> 
-    </div>
-</div>
- </div>
-</div> 
-</p-accordionTab>
-
-<p-accordionTab header="Guardian's Details">
-    <div>
-        <div class="col-12">
-            <div class="card">
-                
-                <div class="p-fluid p-formgrid grid">
-      
-    <div class="field col-12 md:col-4">
-        <label htmlFor=" Guardian firstname2"> Guardian's First Name</label>
-        <input pInputText id=" Guardian firstname2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor=" Guardian's lastname2"> Guardian's Last Name</label>
-        <input pInputText id="Guardian's lastname2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="Guardian Email Id2"> Guardian's Email Id</label>
-        <input pInputText id="Guardian Email Id2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="Guardian Mobile No2"> Guardian's Mobile No</label>
-        <input pInputText id="Guardian Mobile No2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="Guardian Occupation2"> Guardian's Occupation</label>
-        <input pInputText id="Guardian Occupation2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="Guardian Religion2"> Guardian's Religion</label>
-        <input pInputText id="Guardian Religion2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="Guardian Nationalty2"> Guardian's Nationalty</label>
-        <input pInputText id="Guardian Nationalty2" type="text" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor=" Guardian address"> Guardian's Address</label>
-        <input pInputTextarea id="address" rows="4" />
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="state">Country</label>
-        <p-dropdown optionLabel="name"></p-dropdown>
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="state">State</label>
-        <p-dropdown optionLabel="name"></p-dropdown>
-    </div>
-    <div class="field col-12 md:col-4">
-        <label htmlFor="city">City</label>
-        <input pInputText id="city" type="text" />
-    </div>
+    </p-accordionTab>
     
-    <div class="field col-12 md:col-4">
-        <label htmlFor="zip">Zip</label>
-        <input pInputText id="zip" type="text" />
-    </div>
-</div>
-</div>
-   <button pButton label="Submit"></button>
- </div>
-</div>
+    
 
-</p-accordionTab>
+    
+
+        
+    
+
+
+
+
+
+
+
+
+
+
+
 
