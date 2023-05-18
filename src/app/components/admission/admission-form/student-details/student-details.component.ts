@@ -5,6 +5,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { StudentDetails } from 'src/app/models/admission.model';
 import { AdmissionService } from 'src/app/services/admission.service';
 
 @Component({
@@ -22,23 +23,64 @@ export class StudentDetailsComponent implements OnInit {
     ) {}
     ngOnInit(): void {
         this.studentDetails = this.fb.group({
-            firstname: ['', [Validators.required]],
-            lastname: ['', [Validators.required]],
-            email: ['', [Validators.required]],
-            phone: ['', [Validators.required]],
-            address: ['', [Validators.required]],
-            dob: ['', [Validators.required]],
-            nationality: ['', [Validators.required]],
-            religion: ['', [Validators.required]],
-            birthPlace: ['', [Validators.required]],
-            state: ['', [Validators.required]],
-            Std: ['', [Validators.required]],
-            gender: ['', [Validators.required]],
+            studentFirstName: ['', Validators.required],
+            studentLastName: ['', Validators.required],
+            studentEmail: ['', Validators.required],
+            studentPhone: ['', Validators.required],
+            studentAddress: ['', Validators.required],
+            studentDateOfBirth: ['', Validators.required],
+            studentNationality: ['', Validators.required],
+            studentReligion: ['', Validators.required],
+            studentPlaceOfBirth: ['', Validators.required],
+            studentStateOfOrigin: ['', Validators.required],
+            studentClass: ['', Validators.required],
+            studentGender: ['', Validators.required],
+            studentPreviousSchool: ['', Validators.required],
+            studentPreviousClass: ['', Validators.required],
+            studentPreviousClassAverage: ['', Validators.required],
         });
     }
     submit() {
         console.log(this.studentDetails.value);
+        const data = this.studentDetails.value;
+        const studentDetailsObj: StudentDetails = {
+            studentFirstName: data.studentFirstName,
+            studentLastName: data.studentLastName,
 
-        this.admissionSrv.saveStudentDetails(this.studentDetails.value);
+            studentEmail: data.studentEmail,
+
+            studentPhone: data.studentPhone,
+
+            studentAddress: data.studentAddress,
+
+            studentNationality: data.studentNationality,
+
+            studentReligion: data.studentReligion,
+
+            studentGender: data.studentGender,
+
+            studentDateOfBirth: data.studentDateOfBirth,
+
+            studentPlaceOfBirth: data.studentPlaceOfBirth,
+
+            studentStateOfOrigin: data.studentStateOfOrigin,
+
+            studentLGA: data.studentLGA,
+
+            studentClass: data.studentClass,
+
+            studentClassOfChoice: data.studentClassOfChoice,
+
+            studentPreviousSchool: data.studentPreviousSchool,
+
+            studentPreviousClass: data.studentPreviousClass,
+
+            studentPreviousClassAverage: data.studentPreviousClassAverage,
+
+            schoolId: data.schoolId,
+        };
+        this.admissionSrv.saveStudentDetails(studentDetailsObj).then((res) => {
+            console.log(res);
+        });
     }
 }

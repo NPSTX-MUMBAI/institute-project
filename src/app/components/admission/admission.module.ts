@@ -6,6 +6,7 @@ import { UiModule } from '../../ui/ui.module';
 import { ParentDetailsComponent } from './admission-form/parent-details/parent-details.component';
 import { KycDetailsComponent } from './admission-form/kyc-details/kyc-details.component';
 import { StudentDetailsComponent } from './admission-form/student-details/student-details.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [{ path: '', component: AdmissionFormComponent }];
 
@@ -16,6 +17,11 @@ const routes: Routes = [{ path: '', component: AdmissionFormComponent }];
         ParentDetailsComponent,
         KycDetailsComponent,
     ],
-    imports: [CommonModule, RouterModule.forChild(routes), UiModule],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        UiModule,
+        ReactiveFormsModule,
+    ],
 })
 export class AdmissionModule {}

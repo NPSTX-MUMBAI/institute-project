@@ -7,11 +7,11 @@
                     <div class="field col-12 md:col-4">
                         <label htmlFor="firstname2">Firstname<span class="text-red-600"> *</span></label>
 
-                        <input pInputText id="firstname2" type="text" formControlName="firstname"
+                        <input pInputText id="firstname2" type="text" formControlName="studentFirstName"
                             placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
                         <div
-                            *ngIf="studentDetails.controls['firstname'].touched && studentDetails.controls['firstname'].errors">
-                            <div *ngIf="studentDetails.controls['firstname'].hasError('required')"
+                            *ngIf="studentDetails.controls['studentFirstName'].touched && studentDetails.controls['studentFirstName'].errors">
+                            <div *ngIf="studentDetails.controls['studentFirstName'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter Institute name!
                             </div>
@@ -24,10 +24,10 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="lastname2">Lastname<span class="text-red-600"> *</span></label>
-                        <input pInputText id="lastname2" type="text" formControlName="lastname" placeholder="Lastname"
-                            pattern="^[A-Za-z]{2,}$" />
-                        <div *ngIf="studentDetails.controls['lastname'].touched ">
-                            <div *ngIf="studentDetails.controls['lastname'].hasError('required')"
+                        <input pInputText id="lastname2" type="text" formControlName="studentLastName"
+                            placeholder="Lastname" pattern="^[A-Za-z]{2,}$" />
+                        <div *ngIf="studentDetails.controls['studentLastName'].touched ">
+                            <div *ngIf="studentDetails.controls['studentLastName'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your lastName name!
                             </div>
@@ -36,15 +36,15 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
-                        <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
+                        <input pInputTextarea id="email" rows="4" formControlName="studentEmail" placeholder="Email"
                             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                         <div
-                            *ngIf="studentDetails.controls['email'].touched && studentDetails.controls['email'].errors">
-                            <div *ngIf="studentDetails.controls['email'].hasError('required')"
+                            *ngIf="studentDetails.controls['studentEmail'].touched && studentDetails.controls['studentEmail'].errors">
+                            <div *ngIf="studentDetails.controls['studentEmail'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your email Id!
                             </div>
-                            <div *ngIf="studentDetails.controls['email'].hasError('pattern')"
+                            <div *ngIf="studentDetails.controls['studentEmail'].hasError('pattern')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter a valid email Id!
 
@@ -53,18 +53,18 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="phone">Phone <span class="text-red-600"> *</span></label>
-                        <input pInputText id="phone" type="text" formControlName="phone" placeholder="Phone"
+                        <input pInputText id="phone" type="text" formControlName="studentPhone" placeholder="Phone"
                             minlength="10" maxlength="10" type="phone"
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                             placeholder="phone no" required pattern="[0-9 ]{10}" />
                         <div
-                            *ngIf="studentDetails.controls['phone'].touched && studentDetails.controls['phone'].errors">
-                            <div *ngIf="studentDetails.controls['phone'].hasError('required')"
+                            *ngIf="studentDetails.controls['studentPhone'].touched && studentDetails.controls['studentPhone'].errors">
+                            <div *ngIf="studentDetails.controls['studentPhone'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter Mobile No!
 
                             </div>
-                            <div *ngIf="studentDetails.controls['phone'].hasError('pattern')"
+                            <div *ngIf="studentDetails.controls['studentPhone'].hasError('pattern')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter Valid Mobile No!
                             </div>
@@ -73,12 +73,12 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
-                        <input pInputText id="address" type="text" formControlName="address" placeholder="Address"
-                            pattern="^[A-Za-z0-9]{2,}$" />
-                        <div *ngIf="studentDetails.controls['address'].touched ">
-                            <div *ngIf="studentDetails.controls['address'].hasError('required')"
+                        <input pInputText id="address" type="text" formControlName="studentAddress"
+                            placeholder="Address" />
+                        <div *ngIf="studentDetails.controls['studentAddress'].touched ">
+                            <div *ngIf="studentDetails.controls['studentAddress'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
-                                Enter your correct address!
+                                Enter your address!
                             </div>
                         </div>
 
@@ -86,16 +86,16 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="dob">DOB <span class="text-red-600"> *</span></label>
-                        <p-calendar inputId="calendar" [(ngModel)]="value5" formControlName="dob"
+                        <p-calendar inputId="calendar" [(ngModel)]="value5" formControlName="studentDateOfBirth"
                             placeholder="Date of Birth"></p-calendar>
 
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="nationality">Nationality <span class="text-red-600"> *</span></label>
-                        <input pInputText id="nationality" type="text" formControlName="nationality"
+                        <input pInputText id="nationality" type="text" formControlName="studentNationality"
                             placeholder="Nationality" />
-                        <div *ngIf="studentDetails.controls['nationality'].touched ">
-                            <div *ngIf="studentDetails.controls['nationality'].hasError('required')"
+                        <div *ngIf="studentDetails.controls['studentNationality'].touched ">
+                            <div *ngIf="studentDetails.controls['studentNationality'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your nationality!
                             </div>
@@ -104,9 +104,10 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="religion">Religion <span class="text-red-600"> *</span></label>
-                        <input pInputText id="religion" type="text" formControlName="religion" placeholder="Religion" />
-                        <div *ngIf="studentDetails.controls['religion'].touched ">
-                            <div *ngIf="studentDetails.controls['religion'].hasError('required')"
+                        <input pInputText id="religion" type="text" formControlName="studentReligion"
+                            placeholder="Religion" />
+                        <div *ngIf="studentDetails.controls['studentReligion'].touched ">
+                            <div *ngIf="studentDetails.controls['studentReligion'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your religion!
                             </div>
@@ -115,10 +116,10 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="birthPlace">Birth Place <span class="text-red-600"> *</span></label>
-                        <input pInputText id="birthPlace" type="text" formControlName="birthPlace"
+                        <input pInputText id="birthPlace" type="text" formControlName="studentPlaceOfBirth"
                             placeholder="Birth Place" />
-                        <div *ngIf="studentDetails.controls['birthPlace'].touched ">
-                            <div *ngIf="studentDetails.controls['birthPlace'].hasError('required')"
+                        <div *ngIf="studentDetails.controls['studentPlaceOfBirth'].touched ">
+                            <div *ngIf="studentDetails.controls['studentPlaceOfBirth'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your birth place!
                             </div>
@@ -126,10 +127,37 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
+                        <label htmlFor="firstname2">Previous School<span class="text-red-600"> *</span></label>
+
+                        <input pInputText id="studentPreviousSchool" type="text" formControlName="studentPreviousSchool"
+                            placeholder="Previous School" pattern="^[A-Za-z]{2,}$" />
+                        <div *ngIf="studentDetails.controls['studentPreviousSchool'].touched">
+                            <div *ngIf="studentDetails.controls['studentPreviousSchool'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your previous school name!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="firstname2">Previous Class<span class="text-red-600"> *</span></label>
+
+                        <input pInputText id="studentPreviousClass" type="text" formControlName="studentPreviousClass"
+                            placeholder="Previous School" />
+                        <div *ngIf="studentDetails.controls['studentPreviousClass'].touched">
+                            <div *ngIf="studentDetails.controls['studentPreviousClass'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your previous class!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
                         <label htmlFor="state">State <span class="text-red-600"> *</span></label>
-                        <input pInputText id="state" type="text" formControlName="state" placeholder="State" />
-                        <div *ngIf="studentDetails.controls['state'].touched ">
-                            <div *ngIf="studentDetails.controls['state'].hasError('required')"
+                        <input pInputText id="state" type="text" formControlName="studentStateOfOrigin"
+                            placeholder="State" />
+                        <div *ngIf="studentDetails.controls['studentStateOfOrigin'].touched ">
+                            <div *ngIf="studentDetails.controls['studentStateOfOrigin'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your state!
                             </div>
@@ -138,9 +166,9 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="Std">Std <span class="text-red-600"> *</span></label>
-                        <input pInputText id="Std" type="text" formControlName="Std" placeholder="Standard" />
-                        <div *ngIf="studentDetails.controls['Std'].touched ">
-                            <div *ngIf="studentDetails.controls['Std'].hasError('required')"
+                        <input pInputText id="Std" type="text" formControlName="studentClass" placeholder="Standard" />
+                        <div *ngIf="studentDetails.controls['studentClass'].touched ">
+                            <div *ngIf="studentDetails.controls['studentClass'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter your standard!
                             </div>
@@ -148,9 +176,27 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
+                        <label htmlFor="Std">Previous Average <span class="text-red-600"> *</span></label>
+                        <input pInputText id="studentPreviousClassAverage" type="text"
+                            formControlName="studentPreviousClassAverage" placeholder="Previous class average" />
+                        <div *ngIf="studentDetails.controls['studentPreviousClassAverage'].touched ">
+                            <div *ngIf="studentDetails.controls['studentPreviousClassAverage'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your previous class average!
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <div class="field col-12 md:col-4">
                         <label htmlFor="gender">Gender <span class="text-red-600"> *</span></label>
                         <p-dropdown optionLabel="Gender" placeholder="Gender"></p-dropdown>
                     </div>
+
+
+
+
                 </div>
                 <button pButton pRipple label="Submit" (click)="submit()"></button>
 
