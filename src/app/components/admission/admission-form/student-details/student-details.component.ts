@@ -7,6 +7,7 @@ import {
 } from '@angular/forms';
 import { StudentDetails } from 'src/app/models/admission.model';
 import { AdmissionService } from 'src/app/services/admission.service';
+import { StateService } from 'src/app/services/state.service';
 
 @Component({
     selector: 'app-student-details',
@@ -15,12 +16,15 @@ import { AdmissionService } from 'src/app/services/admission.service';
 })
 export class StudentDetailsComponent implements OnInit {
     value5: any;
-
     studentDetails!: FormGroup;
+
     constructor(
         private fb: FormBuilder,
-        private admissionSrv: AdmissionService
+        private admissionSrv: AdmissionService,
+        private stateSrv:StateService
     ) {}
+
+
     ngOnInit(): void {
         this.studentDetails = this.fb.group({
             studentFirstName: ['', Validators.required],
@@ -40,6 +44,7 @@ export class StudentDetailsComponent implements OnInit {
             studentPreviousClassAverage: ['', Validators.required],
         });
     }
+
     submit() {
         console.log(this.studentDetails.value);
         const data = this.studentDetails.value;
@@ -67,6 +72,7 @@ export class StudentDetailsComponent implements OnInit {
 
             studentLGA: data.studentLGA,
 
+
             studentClass: data.studentClass,
 
             studentClassOfChoice: data.studentClassOfChoice,
@@ -76,11 +82,12 @@ export class StudentDetailsComponent implements OnInit {
             studentPreviousClass: data.studentPreviousClass,
 
             studentPreviousClassAverage: data.studentPreviousClassAverage,
-
+            
             schoolId: data.schoolId,
         };
-        this.admissionSrv.saveStudentDetails(studentDetailsObj).then((res) => {
-            console.log(res);
+        this.admissionSrv.saveStudentDetails(studentDetailsObj).then((res:any) => {
+            console.log(res.data.applicationId); 
+            this.stateSrv.applicationId=res.data.applicationId
         });
     }
 }

@@ -36,6 +36,58 @@ export interface StudentDetails {
     schoolId?: string;
 }
 
+export interface ParentsDetails {
+    fatherFirstName: string;
+    applicationId?:string;
+    fatherLastName: string;
+
+    fatherEmail: string;
+
+    fatherPhone: string;
+
+    fatherAddress: string;
+
+    fatherNationality: string;
+
+    fatherOccupation: string;
+
+
+    motherFirstName: string;
+
+    motherLastName?: string;
+
+    motherEmail?: string;
+
+    motherPhone?: string;
+
+    motherAddress?: string;
+
+    motherNationality?: string;
+
+    motherOccupation?: string;
+
+    motherReligion?: string;
+
+
+    guardianFirstName: string;
+
+    guardianLastName?: string;
+
+    guardianEmail?: string;
+
+    guardianPhone?: string;
+
+    guardianAddress?: string;
+
+    guardianNationality?: string;
+
+    guardianOccupation?: string;
+
+    guardianReligion?: string;
+    
+
+}
+
 export interface CreateKycDto {
     applicationId: string;
 
