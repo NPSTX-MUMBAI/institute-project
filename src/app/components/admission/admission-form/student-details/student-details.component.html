@@ -72,6 +72,11 @@
 
                     </div>
                     <div class="field col-12 md:col-4">
+                        <label htmlFor="state">Gender</label>
+                        <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                    </div>
+
+                    <div class="field col-12 md:col-4">
                         <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
                         <input pInputText id="address" type="text" formControlName="studentAddress"
                             placeholder="Address" />
@@ -187,13 +192,6 @@
                         </div>
 
                     </div>
-
-
-                    <div class="field col-12 md:col-4">
-                        <label htmlFor="gender">Gender <span class="text-red-600"> *</span></label>
-                        <p-dropdown optionLabel="Gender" placeholder="Gender"></p-dropdown>
-                    </div>
-
 
 
 

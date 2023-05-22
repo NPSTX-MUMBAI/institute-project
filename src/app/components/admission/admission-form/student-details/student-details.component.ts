@@ -5,6 +5,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { log } from 'console';
 import { StudentDetails } from 'src/app/models/admission.model';
 import { AdmissionService } from 'src/app/services/admission.service';
 
@@ -15,6 +16,7 @@ import { AdmissionService } from 'src/app/services/admission.service';
 })
 export class StudentDetailsComponent implements OnInit {
     value5: any;
+    selectedState: any = null;
 
     studentDetails!: FormGroup;
     constructor(
@@ -34,21 +36,24 @@ export class StudentDetailsComponent implements OnInit {
             studentPlaceOfBirth: ['', Validators.required],
             studentStateOfOrigin: ['', Validators.required],
             studentClass: ['', Validators.required],
-            studentGender: ['', Validators.required],
+            studentGender: ['Male', Validators.required],
             studentPreviousSchool: ['', Validators.required],
             studentPreviousClass: ['', Validators.required],
             studentPreviousClassAverage: ['', Validators.required],
         });
     }
     submit() {
+        if (this.studentDetails.invalid) {
+            alert('Invalid Form');
+            return;
+        }
         console.log(this.studentDetails.value);
         const data = this.studentDetails.value;
+        console.log(this.studentDetails);
         const studentDetailsObj: StudentDetails = {
             studentFirstName: data.studentFirstName,
             studentLastName: data.studentLastName,
-
             studentEmail: data.studentEmail,
-
             studentPhone: data.studentPhone,
 
             studentAddress: data.studentAddress,
@@ -83,4 +88,10 @@ export class StudentDetailsComponent implements OnInit {
             console.log(res);
         });
     }
+    dropdownItems = [
+        { name: 'Select Gender', code: 'Select Gender' },
+        { name: 'Male', code: 'Male' },
+        { name: 'Female', code: 'Female' },
+        { name: 'Transgender', code: 'Transgender' },
+    ];
 }
