@@ -24,7 +24,7 @@ export class AppMenuComponent implements OnInit {
                 ],
             },
             {
-                label: 'Admission',
+                label: 'Institute',
                 items: [
                     {
                         label: 'Admission Form ',
@@ -32,7 +32,38 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/admission'],
                     },
                 ],
-            },  
+            },
+            {
+                items: [
+                    {
+                        label: 'Institute ',
+                        icon: 'pi pi-fw pi-id-card',
+
+                        items: [
+                            {
+                                label: 'Institute list',
+                                icon: 'fa fa-money-bill-transfer',
+                                routerLink: ['/institute'],
+                            },
+                            {
+                                label: 'Bank',
+                                icon: 'fa fa-money-bill-transfer',
+                                routerLink: ['/institute/bank'],
+                            },
+                            {
+                                label: 'Staff',
+                                icon: 'fa fa-money-bills',
+                                routerLink: ['/institute/staff'],
+                            },
+                            {
+                                label: 'KYC',
+                                icon: 'fa fa-book',
+                                routerLink: ['/institute/kyc'],
+                            },
+                        ],
+                    },
+                ],
+            },
         ];
     }
 }
