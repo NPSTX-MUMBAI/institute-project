@@ -4,21 +4,21 @@
     <p-accordionTab header="Father's Details">
         <div>
             <div class="col-12">
-                <div class="card">
+        
                     <form class="pt-4" [formGroup]="ParentsDetails">
 
                         <div class="p-fluid p-formgrid grid">
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="firstname2">Firstname</label>
-                                <input pInputText id="firstname2" type="text" formControlName="Fathername"
+                                <label htmlFor="firstname2">Firstname<span class="text-red-600"> *</span></label>
+                                <input pInputText id="firstname2" type="text" formControlName="fatherFirstName"
                                     placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
                                 <div
-                                    *ngIf="ParentsDetails.controls['Fathername'].touched && ParentsDetails.controls['Fathername'].errors">
-                                    <div *ngIf="ParentsDetails.controls['Fathername'].hasError('required')"
+                                    *ngIf="ParentsDetails.controls['fatherFirstName'].touched && ParentsDetails.controls['fatherFirstName'].errors">
+                                    <div *ngIf="ParentsDetails.controls['fatherFirstName'].hasError('required')"
                                         style="color: red;text-align: left;">
                                         Enter  your First name!
                                     </div>
-                                    <div *ngIf="ParentsDetails.controls['Fathername'].hasError('pattern')"
+                                    <div *ngIf="ParentsDetails.controls['fatherFirstName'].hasError('pattern')"
                                         style="color: red;text-align: left;">
                                         Enter a valid Institute name!
                                     </div>
@@ -26,28 +26,28 @@
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="lastname2">Lastname</label>
-                                <input pInputText id="lastname2" type="text" formControlName="lastname" placeholder="Lastname"
-                                    pattern="^[A-Za-z]{2,}$" />
-                                <div *ngIf="ParentsDetails.controls['lastname'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['lastname'].hasError('required')"
+                                <label htmlFor="lastname2">Lastname<span class="text-red-600"> *</span></label>
+                                <input pInputText id="lastname2" type="text" formControlName="fatherLastName" placeholder="Lastname"
+                                    />
+                                <div *ngIf="ParentsDetails.controls['fatherLastName'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['fatherLastName'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
-                                        Enter your lastName !
+                                        Enter your Last name !
                                     </div>
                                 </div>
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="email">Email</label>
-                                <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
+                                <label htmlFor="email">Email<span class="text-red-600"> *</span></label>
+                                <input pInputTextarea id="email" rows="4" formControlName="fatherEmail" placeholder="Email"
                                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                                 <div
-                                    *ngIf="ParentsDetails.controls['email'].touched && ParentsDetails.controls['email'].errors">
-                                    <div *ngIf="ParentsDetails.controls['email'].hasError('required')"
+                                    *ngIf="ParentsDetails.controls['fatherEmail'].touched && ParentsDetails.controls['fatherEmail'].errors">
+                                    <div *ngIf="ParentsDetails.controls['fatherEmail'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your email Id!
                                     </div>
-                                    <div *ngIf="ParentsDetails.controls['email'].hasError('pattern')"
+                                    <div *ngIf="ParentsDetails.controls['fatherEmail'].hasError('pattern')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter a valid email Id!
         
@@ -55,19 +55,19 @@
                                 </div>
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="phone">Mobile No</label>
-                                <input pInputText id="phone" type="text" formControlName="MobileNo" placeholder="MobileNo"
+                                <label htmlFor="phone">Mobile No<span class="text-red-600"> *</span></label>
+                                <input pInputText id="phone" type="text" formControlName="fatherPhone" placeholder="MobileNo"
                                     minlength="10" maxlength="10" type="phone"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                     placeholder="Mobile No" required pattern="[0-9 ]{10}" />
                                 <div
-                                    *ngIf="ParentsDetails.controls['MobileNo'].touched && ParentsDetails.controls['MobileNo'].errors">
-                                    <div *ngIf="ParentsDetails.controls['MobileNo'].hasError('required')"
+                                    *ngIf="ParentsDetails.controls['fatherPhone'].touched && ParentsDetails.controls['fatherPhone'].errors">
+                                    <div *ngIf="ParentsDetails.controls['fatherPhone'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter a valid Mobile No!
         
                                     </div>
-                                    <div *ngIf="ParentsDetails.controls['MobileNo'].hasError('pattern')"
+                                    <div *ngIf="ParentsDetails.controls['fatherPhone'].hasError('pattern')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter Valid Mobile No!
                                     </div>
@@ -75,11 +75,11 @@
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="address">Address</label>
-                                <input pInputText id="address" type="text" formControlName="Fatheraddress" placeholder="Address"
-                                    pattern="^[A-Za-z0-9]{2,}$" />
-                                <div *ngIf="ParentsDetails.controls['Fatheraddress'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['Fatheraddress'].hasError('required')"
+                                <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
+                                <input pInputText id="address" type="text" formControlName="fatherAddress" placeholder="Address"
+                                 />
+                                <div *ngIf="ParentsDetails.controls['fatherAddress'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['fatherAddress'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your correct address!
                                     </div>
@@ -87,11 +87,11 @@
                                
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="nationality">Nationality</label>
-                                <input pInputText id="nationality" type="text" formControlName="FatherNationalty"
+                                <label htmlFor="nationality">Nationality <span class="text-red-600"> *</span></label>
+                                <input pInputText id="nationality" type="text" formControlName="fatherNationality"
                                     placeholder="Nationality" />
-                                <div *ngIf="ParentsDetails.controls['FatherNationalty'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['FatherNationalty'].hasError('required')"
+                                <div *ngIf="ParentsDetails.controls['fatherNationality'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['fatherNationality'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your nationality!
                                     </div>
@@ -99,11 +99,11 @@
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="Occupation">Occupation</label>
-                                <input pInputText id="Occupation" type="text" formControlName="FatherOccupation"
+                                <label htmlFor="Occupation">Occupation <span class="text-red-600"> *</span></label>
+                                <input pInputText id="Occupation" type="text" formControlName="fatherOccupation"
                                     placeholder="Occupation" />
-                                <div *ngIf="ParentsDetails.controls['FatherOccupation'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['FatherOccupation'].hasError('required')"
+                                <div *ngIf="ParentsDetails.controls['fatherOccupation'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['fatherOccupation'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your Occupation!
                                     </div>
@@ -126,10 +126,10 @@
                             </div>
 
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="FatherReligion">Religion</label>
-                                <input pInputText id="FatherReligion" type="text" formControlName="FatherReligion" placeholder=" Religion"/>
-                                <div *ngIf="ParentsDetails.controls['FatherReligion'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['FatherReligion'].hasError('required')"
+                                <label htmlFor="FatherReligion">Religion<span class="text-red-600"> *</span></label>
+                                <input pInputText id="FatherReligion" type="text" formControlName="fatherReligion" placeholder=" Religion"/>
+                                <div *ngIf="ParentsDetails.controls['fatherReligion'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['fatherReligion'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your Religion !
                                     </div>
@@ -152,7 +152,7 @@
                         </div> 
 
                     </form>                   
-                </div>
+                
             </div>
         </div>
         
@@ -164,21 +164,21 @@
     <p-accordionTab header="Mother's Details">
         <div>
             <div class="col-12">
-                <div class="card">
+                
                     <form class="pt-4" [formGroup]="ParentsDetails">
 
                         <div class="p-fluid p-formgrid grid">
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="firstname2">Firstname</label>
-                                <input pInputText id="firstname2" type="text" formControlName="Mothername"
+                                <label htmlFor="firstname2">Firstname <span class="text-red-600"> *</span></label>
+                                <input pInputText id="firstname2" type="text" formControlName="motherFirstName"
                                     placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
                                 <div
-                                    *ngIf="ParentsDetails.controls['Mothername'].touched && ParentsDetails.controls['Mothername'].errors">
-                                    <div *ngIf="ParentsDetails.controls['Mothername'].hasError('required')"
+                                    *ngIf="ParentsDetails.controls['motherFirstName'].touched && ParentsDetails.controls['motherFirstName'].errors">
+                                    <div *ngIf="ParentsDetails.controls['motherFirstName'].hasError('required')"
                                         style="color: red;text-align: left;">
                                         Enter  your First name!
                                     </div>
-                                    <div *ngIf="ParentsDetails.controls['Mothername'].hasError('pattern')"
+                                    <div *ngIf="ParentsDetails.controls['motherFirstName'].hasError('pattern')"
                                         style="color: red;text-align: left;">
                                         Enter a valid Institute name!
                                     </div>
@@ -186,28 +186,28 @@
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="lastname2">Lastname</label>
-                                <input pInputText id="lastname2" type="text" formControlName="Mlastname" placeholder="Lastname"
-                                    pattern="^[A-Za-z]{2,}$" />
-                                <div *ngIf="ParentsDetails.controls['Mlastname'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['Mlastname'].hasError('required')"
+                                <label htmlFor="lastname2">Lastname <span class="text-red-600"> *</span></label>
+                                <input pInputText id="lastname2" type="text" formControlName="motherLastName" placeholder="Lastname"
+                                     />
+                                <div *ngIf="ParentsDetails.controls['motherLastName'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['motherLastName'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
-                                        Enter your lastName !
+                                        Enter your Last name !
                                     </div>
                                 </div>
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="email">Email</label>
-                                <input pInputTextarea id="email" rows="4" formControlName="Memail" placeholder="Email"
+                                <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
+                                <input pInputTextarea id="email" rows="4" formControlName="motherEmail" placeholder="Email"
                                     pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                                 <div
-                                    *ngIf="ParentsDetails.controls['Memail'].touched && ParentsDetails.controls['Memail'].errors">
-                                    <div *ngIf="ParentsDetails.controls['Memail'].hasError('required')"
+                                    *ngIf="ParentsDetails.controls['motherEmail'].touched && ParentsDetails.controls['motherEmail'].errors">
+                                    <div *ngIf="ParentsDetails.controls['motherEmail'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your email Id!
                                     </div>
-                                    <div *ngIf="ParentsDetails.controls['Memail'].hasError('pattern')"
+                                    <div *ngIf="ParentsDetails.controls['motherEmail'].hasError('pattern')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter a valid email Id!
         
@@ -215,19 +215,19 @@
                                 </div>
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="phone">Mobile No</label>
-                                <input pInputText id="phone" type="text" formControlName="MMobileNo" placeholder="MMobileNo"
+                                <label htmlFor="phone">Mobile No <span class="text-red-600"> *</span></label>
+                                <input pInputText id="phone" type="text" formControlName="motherPhone" placeholder="MMobileNo"
                                     minlength="10" maxlength="10" type="phone"
                                     oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                                     placeholder="Mobile No" required pattern="[0-9 ]{10}" />
                                 <div
-                                    *ngIf="ParentsDetails.controls['MMobileNo'].touched && ParentsDetails.controls['MMobileNo'].errors">
-                                    <div *ngIf="ParentsDetails.controls['MMobileNo'].hasError('required')"
+                                    *ngIf="ParentsDetails.controls['motherPhone'].touched && ParentsDetails.controls['motherPhone'].errors">
+                                    <div *ngIf="ParentsDetails.controls['motherPhone'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter a valid Mobile No!
         
                                     </div>
-                                    <div *ngIf="ParentsDetails.controls['MobileNo'].hasError('pattern')"
+                                    <div *ngIf="ParentsDetails.controls['motherPhone'].hasError('pattern')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter Valid Mobile No!
                                     </div>
@@ -235,11 +235,11 @@
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="address">Address</label>
-                                <input pInputText id="address" type="text" formControlName="Maddress" placeholder="Address"
+                                <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
+                                <input pInputText id="address" type="text" formControlName="motherAddress" placeholder="Address"
                                     pattern="^[A-Za-z0-9]{2,}$" />
-                                <div *ngIf="ParentsDetails.controls['Maddress'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['Maddress'].hasError('required')"
+                                <div *ngIf="ParentsDetails.controls['motherAddress'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['motherAddress'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your correct address!
                                     </div>
@@ -247,11 +247,11 @@
                                
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="nationality">Nationality</label>
-                                <input pInputText id="nationality" type="text" formControlName="MNationalty"
+                                <label htmlFor="nationality">Nationality<span class="text-red-600"> *</span></label>
+                                <input pInputText id="nationality" type="text" formControlName="motherNationality"
                                     placeholder="Nationality" />
-                                <div *ngIf="ParentsDetails.controls['MNationalty'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['MNationalty'].hasError('required')"
+                                <div *ngIf="ParentsDetails.controls['motherNationality'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['motherNationality'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your nationality!
                                     </div>
@@ -259,11 +259,11 @@
         
                             </div>
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="Occupation">Occupation</label>
-                                <input pInputText id="Occupation" type="text" formControlName="MOccupation"
+                                <label htmlFor="Occupation">Occupation <span class="text-red-600"> *</span></label>
+                                <input pInputText id="Occupation" type="text" formControlName="motherOccupation"
                                     placeholder="Occupation" />
-                                <div *ngIf="ParentsDetails.controls['MOccupation'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['MOccupation'].hasError('required')"
+                                <div *ngIf="ParentsDetails.controls['motherOccupation'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['motherOccupation'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your Occupation!
                                     </div>
@@ -286,10 +286,10 @@
                             </div>
 
                             <div class="field col-12 md:col-4">
-                                <label htmlFor="FatherReligion">Religion</label>
-                                <input pInputText id="FatherReligion" type="text" formControlName="MReligion" placeholder=" Religion"/>
-                                <div *ngIf="ParentsDetails.controls['MReligion'].touched ">
-                                    <div *ngIf="ParentsDetails.controls['MReligion'].hasError('required')"
+                                <label htmlFor="FatherReligion">Religion <span class="text-red-600"> *</span></label>
+                                <input pInputText id="FatherReligion" type="text" formControlName="motherReligion" placeholder=" Religion"/>
+                                <div *ngIf="ParentsDetails.controls['motherReligion'].touched ">
+                                    <div *ngIf="ParentsDetails.controls['motherReligion'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
                                         Enter your Religion !
                                     </div>
@@ -310,17 +310,184 @@
                                 </div>
                             </div>
                         </div> 
-                        <button pButton pRipple label="Submit" (click)="submit()"></button>
+                        <!--<button pButton pRipple label="Submit" (click)="submit()"></button>-->
 
 
                     </form>                   
-                </div>
+                
             </div>
         </div>
         
     </p-accordionTab>
     
     
+<!--Guardian Details-->
+
+<p-accordionTab header="Guardian's Details">
+    <div>
+        <div class="col-12">
+            
+                <form class="pt-4" [formGroup]="ParentsDetails">
+
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="firstname2">Firstname <span class="text-red-600"> *</span></label>
+                            <input pInputText id="firstname2" type="text" formControlName="guardianFirstName"
+                                placeholder="Firstname" pattern="^[A-Za-z]{2,}$" />
+                            <div
+                                *ngIf="ParentsDetails.controls['guardianFirstName'].touched && ParentsDetails.controls['guardianFirstName'].errors">
+                                <div *ngIf="ParentsDetails.controls['guardianFirstName'].hasError('required')"
+                                    style="color: red;text-align: left;">
+                                    Enter  your First name!
+                                </div>
+                                <div *ngIf="ParentsDetails.controls['guardianFirstName'].hasError('pattern')"
+                                    style="color: red;text-align: left;">
+                                    Enter a valid Institute name!
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="lastname2">Lastname <span class="text-red-600"> *</span></label>
+                            <input pInputText id="lastname2" type="text" formControlName="guardianLastName" placeholder="Lastname"
+                                 />
+                            <div *ngIf="ParentsDetails.controls['guardianLastName'].touched ">
+                                <div *ngIf="ParentsDetails.controls['guardianLastName'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your Last name !
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
+                            <input pInputTextarea id="email" rows="4" formControlName="guardianEmail" placeholder="Email"
+                                pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                            <div
+                                *ngIf="ParentsDetails.controls['guardianEmail'].touched && ParentsDetails.controls['guardianEmail'].errors">
+                                <div *ngIf="ParentsDetails.controls['guardianEmail'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your email Id!
+                                </div>
+                                <div *ngIf="ParentsDetails.controls['guardianEmail'].hasError('pattern')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter a valid email Id!
+    
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="phone">Mobile No <span class="text-red-600"> *</span></label>
+                            <input pInputText id="phone" type="text" formControlName="guardianPhone" placeholder="MobileNo"
+                                minlength="10" maxlength="10" type="phone"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                placeholder="Mobile No" required pattern="[0-9 ]{10}" />
+                            <div
+                                *ngIf="ParentsDetails.controls['guardianPhone'].touched && ParentsDetails.controls['guardianPhone'].errors">
+                                <div *ngIf="ParentsDetails.controls['guardianPhone'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter a valid Mobile No!
+    
+                                </div>
+                                <div *ngIf="ParentsDetails.controls['guardianPhone'].hasError('pattern')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter Valid Mobile No!
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
+                            <input pInputText id="address" type="text" formControlName="guardianAddress" placeholder="Address"
+                                pattern="^[A-Za-z0-9]{2,}$" />
+                            <div *ngIf="ParentsDetails.controls['guardianAddress'].touched ">
+                                <div *ngIf="ParentsDetails.controls['guardianAddress'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your correct address!
+                                </div>
+                            </div>
+                           
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="nationality">Nationality<span class="text-red-600"> *</span></label>
+                            <input pInputText id="nationality" type="text" formControlName="guardianNationality"
+                                placeholder="Nationality" />
+                            <div *ngIf="ParentsDetails.controls['guardianNationality'].touched ">
+                                <div *ngIf="ParentsDetails.controls['guardianNationality'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your nationality!
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="Occupation">Occupation <span class="text-red-600"> *</span></label>
+                            <input pInputText id="Occupation" type="text" formControlName="guardianOccupation"
+                                placeholder="Occupation" />
+                            <div *ngIf="ParentsDetails.controls['guardianOccupation'].touched ">
+                                <div *ngIf="ParentsDetails.controls['guardianOccupation'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your Occupation!
+                                </div>
+                            </div>
+    
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="state">State</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="State"></p-dropdown>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="city">City</label>
+                            <input pInputText id="city" type="text" formControlName="GCity" placeholder="City"/>
+                            <div *ngIf="ParentsDetails.controls['GCity'].touched ">
+                                <div *ngIf="ParentsDetails.controls['GCity'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your city!
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Religion <span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" formControlName="guardianReligion" placeholder=" Religion"/>
+                            <div *ngIf="ParentsDetails.controls['guardianReligion'].touched ">
+                                <div *ngIf="ParentsDetails.controls['guardianReligion'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your Religion !
+                                </div>
+                            </div>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Country</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="zip">Zip Code</label>
+                            <input pInputText id="zip" type="text" formControlName="GZip" placeholder="Zip Code" />
+                            <div *ngIf="ParentsDetails.controls['GZip'].touched ">
+                                <div *ngIf="ParentsDetails.controls['GZip'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter your Zip Code!
+                                </div>
+                            </div>
+                        </div>
+                    </div> 
+                    <!--<button pButton pRipple label="Submit" (click)="submit()"></button>-->
+
+
+                </form> 
+                                  
+            </div>
+        </div>
+    
+    
+</p-accordionTab>
+
+<div class=" flex justify-content-center">
+    
+        <button pButton pRipple label="Submit" (click)="submit()"styleClass="button-rounded" ></button>   
+ </div>               
+
 
     
 

@@ -1,5 +1,9 @@
 import { Component ,OnInit} from '@angular/core';
 import { FormControl, FormGroup, Validators ,FormBuilder} from '@angular/forms';
+import { log } from 'console';
+import { ParentsDetails } from 'src/app/models/admission.model';
+import { AdmissionService } from 'src/app/services/admission.service';
+import { StateService } from 'src/app/services/state.service';
 
 
 @Component({
@@ -11,25 +15,30 @@ export class ParentDetailsComponent implements OnInit {
   value5: any;
   dropdownItems:any;
   ParentsDetails!:FormGroup;
-  constructor(private fb:FormBuilder){
+  constructor(
+    private fb:FormBuilder,
+    private admissionSrv: AdmissionService,
+    private stateSrv:StateService,
+  
+    ){
 
   }
   ngOnInit(): void {
     this.ParentsDetails = this.fb.group({
-      Fathername:['',Validators.required],
-      lastname: ['',Validators.required],
+      fatherFirstName:['',Validators.required],
+      fatherLastName: ['',Validators.required],
 
-      email: ['',Validators.required],
+      fatherEmail: ['',Validators.required],
 
-      MobileNo: ['',Validators.required],
+      fatherPhone: ['',Validators.required],
 
-      FatherOccupation: ['',Validators.required],
+      fatherOccupation: ['',Validators.required],
 
-      FatherReligion: ['',Validators.required],
+      fatherReligion: ['',Validators.required],
 
-      FatherNationalty: ['',Validators.required],
+      fatherNationality: ['',Validators.required],
 
-      Fatheraddress: ['',Validators.required],
+      fatherAddress: ['',Validators.required],
 
       Country:['',Validators.required],
 
@@ -39,21 +48,21 @@ export class ParentDetailsComponent implements OnInit {
 
       Zip: new FormControl('', Validators.required),
   
-      Mothername: ['',Validators.required],
+      motherFirstName: ['',Validators.required],
 
-      Mlastname: ['',Validators.required],
+      motherLastName: ['',Validators.required],
 
-      Memail:['',Validators.required],
+      motherEmail:['',Validators.required],
 
-      MMobileNo: ['',Validators.required],
+      motherPhone: ['',Validators.required],
 
-      MOccupation: ['',Validators.required],
+      motherOccupation: ['',Validators.required],
 
-      MReligion: ['',Validators.required],
+      motherReligion: ['',Validators.required],
 
-      MNationalty: ['',Validators.required],
+      motherNationality: ['',Validators.required],
 
-      Maddress: ['',Validators.required],
+      motherAddress: ['',Validators.required],
 
       MCountry:['',Validators.required],
 
@@ -63,6 +72,28 @@ export class ParentDetailsComponent implements OnInit {
 
       MZip: ['',Validators.required],
 
+      guardianFirstName: ["",Validators.required],
+      guardianLastName: ['',Validators.required],
+
+      guardianEmail:['',Validators.required],
+
+      guardianPhone: ['',Validators.required],
+
+      guardianOccupation: ['',Validators.required],
+
+      guardianReligion: ['',Validators.required],
+
+      guardianNationality: ['',Validators.required],
+
+      guardianAddress: ['',Validators.required],
+
+      GCountry:['',Validators.required],
+
+      Gstate: ['',Validators.required],
+
+      GCity: ['',Validators.required],
+
+      GZip: ['',Validators.required],
      
   
     })
@@ -71,6 +102,40 @@ export class ParentDetailsComponent implements OnInit {
 
 submit() {
   console.log(this.ParentsDetails.value);
+  const data = this.ParentsDetails.value;
+  const applicationId=this.stateSrv.applicationId;
+  console.log(applicationId)
+  const parentDetailsObj: ParentsDetails = {
+    applicationId:applicationId,
+    fatherFirstName:data.fatherFirstName,
+    fatherLastName:data.fatherLastName,
+    fatherEmail: data.fatherEmail,
+    fatherPhone: data.fatherPhone,
+    fatherAddress: data.fatherAddress,
+    fatherNationality: data.fatherNationality,
+    fatherOccupation: data.fatherOccupation,
+    motherFirstName: data.motherFirstName,
+    motherLastName: data.motherLastName,
+    motherEmail: data.motherEmail,
+    motherPhone: data.motherPhone,
+    motherAddress: data.motherAddress,
+    motherNationality: data.motherNationality,
+    motherOccupation: data.motherOccupation,
+    motherReligion: data.motherReligion,
+    guardianFirstName: data.guardianFirstName,
+    guardianLastName: data.guardianLastName,
+    guardianEmail: data.guardianEmail,
+    guardianPhone: data.guardianPhone,
+    guardianAddress: data.guardianAddress,
+    guardianNationality: data.guardianNationality,
+    guardianOccupation: data.guardianOccupation,
+    guardianReligion: data.guardianReligion,
+  };
+this.admissionSrv.saveParentDetails(parentDetailsObj).then((res) => {
+    console.log(res);
+});
+
+
 }
 
 }
