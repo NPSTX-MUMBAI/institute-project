@@ -112,7 +112,7 @@
                             </div>
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="state">State</label>
-                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="State"></p-dropdown>
+                                <p-dropdown [options]="dropdownItems" optionLabel="name" ></p-dropdown>
                             </div>
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="city">City</label>
@@ -135,10 +135,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="field col-12 md:col-4">
-                                <label htmlFor="state">Country</label>
-                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
-                            </div>
+                            <!--<div class="field col-12 md:col-4">
+                                <label htmlFor="Country">Country</label>
+                                <p-dropdown [options]="dropdownItems1" optionLabel="Select Country "></p-dropdown>
+                            </div>-->
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="zip">Zip Code</label>
                                 <input pInputText id="zip" type="text" formControlName="Zip" placeholder="Zip Code" />
@@ -295,10 +295,10 @@
                                     </div>
                                 </div>
                             </div>
-                            <div class="field col-12 md:col-4">
+                            <!--<div class="field col-12 md:col-4">
                                 <label htmlFor="state">Country</label>
                                 <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
-                            </div>
+                            </div>-->
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="zip">Zip Code</label>
                                 <input pInputText id="zip" type="text" formControlName="MZip" placeholder="Zip Code" />
@@ -457,10 +457,10 @@
                                 </div>
                             </div>
                         </div>
-                        <div class="field col-12 md:col-4">
+                        <!--<div class="field col-12 md:col-4">
                             <label htmlFor="state">Country</label>
                             <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
-                        </div>
+                        </div>-->
                         <div class="field col-12 md:col-4">
                             <label htmlFor="zip">Zip Code</label>
                             <input pInputText id="zip" type="text" formControlName="GZip" placeholder="Zip Code" />
@@ -483,11 +483,11 @@
     
 </p-accordionTab>
 
-<div class=" flex justify-content-center">
-    
-        <button pButton pRipple label="Submit" (click)="submit()"styleClass="button-rounded" ></button>   
- </div>               
 
+    
+        <button pButton pRipple label="Submit" (click)="submit()"styleClass="button-rounded" ></button> 
+        
+        
 
     
 

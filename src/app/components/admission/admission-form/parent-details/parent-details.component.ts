@@ -13,7 +13,7 @@ import { StateService } from 'src/app/services/state.service';
 })
 export class ParentDetailsComponent implements OnInit {
   value5: any;
-  dropdownItems:any;
+  //dropdownItems:any;
   ParentsDetails!:FormGroup;
   constructor(
     private fb:FormBuilder,
@@ -101,6 +101,10 @@ export class ParentDetailsComponent implements OnInit {
   }
 
 submit() {
+  if (this.ParentsDetails.invalid) {
+    alert('Invalid Form');
+    return;
+}
   console.log(this.ParentsDetails.value);
   const data = this.ParentsDetails.value;
   const applicationId=this.stateSrv.applicationId;
@@ -138,4 +142,18 @@ this.admissionSrv.saveParentDetails(parentDetailsObj).then((res) => {
 
 }
 
+dropdownItems = [
+  { name: 'Select State', code: 'Select State' },
+  { name: 'Maharashtra', code: 'Maharashtra' },
+  { name: 'Karnatak', code: 'Karnatak' },
+  { name: 'Gujarat', code: 'Gujarat' },
+];
+
+
+/*dropdownItems1 = [
+  { name: 'Select Country', code: 'Select Country' },
+  { name: 'India', code: 'India' },
+  { name: 'Karnatak', code: 'Karnatak' },
+  { name: 'Gujarat', code: 'Gujarat' },
+];*/
 }
