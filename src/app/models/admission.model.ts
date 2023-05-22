@@ -38,7 +38,7 @@ export interface StudentDetails {
 
 export interface ParentsDetails {
     fatherFirstName: string;
-    applicationId?:string;
+    applicationId?: string;
     fatherLastName: string;
 
     fatherEmail: string;
@@ -50,7 +50,6 @@ export interface ParentsDetails {
     fatherNationality: string;
 
     fatherOccupation: string;
-
 
     motherFirstName: string;
 
@@ -68,7 +67,6 @@ export interface ParentsDetails {
 
     motherReligion?: string;
 
-
     guardianFirstName: string;
 
     guardianLastName?: string;
@@ -84,8 +82,6 @@ export interface ParentsDetails {
     guardianOccupation?: string;
 
     guardianReligion?: string;
-    
-
 }
 
 export interface CreateKycDto {

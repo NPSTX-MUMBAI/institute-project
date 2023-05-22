@@ -5,7 +5,8 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
-import { log } from 'console';
+import { error, log } from 'console';
+import { MessageService } from 'primeng/api';
 import { StudentDetails } from 'src/app/models/admission.model';
 import { AdmissionService } from 'src/app/services/admission.service';
 import { StateService } from 'src/app/services/state.service';
@@ -24,7 +25,8 @@ export class StudentDetailsComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private admissionSrv: AdmissionService,
-        private stateSrv: StateService
+        private stateSrv: StateService,
+        private msg: MessageService
     ) {}
 
     ngOnInit(): void {
@@ -49,7 +51,11 @@ export class StudentDetailsComponent implements OnInit {
 
     submit() {
         if (this.studentDetails.invalid) {
-            alert('Invalid Form');
+            this.msg.add({
+                severity: 'error',
+                summary: 'Invalid',
+                detail: 'All fileds Required',
+            });
             return;
         }
         console.log(this.studentDetails.value);
@@ -93,7 +99,15 @@ export class StudentDetailsComponent implements OnInit {
             .saveStudentDetails(studentDetailsObj)
             .then((res: any) => {
                 console.log(res.data.applicationId);
+                this.msg.add({
+                    severity: 'success',
+                    summary: 'Success',
+                    detail: res.msg,
+                });
                 this.stateSrv.applicationId = res.data.applicationId;
+            })
+            .catch((err) => {
+                console.log(err);
             });
     }
     dropdownItems = [

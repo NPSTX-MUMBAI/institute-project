@@ -8,6 +8,6 @@
         <app-parent-details></app-parent-details>
     </div>
     <div *ngIf="index==2">
-        <app-kyc-details></app-kyc-details>
+        <app-kyc-details (onKycUpload)="onKycUpload($event)"></app-kyc-details>
     </div>
 </div>

@@ -13,10 +13,12 @@ import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
+import { MessageService } from 'primeng/api';
+import { UiModule } from './ui/ui.module';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, DashboardComponent],
-    imports: [AppRoutingModule, AppLayoutModule, HttpClientModule],
+    imports: [AppRoutingModule, AppLayoutModule, HttpClientModule, UiModule],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         CountryService,
@@ -26,6 +28,7 @@ import { HttpClientModule } from '@angular/common/http';
         NodeService,
         PhotoService,
         ProductService,
+        MessageService,
     ],
     bootstrap: [AppComponent],
 })
