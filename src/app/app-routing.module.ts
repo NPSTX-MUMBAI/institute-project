@@ -27,6 +27,16 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                 },
                 {
                     component: AppLayoutComponent,
+                    path: 'institute',
+
+                    loadChildren: () =>
+                        import('./components/institute/institute.module').then(
+                            (m) => m.InstituteModule
+                        ),
+                },
+
+                {
+                    component: AppLayoutComponent,
                     path: 'student',
 
                     loadChildren: () =>
