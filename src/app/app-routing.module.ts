@@ -25,6 +25,15 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                             (m) => m.AdmissionModule
                         ),
                 },
+                {
+                    component: AppLayoutComponent,
+                    path: 'student',
+
+                    loadChildren: () =>
+                        import('./components/student/student.module').then(
+                            (m) => m.StudentModule
+                        ),
+                },
             ],
             {
                 scrollPositionRestoration: 'enabled',

@@ -15,10 +15,17 @@ import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { UiModule } from './ui/ui.module';
+import { StudentModule } from './components/student/student.module';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, DashboardComponent],
-    imports: [AppRoutingModule, AppLayoutModule, HttpClientModule, UiModule],
+    imports: [
+        AppRoutingModule,
+        AppLayoutModule,
+        HttpClientModule,
+        UiModule,
+        StudentModule,
+    ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
         CountryService,

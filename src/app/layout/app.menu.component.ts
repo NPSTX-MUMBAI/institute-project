@@ -32,7 +32,17 @@ export class AppMenuComponent implements OnInit {
                         routerLink: ['/admission'],
                     },
                 ],
-            },  
+            },
+            {
+                label: 'student',
+                items: [
+                    {
+                        label: 'Students ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
+                    },
+                ],
+            },
         ];
     }
 }
