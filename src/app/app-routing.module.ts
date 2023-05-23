@@ -9,6 +9,17 @@ import { AppLayoutComponent } from './layout/app.layout.component';
             [
                 {
                     path: '',
+                    redirectTo: 'auth',
+                    pathMatch: 'full',
+                },
+
+                {
+                    path: 'auth',
+                    loadChildren: () =>
+                        import('./auth/auth.module').then((m) => m.AuthModule),
+                },
+                {
+                    path: '',
                     component: AppLayoutComponent,
 
                     loadChildren: () =>
@@ -16,6 +27,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                             (m) => m.DashboardModule
                         ),
                 },
+
                 {
                     component: AppLayoutComponent,
                     path: 'admission',
