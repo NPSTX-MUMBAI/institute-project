@@ -2,7 +2,9 @@
     <div class="card">
 
         <p-tabView [(activeIndex)]="activeIndex" styleClass="tabview-custom">
-            <p-tabPanel [disabled]="activeIndex !== 0">
+            <!-- <p-tabPanel [disabled]="activeIndex !== 0"> -->
+            <p-tabPanel>
+
                 <ng-template pTemplate="header">
                     <h4><span *ngIf="personalInfoComplete" class="fa-solid fa-circle-check" style="color:green"></span>
                         Personal</h4>
@@ -14,7 +16,9 @@
                 </p>
             </p-tabPanel>
 
-            <p-tabPanel [disabled]="activeIndex !== 1" header="Institute">
+            <p-tabPanel header="Institute">
+                <!-- <p-tabPanel [disabled]="activeIndex !== 1" header="Institute"> -->
+
                 <ng-template pTemplate="header">
                     <h4><span *ngIf="businessInfoComplete" class="fa-solid fa-circle-check" style="color:green"></span>
                         Institute</h4>
@@ -23,7 +27,9 @@
                 <app-institute-info></app-institute-info>
             </p-tabPanel>
 
-            <p-tabPanel [disabled]="activeIndex !== 2" header="Bank">
+            <!-- <p-tabPanel [disabled]="activeIndex !== 2" header="Bank"> -->
+            <p-tabPanel header="Bank">
+
                 <ng-template pTemplate="header">
                     <h4> <span *ngIf="bankInfoComplete" class="fa-solid fa-circle-check" style="color:green"></span>
                         Bank</h4>
@@ -33,7 +39,9 @@
 
             </p-tabPanel>
 
-            <p-tabPanel [disabled]="activeIndex !== 3" header="Kyc">
+            <!-- <p-tabPanel [disabled]="activeIndex !== 3" header="Kyc"> -->
+            <p-tabPanel header="KYC">
+
                 <ng-template pTemplate="header">
                     <!-- -->
                     <h4><span *ngIf="kycInfoComplete" class="fa-solid fa-circle-check" style="color:green"></span> Kyc
@@ -44,7 +52,9 @@
 
             </p-tabPanel>
 
-            <p-tabPanel [disabled]="activeIndex !== 4" header="Status">
+            <!-- <p-tabPanel [disabled]="activeIndex !== 4" header="Status"> -->
+            <p-tabPanel header="Status">
+
                 <ng-template pTemplate="header">
                     <h4> <span> </span> Status</h4>
                 </ng-template>
