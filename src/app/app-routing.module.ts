@@ -33,7 +33,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                         import('./components/institute/institute.module').then(
                             (m) => m.InstituteModule
                         ),
-                },
+                }
             ],
             {
                 scrollPositionRestoration: 'enabled',
