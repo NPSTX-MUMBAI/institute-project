@@ -1,11 +1,15 @@
-<div class="col-12">
-    <div class="card">
+<div class="col-12" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+    'justify-content': 'center'
+}" >
+    <div class="card" [style]="{'width':'75rem'}">
         <div class="pt-4" [formGroup]="staffDetails">
 
             <div class="p-fluid p-formgrid grid">
                 <div class="field col-12 md:col-4">
                     <label htmlFor="name">First name<span class="text-red-600"> *</span></label>
-                    <input pInputText id="name" type="text" placeholder="First name" formControlName="firstName"
+                    <input pInputText id="name" type="text" placeholder=" Enter your first name" formControlName="firstName"
                         pattern="^[A-Za-z ]{2,}$">
                     <div
                         *ngIf="staffDetails.controls['firstName'].touched && staffDetails.controls['firstName'].errors">
@@ -23,7 +27,7 @@
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="IFSCCode">Last name <span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="IFSCCode" rows="4" placeholder="Last name" formControlName="lastName"
+                    <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your last name" formControlName="lastName"
                         pattern="^[A-Za-z ]{2,}$" />
                     <div *ngIf="staffDetails.controls['lastName'].touched && staffDetails.controls['lastName'].errors">
                         <div *ngIf="staffDetails.controls['lastName'].hasError('required')"
@@ -39,7 +43,7 @@
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="Accountno">Email<span class="text-red-600"> *</span></label>
-                    <input pInputText id="Accountno" type="text" placeholder="Email" formControlName="email"
+                    <input pInputText id="Accountno" type="text" placeholder=" Enter your email id" formControlName="email"
                         pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
                     <div *ngIf="staffDetails.controls['email'].touched && staffDetails.controls['email'].errors">
                         <div *ngIf="staffDetails.controls['email'].hasError('required')"
@@ -55,7 +59,7 @@
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="Accountno">Mobile no<span class="text-red-600"> *</span></label>
-                    <input pInputText id="Accountno" type="text" placeholder="Mobile no" formControlName="mobileNo"
+                    <input pInputText id="Accountno" type="text" placeholder=" Enter your mobile no" formControlName="mobileNo"
                         minlength="10" maxlength="10" type="phone"
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required
                         pattern="[0-9 ]{10}">

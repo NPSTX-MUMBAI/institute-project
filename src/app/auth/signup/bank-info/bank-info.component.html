@@ -1,11 +1,16 @@
-<div class="col-12">
-    <div class="card">
+
+<div class="col-12" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+    'justify-content': 'center'
+}">
+    <div class="card"  [style]="{'width':'75rem'}">
         <div class="pt-4" [formGroup]="bankDetails">
 
             <div class="p-fluid p-formgrid grid">
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="name">Account Holder's name<span class="text-red-600"> *</span></label>
-                    <input pInputText id="name" type="text" placeholder="Account name" formControlName="name"
+                    <input pInputText id="name" type="text" placeholder=" Enter your account name" formControlName="name"
                         pattern="^[A-Za-z ]{2,}$">
                     <div *ngIf="bankDetails.controls['name'].touched && bankDetails.controls['name'].errors">
                         <div *ngIf="bankDetails.controls['name'].hasError('required')"
@@ -20,9 +25,9 @@
 
                 </div>
 
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="state">Account Type <span class="text-red-600"> *</span></label>
-                    <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Account Type"
+                    <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder=" Enter your account Type"
                         formControlName="accountType"></p-dropdown>
                     <div *ngIf="bankDetails.controls['accountType'].invalid && bankDetails.controls['accountType'].touched"
                         style="color: red;text-align: left;margin-top: 6px;">
@@ -32,9 +37,9 @@
                 </div>
 
 
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="Accountno">Account no:<span class="text-red-600"> *</span></label>
-                    <input pInputText id="Accountno" type="text" placeholder="Account no" formControlName="Accountno"
+                    <input pInputText id="Accountno" type="text" placeholder="Enter your account no" formControlName="Accountno"
                         pattern="^[0-9]{9,18}$">
                     <div *ngIf="bankDetails.controls['Accountno'].touched && bankDetails.controls['Accountno'].errors">
                         <div *ngIf="bankDetails.controls['Accountno'].hasError('required')"
@@ -49,9 +54,9 @@
                     </div>
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="UPIid">UPI id<span class="text-red-600"> *</span></label>
-                    <input pInputText id="UPIid" type="text" placeholder="UPI id" formControlName="upi"
+                    <input pInputText id="UPIid" type="text" placeholder="Enter your upi id" formControlName="upi"
                         pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]{1,10}$" />
                     <!-- <div *ngIf="bankDetails.controls['upi'].touched ">
                             <div *ngIf="bankDetails.controls['upi'].hasError('required')"
@@ -72,19 +77,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="SID">SID </label>
-                    <input pInputTextarea id="SID" rows="4" placeholder="SID" formControlName="SID" />
+                    <input pInputTextarea id="SID" rows="4" placeholder=" Enter your SID" formControlName="SID" />
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="MID">MID</label>
-                    <input pInputText id="MID" type="text" placeholder="MID" formControlName="mid">
+                    <input pInputText id="MID" type="text" placeholder=" Enter your MID" formControlName="mid">
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="IFSCCode" rows="4" placeholder="IFSC Code" formControlName="ifscCode"
+                    <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code" formControlName="ifscCode"
                         pattern="^[A-Z]{4}[0][\d]{6}$" />
                     <div *ngIf="bankDetails.controls['ifscCode'].touched && bankDetails.controls['ifscCode'].errors">
                         <div *ngIf="bankDetails.controls['ifscCode'].hasError('required')"
@@ -99,50 +104,50 @@
                     </div>
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="Bankname">Bank name</label>
-                    <input pInputText id="Bankname" type="text" placeholder="Bank name" formControlName="Bankname">
+                    <input pInputText id="Bankname" type="text" placeholder=" Enter your bank name" formControlName="Bankname">
 
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="Branchname">Branch name</label>
-                    <input pInputTextarea id="Branchname" rows="4" placeholder="Branch name"
+                    <input pInputTextarea id="Branchname" rows="4" placeholder=" Enter your branch name"
                         formControlName="Branchname" />
 
                 </div>
-                <div class=" field col-12 md:col-4">
+                <div class=" field col-12 md:col-3">
                     <label htmlFor="State">State </label>
-                    <input pInputText id="State" type="text" placeholder="State" formControlName="state">
+                    <input pInputText id="State" type="text" placeholder=" Enter your state" formControlName="state">
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="District">District</label>
-                    <input pInputText id="District" type="text" placeholder="District" formControlName="district" />
+                    <input pInputText id="District" type="text" placeholder=" Enter your district" formControlName="district" />
 
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="email">City </label>
-                    <input pInputTextarea id="email" rows="4" placeholder="City" formControlName="city" />
+                    <input pInputTextarea id="email" rows="4" placeholder=" Enter your city" formControlName="city" />
 
                 </div>
 
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="Center">Center</label>
-                    <input pInputText id="Center" type="text" placeholder="Center" formControlName="center">
+                    <input pInputText id="Center" type="text" placeholder=" Enter your center" formControlName="center">
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="Address">
                         Address
                     </label>
-                    <input pInputText id="Address" type="text" placeholder="Address" formControlName="address" />
+                    <input pInputText id="Address" type="text" placeholder=" Enter your address" formControlName="address" />
 
                 </div>
-                <div class="field col-12 md:col-4">
+                <div class="field col-12 md:col-3">
                     <label htmlFor="Bankcode">Bank code </label>
-                    <input pInputTextarea id="Bankcode" rows="4" placeholder="Bank code" formControlName="Bankcode" />
+                    <input pInputTextarea id="Bankcode" rows="4" placeholder=" Enter your bank code" formControlName="Bankcode" />
                 </div>
 
             </div>
