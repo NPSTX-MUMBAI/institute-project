@@ -1,11 +1,3 @@
-<!-- <div class="container" [style]="{
-    'display': 'flex',
-    'align-items': 'center',
-    'justify-content': 'center'
-}">
-    <div class="card" [style]="{'width':'60rem'}"> -->
-
-
 <div class="container">
     <div class="card">
         <div class="col">
@@ -24,9 +16,9 @@
                         <label for="firstname2" htmlFor="username">First Name<span class="text-red-600">
                                 *</span></label>
                         <div class="p-inputgroup">
-                            
-                            <input pInputText placeholder=" Enter your first name" formControlName=" firstName" maxlength="45"
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                            <input pInputText placeholder=" Enter your first name" formControlName=" firstName"
+                                maxlength="45" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('firstName')" [controleName]="'First Name'" ></app-validationerror> -->
                     </div>
@@ -34,9 +26,9 @@
                     <div class="field col-3 lg:col-4 md:col-3">
                         <label for="firstname2">Last Name<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            
-                            <input pInputText placeholder="Enter your last name" formControlName="lastName" maxlength="45"
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                            <input pInputText placeholder="Enter your last name" formControlName="lastName"
+                                maxlength="45" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('lastName')" [controleName]="'Last Name'"></app-validationerror> -->
 
@@ -44,7 +36,7 @@
                     <div class="field col-3 lg:col-4 md:col-3 ">
                         <label for="firstname2">Email Id<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            
+
                             <input pInputText placeholder=" Enter your email id" formControlName="email"
                                 oninput="this.value = this.value.replace(/[^a-z0-9.@]/g, '')" />
                         </div>
@@ -54,7 +46,7 @@
                     <div class="field col-3 lg:col-4 md:col-3">
                         <label for="firstname2">Mobile No<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            
+
                             <input type="text" appOnlyNumber maxlength="10" minlength="0" required
                                 pattern="[- +()0-9]{10,12}" pInputText placeholder=" Enter your mobile no"
                                 formControlName="mobileNo" />
@@ -66,7 +58,7 @@
                     <div class="field col-3 lg:col-4 md:col-3 ">
                         <label htmlFor="password" for="password">Password<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            
+
                             <p-password [toggleMask]="true" formControlName="password" placeholder="Enter your password"
                                 [style]="{'width':'100%'}">
                                 <ng-template pTemplate="header">
@@ -91,7 +83,7 @@
                         <label for="firstname2">Confirm Password<span class="text-red-600"> *</span></label>
 
                         <div class="p-inputgroup">
-                            
+
                             <p-password [toggleMask]="true" [feedback]="false" formControlName="confirmPassword"
                                 placeholder=" Enter your confirm password" [style]="{'width':'100%'}"></p-password>
                         </div>
@@ -103,10 +95,10 @@
                     </div>
                 </div>
 
-            
 
-                
-                    
+
+
+
 
                 <div class="formgrid grid">
                     <div class="col-12 flex align-items-center justify-content-center">

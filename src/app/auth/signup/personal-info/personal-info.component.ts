@@ -1,5 +1,6 @@
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Router } from '@angular/router';
 @Component({
     selector: 'app-personal-info',
     templateUrl: './personal-info.component.html',
@@ -7,7 +8,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 })
 export class PersonalInfoComponent implements OnInit {
     personalGrp: FormGroup;
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private router: Router) {
         this.personalGrp = fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -41,6 +42,7 @@ export class PersonalInfoComponent implements OnInit {
     ngOnInit(): void {}
 
     onSave() {
+        this.router.navigate(['auth/otp']);
         //     try {
         //         if (this.personalGrp.invalid) {
         //             this.commanSrv.InvalidForm(this.personalGrp);
