@@ -1,5 +1,16 @@
-<div class="container">
-    <div class="card">
+<!--<div class="container" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+    'justify-content': 'center'
+}">      <div class="card" [style]="{'width':'60rem'}">
+<div class="col">-->
+
+<div class="container" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+    'justify-content': 'center'
+}" >
+    <div class="card" [style]="{'width':'75rem'}">
         
             <h3>Institute Details</h3>
             <form class="pt-4" [formGroup]="listInstitute">
@@ -68,16 +79,16 @@
 
                     <div class="field col-12 md:col-4">
                         <label htmlFor="city">City</label>
-                        <input pInputTextarea id="city" rows="4" placeholder="Enter your City" formControlName="city" />
+                        <input pInputTextarea id="city" rows="4" placeholder="Enter your city" formControlName="city" />
                     </div>
 
                     <div class="field col-12 md:col-4">
                         <label htmlFor="state">State</label>
-                        <input pInputTextarea id="state" rows="4" placeholder="Enter your State" formControlName="state" />
+                        <input pInputTextarea id="state" rows="4" placeholder="Enter your state" formControlName="state" />
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="country">Country</label>
-                        <input pInputTextarea id="country" rows="4" placeholder="Enter your Country" formControlName="country" />
+                        <input pInputTextarea id="country" rows="4" placeholder="Enter your country" formControlName="country" />
                     </div>
 
                     
