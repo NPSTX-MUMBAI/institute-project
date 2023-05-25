@@ -6,77 +6,60 @@
                 <div class="grid ">
                     <div class="col-12 flex align-items-center justify-content-center">
 
-
                     </div>
 
                 </div>
 
                 <hr>
                 <div class="formgrid grid">
-                    <div class="field col-12 lg:col-6 md:col-12 ">
+                    <div class="field col-3 lg:col-4 md:col-3 ">
                         <label for="firstname2" htmlFor="username">First Name<span class="text-red-600">
                                 *</span></label>
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon">
-                                <i class="pi pi-user"></i>
-                            </span>
-                            <input pInputText placeholder="First Name" formControlName="firstName" maxlength="45"
+                            
+                            <input pInputText placeholder=" Enter your first name" formControlName=" firstName" maxlength="45"
                                 oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('firstName')" [controleName]="'First Name'" ></app-validationerror> -->
                     </div>
 
-                    <div class="field col-12 lg:col-6 md:col-12">
+                    <div class="field col-3 lg:col-4 md:col-3">
                         <label for="firstname2">Last Name<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon">
-                                <i class="pi pi-user"></i>
-                            </span>
-                            <input pInputText placeholder="Last Name" formControlName="lastName" maxlength="45"
+                            
+                            <input pInputText placeholder="Enter your last name" formControlName="lastName" maxlength="45"
                                 oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('lastName')" [controleName]="'Last Name'"></app-validationerror> -->
 
                     </div>
-                </div>
-
-                <div class="formgrid grid">
-                    <div class="field col-12 lg:col-6 md:col-12 ">
+                    <div class="field col-3 lg:col-4 md:col-3 ">
                         <label for="firstname2">Email Id<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon">
-                                <i class="pi pi-envelope"></i>
-                            </span>
-                            <input pInputText placeholder="Email Id" formControlName="email"
+                            
+                            <input pInputText placeholder=" Enter your email id" formControlName="email"
                                 oninput="this.value = this.value.replace(/[^a-z0-9.@]/g, '')" />
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('email')" [controleName]="'Email'"></app-validationerror> -->
 
                     </div>
-
-                    <div class="field col-12 lg:col-6 md:col-12">
+                    <div class="field col-3 lg:col-4 md:col-3">
                         <label for="firstname2">Mobile No<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon">
-                                <i class="pi pi-phone"></i>
-                            </span>
+                            
                             <input type="text" appOnlyNumber maxlength="10" minlength="0" required
-                                pattern="[- +()0-9]{10,12}" pInputText placeholder="Mobile No"
+                                pattern="[- +()0-9]{10,12}" pInputText placeholder=" Enter your mobile no"
                                 formControlName="mobileNo" />
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('mobileNo')" [controleName]="'Mobile  Number'"></app-validationerror> -->
 
                     </div>
-                </div>
 
-                <div class="formgrid grid">
-                    <div class="field col-12 lg:col-6 md:col-12 ">
+                    <div class="field col-3 lg:col-4 md:col-3 ">
                         <label htmlFor="password" for="password">Password<span class="text-red-600"> *</span></label>
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon">
-                                <i class="pi pi-lock"></i>
-                            </span>
-                            <p-password [toggleMask]="true" formControlName="password" placeholder="Password"
+                            
+                            <p-password [toggleMask]="true" formControlName="password" placeholder="Enter your password"
                                 [style]="{'width':'100%'}">
                                 <ng-template pTemplate="header">
                                     <h6>Pick a password</h6>
@@ -96,15 +79,13 @@
                         <!-- <app-validationerror [control]="personalGrp.get('password')" [controleName]="'Password'"></app-validationerror> -->
                     </div>
 
-                    <div class="field col-12 lg:col-6 md:col-12">
+                    <div class="field col-3 lg:col-4 md:col-3">
                         <label for="firstname2">Confirm Password<span class="text-red-600"> *</span></label>
 
                         <div class="p-inputgroup">
-                            <span class="p-inputgroup-addon">
-                                <i class="pi pi-lock"></i>
-                            </span>
+                            
                             <p-password [toggleMask]="true" [feedback]="false" formControlName="confirmPassword"
-                                placeholder="Confirm Password" [style]="{'width':'100%'}"></p-password>
+                                placeholder=" Enter your confirm password" [style]="{'width':'100%'}"></p-password>
                         </div>
                         <!-- <app-validationerror [control]="personalGrp.get('confirmPassword')" [controleName]="'Confirm Password'"></app-validationerror> -->
 
@@ -114,6 +95,10 @@
                     </div>
                 </div>
 
+            
+
+                
+                    
 
                 <div class="formgrid grid">
                     <div class="col-12 flex align-items-center justify-content-center">
