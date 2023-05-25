@@ -1,22 +1,20 @@
 <div class="layout-topbar">
     <a class="layout-topbar-logo" routerLink="">
-        <img src="https://www.npstx.com/wp-content/themes/npstx/assets/dist/images/logo/logo_reverse.svg"
-        alt="logo">       
+        <img src="https://www.npstx.com/wp-content/themes/npstx/assets/dist/images/logo/logo_reverse.svg" alt="logo">
     </a>
 
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()">
         <i class="pi pi-bars"></i>
     </button>
 
-    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button" (click)="layoutService.showProfileSidebar()">
+    <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button"
+        (click)="layoutService.showProfileSidebar()">
         <i class="pi pi-ellipsis-v"></i>
     </button>
 
-    <div #topbarmenu class="layout-topbar-menu" [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
-        <button class="p-link layout-topbar-button">
-            <i class="pi pi-calendar"></i>
-            <span>Calendar</span>
-        </button>
+    <div #topbarmenu class="layout-topbar-menu"
+        [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
+        <p-dropdown [options]="institute" [(ngModel)]="selectedInstitute" optionLabel="name"></p-dropdown>
         <button class="p-link layout-topbar-button">
             <i class="pi pi-user"></i>
             <span>Profile</span>

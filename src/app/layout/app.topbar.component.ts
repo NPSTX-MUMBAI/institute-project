@@ -1,13 +1,15 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
-import { LayoutService } from "./service/app.layout.service";
-
+import { LayoutService } from './service/app.layout.service';
+interface Institute {
+    name: string;
+    code: string;
+}
 @Component({
     selector: 'app-topbar',
-    templateUrl: './app.topbar.component.html'
+    templateUrl: './app.topbar.component.html',
 })
 export class AppTopBarComponent {
-
     items!: MenuItem[];
 
     @ViewChild('menubutton') menuButton!: ElementRef;
@@ -15,6 +17,15 @@ export class AppTopBarComponent {
     @ViewChild('topbarmenubutton') topbarMenuButton!: ElementRef;
 
     @ViewChild('topbarmenu') menu!: ElementRef;
+    institute!: Institute[];
 
-    constructor(public layoutService: LayoutService) { }
+    selectedInstitute!: Institute;
+
+    constructor(public layoutService: LayoutService) {
+        this.institute = [
+            { name: 'NPST Test School', code: 'NY' },
+            { name: 'MGM College', code: 'RM' },
+            { name: 'Don Bosco', code: 'LDN' },
+        ];
+    }
 }
