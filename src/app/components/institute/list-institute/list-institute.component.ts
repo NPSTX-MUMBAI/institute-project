@@ -1,8 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup,FormControl,FormBuilder, Validators } from '@angular/forms';
 
-//import { ListInstitute } from 'src/app/models/institute.model';
-//import { Console } from 'console';
 
 @Component({
   selector: 'app-list-institute',
@@ -49,9 +47,9 @@ export class ListInstituteComponent implements OnInit {
 
 
     })
-  } 
+  }
   submit() {
-    
+
 
      console.log( this.listInstitute.value )
   }
@@ -64,6 +62,6 @@ export class ListInstituteComponent implements OnInit {
     { name: 'Jr School',  },
   ];
 
-  
-  
+
+
 }

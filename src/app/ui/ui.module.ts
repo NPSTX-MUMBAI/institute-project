@@ -35,6 +35,7 @@ import { InputMaskModule } from 'primeng/inputmask';
 import { TabMenuModule } from 'primeng/tabmenu';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
+import { TimelineModule } from 'primeng/timeline';
 
 const arrays = [
     CommonModule,
@@ -80,6 +81,7 @@ const arrays = [
     ReactiveFormsModule,
     InputSwitchModule,
     FormsModule,
+    TimelineModule,
 ];
 @NgModule({
     imports: arrays,

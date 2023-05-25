@@ -1,1 +1,87 @@
-<p>institute-info works!</p>
+<form class="pt-4" [formGroup]="listInstitute">
+
+
+    <div class="p-fluid p-formgrid grid">
+        <div class="field col-12 md:col-3">
+            <label htmlFor="name">Name<span class="text-red-600"> *</span></label>
+            <input pInputText id="name" type="text" placeholder="name" formControlName="instituteName" />
+
+
+
+        </div>
+        <div class="field col-12 md:col-3">
+            <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
+            <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name"
+                formControlName="instituteType"></p-dropdown>
+        </div>
+        <div class="field col-12 md:col-3">
+            <label htmlFor="phone">Phone No<span class="text-red-600"> *</span></label>
+            <input pInputTextarea id="phone" rows="4" placeholder="phone" minlength="10" maxlength="10" type="phone"
+                formControlName="institutephoneno"
+                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                placeholder="phone " />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="website">Website</label>
+            <input pInputTextarea id="website" rows="4" formControlName="institutewebsite" placeholder="website" />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="email">Email</label>
+            <input pInputTextarea id="email" rows="4" formControlName="instituteemail" placeholder="Email" />
+        </div>
+        <div class="field col-12 md:col-3">
+            <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
+            <input pInputTextarea id="board" rows="4" formControlName="instituteboard" placeholder="board" pattern="" />
+        </div>
+
+    </div>
+
+
+
+
+
+    <div class="p-fluid p-formgrid grid">
+        <div class="field col-12 md:col-3">
+            <label htmlFor="address1">Line 1</label>
+            <input pInputTextarea id="address1" rows="4" placeholder="Address line 1" formControlName="address1" />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="address2">Line 2</label>
+            <input pInputTextarea id="address2" rows="4" placeholder="Address line 2" formControlName="address2" />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
+            <input pInputTextarea id="pincode" rows="4" placeholder="Pin Code" formControlName="pincode" />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="country">Country</label>
+            <input pInputTextarea id="country" rows="4" placeholder="Country" formControlName="country" />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="state">State</label>
+            <input pInputTextarea id="state" rows="4" placeholder="State" formControlName="state" />
+        </div>
+        <div class="field col-12 md:col-3">
+            <label htmlFor="city">City</label>
+            <input pInputTextarea id="city" rows="4" placeholder="City" formControlName="city" />
+        </div>
+
+        <div class="field col-12 md:col-3">
+            <label htmlFor="location">Location</label>
+            <input pInputTextarea id="location" rows="4" placeholder="Location" formControlName="location" />
+        </div>
+
+
+    </div>
+
+
+</form>
+
+<p-button label="Submit" (click)="submit()"></p-button>
+<p-button label="Reset"></p-button>
