@@ -9,9 +9,10 @@ import { AddStaffComponent } from './add-staff/add-staff.component';
 import { ListStaffComponent } from './list-staff/list-staff.component';
 import { UiModule } from '../../ui/ui.module';
 import { Routes, RouterModule } from '@angular/router';
+import { AdmissionModule } from '../admission/admission.module';
 
 const routes: Routes = [
-    { path: '', component: ListInstituteComponent },
+    { path: 'list', component: ListInstituteComponent },
     { path: 'add', component: AddInstituteComponent },
     { path: 'bank', component: ListBankComponent },
     { path: 'bank/add', component: AddBankComponent },
@@ -30,6 +31,11 @@ const routes: Routes = [
         AddStaffComponent,
         ListStaffComponent,
     ],
-    imports: [CommonModule, UiModule, RouterModule.forChild(routes)],
+    imports: [
+        CommonModule,
+        UiModule,
+        RouterModule.forChild(routes),
+        AdmissionModule,
+    ],
 })
 export class InstituteModule {}

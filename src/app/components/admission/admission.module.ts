@@ -23,5 +23,6 @@ const routes: Routes = [{ path: '', component: AdmissionFormComponent }];
         UiModule,
         ReactiveFormsModule,
     ],
+    exports: [KycDetailsComponent],
 })
 export class AdmissionModule {}
