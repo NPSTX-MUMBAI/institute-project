@@ -19,7 +19,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                         import('./auth/auth.module').then((m) => m.AuthModule),
                 },
                 {
-                    path: '',
+                    path: 'admin-dashboard',
                     component: AppLayoutComponent,
 
                     loadChildren: () =>
