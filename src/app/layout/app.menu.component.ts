@@ -82,6 +82,41 @@ export class AppMenuComponent implements OnInit {
                     },
                 ],
             },
+            {
+                label: 'Collections',
+                items: [
+                    {
+                        label: 'Charges ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
+                    },
+                    {
+                        label: 'Charge group ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
+                    },
+                    {
+                        label: 'Collections ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
+                    },
+                ],
+            },
+            {
+                label: 'Reports',
+                items: [
+                    {
+                        label: 'Student report ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
+                    },
+                    {
+                        label: 'Payment Summary ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
+                    },
+                ],
+            },
         ];
     }
 }
