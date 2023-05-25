@@ -43,7 +43,7 @@ export class AppMenuComponent implements OnInit {
                             {
                                 label: 'Institute list',
                                 icon: 'fa fa-money-bill-transfer',
-                                routerLink: ['/institute'],
+                                routerLink: ['/institute/list'],
                             },
                             {
                                 label: 'Bank',
@@ -61,6 +61,24 @@ export class AppMenuComponent implements OnInit {
                                 routerLink: ['/institute/kyc'],
                             },
                         ],
+                    },
+
+                    // label: 'student',
+                    // items: [
+                    //     {
+                    //         label: 'Students ',
+                    //         icon: 'pi pi-fw pi-id-card',
+                    //         routerLink: ['/student'],
+                ],
+            },
+
+            {
+                label: 'student',
+                items: [
+                    {
+                        label: 'Students ',
+                        icon: 'pi pi-fw pi-id-card',
+                        routerLink: ['/student'],
                     },
                 ],
             },
