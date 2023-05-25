@@ -1,6 +1,7 @@
 import { Component, ElementRef, ViewChild } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from './service/app.layout.service';
+import { Router } from '@angular/router';
 interface Institute {
     name: string;
     code: string;
@@ -21,11 +22,15 @@ export class AppTopBarComponent {
 
     selectedInstitute!: Institute;
 
-    constructor(public layoutService: LayoutService) {
+    constructor(public layoutService: LayoutService, private router: Router) {
         this.institute = [
             { name: 'NPST Test School', code: 'NY' },
             { name: 'MGM College', code: 'RM' },
             { name: 'Don Bosco', code: 'LDN' },
         ];
+    }
+
+    logOut() {
+        this.router.navigate(['/']);
     }
 }

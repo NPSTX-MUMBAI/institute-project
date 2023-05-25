@@ -1,4 +1,160 @@
-<p>add-institute works!</p>
 
 
-  
+<form class="pt-4" [formGroup]="listInstitute">
+    <p-accordion [activeIndex]="0">
+           <p-accordionTab header="Institute Details">
+
+
+               <div class="p-fluid p-formgrid grid">
+                  <div class="field col-12 md:col-3">
+                      <label htmlFor="name">Name<span class="text-red-600" > *</span></label>
+                      <input pInputText id="name" type="text" placeholder="name" formControlName="instituteName"
+                   />
+
+
+
+             </div>
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
+                 <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name" formControlName="instituteType"></p-dropdown>
+             </div>
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="phone">Phone No<span class="text-red-600"> *</span></label>
+                 <input pInputTextarea id="phone" rows="4" placeholder="phone"
+                 minlength="10" maxlength="10" type="phone" formControlName="institutephoneno"
+                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                 placeholder="phone "  />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="website">Website</label>
+                 <input pInputTextarea id="website" rows="4" formControlName="institutewebsite" placeholder="website" />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="email">Email</label>
+                 <input pInputTextarea id="email" rows="4" formControlName="instituteemail"  placeholder="Email"
+                      />
+             </div>
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
+                 <input pInputTextarea id="board" rows="4" formControlName="instituteboard"  placeholder="board"
+                     pattern="" />
+             </div>
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="Std">Standard<span class="text-red-600"> *</span></label>
+                 <input pInputTextarea id="Std" rows="4" formControlName="institutestd"  placeholder="Standard"
+                     pattern="" />
+             </div>
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="Div">Division</label>
+                 <input pInputTextarea id="Div" rows="4"  formControlName="institutediv" placeholder="Div"
+                     pattern="" />
+             </div>
+         </div>
+
+     </p-accordionTab>
+
+     <!--Spoc-->
+
+     <p-accordionTab header="SPOC">
+
+            <div class="p-fluid p-formgrid grid">
+               <div class="field col-12 md:col-3">
+                  <label htmlFor="spocname">SPOC Name</label>
+                  <input pInputText id="spocname" type="text" placeholder="SPOC Name" formControlName="spocname"
+                    />
+
+                 </div>
+              <div class="field col-12 md:col-3">
+              <label htmlFor="spocphone"> SPOC Phone </label>
+                 <input pInputTextarea id="spocphone" rows="4" placeholder="SPOC Phone" formControlName="spocphone"
+                 minlength="10" maxlength="10" type="spocphone"
+                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                 placeholder="spocphone " required pattern="[0-9 ]{10}" />
+         </div>
+         <div class="field col-12 md:col-3">
+             <label htmlFor="spocemail">SPOC Email</label>
+             <input pInputTextarea id="spocemail" rows="4" placeholder="SPOC Email" formControlName="spocemail"
+                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+         </div>
+          </div>
+
+     </p-accordionTab>
+
+     <!--Address-->
+
+     <p-accordionTab header="Address">
+         <div class="p-fluid p-formgrid grid">
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="address1">Address line 1</label>
+                 <input pInputTextarea id="address1" rows="4" placeholder="Address line 1" formControlName="address1"
+                  />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="address2">Address line 2</label>
+                 <input pInputTextarea id="address2" rows="4" placeholder="Address line 2" formControlName="address2"
+                   />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="zipcode">Zip Code<span class="text-red-600"> *</span></label>
+                 <input pInputTextarea id="zipcode" rows="4" placeholder="Zip Code" formControlName="zipcode"
+                   />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="country">Country</label>
+                 <input pInputTextarea id="country" rows="4" placeholder="Country" formControlName="country"
+                  />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="state">State</label>
+                 <input pInputTextarea id="state" rows="4" placeholder="State" formControlName="state"
+                   />
+             </div>
+
+             <div class="field col-12 md:col-3">
+                 <label htmlFor="location">Location</label>
+                 <input pInputTextarea id="location" rows="4" placeholder="Location" formControlName="location"
+                   />
+             </div>
+
+
+         </div>
+     </p-accordionTab>
+
+     <!--Others-->
+
+     <p-accordionTab header="Others">
+         <div class="p-fluid p-formgrid grid">
+             <div class="field col-12 md:col-3">
+              <label htmlFor="pan">PAN</label>
+                 <input pInputTextarea id="pan" rows="4" placeholder="Enter Pan No" formControlName="instpan"
+                 pattern="" />
+              </div>
+
+              <div class="field col-12 md:col-3">
+                 <label htmlFor="regno">Reg No</label>
+                    <input pInputTextarea id="regno" rows="4" placeholder="Enter Registration No" formControlName="instregno"
+                    pattern="" />
+                 </div>
+
+                 <div class="field col-12 md:col-3">
+                     <label htmlFor="gstno">GST No</label>
+                        <input pInputTextarea id="gstno" rows="4" placeholder="Enter GST No" formControlName="instgstno"
+                        pattern="" />
+                     </div>
+
+         </div>
+
+     </p-accordionTab>
+
+    </p-accordion>
+ </form>
+
+ <p-button label="Submit" (click)="submit()"></p-button>
+ <p-button label="Reset"></p-button>
+

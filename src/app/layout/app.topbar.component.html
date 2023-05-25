@@ -15,7 +15,7 @@
     <div #topbarmenu class="layout-topbar-menu"
         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <p-dropdown [options]="institute" [(ngModel)]="selectedInstitute" optionLabel="name"></p-dropdown>
-        <button class="p-link layout-topbar-button">
+        <button class="p-link layout-topbar-button" (click)="logOut()" >
             <i class="pi pi-user"></i>
             <span>Profile</span>
         </button>
