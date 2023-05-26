@@ -1,1 +1,274 @@
-<p>add-student works!</p>
+<p-accordion [multiple]="true" [activeIndex]="[0]">
+    <p-accordionTab header="Student Details">
+        <div>
+            <div class="col-12">
+
+                <form class="pt-4" [formGroup]="studentForm">
+
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="firstname2">First Name<span class="text-red-600"> *</span></label>
+                            <input pInputText id="firstname2" type="text" placeholder="Firstname"
+                                formControlName="firstName" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="lastname2">Last Name<span class="text-red-600"> *</span></label>
+                            <input pInputText id="lastname2" type="text" placeholder="Lastname"
+                                formControlName="lastName" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="email">Unique ID<span class="text-red-600"> *</span></label>
+                            <input pInputTextarea id="email" rows="4" placeholder="registered ID" maxlength="15"
+                                formControlName="regId" />
+
+                        </div>
+                        <!-- <div class="field col-12 md:col-4">
+                            <label htmlFor="phone">Mobile No<span class="text-red-600"> *</span></label>
+                            <input pInputText id="phone" type="text" placeholder="MobileNo" minlength="10"
+                                maxlength="10" type="phone"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                placeholder="Mobile No" />
+
+                        </div> -->
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="address">Roll No. <span class="text-red-600"> *</span></label>
+                            <input pInputText id="address" type="text" placeholder="Roll No" formControlName="rollNo" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="nationality">Date of Birth <span class="text-red-600"> *</span></label>
+                            <input pInputText id="nationality" type="text" placeholder="Nationality"
+                                formControlName="dob" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="Occupation">Gender <span class="text-red-600"> *</span></label>
+                            <input pInputText id="Occupation" type="text" placeholder="Select Gender"
+                                formControlName="gender" />
+
+                        </div>
+                        <!-- <div class="field col-12 md:col-4">
+                            <label htmlFor="state">State</label>
+                             <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                        </div> -->
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="city">Email</label>
+                            <input pInputText id="city" type="text" placeholder="City" formControlName="email" />
+
+                        </div>
+
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Phone<span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" placeholder="phone no" minlength="10"
+                                maxlength="10" type="phone" formControlName="mobileNo" />
+
+                        </div>
+                        <!--<div class="field col-12 md:col-4">
+                                <label htmlFor="Country">Country</label>
+                                <p-dropdown [options]="dropdownItems1" optionLabel="Select Country "></p-dropdown>
+                            </div>-->
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="zip">Select Education board</label>
+                            <input pInputText id="zip" type="text" placeholder="Select Board" formControlName="board" />
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Select Standard<span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" formControlName="std"
+                                placeholder="Select Standard" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Select Division<span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" placeholder="Select Division"
+                                formControlName="div" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Opening Balance<span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" placeholder="Balance" minlength="10"
+                                maxlength="10" type="phone" formControlName="balance" type="number" />
+
+                        </div>
+                    </div>
+
+                </form>
+
+            </div>
+        </div>
+
+    </p-accordionTab>
+
+    <!--Mother's Details-->
+    <p-accordionTab header="Address Information">
+        <div>
+            <div class="col-12">
+
+                <form class="pt-4">
+
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="firstname2">Address line 1 <span class="text-red-600"> *</span></label>
+                            <input pInputText id="firstname2" type="text" formControlName="line1"
+                                placeholder="Address line 1" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="lastname2">Address line 2 <span class="text-red-600"> *</span></label>
+                            <input pInputText id="lastname2" type="text" formControlName="line2"
+                                placeholder="Address line 2" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
+                            <input pInputTextarea id="email" rows="4" placeholder="Email" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="phone">Mobile No <span class="text-red-600"> *</span></label>
+                            <input pInputText id="phone" type="text" placeholder="MMobileNo" minlength="10"
+                                maxlength="10" type="phone"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                placeholder="Mobile No" required pattern="[0-9 ]{10}" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
+                            <input pInputText id="address" type="text" placeholder="Address" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="nationality">Nationality<span class="text-red-600"> *</span></label>
+                            <input pInputText id="nationality" type="text" placeholder="Nationality" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="Occupation">Occupation <span class="text-red-600"> *</span></label>
+                            <input pInputText id="Occupation" type="text" placeholder="Occupation" />
+
+                        </div>
+                        <!-- <div class="field col-12 md:col-4">
+                            <label htmlFor="state">State</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="State"></p-dropdown>
+                        </div> -->
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="city">City</label>
+                            <input pInputText id="city" type="text" placeholder="City" />
+
+                        </div>
+
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Religion <span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" placeholder=" Religion" />
+                        </div>
+                        <!-- <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Country</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
+                        </div> -->
+                        <!-- <div class="field col-12 md:col-4">
+                    <label htmlFor="zip">Zip Code</label>
+                    <input pInputText id="zip" type="text" formControlName="MZip" placeholder="Zip Code" />
+                    <div *ngIf="ParentsDetails.controls['MZip'].touched ">
+                        <div *ngIf="ParentsDetails.controls['MZip'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter your Zip Code!
+                        </div>
+                    </div>
+                </div> -->
+                        <!-- </div> -->
+                        <!--<button pButton pRipple label="Submit" (click)="submit()"></button>-->
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </p-accordionTab>
+
+
+    <!--Guardian Details-->
+    <p-accordionTab header="Mother's Details">
+        <div>
+            <div class="col-12">
+
+                <form class="pt-4">
+
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="firstname2">Firstname <span class="text-red-600"> *</span></label>
+                            <input pInputText id="firstname2" type="text" placeholder="Firstname" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="lastname2">Lastname <span class="text-red-600"> *</span></label>
+                            <input pInputText id="lastname2" type="text" placeholder="Lastname" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
+                            <input pInputTextarea id="email" rows="4" placeholder="Email" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="phone">Mobile No <span class="text-red-600"> *</span></label>
+                            <input pInputText id="phone" type="text" placeholder="MMobileNo" minlength="10"
+                                maxlength="10" type="phone"
+                                oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                placeholder="Mobile No" required pattern="[0-9 ]{10}" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="address">Address <span class="text-red-600"> *</span></label>
+                            <input pInputText id="address" type="text" placeholder="Address" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="nationality">Nationality<span class="text-red-600"> *</span></label>
+                            <input pInputText id="nationality" type="text" placeholder="Nationality" />
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="Occupation">Occupation <span class="text-red-600"> *</span></label>
+                            <input pInputText id="Occupation" type="text" placeholder="Occupation" />
+
+                        </div>
+                        <!-- <div class="field col-12 md:col-4">
+                            <label htmlFor="state">State</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="State"></p-dropdown>
+                        </div> -->
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="city">City</label>
+                            <input pInputText id="city" type="text" placeholder="City" />
+
+                        </div>
+
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="FatherReligion">Religion <span class="text-red-600"> *</span></label>
+                            <input pInputText id="FatherReligion" type="text" placeholder=" Religion" />
+                        </div>
+                        <!-- <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Country</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Country"></p-dropdown>
+                        </div> -->
+                        <!-- <div class="field col-12 md:col-4">
+                    <label htmlFor="zip">Zip Code</label>
+                    <input pInputText id="zip" type="text" formControlName="MZip" placeholder="Zip Code" />
+                    <div *ngIf="ParentsDetails.controls['MZip'].touched ">
+                        <div *ngIf="ParentsDetails.controls['MZip'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter your Zip Code!
+                        </div>
+                    </div>
+                </div> -->
+                        <!-- </div> -->
+                        <!--<button pButton pRipple label="Submit" (click)="submit()"></button>-->
+
+                    </div>
+                </form>
+
+            </div>
+        </div>
+
+    </p-accordionTab>
