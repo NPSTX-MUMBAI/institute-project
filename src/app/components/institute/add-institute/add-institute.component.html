@@ -1,160 +1,223 @@
-
-
 <form class="pt-4" [formGroup]="listInstitute">
     <p-accordion [activeIndex]="0">
-           <p-accordionTab header="Institute Details">
+        <p-accordionTab header="Institute Details">
+
+            <div>
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="name">Name<span class="text-red-600"> *</span></label>
+                        <input pInputText id="name" type="text" placeholder="name" formControlName="instituteName"
+                            pattern="^[A-Za-z ]{2,}$" />
+                        <div
+                            *ngIf="listInstitute.controls['instituteName'].touched && listInstitute.controls['instituteName'].errors">
+                            <div *ngIf="listInstitute.controls['instituteName'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter your name!
+                            </div>
+                            <div *ngIf="listInstitute.controls['instituteName'].hasError('pattern')"
+                                style="color: red;text-align: left;">
+                                Enter a valid Institute name!
+                            </div>
+                        </div>
 
 
-               <div class="p-fluid p-formgrid grid">
-                  <div class="field col-12 md:col-3">
-                      <label htmlFor="name">Name<span class="text-red-600" > *</span></label>
-                      <input pInputText id="name" type="text" placeholder="name" formControlName="instituteName"
-                   />
 
 
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
+                        <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name"
+                            formControlName="instituteType"></p-dropdown>
 
-             </div>
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
-                 <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name" formControlName="instituteType"></p-dropdown>
-             </div>
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="phone">Phone No<span class="text-red-600"> *</span></label>
-                 <input pInputTextarea id="phone" rows="4" placeholder="phone"
-                 minlength="10" maxlength="10" type="phone" formControlName="institutephoneno"
-                 oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                 placeholder="phone "  />
-             </div>
+                            <div *ngIf="listInstitute.controls['instituteType'].invalid && listInstitute.controls['instituteType'].touched"
+                        style="color: red;text-align: left;margin-top: 6px;">
+                        Please select an institute type.
+                    </div>
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="website">Website</label>
-                 <input pInputTextarea id="website" rows="4" formControlName="institutewebsite" placeholder="website" />
-             </div>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="phone">Phone No<span class="text-red-600"> *</span></label>
+                        <input pInputTextarea id="phone" rows="4" placeholder="phone" minlength="10" maxlength="10"
+                            type="phone" formControlName="institutephoneno"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            placeholder="phone " />
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="email">Email</label>
-                 <input pInputTextarea id="email" rows="4" formControlName="instituteemail"  placeholder="Email"
-                      />
-             </div>
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
-                 <input pInputTextarea id="board" rows="4" formControlName="instituteboard"  placeholder="board"
-                     pattern="" />
-             </div>
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="Std">Standard<span class="text-red-600"> *</span></label>
-                 <input pInputTextarea id="Std" rows="4" formControlName="institutestd"  placeholder="Standard"
-                     pattern="" />
-             </div>
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="Div">Division</label>
-                 <input pInputTextarea id="Div" rows="4"  formControlName="institutediv" placeholder="Div"
-                     pattern="" />
-             </div>
-         </div>
+                        <div
+                            *ngIf="listInstitute.controls['institutephoneno'].touched && listInstitute.controls['institutephoneno'].errors">
+                            <div *ngIf="listInstitute.controls['institutephoneno'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter your phone no!
+                            </div>
+                            <div *ngIf="listInstitute.controls['institutephoneno'].hasError('pattern')"
+                                style="color: red;text-align: left;">
+                                Enter a valid Institute name!
+                            </div>
+                        </div>
 
-     </p-accordionTab>
+                    </div>
 
-     <!--Spoc-->
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="website">Website</label>
+                        <input pInputTextarea id="website" rows="4" formControlName="institutewebsite"
+                            placeholder="website" />
+                    </div>
 
-     <p-accordionTab header="SPOC">
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="email">Email</label>
+                        <input pInputTextarea id="email" rows="4" formControlName="instituteemail"
+                            placeholder="Email" />
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
+                        <input pInputTextarea id="board" rows="4" formControlName="instituteboard" placeholder="board"
+                            pattern="^[A-Za-z ]{2,}$" />
+
+                        <div
+                            *ngIf="listInstitute.controls['instituteboard'].touched && listInstitute.controls['instituteboard'].errors">
+                            <div *ngIf="listInstitute.controls['instituteboard'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter your board!
+                            </div>
+                            <div *ngIf="listInstitute.controls['instituteboard'].hasError('pattern')"
+                                style="color: red;text-align: left;">
+                                Enter a valid Institute name!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="Std">Standard<span class="text-red-600"> *</span></label>
+                        <input pInputTextarea id="Std" rows="4" formControlName="institutestd" placeholder="Standard"
+                            pattern="" />
+
+                        <div
+                            *ngIf="listInstitute.controls['institutestd'].touched && listInstitute.controls['institutestd'].errors">
+                            <div *ngIf="listInstitute.controls['institutestd'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter your standard!
+                            </div>
+                            <div *ngIf="listInstitute.controls['institutestd'].hasError('pattern')"
+                                style="color: red;text-align: left;">
+                                Enter a valid Institute name!
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-3">
+                        <label htmlFor="Div">Division</label>
+                        <input pInputTextarea id="Div" rows="4" formControlName="institutediv" placeholder="Div"
+                            pattern="" />
+                    </div>
+                </div>
+            </div>
+
+        </p-accordionTab>
+
+        <!--Spoc-->
+
+        <p-accordionTab header="SPOC">
 
             <div class="p-fluid p-formgrid grid">
-               <div class="field col-12 md:col-3">
-                  <label htmlFor="spocname">SPOC Name</label>
-                  <input pInputText id="spocname" type="text" placeholder="SPOC Name" formControlName="spocname"
-                    />
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="spocname">SPOC Name</label>
+                    <input pInputText id="spocname" type="text" placeholder="SPOC Name" formControlName="spocname" />
 
-                 </div>
-              <div class="field col-12 md:col-3">
-              <label htmlFor="spocphone"> SPOC Phone </label>
-                 <input pInputTextarea id="spocphone" rows="4" placeholder="SPOC Phone" formControlName="spocphone"
-                 minlength="10" maxlength="10" type="spocphone"
-                  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                 placeholder="spocphone " required pattern="[0-9 ]{10}" />
-         </div>
-         <div class="field col-12 md:col-3">
-             <label htmlFor="spocemail">SPOC Email</label>
-             <input pInputTextarea id="spocemail" rows="4" placeholder="SPOC Email" formControlName="spocemail"
-                 pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
-         </div>
-          </div>
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="spocphone"> SPOC Phone </label>
+                    <input pInputTextarea id="spocphone" rows="4" placeholder="SPOC Phone" formControlName="spocphone"
+                        minlength="10" maxlength="10" type="spocphone"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        placeholder="spocphone " required pattern="[0-9 ]{10}" />
+                </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="spocemail">SPOC Email</label>
+                    <input pInputTextarea id="spocemail" rows="4" placeholder="SPOC Email" formControlName="spocemail"
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                </div>
+            </div>
 
-     </p-accordionTab>
+        </p-accordionTab>
 
-     <!--Address-->
+        <!--Address-->
 
-     <p-accordionTab header="Address">
-         <div class="p-fluid p-formgrid grid">
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="address1">Address line 1</label>
-                 <input pInputTextarea id="address1" rows="4" placeholder="Address line 1" formControlName="address1"
-                  />
-             </div>
+        <p-accordionTab header="Address">
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="address1">Address line 1</label>
+                    <input pInputTextarea id="address1" rows="4" placeholder="Address line 1"
+                        formControlName="address1" />
+                </div>
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="address2">Address line 2</label>
-                 <input pInputTextarea id="address2" rows="4" placeholder="Address line 2" formControlName="address2"
-                   />
-             </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="address2">Address line 2</label>
+                    <input pInputTextarea id="address2" rows="4" placeholder="Address line 2"
+                        formControlName="address2" />
+                </div>
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="zipcode">Zip Code<span class="text-red-600"> *</span></label>
-                 <input pInputTextarea id="zipcode" rows="4" placeholder="Zip Code" formControlName="zipcode"
-                   />
-             </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="zipcode">Zip Code<span class="text-red-600"> *</span></label>
+                    <input pInputTextarea id="zipcode" rows="4" placeholder="Zip Code" formControlName="zipcode" pattern="[0-9]{5}"/>
+                    
+                    <div
+                    *ngIf="listInstitute.controls['zipcode'].touched && listInstitute.controls['zipcode'].errors">
+                    <div *ngIf="listInstitute.controls['zipcode'].hasError('required')"
+                        style="color: red;text-align: left;">
+                        Enter your zipcode!
+                    </div>
+                    <div *ngIf="listInstitute.controls['institutestd'].hasError('pattern')"
+                        style="color: red;text-align: left;">
+                        Enter a valid Institute name!
+                    </div>
+                </div>
+                </div>
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="country">Country</label>
-                 <input pInputTextarea id="country" rows="4" placeholder="Country" formControlName="country"
-                  />
-             </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="country">Country</label>
+                    <input pInputTextarea id="country" rows="4" placeholder="Country" formControlName="country" />
+                </div>
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="state">State</label>
-                 <input pInputTextarea id="state" rows="4" placeholder="State" formControlName="state"
-                   />
-             </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="state">State</label>
+                    <input pInputTextarea id="state" rows="4" placeholder="State" formControlName="state" />
+                </div>
 
-             <div class="field col-12 md:col-3">
-                 <label htmlFor="location">Location</label>
-                 <input pInputTextarea id="location" rows="4" placeholder="Location" formControlName="location"
-                   />
-             </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="location">Location</label>
+                    <input pInputTextarea id="location" rows="4" placeholder="Location" formControlName="location" />
+                </div>
 
 
-         </div>
-     </p-accordionTab>
+            </div>
+        </p-accordionTab>
 
-     <!--Others-->
+        <!--Others-->
 
-     <p-accordionTab header="Others">
-         <div class="p-fluid p-formgrid grid">
-             <div class="field col-12 md:col-3">
-              <label htmlFor="pan">PAN</label>
-                 <input pInputTextarea id="pan" rows="4" placeholder="Enter Pan No" formControlName="instpan"
-                 pattern="" />
-              </div>
-
-              <div class="field col-12 md:col-3">
-                 <label htmlFor="regno">Reg No</label>
-                    <input pInputTextarea id="regno" rows="4" placeholder="Enter Registration No" formControlName="instregno"
-                    pattern="" />
-                 </div>
-
-                 <div class="field col-12 md:col-3">
-                     <label htmlFor="gstno">GST No</label>
-                        <input pInputTextarea id="gstno" rows="4" placeholder="Enter GST No" formControlName="instgstno"
+        <p-accordionTab header="Others">
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="pan">PAN</label>
+                    <input pInputTextarea id="pan" rows="4" placeholder="Enter Pan No" formControlName="instpan"
                         pattern="" />
-                     </div>
+                </div>
 
-         </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="regno">Reg No</label>
+                    <input pInputTextarea id="regno" rows="4" placeholder="Enter Registration No"
+                        formControlName="instregno" pattern="" />
+                </div>
 
-     </p-accordionTab>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="gstno">GST No</label>
+                    <input pInputTextarea id="gstno" rows="4" placeholder="Enter GST No" formControlName="instgstno"
+                        pattern="" />
+                </div>
+
+            </div>
+
+        </p-accordionTab>
 
     </p-accordion>
- </form>
+</form>
 
- <p-button label="Submit" (click)="submit()"></p-button>
- <p-button label="Reset"></p-button>
-
+<p-button label="Submit" (click)="submit()"></p-button>
+<p-button label="Reset"></p-button>
