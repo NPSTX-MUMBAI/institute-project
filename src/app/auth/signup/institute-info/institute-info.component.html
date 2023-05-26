@@ -54,8 +54,46 @@
 
 
                     <div class="dropdown-wrapper">
+
+
+
+<!--
                         <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board"
-                            optionLabel="name"></p-dropdown>
+                        optionLabel="name"  ></p-dropdown> -->
+                        <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board" optionLabel="name">
+                            <ng-template #renderTemplate3>
+                              <div class="container">
+                                <input (keyup)="onKeyUp()" style="width:10%"
+                                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                       type="text" class="p-inputtext" #inputElement />
+                                <button pButton type="button" class="p-button-text"  (click)="addBoard(inputElement)" style="margin-left: 10px;">
+                                  <i class="pi pi-plus"></i>
+                                  Add Board
+                                </button>
+                              </div>
+                            </ng-template>
+                          </p-dropdown>
+
+
+
+                        <!-- <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board" optionLabel="name">
+                            <ng-template pTemplate="dropdown">
+                              <ng-container *ngTemplateOutlet="renderTemplate3"></ng-container>
+                            </ng-template>
+                          </p-dropdown> -->
+
+                          <ng-template #renderTemplate3>
+                            <div class="container">
+                              <input (keyup)="onKeyUp()" style="width:10%"
+                                     oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                     type="text" nz-input #inputElement />
+                              <button nz-button nzType="text"  class="add-item" (click)="addBoard(inputElement)" style="margin-left: 10px;">
+                                <em nz-icon nzType="plus"></em>
+                                Add Board
+                              </button>
+                            </div>
+                          </ng-template>
+
 
                         <!-- <div class="add-board">
                           <input type="text" formControlName="newBoard" [(ngModel)]="newBoardName" placeholder="Enter a new Board name">
@@ -63,6 +101,8 @@
                         </div> -->
                     </div>
                 </div>
+
+
 
             </div>
 

@@ -3,7 +3,6 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { CreateKycDto, StudentDetails } from '../models/admission.model';
 import { ParentsDetails } from '../models/admission.model';
-import { log } from 'console';
 
 @Injectable({
     providedIn: 'root',
