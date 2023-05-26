@@ -1,5 +1,33 @@
-<p>verify-otp works!</p>
+ <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div class="card" [style]="{'width':'40rem'}">
+        <div class="container">
+            <header>
+              
+            </header>
+            <h4>Enter OTP Code</h4>
+            <form >
+              <div class="input-field">
+                <input type="number" />
+                <input type="number" />
+                <input type="number"  />
+                <input type="number"  />
+              </div>
+              
+              <button pButton pRipple label="Verified" [routerLink]="['../signup']"></button>
+            </form>
+          </div>
+       
+    </div>
+    
+</body>
+</html>
 
-<div class="card">
-    <button pButton pRipple label="Verified" [routerLink]="['../signup']"></button>
-</div>
+
