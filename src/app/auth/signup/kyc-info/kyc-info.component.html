@@ -4,7 +4,7 @@
         <div class="col-12 lg:col-6 md:col-12 ">
             <span class="p-float-label">
                 <input formControlName="panNo" pKeyFilter="alphanum" pInputText id="panNo"
-                    style='text-transform:uppercase;width: 100%;' />
+                    style='text-transform:uppercase;width: 100%;' maxlength="10" minlength="10" />
                 <label htmlFor="panNo">Enter Pan No<span class="text-red-600"> *</span></label>
 
             </span>
@@ -30,7 +30,8 @@
 
         <div class="col-12 lg:col-6 md:col-12">
             <span class="p-float-label">
-                <input formControlName="aadhar" pInputText id="udyam" style='text-transform:uppercase ; width: 100%;' />
+                <input formControlName="aadhar" pInputText id="udyam" style='text-transform:uppercase ; width: 100%;'
+                    maxlength="12" minlength="12" />
                 <label htmlFor="udyam">Enter Aadhar No.<span class="text-red-600"> *</span></label>
             </span>
             <br>
@@ -48,6 +49,66 @@
                             </li>
                         </ul>
                     </div>
+                </ng-template>
+            </p-fileUpload>
+        </div>
+        <div class="col-12 lg:col-6 md:col-12">
+            <span class="p-float-label">
+                <input pInputText id="gst" formControlName="gst" maxlength="15" minlength="15"
+                    style='text-transform:uppercase;width: 100%;' />
+                <label htmlFor="gstNo">Enter GST No<span class="text-red-600"> *</span></label>
+            </span>
+            <br>
+            <p-fileUpload #gstUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
+                chooseLabel="Choose" name="demo[]" (uploadHandler)="gstDetailsUpload($event , gstUpload)"
+                [multiple]="false" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+                <ng-template pTemplate="toolbar">
+                    <div class="py-3">
+                        <ul>
+                            <li>
+                                Maximum file size: [1 MB]
+                            </li>
+                            <li>
+                                Accepted file formats: [.png, .jpg, .pdf, .jpeg]
+                            </li>
+                        </ul>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <ul *ngIf="gstDetails.length">
+                        <li *ngFor="let file of gstDetails">{{ file.name }} - {{ file.size }} bytes</li>
+                    </ul>
+                </ng-template>
+            </p-fileUpload>
+        </div>
+
+
+        <div class="col-12 lg:col-6 md:col-12">
+            <span class="p-float-label">
+                <input pInputText id="reg" formControlName="reg" maxlength="15"
+                    style='text-transform:uppercase;width: 100%;' />
+                <label htmlFor="gstNo">Enter REG No<span class="text-red-600"> *</span></label>
+            </span>
+            <br>
+            <p-fileUpload #regUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
+                chooseLabel="Choose" name="demo[]" (uploadHandler)="regDocUpload($event , regUpload)" [multiple]="false"
+                accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+                <ng-template pTemplate="toolbar">
+                    <div class="py-3">
+                        <ul>
+                            <li>
+                                Maximum file size: [1 MB]
+                            </li>
+                            <li>
+                                Accepted file formats: [.png, .jpg, .pdf, .jpeg]
+                            </li>
+                        </ul>
+                    </div>
+                </ng-template>
+                <ng-template pTemplate="content">
+                    <ul *ngIf="regDetails.length">
+                        <li *ngFor="let file of regDetails">{{ file.name }} - {{ file.size }} bytes</li>
+                    </ul>
                 </ng-template>
             </p-fileUpload>
         </div>

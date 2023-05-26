@@ -1,4 +1,15 @@
-<div class="steper" >
+<!-- <div class="container" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+    'justify-content': 'center'
+}">
+<div class="card" [style]="{'width':'60rem'}"> -->
+
+<div class="steper" [style]="{
+
+    'align-items': 'center',
+    'justify-content': 'center'
+}">
     <div class="card">
 
         <p-tabView [(activeIndex)]="activeIndex" styleClass="tabview-custom">
@@ -38,15 +49,14 @@
                 <app-bank-info></app-bank-info>
 
             </p-tabPanel>
-            <p-tabPanel header="Staff">
+            <!-- <p-tabPanel header="Staff">
 
                 <ng-template pTemplate="header">
                     <h4> <span *ngIf="bankInfoComplete" class="fa-solid fa-circle-check" style="color:green"></span>
                         Staff</h4>
                 </ng-template>
-                <!-- <app-bank-info (onSaveBankInfo)="onSaveBankInfo($event)"></app-bank-info> -->
                 <app-staff-info></app-staff-info>
-            </p-tabPanel>
+            </p-tabPanel> -->
 
             <!-- <p-tabPanel [disabled]="activeIndex !== 3" header="Kyc"> -->
             <p-tabPanel header="KYC">
