@@ -54,16 +54,16 @@
                     </div>
 
                 </div>
-                <div class="field col-12 md:col-3">
+                <!-- <div class="field col-12 md:col-3">
                     <label htmlFor="UPIid">UPI id<span class="text-red-600"> *</span></label>
                     <input pInputText id="UPIid" type="text" placeholder="Enter your upi id" formControlName="upi"
                         pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]{1,10}$" />
-                    <!-- <div *ngIf="bankDetails.controls['upi'].touched ">
+                    <div *ngIf="bankDetails.controls['upi'].touched ">
                             <div *ngIf="bankDetails.controls['upi'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Enter upi id!
                             </div>
-                        </div> -->
+                        </div>
                     <div *ngIf="bankDetails.controls['upi'].touched && bankDetails.controls['upi'].errors">
                         <div *ngIf="bankDetails.controls['upi'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
@@ -85,8 +85,7 @@
                 <div class="field col-12 md:col-3">
                     <label htmlFor="MID">MID</label>
                     <input pInputText id="MID" type="text" placeholder=" Enter your MID" formControlName="mid">
-
-                </div>
+                </div> -->
                 <div class="field col-12 md:col-3">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code" formControlName="ifscCode"
@@ -133,7 +132,7 @@
 
                 </div>
 
-                <div class="field col-12 md:col-3">
+                <!-- <div class="field col-12 md:col-3">
                     <label htmlFor="Center">Center</label>
                     <input pInputText id="Center" type="text" placeholder=" Enter your center" formControlName="center">
 
@@ -148,7 +147,7 @@
                 <div class="field col-12 md:col-3">
                     <label htmlFor="Bankcode">Bank code </label>
                     <input pInputTextarea id="Bankcode" rows="4" placeholder=" Enter your bank code" formControlName="Bankcode" />
-                </div>
+                </div> -->
 
             </div>
             <button pButton pRipple label=" Submit" (click)="submit()"></button>

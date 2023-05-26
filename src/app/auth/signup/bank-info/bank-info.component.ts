@@ -20,17 +20,17 @@ export class BankInfoComponent implements OnInit {
             accountType: ['', Validators.required],
             ifscCode: ['', Validators.required],
             Accountno: ['', Validators.required],
-            upi: ['', Validators.required],
-            SID: ['', Validators.required],
-            mid: ['', Validators.required],
+            // upi: ['', Validators.required],
+            // SID: ['', Validators.required],
+            // mid: ['', Validators.required],
             Bankname: ['', Validators.required],
             Branchname: ['', Validators.required],
             state: ['', Validators.required],
             district: ['', Validators.required],
             city: ['', Validators.required],
-            center: ['', Validators.required],
-            address: ['', Validators.required],
-            Bankcode: ['', Validators.required],
+            // center: ['', Validators.required],
+            // address: ['', Validators.required],
+            // Bankcode: ['', Validators.required],
         });
     }
     dropdownItems = [

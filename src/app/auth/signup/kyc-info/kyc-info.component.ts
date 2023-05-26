@@ -34,6 +34,8 @@ export class KycInfoComponent implements OnInit {
     panFile: any[] = [];
 
     udymaFile: any[] = [];
+    gstDetails: any[] = [];
+    regDetails: any[] = [];
 
     uploadedFiles!: any[];
 
@@ -54,6 +56,7 @@ export class KycInfoComponent implements OnInit {
                 ],
             ],
             aadhar: ['', Validators.required],
+            gst: ['', Validators.required],
         });
     }
 
@@ -94,6 +97,38 @@ export class KycInfoComponent implements OnInit {
     //         }
     //     });
     // }
+
+    gstDetailsUpload(event: any, fileUpload: any) {
+        if (this.kycGrp.controls['gst'].invalid) {
+            this.messageService.add({
+                severity: 'info',
+                summary: 'Info',
+                detail: 'gst Number Required',
+            });
+        } else {
+            this.onKycUpload.emit({
+                event,
+                type: DOCUMENT_TYPE.GST,
+                value: this.kycGrp.controls['gst'].value,
+            });
+        }
+    }
+
+    regDocUpload(event: any, fileUpload: any) {
+        if (this.kycGrp.controls['reg'].invalid) {
+            this.messageService.add({
+                severity: 'info',
+                summary: 'Info',
+                detail: 'gst Number Required',
+            });
+        } else {
+            this.onKycUpload.emit({
+                event,
+                type: DOCUMENT_TYPE.REG,
+                value: this.kycGrp.controls['reg'].value,
+            });
+        }
+    }
 
     aadharUpload(event: any) {
         // console.log(event.files[0]);

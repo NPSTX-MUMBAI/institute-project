@@ -6,6 +6,9 @@ import {
     Validators,
 } from '@angular/forms';
 
+interface Board {
+    name: string;
+}
 @Component({
     selector: 'app-institute-info',
     templateUrl: './institute-info.component.html',
@@ -13,9 +16,16 @@ import {
 })
 export class InstituteInfoComponent implements OnInit {
     listInstitute!: FormGroup;
+
+    board!: Board[];
+    newBoardName: any;
+
+    selectedBoard!: Board;
     //dropdownItems=[]
 
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder) {
+        this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
+    }
     ngOnInit(): void {
         this.listInstitute = this.fb.group({
             instituteName: ['', Validators.required],
@@ -30,7 +40,7 @@ export class InstituteInfoComponent implements OnInit {
             country: ['', Validators.required],
             state: ['', Validators.required],
             city: ['', Validators.required],
-
+            newBoard: [''],
             location: ['', Validators.required],
         });
     }
@@ -44,4 +54,17 @@ export class InstituteInfoComponent implements OnInit {
         { name: 'School' },
         { name: 'Jr School' },
     ];
+
+    addBoard() {
+        this.newBoardName = this.listInstitute.get('newBoard');
+        // Create a new board object using the value from the input box
+        const newBoard = { name: this.newBoardName };
+
+        // Add the new board to the list of boards
+        this.board.push(newBoard);
+        console.log(this.board);
+
+        // Reset the input box value
+        // this.newBoardName = '';
+    }
 }

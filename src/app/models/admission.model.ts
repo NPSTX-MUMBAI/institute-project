@@ -102,4 +102,6 @@ export enum DOCUMENT_TYPE {
     'ADHARCARD' = 'ADHARCARD',
 
     'PANCARD' = 'PANCARD',
+    'GST' = 'GST',
+    'REG' = 'REG',
 }
