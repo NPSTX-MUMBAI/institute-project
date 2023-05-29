@@ -37,12 +37,12 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {
                         label: 'Institute ',
-                        icon: 'pi pi-fw pi-id-card',
+                        icon: 'fa-solid fa-school',
 
                         items: [
                             {
                                 label: 'Institute list',
-                                icon: 'fa fa-money-bill-transfer',
+                                icon: 'fa-solid fa-school',
                                 routerLink: ['/institute/list'],
                             },
                             {
@@ -52,12 +52,12 @@ export class AppMenuComponent implements OnInit {
                             },
                             {
                                 label: 'Staff',
-                                icon: 'fa fa-money-bills',
+                                icon: 'fa-solid fa-users',
                                 routerLink: ['/institute/staff'],
                             },
                             {
                                 label: 'KYC',
-                                icon: 'fa fa-book',
+                                icon: 'fa fa-file',
                                 routerLink: ['/institute/kyc'],
                             },
                         ],
@@ -77,7 +77,7 @@ export class AppMenuComponent implements OnInit {
                 items: [
                     {
                         label: 'Students ',
-                        icon: 'pi pi-fw pi-id-card',
+                        icon: 'fa-solid fa-graduation-cap',
                         routerLink: ['/student'],
                     },
                 ],

@@ -1,1 +1,69 @@
 <p> dashboard works!</p>
+
+<div class="grid">
+    <div class="col-12 lg:col-6 xl:col-4">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Students</span>
+                    <div class="text-900 font-medium text-xl">152</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-blue-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="fa-solid fa-graduation-cap text-blue-500 text-xl"></i>
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">24 new </span>
+            <span class="text-500">since last visit</span>
+        </div>
+    </div>
+
+    <div class="col-12 lg:col-6 xl:col-4">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Admin</span>
+                    <div class="text-900 font-medium text-xl">$2.100</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-orange-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-users text-orange-500 text-xl"></i>
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">%52+ </span>
+            <span class="text-500">In our school till may 2023</span>
+        </div>
+    </div>
+
+    <div class="col-12 lg:col-6 xl:col-4">
+        <div class="card mb-0">
+            <div class="flex justify-content-between mb-3">
+                <div>
+                    <span class="block text-500 font-medium mb-3">Fees Collected This Months</span>
+                    <div class="text-900 font-medium text-xl">28441</div>
+                </div>
+                <div class="flex align-items-center justify-content-center bg-cyan-100 border-round" [ngStyle]="{width: '2.5rem', height: '2.5rem'}">
+                    <i class="pi pi-money-bill text-cyan-500 text-xl"></i>
+                </div>
+            </div>
+            <span class="text-green-500 font-medium">520  </span>
+            <span class="text-500">newly registered</span>
+        </div>
+    </div> 
+
+    <div class="col-12 xl:col-6">
+        <div class="card">
+            <div class="container shadow " style="background-color: #E1F1FF;">
+                <canvas width="500" #mychart></canvas>
+              </div>
+        </div>
+    </div>
+
+    <div style="box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);" class="container shadow " style="
+    background-color: #F1FCF1;
+  ">
+    <canvas #mychart></canvas>
+  </div>
+  
+    
+    
+
+        

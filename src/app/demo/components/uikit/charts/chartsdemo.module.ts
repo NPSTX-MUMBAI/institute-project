@@ -10,6 +10,7 @@ import { ChartsDemoComponent } from './chartsdemo.component';
 		ChartsDemoRoutingModule,
 		ChartModule
 	],
-	declarations: [ChartsDemoComponent]
+	declarations: [ChartsDemoComponent],
+	exports:[ChartsDemoComponent]
 })
 export class ChartsDemoModule { }
