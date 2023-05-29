@@ -6,6 +6,7 @@ interface Institute {
     name: string;
     code: string;
 }
+
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html',
@@ -28,9 +29,21 @@ export class AppTopBarComponent {
             { name: 'MGM College', code: 'RM' },
             { name: 'Don Bosco', code: 'LDN' },
         ];
+
+        this.items = [
+            {
+                label: 'Logout',
+                icon: 'pi pi-fw pi-trash',
+                command: () => {
+                    this.logOut();
+                },
+            },
+        ];
     }
 
     logOut() {
+        localStorage.clear();
+
         this.router.navigate(['/']);
     }
 }

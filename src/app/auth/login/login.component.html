@@ -13,7 +13,8 @@
 
                     <div>
                         <label for="mobileNo" class="block text-900 text-xl font-medium mb-2">Enter Mobile no.</label>
-                        <input type="text" appOnlyNumber maxlength="10" minlength="0" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        <input type="text" appOnlyNumber maxlength="10" minlength="0" required
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                             pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no."
                             pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
 
