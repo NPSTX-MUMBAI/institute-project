@@ -12,22 +12,36 @@ export class AuthService {
     createUser(data: any) {
         console.log(data);
         return new Promise((resolve, reject) => {
-            this.http
-                .post(environment.url + '/auth/create', data)
-                .subscribe((res) => {
-                    resolve(res);
-                });
+            this.http.post(environment.url + '/auth/create', data).subscribe(
+                (res: any) => {
+                    if (res.status) {
+                        resolve(res);
+                    } else {
+                        reject(res);
+                    }
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
         });
     }
 
     login(data: any) {
         console.log(data);
         return new Promise((resolve, reject) => {
-            this.http
-                .post(environment.url + '/auth/create', data)
-                .subscribe((res) => {
-                    resolve(res);
-                });
+            this.http.post(environment.url + '/auth/login', data).subscribe(
+                (res: any) => {
+                    if (res.status) {
+                        resolve(res);
+                    } else {
+                        resolve(res);
+                    }
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
         });
     }
 }

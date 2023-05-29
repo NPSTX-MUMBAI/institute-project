@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
+import { StateService } from '../../services/state.service';
 
 @Component({
     selector: 'app-login',
@@ -15,8 +16,9 @@ export class LoginComponent implements OnInit {
     constructor(
         private router: Router,
         private fb: FormBuilder,
-        private auth: AuthService,
-        private msgSvc: MessageService
+        private authSvc: AuthService,
+        private msgSvc: MessageService,
+        private stateSvc: StateService
     ) {}
 
     ngOnInit(): void {
@@ -35,15 +37,39 @@ export class LoginComponent implements OnInit {
         console.log(this.loginGrp.value);
         if (this.loginGrp.invalid) {
             this.msgSvc.add({
-                severity: 'danger',
+                severity: 'error',
                 summary: 'incorrect data',
                 detail: 'Enter proper email and password',
             });
         } else {
-            console.log('successsss');
-        }
+            this.authSvc.login(this.loginGrp.value).then((res: any) => {
+                console.log(res);
 
-        // this.router.navigate(['admin-dashboard']);
+                if (res.status) {
+                    console.log(res.user);
+
+                    if (res.user.userType === 'ADMIN') {
+                        this.stateSvc.setUserData(
+                            'accessToken',
+                            res.token.accessToken
+                        );
+                        this.stateSvc.setUserData(
+                            'refreshToken',
+                            res.token.refreshToken
+                        );
+                        this.stateSvc.setUserData('userId', res.user.userId);
+
+                        this.router.navigate(['/admin-dashboard']);
+                    }
+                } else {
+                    this.msgSvc.add({
+                        severity: 'error',
+                        summary: 'Invalid Credentials',
+                        detail: 'Invalid Credentials or you have not been registered',
+                    });
+                }
+            });
+        }
     }
 
     // login() {

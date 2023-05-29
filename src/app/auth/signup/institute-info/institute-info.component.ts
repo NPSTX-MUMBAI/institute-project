@@ -55,7 +55,7 @@ export class InstituteInfoComponent implements OnInit {
         { name: 'Jr School' },
     ];
 
-    addBoard(board:any) {
+    addBoard(board: any) {
         console.log(board);
         this.newBoardName = this.listInstitute.get('newBoard');
         // Create a new board object using the value from the input box
@@ -69,7 +69,7 @@ export class InstituteInfoComponent implements OnInit {
         // this.newBoardName = '';
     }
 
-    onKeyUp(){
+    onKeyUp() {
         console.log('object');
     }
 }
