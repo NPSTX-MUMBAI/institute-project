@@ -2,17 +2,19 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
+import { StateService } from './state.service';
 
 @Injectable({
     providedIn: 'root',
 })
 export class AuthService {
-    constructor(private http: HttpClient) {}
+    constructor(private http: HttpClient, private stateSvc: StateService) {}
 
     private isAuthenticated!: boolean;
 
     isAuthenticatedfn(): boolean {
-        return this.isAuthenticated;
+        const token = this.stateSvc.getUserData('accessToken');
+        return !!token;
     }
 
     createUser(data: any) {

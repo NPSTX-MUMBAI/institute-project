@@ -21,7 +21,7 @@ export class StateService {
     }
     public getUserData(key: string) {
         let data = localStorage.getItem(key);
-        console.log(typeof data, '!!!');
+        console.log(data, '!!!');
         return data;
     }
 }

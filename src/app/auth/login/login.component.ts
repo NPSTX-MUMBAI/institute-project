@@ -23,8 +23,8 @@ export class LoginComponent implements OnInit {
 
     ngOnInit(): void {
         this.loginGrp = this.fb.group({
-            mobileNo: ['', Validators.required],
-            password: ['', Validators.required],
+            mobileNo: ['8108587537', Validators.required],
+            password: ['Shoaib@123', Validators.required],
         });
     }
 
@@ -49,8 +49,6 @@ export class LoginComponent implements OnInit {
                     console.log(res.user);
 
                     if (res.user.userType === 'ADMIN') {
-
-
                         this.msgSvc.add({
                             severity: 'info',
                             summary: 'Success',
@@ -66,6 +64,7 @@ export class LoginComponent implements OnInit {
                             res.token.refreshToken
                         );
                         this.stateSvc.setUserData('userId', res.user.userId);
+                        this.stateSvc.setUserData('user', res.user);
 
                         this.router.navigate(['/admin-dashboard']);
                     }
