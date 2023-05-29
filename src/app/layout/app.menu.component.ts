@@ -3,6 +3,7 @@ import { Component } from '@angular/core';
 import { LayoutService } from './service/app.layout.service';
 import { StateService } from '../services/state.service';
 import { AuthService } from '../services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-menu',
@@ -14,11 +15,11 @@ export class AppMenuComponent implements OnInit {
     constructor(
         public layoutService: LayoutService,
         private stateSvc: StateService,
-        private authSvc: AuthService
-    ) {}    
+        private authSvc: AuthService,
+        private router: Router
+    ) {}
 
     ngOnInit() {
-
         if (
             this.stateSvc.getUserData('accessToken') &&
             this.stateSvc.getUserData('refreshToken') &&
@@ -132,6 +133,9 @@ export class AppMenuComponent implements OnInit {
                 },
             ];
         } else {
+            localStorage.clear();
+
+            this.router.navigate(['/auth/login']);
         }
     }
 }
