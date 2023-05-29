@@ -19,9 +19,20 @@
             <div class="p-fluid p-formgrid grid">
                 <div class="field col-12 md:col-4">
                     <label htmlFor="name">Name<span class="text-red-600"> *</span></label>
-                    <input pInputText id="name" type="text" placeholder=" Enter your name"
-                        formControlName="instituteName" />
+                    <input pInputText id="name" type="text" placeholder=" Enter institute name"
+                        formControlName="instituteName" pattern="^[A-Za-z ]{2,}$" />
 
+                    <div
+                        *ngIf="listInstitute.controls['instituteName'].touched && listInstitute.controls['instituteName'].errors">
+                        <div *ngIf="listInstitute.controls['instituteName'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter institute name!
+                        </div>
+                        <div *ngIf="listInstitute.controls['instituteName'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid institute name!
+                        </div>
+                    </div>
 
 
                 </div>
@@ -29,25 +40,44 @@
                     <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
                     <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name"
                         formControlName="instituteType"></p-dropdown>
+                    <div *ngIf="listInstitute.controls['instituteType'].touched && listInstitute.controls['instituteType'].hasError('required')"
+                        style="color: red; text-align: left; margin-top: 6px;">
+                        Type is required!
+                    </div>
+
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="phone">Phone No<span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="phone" rows="4" placeholder=" Enter your phone no" minlength="10"
-                        maxlength="10" type="phone" formControlName="institutephoneno"
-                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                        placeholder="Enter your phone no " />
+                    <input pInputTextarea id="phone" rows="4" placeholder=" Enter mobile no" minlength="10"
+                        maxlength="10" type="phone" formControlName="institutePhone"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required
+                        pattern="[0-9 ]{10}" />
+                    <div
+                        *ngIf="listInstitute.controls['institutePhone'].touched && listInstitute.controls['institutePhone'].errors">
+                        <div *ngIf="listInstitute.controls['institutePhone'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter mobile No!
+
+                        </div>
+                        <div *ngIf="listInstitute.controls['institutePhone'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid Mobile No!
+                        </div>
+                    </div>
+
                 </div>
+
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="website">Website</label>
-                    <input pInputTextarea id="website" rows="4" formControlName="institutewebsite"
-                        placeholder=" Enter your website" />
+                    <input pInputTextarea id="website" rows="4" formControlName="instituteWebsite"
+                        placeholder=" Enter website" />
                 </div>
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="email">Email</label>
-                    <input pInputTextarea id="email" rows="4" formControlName="instituteemail"
-                        placeholder=" Enter your email id" />
+                    <input pInputTextarea id="email" rows="4" formControlName="instituteEmail"
+                        placeholder=" Enter email id" />
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
@@ -57,24 +87,24 @@
 
 
 
-<!--
+                        <!--
                         <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board"
                         optionLabel="name"  ></p-dropdown> -->
-                        <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board" optionLabel="name">
+                        <p-dropdown [options]="board" formControlName="board" placeholder="Select a Board"
+                            optionLabel="name">
                             <ng-template #renderTemplate3>
-                              <div class="container">
-                                <input (keyup)="onKeyUp()" style="width:10%"
-                                       oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                                       type="text" class="p-inputtext" #inputElement />
-                                <button pButton type="button" class="p-button-text"  (click)="addBoard(inputElement)" style="margin-left: 10px;">
-                                  <i class="pi pi-plus"></i>
-                                  Add Board
-                                </button>
-                              </div>
+                                <div class="container">
+                                    <input (keyup)="onKeyUp()" style="width:10%"
+                                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                        type="text" class="p-inputtext" #inputElement />
+                                    <button pButton type="button" class="p-button-text" (click)="addBoard(inputElement)"
+                                        style="margin-left: 10px;">
+                                        <i class="pi pi-plus"></i>
+                                        Add Board
+                                    </button>
+                                </div>
                             </ng-template>
-                          </p-dropdown>
-
-
+                        </p-dropdown>
 
                         <!-- <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board" optionLabel="name">
                             <ng-template pTemplate="dropdown">
@@ -82,17 +112,18 @@
                             </ng-template>
                           </p-dropdown> -->
 
-                          <ng-template #renderTemplate3>
+                        <ng-template #renderTemplate3>
                             <div class="container">
-                              <input (keyup)="onKeyUp()" style="width:10%"
-                                     oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
-                                     type="text" nz-input #inputElement />
-                              <button nz-button nzType="text"  class="add-item" (click)="addBoard(inputElement)" style="margin-left: 10px;">
-                                <em nz-icon nzType="plus"></em>
-                                Add Board
-                              </button>
+                                <input (keyup)="onKeyUp()" style="width:10%"
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
+                                    type="text" nz-input #inputElement />
+                                <button nz-button nzType="text" class="add-item" (click)="addBoard(inputElement)"
+                                    style="margin-left: 10px;">
+                                    <em nz-icon nzType="plus"></em>
+                                    Add Board
+                                </button>
                             </div>
-                          </ng-template>
+                        </ng-template>
 
 
                         <!-- <div class="add-board">
@@ -100,6 +131,11 @@
                           <button (click)="addBoard()">Add</button>
                         </div> -->
                     </div>
+                    <div *ngIf="listInstitute.controls['board'].touched && listInstitute.controls['board'].hasError('required')"
+                        style="color: red; text-align: left; margin-top: 6px;">
+                        Type is required!
+                    </div>
+
                 </div>
 
 
@@ -112,46 +148,54 @@
             <div class="p-fluid p-formgrid grid">
                 <div class="field col-12 md:col-4">
                     <label htmlFor="address1">Line 1</label>
-                    <input pInputTextarea id="address1" rows="4" placeholder=" Enter your address line 1"
-                        formControlName="address1" />
+                    <input pInputTextarea id="address1" rows="4" placeholder=" Enter address line 1"
+                        formControlName="line1" />
                 </div>
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="address2">Line 2</label>
-                    <input pInputTextarea id="address2" rows="4" placeholder="Enter your address line 2"
-                        formControlName="address2" />
+                    <input pInputTextarea id="address2" rows="4" placeholder="Enter address line 2"
+                        formControlName="line2" />
                 </div>
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="pincode" rows="4" placeholder=" Enter your pin code"
-                        formControlName="pincode" />
+                    <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
+                        formControlName="pinCode" pattern="^\d{6}$" />
+                    <div *ngIf=" listInstitute.controls['pinCode'].touched &&
+                        listInstitute.controls['pinCode'].errors">
+                        <div *ngIf="listInstitute.controls['pinCode'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter pin code!
+
+                        </div>
+                        <div *ngIf="listInstitute.controls['pinCode'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid pin code!
+                        </div>
+                    </div>
+
                 </div>
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="city">City</label>
-                    <input pInputTextarea id="city" rows="4" placeholder="Enter your city" formControlName="city" />
+                    <input pInputTextarea id="city" rows="4" placeholder="Enter city" formControlName="city" />
                 </div>
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="state">State</label>
-                    <input pInputTextarea id="state" rows="4" placeholder="Enter your state" formControlName="state" />
+                    <input pInputTextarea id="state" rows="4" placeholder="Enter state" formControlName="state" />
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="country">Country</label>
-                    <input pInputTextarea id="country" rows="4" placeholder="Enter your country"
-                        formControlName="country" />
+                    <input pInputTextarea id="country" rows="4" placeholder="Enter country" formControlName="country" />
                 </div>
 
-
-
-
             </div>
-
 
         </form>
 
         <p-button label="Submit" (click)="submit()"></p-button>
-        <p-button label="Reset"></p-button>
+        <p-button label="Reset" class="resetButton"></p-button>
     </div>
 </div>

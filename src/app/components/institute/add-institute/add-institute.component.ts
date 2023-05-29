@@ -14,33 +14,36 @@ import { Router } from '@angular/router';
 })
 export class AddInstituteComponent implements OnInit {
     listInstitute!: FormGroup;
+    standard = [{ name: 'I' }, { name: 'II' }, { name: 'III' }];
+    boards = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBSE' }];
+    division = [{ name: 'A' }, { name: 'B' }, { name: 'C' }];
 
     constructor(private fb: FormBuilder, private router: Router) {}
     ngOnInit(): void {
         this.listInstitute = this.fb.group({
             instituteName: ['', Validators.required],
             instituteType: ['', Validators.required],
-            institutephoneno: ['', Validators.required],
-            institutewebsite: ['', Validators.required],
-            instituteemail: ['', Validators.required],
-            instituteboard: ['', Validators.required],
-            institutestd: ['', Validators.required],
-            institutediv: ['', Validators.required],
+            institutePhone: ['', Validators.required],
+            instituteWebsite: ['', Validators.required],
+            instituteEmail: ['', Validators.required],
+            instituteBoard: ['', Validators.required],
+            instituteStd: ['', Validators.required],
+            instituteDiv: ['', Validators.required],
 
-            spocname: ['', Validators.required],
-            spocphone: ['', Validators.required],
-            spocemail: ['', Validators.required],
+            spocName: ['', Validators.required],
+            spocPhone: ['', Validators.required],
+            spocEmail: ['', Validators.required],
 
-            address1: ['', Validators.required],
-            address2: ['', Validators.required],
+            line1: ['', Validators.required],
+            line2: ['', Validators.required],
             zipcode: ['', Validators.required],
             country: ['', Validators.required],
             state: ['', Validators.required],
             location: ['', Validators.required],
 
             instpan: ['', Validators.required],
-            instregno: ['', Validators.required],
-            instgstno: ['', Validators.required],
+            instRegno: ['', Validators.required],
+            instGstno: ['', Validators.required],
         });
     }
     submit() {

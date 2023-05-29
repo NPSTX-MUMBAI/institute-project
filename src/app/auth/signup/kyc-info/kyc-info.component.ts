@@ -57,6 +57,7 @@ export class KycInfoComponent implements OnInit {
             ],
             aadhar: ['', Validators.required],
             gst: ['', Validators.required],
+            reg: ['', Validators.required],
         });
     }
 

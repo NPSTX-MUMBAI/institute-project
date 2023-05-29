@@ -30,18 +30,16 @@ export class InstituteInfoComponent implements OnInit {
         this.listInstitute = this.fb.group({
             instituteName: ['', Validators.required],
             instituteType: ['', Validators.required],
-            institutephoneno: ['', Validators.required],
-            institutewebsite: ['', Validators.required],
-            instituteemail: ['', Validators.required],
-            instituteboard: ['', Validators.required],
-            address1: ['', Validators.required],
-            address2: ['', Validators.required],
-            pincode: ['', Validators.required],
+            institutePhone: ['', Validators.required],
+            instituteWebsite: ['', Validators.required],
+            instituteEmail: ['', Validators.required],
+            line1: ['', Validators.required],
+            line2: ['', Validators.required],
+            pinCode: ['', Validators.required],
             country: ['', Validators.required],
             state: ['', Validators.required],
             city: ['', Validators.required],
-            newBoard: [''],
-            location: ['', Validators.required],
+            board: ['', Validators.required],
         });
     }
     submit() {
@@ -55,7 +53,7 @@ export class InstituteInfoComponent implements OnInit {
         { name: 'Jr School' },
     ];
 
-    addBoard(board:any) {
+    addBoard(board: any) {
         console.log(board);
         this.newBoardName = this.listInstitute.get('newBoard');
         // Create a new board object using the value from the input box
@@ -69,7 +67,7 @@ export class InstituteInfoComponent implements OnInit {
         // this.newBoardName = '';
     }
 
-    onKeyUp(){
+    onKeyUp() {
         console.log('object');
     }
 }

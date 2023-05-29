@@ -1,6 +1,7 @@
 import { AuthService } from './../../../services/auth.service';
 import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 @Component({
@@ -9,14 +10,16 @@ import { MessageService } from 'primeng/api';
     styleUrls: ['./personal-info.component.scss'],
 })
 export class PersonalInfoComponent implements OnInit {
-    personalGrp: FormGroup;
+    personalGrp!: FormGroup;
     constructor(
         private fb: FormBuilder,
         private router: Router,
         private auth: AuthService,
         private messageService: MessageService
-    ) {
-        this.personalGrp = fb.group({
+    ) {}
+
+    ngOnInit(): void {
+        this.personalGrp = this.fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
             email: [
@@ -54,8 +57,6 @@ export class PersonalInfoComponent implements OnInit {
             ]);
         }
     }
-
-    ngOnInit(): void {}
 
     passwordMatchValidator(frm: FormGroup) {
         const password = this.personalGrp.get('password')?.value;
