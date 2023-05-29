@@ -5,7 +5,139 @@
         }">
     <div class="card" [style]="{'width':'60rem'}">
         <div class="col">
-            <form [formGroup]="personalGrp">
+            <form class="pt-4" [formGroup]="personalGrp">
+
+                <div class="p-fluid p-formgrid grid">
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="firstname2">Firstname<span class="text-red-600"> *</span></label>
+
+                        <input pInputText id="firstname2" type="text" formControlName="firstName"
+                            placeholder="Firstname" pattern="^[A-Za-z ]{2,}$" />
+                        <div
+                            *ngIf="personalGrp.controls['firstName'].touched && personalGrp.controls['firstName'].errors">
+                            <div *ngIf="personalGrp.controls['firstName'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your first name!
+                            </div>
+                            <div *ngIf="personalGrp.controls['firstName'].hasError('pattern')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter a valid name!
+                            </div>
+                        </div>
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="lastname2">Lastname<span class="text-red-600"> *</span></label>
+                        <input pInputText id="lastname2" type="text" formControlName="lastName" placeholder="Lastname"
+                            pattern="^[A-Za-z ]{2,}$" />
+                        <div
+                            *ngIf="personalGrp.controls['lastName'].touched && personalGrp.controls['lastName'].errors">
+                            <div *ngIf="personalGrp.controls['lastName'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your last name!
+                            </div>
+                            <div *ngIf="personalGrp.controls['lastName'].hasError('pattern')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter a valid name!
+                            </div>
+                        </div>
+
+                        <!-- <div *ngIf="personalGrp.controls['lastName'].touched ">
+                            <div *ngIf="personalGrp.controls['lastName'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your lastName name!
+                            </div>
+                        </div> -->
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
+                        <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
+                            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                        <div *ngIf="personalGrp.controls['email'].touched && personalGrp.controls['email'].errors">
+                            <div *ngIf="personalGrp.controls['email'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your email Id!
+                            </div>
+                            <div *ngIf="personalGrp.controls['email'].hasError('pattern')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter a valid email Id!
+
+                            </div>
+                        </div>
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="phone">Mobile No <span class="text-red-600"> *</span></label>
+                        <input pInputText id="phone" type="text" formControlName="mobileNo" placeholder="Phone"
+                            minlength="10" maxlength="10" type="phone"
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            placeholder="phone no" required pattern="[0-9 ]{10}" />
+                        <div
+                            *ngIf="personalGrp.controls['mobileNo'].touched && personalGrp.controls['mobileNo'].errors">
+                            <div *ngIf="personalGrp.controls['mobileNo'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter your mobile No!
+
+                            </div>
+                            <div *ngIf="personalGrp.controls['mobileNo'].hasError('pattern')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter valid Mobile No!
+                            </div>
+                        </div>
+
+                    </div>
+
+                    <div class="field col-3 lg:col-4 md:col-3 ">
+                        <label htmlFor="password" for="password">Password<span class="text-red-600"> *</span></label>
+                        <div class="p-inputgroup">
+
+                            <p-password [toggleMask]="true" formControlName="password" placeholder="Enter your password"
+                                [style]="{'width':'100%'}">
+
+                                <ng-template pTemplate="header">
+                                    <h6>Pick a password</h6>
+                                </ng-template>
+                                <ng-template pTemplate="footer">
+                                    <p-divider></p-divider>
+                                    <p class="mt-2">Suggestions</p>
+                                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
+                                        <li>At least one lowercase</li>
+                                        <li>At least one uppercase</li>
+                                        <li>At least one numeric</li>
+                                        <li>Minimum 8 characters</li>
+                                    </ul>
+                                </ng-template>
+
+                            </p-password>
+                        </div>
+                        <div *ngIf="personalGrp.controls['password'].touched && personalGrp.controls['password'].hasError('required')"
+                            style="color: red; text-align: left; margin-top: 6px;">
+                            Enter your password!
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 md:col-4">
+                        <label htmlFor="email">Confirm Password <span class="text-red-600"> *</span></label>
+                        <input pInputTextarea id="email" rows="4" formControlName="confirmPassword"
+                            placeholder="Email" />
+                        <div *ngIf="personalGrp.controls['confirmPassword'].touched ">
+                            <div *ngIf="personalGrp.controls['confirmPassword'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Enter confirm password!
+                            </div>
+
+                        </div>
+                    </div>
+
+
+
+                </div>
+                <button pButton pRipple label="Save" (click)="onSave()"></button>
+
+            </form>
+
+            <!-- <form [formGroup]="personalGrp">
 
                 <div class="grid ">
                     <div class="col-12 flex align-items-center justify-content-center">
@@ -22,9 +154,20 @@
                         <div class="p-inputgroup">
 
                             <input pInputText placeholder=" Enter your first name" formControlName="firstName"
-                                maxlength="45" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                                maxlength="45" requiredpattern="^[A-Za-z]{2,}$" />
+                            <div
+                                *ngIf="personalGrp.controls['firstName'].touched && personalGrp.controls['firstName'].errors">
+                                <div *ngIf="personalGrp.controls['firstName'].hasError('required')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter Institute name!
+                                </div>
+                                <div *ngIf="personalGrp.controls['firstName'].hasError('pattern')"
+                                    style="color: red;text-align: left;margin-top: 6px;">
+                                    Enter a valid Institute name!
+                                </div>
+                            </div>
+
                         </div>
-                        <!-- <app-validationerror [control]="personalGrp.get('firstName')" [controleName]="'First Name'" ></app-validationerror> -->
                     </div>
 
                     <div class="field col-3 lg:col-4 md:col-3">
@@ -34,7 +177,6 @@
                             <input pInputText placeholder="Enter your last name" formControlName="lastName"
                                 maxlength="45" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
                         </div>
-                        <!-- <app-validationerror [control]="personalGrp.get('lastName')" [controleName]="'Last Name'"></app-validationerror> -->
 
                     </div>
                     <div class="field col-3 lg:col-4 md:col-3 ">
@@ -44,7 +186,6 @@
                             <input pInputText placeholder=" Enter your email id" formControlName="email"
                                 oninput="this.value = this.value.replace(/[^a-z0-9.@]/g, '')" />
                         </div>
-                        <!-- <app-validationerror [control]="personalGrp.get('email')" [controleName]="'Email'"></app-validationerror> -->
 
                     </div>
                     <div class="field col-3 lg:col-4 md:col-3">
@@ -55,7 +196,6 @@
                                 pattern="[- +()0-9]{10,12}" pInputText placeholder=" Enter your mobile no"
                                 formControlName="mobileNo" />
                         </div>
-                        <!-- <app-validationerror [control]="personalGrp.get('mobileNo')" [controleName]="'Mobile  Number'"></app-validationerror> -->
 
                     </div>
 
@@ -80,7 +220,6 @@
                                 </ng-template>
                             </p-password>
                         </div>
-                        <!-- <app-validationerror [control]="personalGrp.get('password')" [controleName]="'Password'"></app-validationerror> -->
                     </div>
 
                     <div class="field col-3 lg:col-4 md:col-3">
@@ -91,7 +230,6 @@
                             <p-password [toggleMask]="true" [feedback]="false" formControlName="confirmPassword"
                                 placeholder=" Enter your confirm password" [style]="{'width':'100%'}"></p-password>
                         </div>
-                        <!-- <app-validationerror [control]="personalGrp.get('confirmPassword')" [controleName]="'Confirm Password'"></app-validationerror> -->
 
                         <div *ngIf="personalGrp.errors?.['mismatch']">
                             <small class="tx-danger">Passwords do not match</small>
@@ -110,7 +248,7 @@
                     </div>
                 </div>
 
-            </form>
+            </form> -->
         </div>
     </div>
 

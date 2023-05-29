@@ -1,17 +1,16 @@
-
 <div class="col-12" [style]="{
     'display': 'flex',
     'align-items': 'center',
     'justify-content': 'center'
 }">
-    <div class="card"  [style]="{'width':'75rem'}">
+    <div class="card" [style]="{'width':'75rem'}">
         <div class="pt-4" [formGroup]="bankDetails">
 
             <div class="p-fluid p-formgrid grid">
                 <div class="field col-12 md:col-3">
                     <label htmlFor="name">Account Holder's name<span class="text-red-600"> *</span></label>
-                    <input pInputText id="name" type="text" placeholder=" Enter your account name" formControlName="name"
-                        pattern="^[A-Za-z ]{2,}$">
+                    <input pInputText id="name" type="text" placeholder=" Enter your account name"
+                        formControlName="name" pattern="^[A-Za-z ]{2,}$">
                     <div *ngIf="bankDetails.controls['name'].touched && bankDetails.controls['name'].errors">
                         <div *ngIf="bankDetails.controls['name'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
@@ -39,15 +38,15 @@
 
                 <div class="field col-12 md:col-3">
                     <label htmlFor="Accountno">Account no:<span class="text-red-600"> *</span></label>
-                    <input pInputText id="Accountno" type="text" placeholder="Enter your account no" formControlName="Accountno"
-                        pattern="^[0-9]{9,18}$">
-                    <div *ngIf="bankDetails.controls['Accountno'].touched && bankDetails.controls['Accountno'].errors">
-                        <div *ngIf="bankDetails.controls['Accountno'].hasError('required')"
+                    <input pInputText id="Accountno" type="text" placeholder="Enter your account no"
+                        formControlName="accountNo" pattern="^[0-9]{9,18}$">
+                    <div *ngIf="bankDetails.controls['accountNo'].touched && bankDetails.controls['accountNo'].errors">
+                        <div *ngIf="bankDetails.controls['accountNo'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter your account number!
 
                         </div>
-                        <div *ngIf="bankDetails.controls['Accountno'].hasError('pattern')"
+                        <div *ngIf="bankDetails.controls['accountNo'].hasError('pattern')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter valid account number!
                         </div>
@@ -88,8 +87,8 @@
                 </div> -->
                 <div class="field col-12 md:col-3">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code" formControlName="ifscCode"
-                        pattern="^[A-Z]{4}[0][\d]{6}$" />
+                    <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code"
+                        formControlName="ifscCode" pattern="^[A-Z]{4}[0][\d]{6}$" />
                     <div *ngIf="bankDetails.controls['ifscCode'].touched && bankDetails.controls['ifscCode'].errors">
                         <div *ngIf="bankDetails.controls['ifscCode'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
@@ -105,14 +104,15 @@
                 </div>
                 <div class="field col-12 md:col-3">
                     <label htmlFor="Bankname">Bank name</label>
-                    <input pInputText id="Bankname" type="text" placeholder=" Enter your bank name" formControlName="Bankname">
+                    <input pInputText id="Bankname" type="text" placeholder=" Enter your bank name"
+                        formControlName="Bankname">
 
 
                 </div>
                 <div class="field col-12 md:col-3">
                     <label htmlFor="Branchname">Branch name</label>
                     <input pInputTextarea id="Branchname" rows="4" placeholder=" Enter your branch name"
-                        formControlName="Branchname" />
+                        formControlName="branchName" />
 
                 </div>
                 <div class=" field col-12 md:col-3">
@@ -122,7 +122,8 @@
                 </div>
                 <div class="field col-12 md:col-3">
                     <label htmlFor="District">District</label>
-                    <input pInputText id="District" type="text" placeholder=" Enter your district" formControlName="district" />
+                    <input pInputText id="District" type="text" placeholder=" Enter your district"
+                        formControlName="district" />
 
 
                 </div>

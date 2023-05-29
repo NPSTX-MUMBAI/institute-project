@@ -14,6 +14,7 @@ import { StaffInfoComponent } from './signup/staff-info/staff-info.component';
 import { PersonalInfoComponent } from './signup/personal-info/personal-info.component';
 import { StatusComponent } from './signup/status/status.component';
 import { OtpComponent } from './signup/otp/otp.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     { path: '', pathMatch: 'full', redirectTo: 'login' },
@@ -40,6 +41,11 @@ const routes: Routes = [
         StatusComponent,
         OtpComponent,
     ],
-    imports: [CommonModule, RouterModule.forChild(routes), UiModule],
+    imports: [
+        CommonModule,
+        RouterModule.forChild(routes),
+        UiModule,
+        ReactiveFormsModule,
+    ],
 })
 export class AuthModule {}
