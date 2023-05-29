@@ -10,23 +10,23 @@
     <div class="card" [style]="{'width':'40rem'}">
         <div class="container">
             <header>
-              
+
             </header>
             <h4>Enter OTP Code</h4>
             <form >
               <div class="input-field">
-                <input type="number" />
-                <input type="number" />
-                <input type="number"  />
-                <input type="number"  />
+                <input type="number" maxlength="1" minlength="1" />
+                <input type="number" maxlength="1" minlength="1"/>
+                <input type="number" maxlength="1" minlength="1" />
+                <input type="number" maxlength="1" minlength="1" />
               </div>
-              
+
               <button pButton pRipple label="Verified" [routerLink]="['../signup']"></button>
             </form>
           </div>
-       
+
     </div>
-    
+
 </body>
 </html>
 

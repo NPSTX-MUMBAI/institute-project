@@ -13,7 +13,7 @@
 
                     <div>
                         <label for="mobileNo" class="block text-900 text-xl font-medium mb-2">Enter Mobile no.</label>
-                        <input type="text" appOnlyNumber maxlength="10" minlength="0" required
+                        <input type="text" appOnlyNumber maxlength="10" minlength="0" required  oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
                             pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no."
                             pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
 
@@ -21,15 +21,7 @@
                         <p-password formControlName="password" id="password1" placeholder="Password" [toggleMask]="true"
                             styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
 
-                        <div class="flex align-items-center justify-content-between mb-5 gap-5">
-                            <div class="flex align-items-center">
-                                <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                                <label for="rememberme1">Remember me</label>
-                            </div>
-                            <a routerLink="/auth/forgot-password"
-                                class="font-medium no-underline ml-2 text-right cursor-pointer"
-                                style="color: var(--primary-color)">Forgot password?</a>
-                        </div>
+
                         <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" (click)="signin()"></button>
 
                         <br>

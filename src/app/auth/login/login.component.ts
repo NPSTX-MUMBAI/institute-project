@@ -49,6 +49,14 @@ export class LoginComponent implements OnInit {
                     console.log(res.user);
 
                     if (res.user.userType === 'ADMIN') {
+
+
+                        this.msgSvc.add({
+                            severity: 'info',
+                            summary: 'Success',
+                            detail: `Welcome ${res.user.firstName}`,
+                        });
+
                         this.stateSvc.setUserData(
                             'accessToken',
                             res.token.accessToken
