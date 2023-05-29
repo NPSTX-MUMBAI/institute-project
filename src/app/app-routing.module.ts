@@ -10,7 +10,7 @@ import { AuthGuardService } from './services/auth-guard.service';
             [
                 {
                     path: '',
-                    redirectTo: 'auth',
+                    redirectTo: 'admin-dashboard',
                     pathMatch: 'full',
                 },
 

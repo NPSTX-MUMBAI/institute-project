@@ -15,18 +15,16 @@ export class AppMenuComponent implements OnInit {
         public layoutService: LayoutService,
         private stateSvc: StateService,
         private authSvc: AuthService
-    ) {}
+    ) {}    
 
     ngOnInit() {
-        if (this.authSvc.isAuthenticatedfn()) {
-            console.log('authhhhhhh');
-        }
+
         if (
             this.stateSvc.getUserData('accessToken') &&
             this.stateSvc.getUserData('refreshToken') &&
             this.stateSvc.getUserData('user')
         ) {
-            console.log('hi shivaniiiiiii');
+            console.log('hiiiii');
             this.model = [
                 {
                     label: 'Home',
@@ -134,7 +132,6 @@ export class AppMenuComponent implements OnInit {
                 },
             ];
         } else {
-            console.log('Bakkkkk');
         }
     }
 }
