@@ -2,6 +2,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
+import { AuthGuardService } from './services/auth-guard.service';
 
 @NgModule({
     imports: [
@@ -26,6 +27,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                         import('./components/dashboard/dashboard.module').then(
                             (m) => m.DashboardModule
                         ),
+                    canActivate: [AuthGuardService],
                 },
 
                 {
@@ -36,6 +38,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                         import('./components/admission/admission.module').then(
                             (m) => m.AdmissionModule
                         ),
+                    canActivate: [AuthGuardService],
                 },
                 {
                     component: AppLayoutComponent,
@@ -45,6 +48,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                         import('./components/institute/institute.module').then(
                             (m) => m.InstituteModule
                         ),
+                    canActivate: [AuthGuardService],
                 },
 
                 {
@@ -55,6 +59,7 @@ import { AppLayoutComponent } from './layout/app.layout.component';
                         import('./components/student/student.module').then(
                             (m) => m.StudentModule
                         ),
+                    canActivate: [AuthGuardService],
                 },
             ],
             {

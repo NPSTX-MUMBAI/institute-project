@@ -9,6 +9,12 @@ import { environment } from 'src/environments/environment';
 export class AuthService {
     constructor(private http: HttpClient) {}
 
+    private isAuthenticated!: boolean;
+
+    isAuthenticatedfn(): boolean {
+        return this.isAuthenticated;
+    }
+
     createUser(data: any) {
         console.log(data);
         return new Promise((resolve, reject) => {
@@ -34,6 +40,7 @@ export class AuthService {
                 (res: any) => {
                     if (res.status) {
                         resolve(res);
+                        this.isAuthenticated = true;
                     } else {
                         resolve(res);
                     }
