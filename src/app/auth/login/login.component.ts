@@ -48,13 +48,13 @@ export class LoginComponent implements OnInit {
                     let loggedInUser: any =
                         this.stateSvc.getUserData('newUser');
                     loggedInUser = JSON.parse(loggedInUser);
-                    console.log(loggedInUser.name)
+                    console.log(loggedInUser.firstName)
 
                     if (loggedInUser.userType === 'ADMIN') {
                         this.msgSvc.add({
                             severity: 'info',
                             summary: 'Success',
-                            detail: `Welcome ${loggedInUser.name}`,
+                            detail: `Welcome ${loggedInUser.firstName}`,
                         });
 
                         this.stateSvc.setUserData(
