@@ -13,7 +13,7 @@
     <div class="card" [style]="{'width':'75rem'}">
 
         <h3>Institute Details</h3>
-        <form class="pt-4" [formGroup]="listInstitute">
+        <form class="pt-4" [formGroup]="InstituteInfo">
 
 
             <div class="p-fluid p-formgrid grid">
@@ -23,12 +23,12 @@
                         formControlName="instituteName" pattern="^[A-Za-z ]{2,}$" />
 
                     <div
-                        *ngIf="listInstitute.controls['instituteName'].touched && listInstitute.controls['instituteName'].errors">
-                        <div *ngIf="listInstitute.controls['instituteName'].hasError('required')"
+                        *ngIf="InstituteInfo.controls['instituteName'].touched && InstituteInfo.controls['instituteName'].errors">
+                        <div *ngIf="InstituteInfo.controls['instituteName'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter institute name!
                         </div>
-                        <div *ngIf="listInstitute.controls['instituteName'].hasError('pattern')"
+                        <div *ngIf="InstituteInfo.controls['instituteName'].hasError('pattern')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter a valid institute name!
                         </div>
@@ -40,7 +40,7 @@
                     <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
                     <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name"
                         formControlName="instituteType"></p-dropdown>
-                    <div *ngIf="listInstitute.controls['instituteType'].touched && listInstitute.controls['instituteType'].hasError('required')"
+                    <div *ngIf="InstituteInfo.controls['instituteType'].touched && InstituteInfo.controls['instituteType'].hasError('required')"
                         style="color: red; text-align: left; margin-top: 6px;">
                         Type is required!
                     </div>
@@ -53,13 +53,13 @@
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required
                         pattern="[0-9 ]{10}" />
                     <div
-                        *ngIf="listInstitute.controls['institutePhone'].touched && listInstitute.controls['institutePhone'].errors">
-                        <div *ngIf="listInstitute.controls['institutePhone'].hasError('required')"
+                        *ngIf="InstituteInfo.controls['institutePhone'].touched && InstituteInfo.controls['institutePhone'].errors">
+                        <div *ngIf="InstituteInfo.controls['institutePhone'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter mobile No!
 
                         </div>
-                        <div *ngIf="listInstitute.controls['institutePhone'].hasError('pattern')"
+                        <div *ngIf="InstituteInfo.controls['institutePhone'].hasError('pattern')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter valid Mobile No!
                         </div>
@@ -131,7 +131,7 @@
                           <button (click)="addBoard()">Add</button>
                         </div> -->
                     </div>
-                    <div *ngIf="listInstitute.controls['board'].touched && listInstitute.controls['board'].hasError('required')"
+                    <div *ngIf="InstituteInfo.controls['board'].touched && InstituteInfo.controls['board'].hasError('required')"
                         style="color: red; text-align: left; margin-top: 6px;">
                         Type is required!
                     </div>
@@ -162,14 +162,14 @@
                     <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
                         formControlName="pinCode" pattern="^\d{6}$" />
-                    <div *ngIf=" listInstitute.controls['pinCode'].touched &&
-                        listInstitute.controls['pinCode'].errors">
-                        <div *ngIf="listInstitute.controls['pinCode'].hasError('required')"
+                    <div *ngIf=" InstituteInfo.controls['pinCode'].touched &&
+                        InstituteInfo.controls['pinCode'].errors">
+                        <div *ngIf="InstituteInfo.controls['pinCode'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter pin code!
 
                         </div>
-                        <div *ngIf="listInstitute.controls['pinCode'].hasError('pattern')"
+                        <div *ngIf="InstituteInfo.controls['pinCode'].hasError('pattern')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter valid pin code!
                         </div>
