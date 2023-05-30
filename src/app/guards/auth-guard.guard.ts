@@ -29,18 +29,12 @@ export class AuthGuardGuard implements CanActivate {
         state: RouterStateSnapshot
     ): boolean | UrlTree {
         if (this.authService.isAuthenticatedfn()) {
+
             return true;
         } else {
             return this.router.createUrlTree(['/auth/login']);
         }
     }
 
-    // canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
-    //     let myData = this.stateSvc.getUserData('newUser');
-    //     if (!myData) {
-    //         return false;
-    //     } else {
-    //         return true;
-    //     }
-    // }
+
 }

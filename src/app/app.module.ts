@@ -12,9 +12,10 @@ import { IconService } from './demo/service/icon.service';
 import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
-import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { UiModule } from './ui/ui.module';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { AuthInterceptor } from './guards/authInterceptor';
 // import { StudentModule } from './components/student/student.module';
 import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
@@ -25,8 +26,7 @@ import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
         AppLayoutModule,
         HttpClientModule,
         UiModule,
-        // JwtModule,
-        // StudentModule,
+        HttpClientModule,
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy },
@@ -39,6 +39,8 @@ import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
         ProductService,
         MessageService,
         { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
+
         JwtHelperService,
     ],
     bootstrap: [AppComponent],
