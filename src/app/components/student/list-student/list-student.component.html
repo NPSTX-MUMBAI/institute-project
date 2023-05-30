@@ -1,54 +1,56 @@
 <button pButton pRipple label="+ Add Student" (click)="navigateToAddStudents()"></button>
-<p-table #dt2 [value]="school" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-    [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-    currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-    [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
-    <ng-template pTemplate="caption">
+
+<div style="margin-top:8%;">
+
+    <p-table #dt2 [value]="school" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
+        <!-- <ng-template pTemplate="caption">
         <div class="flex-container">
             <h2>List of Students</h2>
 
         </div>
-    </ng-template>
-    <ng-template pTemplate="header">
-        <tr>
-            <th>Reg Id</th>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Roll No</th>
-            <th>Gender</th>
-            <th>Std</th>
-            <th>Div</th>
-            <th>Board</th>
-            <th>Email</th>
-            <th>Phone</th>
+    </ng-template> -->
+        <ng-template pTemplate="header">
+            <tr>
+                <th>REG ID</th>
+                <th>FIRST NAME</th>
+                <th>LAST TIME</th>
+                <th>ROLL NO</th>
+                <th>GENDER</th>
+                <th>STD</th>
+                <th>DIV</th>
+                <th>BOARD</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+
+
+
+            </tr>
+
+
+        </ng-template>
+        <ng-template pTemplate="body" let-school>
+            <tr>
+
+
+                <td style="color:#01A9F1;font-weight: bold;">{{ school.RegId }}</td>
+                <td>{{ school.FirstName }}</td>
+                <td>{{ school.LastName }}</td>
+                <td>{{ school.RollNo }}</td>
+                <td>{{ school.Gender }}</td>
+                <td>{{ school.Std }}</td>
+                <td>{{ school.Div }}</td>
+                <td>{{ school.Board }}</td>
+                <td>{{ school.Email}}</td>
+                <td>{{ school.Phone }}</td>
 
 
 
 
+            </tr>
+        </ng-template>
 
-        </tr>
-
-
-    </ng-template>
-    <ng-template pTemplate="body" let-school>
-        <tr>
-
-
-            <td>{{ school.RegId }}</td>
-            <td>{{ school.FirstName }}</td>
-            <td>{{ school.LastName }}</td>
-            <td>{{ school.RollNo }}</td>
-            <td>{{ school.Gender }}</td>
-            <td>{{ school.Std }}</td>
-            <td>{{ school.Div }}</td>
-            <td>{{ school.Board }}</td>
-            <td>{{ school.Email}}</td>
-            <td>{{ school.Phone }}</td>
-
-
-
-
-        </tr>
-    </ng-template>
-
-</p-table>
+    </p-table>
+</div>

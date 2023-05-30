@@ -1,4 +1,4 @@
-<div>
+<div class="main-container">
     <form [formGroup]="loginGrp">
         <div class="flex flex-column align-items-center justify-content-center">
 
@@ -18,11 +18,29 @@
                             pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no."
                             pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
 
+                        <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
+                            <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter Mobile No!
+
+                            </div>
+                            <div *ngIf="loginGrp.controls['mobileNo'].hasError('pattern')"
+                                style="color: red;text-align: left;">
+                                Enter Valid Mobile No!
+                            </div>
+                        </div>
                         <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
                         <p-password formControlName="password" id="password1" placeholder="Password" [toggleMask]="true"
                             styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
 
+                        <div *ngIf="loginGrp.controls['password'].touched">
+                            <div *ngIf="loginGrp.controls['password'].hasError('required')"
+                                style="color: red;text-align: left;">
+                                Enter Your Password
 
+                            </div>
+
+                        </div>
                         <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" (click)="signin()"></button>
 
                         <br>
