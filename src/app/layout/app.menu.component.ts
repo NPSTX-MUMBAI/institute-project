@@ -23,7 +23,7 @@ export class AppMenuComponent implements OnInit {
         if (
             this.stateSvc.getUserData('accessToken') &&
             this.stateSvc.getUserData('refreshToken') &&
-            this.stateSvc.getUserData('user')
+            this.stateSvc.getUserData('newUser')
         ) {
             console.log('hiiiii');
             this.model = [

@@ -16,6 +16,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { MessageService } from 'primeng/api';
 import { UiModule } from './ui/ui.module';
 // import { StudentModule } from './components/student/student.module';
+import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, DashboardComponent],
@@ -24,6 +25,7 @@ import { UiModule } from './ui/ui.module';
         AppLayoutModule,
         HttpClientModule,
         UiModule,
+        // JwtModule,
         // StudentModule,
     ],
     providers: [
@@ -36,6 +38,8 @@ import { UiModule } from './ui/ui.module';
         PhotoService,
         ProductService,
         MessageService,
+        { provide: JWT_OPTIONS, useValue: JWT_OPTIONS },
+        JwtHelperService,
     ],
     bootstrap: [AppComponent],
 })
