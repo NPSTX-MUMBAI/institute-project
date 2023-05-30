@@ -11,11 +11,11 @@
                         <div
                             *ngIf="listInstitute.controls['instituteName'].touched && listInstitute.controls['instituteName'].errors">
                             <div *ngIf="listInstitute.controls['instituteName'].hasError('required')"
-                                style="color: red;text-align: left;">
+                                style="color: red;text-align: left;margin-top: 6px">
                                 Enter your name!
                             </div>
                             <div *ngIf="listInstitute.controls['instituteName'].hasError('pattern')"
-                                style="color: red;text-align: left;">
+                                style="color: red;text-align: left;margin-top: 6px">
                                 Enter a valid Institute name!
                             </div>
                         </div>
@@ -45,11 +45,11 @@
                         <div
                             *ngIf="listInstitute.controls['institutePhone'].touched && listInstitute.controls['institutePhone'].errors">
                             <div *ngIf="listInstitute.controls['institutePhone'].hasError('required')"
-                                style="color: red;text-align: left;">
+                                style="color: red;text-align: left;margin-top: 6px">
                                 Enter your phone no!
                             </div>
                             <div *ngIf="listInstitute.controls['institutePhone'].hasError('pattern')"
-                                style="color: red;text-align: left;">
+                                style="color: red;text-align: left;margin-top: 6px">
                                 Enter a valid Institute name!
                             </div>
                         </div>

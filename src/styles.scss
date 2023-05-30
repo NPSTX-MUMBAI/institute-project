@@ -12,3 +12,14 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/demo/styles/flags/flags.css";
 @import "assets/demo/styles/badges.scss";
 @import "assets/demo/styles/code.scss";
+
+
+.p-datatable .p-datatable-thead > tr > th{
+    background-color:#E2E7F7 !important;
+    color: #462EA5;
+    height:75px;
+}
+.p-datatable .p-datatable-tbody > tr > td{
+    height:60px !important;
+ 
+}

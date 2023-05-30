@@ -1,31 +1,30 @@
-
-    
-    <button pButton pRipple label="+ Add Institute" (click)="AddInstitute()"></button>
+<button pButton pRipple label="+ Add Institute" (click)="AddInstitute()"></button>
 
 
 
-<div>
-    <p-table #dt2 [value]="school" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+<div style="margin-top:8%;">
+    <p-table #dt2 [value]="school" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
-        <ng-template pTemplate="caption">
+        <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
                 <h2>List of Institutes</h2>
 
             </div>
-        </ng-template>
+        </ng-template> -->
         <ng-template pTemplate="header">
             <tr>
-                <th>Unique Id</th>
+                <th>UNIQUE NO.</th>
 
-                <th> Name</th>
-                <th>Type</th>
-                <th> City</th>
-                <th> Pincode</th>
+                <th> NAME</th>
+                <th>INSTITUTE TYPE</th>
+                <th> BOARD</th>
+                <th> PHONE</th>
+
+                <th> CITY</th>
+                <th> STATE</th>
+                <th> ACTION</th>
 
             </tr>
-
 
         </ng-template>
         <ng-template pTemplate="body" let-school>
@@ -34,10 +33,12 @@
 
                 <td>{{ school.name }}</td>
                 <td>{{ school.type }}</td>
+                <td>{{ school.board }}</td>
+                <td>{{ school.phone }}</td>
+
                 <td>{{ school.city }}</td>
-                <td>{{ school.pincode }}</td>
-
-
+                <td>{{ school.state }}</td>
+                <td>{{ school.action }}</td>
 
             </tr>
         </ng-template>
