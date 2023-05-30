@@ -15,7 +15,7 @@ interface Board {
     styleUrls: ['./institute-info.component.scss'],
 })
 export class InstituteInfoComponent implements OnInit {
-    listInstitute!: FormGroup;
+    InstituteInfo!: FormGroup;
 
     board!: Board[];
     newBoardName: any;
@@ -27,7 +27,7 @@ export class InstituteInfoComponent implements OnInit {
         this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
     }
     ngOnInit(): void {
-        this.listInstitute = this.fb.group({
+        this.InstituteInfo = this.fb.group({
             instituteName: ['', Validators.required],
             instituteType: ['', Validators.required],
             institutePhone: ['', Validators.required],
@@ -43,7 +43,7 @@ export class InstituteInfoComponent implements OnInit {
         });
     }
     submit() {
-        console.log(this.listInstitute.value);
+        console.log(this.InstituteInfo.value);
     }
 
     dropdownItems = [
@@ -55,7 +55,7 @@ export class InstituteInfoComponent implements OnInit {
 
     addBoard(board: any) {
         console.log(board);
-        this.newBoardName = this.listInstitute.get('newBoard');
+        this.newBoardName = this.InstituteInfo.get('newBoard');
         // Create a new board object using the value from the input box
         const newBoard = { name: this.newBoardName };
 
