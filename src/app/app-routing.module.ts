@@ -28,6 +28,7 @@ import { AuthGuardGuard } from './guards/auth-guard.guard';
                             (m) => m.DashboardModule
                         ),
                     canActivate: [AuthGuardGuard],
+                    // canDeactivate: [AuthGuardGuard],
                 },
 
                 {

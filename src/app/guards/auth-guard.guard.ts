@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import {
     ActivatedRouteSnapshot,
     CanActivate,
+    CanDeactivate,
     RouterStateSnapshot,
     UrlTree,
     Router,
@@ -10,6 +11,7 @@ import { Observable } from 'rxjs';
 
 import { AuthService } from '../services/auth.service';
 import { Location } from '@angular/common';
+import { StateService } from '../services/state.service';
 
 @Injectable({
     providedIn: 'root',
@@ -18,7 +20,8 @@ export class AuthGuardGuard implements CanActivate {
     constructor(
         private authService: AuthService,
         private router: Router,
-        private location: Location
+        private location: Location,
+        private stateSvc: StateService
     ) {}
 
     canActivate(
@@ -28,8 +31,16 @@ export class AuthGuardGuard implements CanActivate {
         if (this.authService.isAuthenticatedfn()) {
             return true;
         } else {
-            this.location.replaceState('/');
             return this.router.createUrlTree(['/auth/login']);
         }
     }
+
+    // canDeactivate(): Observable<boolean> | Promise<boolean> | boolean {
+    //     let myData = this.stateSvc.getUserData('newUser');
+    //     if (!myData) {
+    //         return false;
+    //     } else {
+    //         return true;
+    //     }
+    // }
 }

@@ -17,7 +17,9 @@ export class AppMenuComponent implements OnInit {
         private stateSvc: StateService,
         private authSvc: AuthService,
         private router: Router
-    ) {}
+    ) {
+        router.canceledNavigationResolution = 'computed';
+    }
 
     ngOnInit() {
         if (
