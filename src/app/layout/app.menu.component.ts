@@ -74,6 +74,11 @@ export class AppMenuComponent implements OnInit {
                                     icon: 'fa fa-book',
                                     routerLink: ['/institute/kyc'],
                                 },
+                                {
+                                    label: 'Add Institute',
+                                    icon: 'fa fa-money-bill-transfer',
+                                    routerLink: ['/institute/add'],
+                                },
                             ],
                         },
 

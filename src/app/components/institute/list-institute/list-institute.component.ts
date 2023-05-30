@@ -19,7 +19,7 @@ export class ListInstituteComponent implements OnInit {
 
     school: any = [
         {
-            name: 'ABC School',
+            name: 'NPST Test School',
             uniqueId: 1000,
             type: 'Primary',
             board: 'State',

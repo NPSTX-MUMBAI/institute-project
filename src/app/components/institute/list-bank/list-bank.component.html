@@ -1,9 +1,7 @@
 <button pButton pRipple label="+ Add Bank" (click)="navigateToAddBank()"></button>
 
 <div style="margin-top:8%;">
-    <p-table #dt2 [value]="bank" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+    <p-table #dt2 [value]="bank" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">

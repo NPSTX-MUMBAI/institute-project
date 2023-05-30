@@ -1,8 +1,8 @@
-<button pButton pRipple label="+ Add Institute" (click)="AddInstitute()"></button>
+<!-- <button pButton pRipple label="+ Add Institute" (click)="AddInstitute()"></button> -->
 
 
 
-<div style="margin-top:8%;">
+<div style="margin-top:4%;">
     <p-table #dt2 [value]="school" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
@@ -29,7 +29,7 @@
         </ng-template>
         <ng-template pTemplate="body" let-school>
             <tr>
-                <td>{{ school.uniqueId }}</td>
+                <td style="color:#01A9F1;font-weight: bold;">{{ school.uniqueId }}</td>
 
                 <td>{{ school.name }}</td>
                 <td>{{ school.type }}</td>
@@ -38,7 +38,7 @@
 
                 <td>{{ school.city }}</td>
                 <td>{{ school.state }}</td>
-                <td>{{ school.action }}</td>
+                <td style="color:#0257FF;font-weight: bold;">{{ school.action }}</td>
 
             </tr>
         </ng-template>
