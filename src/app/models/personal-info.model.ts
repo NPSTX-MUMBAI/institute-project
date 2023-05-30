@@ -6,17 +6,3 @@ export interface PersonalInfo {
     password: string;
     confirmPassword?: string;
 }
-
-
-// instituteName
-// instituteType
-// institutePhone
-// instituteWebsite
-// instituteEmail
-// line1
-// line2
-// pinCode
-// country
-// state
-// city
-// board

@@ -2,7 +2,7 @@ import { RouterModule } from '@angular/router';
 import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
-import { AuthGuardService } from './services/auth-guard.service';
+import { AuthGuardGuard } from './guards/auth-guard.guard';
 
 @NgModule({
     imports: [
@@ -27,7 +27,7 @@ import { AuthGuardService } from './services/auth-guard.service';
                         import('./components/dashboard/dashboard.module').then(
                             (m) => m.DashboardModule
                         ),
-                    canActivate: [AuthGuardService],
+                    canActivate: [AuthGuardGuard],
                 },
 
                 {
@@ -38,7 +38,7 @@ import { AuthGuardService } from './services/auth-guard.service';
                         import('./components/admission/admission.module').then(
                             (m) => m.AdmissionModule
                         ),
-                    canActivate: [AuthGuardService],
+                    canActivate: [AuthGuardGuard],
                 },
                 {
                     component: AppLayoutComponent,
@@ -48,7 +48,7 @@ import { AuthGuardService } from './services/auth-guard.service';
                         import('./components/institute/institute.module').then(
                             (m) => m.InstituteModule
                         ),
-                    canActivate: [AuthGuardService],
+                    canActivate: [AuthGuardGuard],
                 },
 
                 {
@@ -59,7 +59,7 @@ import { AuthGuardService } from './services/auth-guard.service';
                         import('./components/student/student.module').then(
                             (m) => m.StudentModule
                         ),
-                    canActivate: [AuthGuardService],
+                    canActivate: [AuthGuardGuard],
                 },
             ],
             {
