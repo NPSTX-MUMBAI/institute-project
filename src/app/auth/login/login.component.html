@@ -41,7 +41,8 @@
                             </div>
 
                         </div>
-                        <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" (click)="signin()"></button>
+                        <button pButton pRipple label="Sign In" [loading]="loading" class="w-full p-3 text-xl"
+                            (click)="signin()"></button>
 
                         <br>
 

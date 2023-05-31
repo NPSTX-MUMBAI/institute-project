@@ -12,7 +12,7 @@ import { StateService } from '../../services/state.service';
 })
 export class LoginComponent implements OnInit {
     loginGrp!: FormGroup;
-
+    loading = false;
     constructor(
         private router: Router,
         private fb: FormBuilder,
@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
     }
 
     signin() {
+        this.loading = true;
         console.log(this.loginGrp.value);
         if (this.loginGrp.invalid) {
             this.msgSvc.add({
@@ -41,14 +42,14 @@ export class LoginComponent implements OnInit {
                 summary: 'incorrect data',
                 detail: 'Enter proper email and password',
             });
+            this.loading = false;
         } else {
             this.authSvc.login(this.loginGrp.value).then((res: any) => {
                 if (res.status) {
-
                     let loggedInUser: any =
                         this.stateSvc.getUserData('newUser');
                     loggedInUser = JSON.parse(loggedInUser);
-                    console.log(loggedInUser.firstName)
+                    console.log(loggedInUser.firstName);
 
                     if (loggedInUser.userType === 'ADMIN') {
                         this.msgSvc.add({
@@ -70,6 +71,7 @@ export class LoginComponent implements OnInit {
                             loggedInUser.userId
                         );
                         this.stateSvc.setUserData('user', loggedInUser);
+                        this.loading = false;
 
                         this.router.navigate(['/admin-dashboard']);
                     }
@@ -79,6 +81,7 @@ export class LoginComponent implements OnInit {
                         summary: 'Invalid Credentials',
                         detail: 'Invalid Credentials or you have not been registered',
                     });
+                    this.loading = false;
                 }
             });
         }
