@@ -10,13 +10,14 @@
                 <div class="field col-12 md:col-3">
                     <label htmlFor="name">Account Holder's name<span class="text-red-600"> *</span></label>
                     <input pInputText id="name" type="text" placeholder=" Enter your account name"
-                        formControlName="name" pattern="^[A-Za-z ]{2,}$">
-                    <div *ngIf="bankDetails.controls['name'].touched && bankDetails.controls['name'].errors">
-                        <div *ngIf="bankDetails.controls['name'].hasError('required')"
+                        formControlName="accountHolderName" pattern="^[A-Za-z ]{2,}$">
+                    <div
+                        *ngIf="bankDetails.controls['accountHolderName'].touched && bankDetails.controls['accountHolderName'].errors">
+                        <div *ngIf="bankDetails.controls['accountHolderName'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter account holder name!
                         </div>
-                        <div *ngIf="bankDetails.controls['name'].hasError('pattern')"
+                        <div *ngIf="bankDetails.controls['accountHolderName'].hasError('pattern')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter a valid name!
                         </div>
@@ -88,14 +89,14 @@
                 <div class="field col-12 md:col-3">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code"
-                        formControlName="ifscCode" pattern="^[A-Z]{4}[0][\d]{6}$" />
-                    <div *ngIf="bankDetails.controls['ifscCode'].touched && bankDetails.controls['ifscCode'].errors">
-                        <div *ngIf="bankDetails.controls['ifscCode'].hasError('required')"
+                        formControlName="ifsc" pattern="^[A-Z]{4}[0][\d]{6}$" />
+                    <div *ngIf="bankDetails.controls['ifsc'].touched && bankDetails.controls['ifsc'].errors">
+                        <div *ngIf="bankDetails.controls['ifsc'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter IFSC code!
 
                         </div>
-                        <div *ngIf="bankDetails.controls['ifscCode'].hasError('pattern')"
+                        <div *ngIf="bankDetails.controls['ifsc'].hasError('pattern')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter valid IFSC code!
                         </div>
@@ -112,7 +113,7 @@
                 <div class="field col-12 md:col-3">
                     <label htmlFor="Branchname">Branch name</label>
                     <input pInputTextarea id="Branchname" rows="4" placeholder=" Enter your branch name"
-                        formControlName="branchName" />
+                        formControlName="branch" />
 
                 </div>
                 <div class=" field col-12 md:col-3">

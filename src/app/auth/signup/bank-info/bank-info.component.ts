@@ -18,15 +18,15 @@ export class BankInfoComponent implements OnInit {
     constructor(private fb: FormBuilder, private msg: MessageService) {}
     ngOnInit(): void {
         this.bankDetails = this.fb.group({
-            name: ['', Validators.required],
+            accountHolderName: ['', Validators.required],
             accountType: ['', Validators.required],
-            ifscCode: ['', Validators.required],
+            ifsc: ['', Validators.required],
             accountNo: ['', Validators.required],
             // upi: ['', Validators.required],
             // SID: ['', Validators.required],
             // mid: ['', Validators.required],
             bankName: ['', Validators.required],
-            branchName: ['', Validators.required],
+            branch: ['', Validators.required],
             state: ['', Validators.required],
             district: ['', Validators.required],
             city: ['', Validators.required],
@@ -62,7 +62,6 @@ export class BankInfoComponent implements OnInit {
             state: data.state,
             district: data.district,
             city: data.city,
-            pinCode: data.pinCode,
         };
     }
 }
