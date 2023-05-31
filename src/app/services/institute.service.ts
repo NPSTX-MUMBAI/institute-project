@@ -1,21 +1,21 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
-
+import { InstituteInfoModel } from '../models/institute-info.model';
 @Injectable({
     providedIn: 'root',
 })
 export class InstituteService {
     constructor(private http: HttpClient) {}
 
-    createInstitute(data: any) {
-        return new Promise((resolve, reject) => {
-            this.http
-                .post(environment.url + '/school/createSchool', data)
+    createInstitute(instituteData: InstituteInfoModel) {
+        return new Promise(async (resolve, reject) => {
+            await this.http
+                .post(environment.url + '/school/createSchool', instituteData)
                 .subscribe(
                     (res: any) => {
                         if (res.status) {
-                            resolve(res.data);
+                            resolve(res);
                         } else {
                             resolve(res);
                         }

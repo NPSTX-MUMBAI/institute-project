@@ -12,6 +12,8 @@ interface Board {
 import { MessageService } from 'primeng/api';
 
 import { InstituteInfoModel } from 'src/app/models/institute-info.model';
+import { state } from '@angular/animations';
+import { InstituteService } from '../../../services/institute.service';
 
 @Component({
     selector: 'app-institute-info',
@@ -25,8 +27,13 @@ export class InstituteInfoComponent implements OnInit {
     // newBoardName: any;
 
     selectedBoard!: Board;
+    loading = false;
 
-    constructor(private fb: FormBuilder, private msg: MessageService) {
+    constructor(
+        private fb: FormBuilder,
+        private msg: MessageService,
+        private instSvc: InstituteService
+    ) {
         this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
     }
     ngOnInit(): void {
@@ -45,37 +52,78 @@ export class InstituteInfoComponent implements OnInit {
             boardType: ['', Validators.required],
         });
     }
-    submit() {
-        let myInstitute = this.InstituteInfo.value;
-        let selectedInsType =
-            this.InstituteInfo.get('instituteType')?.value.name;
-
-        let selectedBoard = this.InstituteInfo.get('boardType')?.value.name;
-
-        myInstitute.board = selectedBoard;
-
-        myInstitute.instituteType = selectedInsType;
-        console.log(myInstitute);
+    async submit() {
+        this.loading = true;
         if (this.InstituteInfo.invalid) {
             this.msg.add({
                 severity: 'error',
                 summary: 'Invalid',
-                detail: 'All fileds Required',
+                detail: 'All fields Required',
             });
             return;
         }
-        console.log(this.InstituteInfo.value);
-        const data = this.InstituteInfo.value;
-        const instituteInfoObj: InstituteInfoModel = {
-            instituteName: data.instituteName,
-            instituteType: data.instituteType,
-            institutePhone: data.institutePhone,
-            instituteWebsite: data.instituteWebsite,
-            instituteEmail: data.instituteEmail,
-            board: data.board,
-            address: data.address,
+
+        const myInstitute = this.InstituteInfo.value;
+        const selectedInsType =
+            this.InstituteInfo.get('instituteType')?.value.name;
+        const selectedBoard = this.InstituteInfo.get('boardType')?.value.name;
+
+        myInstitute.boardType = selectedBoard;
+        myInstitute.instituteType = selectedInsType;
+
+        const institutesAddress = {
+            line1: myInstitute.line1,
+            line2: myInstitute.line2,
+            pinCode: myInstitute.pinCode,
+            state: myInstitute.state,
+            city: myInstitute.city,
+            country: myInstitute.country,
         };
-        console.log(instituteInfoObj);
+
+        console.log(myInstitute, 'check thissss');
+
+        const instituteInfoObj: InstituteInfoModel = {
+            userId: 'da8b516ddcea1dd85c67',
+            instituteName: myInstitute.instituteName,
+            instituteType: myInstitute.instituteType,
+            institutePhone: myInstitute.institutePhone,
+            instituteWebsite: myInstitute.instituteWebsite,
+            instituteEmail: myInstitute.instituteEmail,
+            boardType: myInstitute.boardType,
+            address: institutesAddress,
+        };
+        console.log(instituteInfoObj, '<<<<<<<<<<<<');
+
+        if (instituteInfoObj) {
+            try {
+                const res: any = await this.instSvc.createInstitute(
+                    instituteInfoObj
+                );
+                if (res.status) {
+                    this.msg.add({
+                        severity: 'success',
+                        summary: 'Created',
+                        detail: 'Institute created successfully',
+                    });
+                    this.loading = false;
+                } else {
+                    this.msg.add({
+                        severity: 'warn',
+                        summary: 'error',
+                        detail: 'Something went wrong',
+                    });
+                    this.loading = false;
+                }
+                console.log(res);
+            } catch (error) {
+                this.msg.add({
+                    severity: 'warn',
+                    summary: 'error',
+                    detail: 'Something went wrong',
+                });
+                console.error(error);
+            }
+        }
     }
 
     instituteTypes = [
