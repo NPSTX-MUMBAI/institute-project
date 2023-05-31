@@ -1,4 +1,4 @@
-export interface BankInfo {
+export interface BankInfoModel {
     accountHolderName: string;
     accountType: ACCOUNT_TYPE;
     accountNo: string;
