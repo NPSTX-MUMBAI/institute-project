@@ -133,6 +133,13 @@
                     <input pInputTextarea id="email" rows="4" placeholder=" Enter your city" formControlName="city" />
 
                 </div>
+                <div class="field col-12 md:col-3">
+                    <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
+                    <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
+                        formControlName="pinCode" pattern="^\d{6}$" />
+
+
+                </div>
 
                 <!-- <div class="field col-12 md:col-3">
                     <label htmlFor="Center">Center</label>
@@ -152,7 +159,7 @@
                 </div> -->
 
             </div>
-            <button pButton pRipple label=" Submit" (click)="submit()"></button>
+            <button pButton pRipple label=" Submit" [loading]="loading" (click)="submit()"></button>
         </div>
 
 
