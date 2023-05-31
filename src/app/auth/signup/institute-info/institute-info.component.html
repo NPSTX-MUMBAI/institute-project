@@ -1,10 +1,3 @@
-<!--<div class="container" [style]="{
-    'display': 'flex',
-    'align-items': 'center',
-    'justify-content': 'center'
-}">      <div class="card" [style]="{'width':'60rem'}">
-<div class="col">-->
-
 <div class="container" [style]="{
     'display': 'flex',
     'align-items': 'center',
@@ -85,9 +78,6 @@
 
 
                     <div class="dropdown-wrapper">
-                        <!--
-                        <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board"
-                        optionLabel="name"  ></p-dropdown> -->
                         <p-dropdown [options]="board" formControlName="boardType" placeholder="Select a Board"
                             optionLabel="name">
                             <ng-template #renderTemplate3>
@@ -104,11 +94,6 @@
                             </ng-template>
                         </p-dropdown>
 
-                        <!-- <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board" optionLabel="name">
-                            <ng-template pTemplate="dropdown">
-                              <ng-container *ngTemplateOutlet="renderTemplate3"></ng-container>
-                            </ng-template>
-                          </p-dropdown> -->
 
                         <ng-template #renderTemplate3>
                             <div class="container">
@@ -124,10 +109,7 @@
                         </ng-template>
 
 
-                        <!-- <div class="add-board">
-                          <input type="text" formControlName="newBoard" [(ngModel)]="newBoardName" placeholder="Enter a new Board name">
-                          <button (click)="addBoard()">Add</button>
-                        </div> -->
+
                     </div>
                     <div *ngIf="InstituteInfo.controls['boardType'].touched && InstituteInfo.controls['boardType'].hasError('required')"
                         style="color: red; text-align: left; margin-top: 6px;">
