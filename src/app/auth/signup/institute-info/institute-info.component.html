@@ -38,8 +38,9 @@
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="type">Type<span class="text-red-600"> *</span></label>
-                    <p-dropdown [options]="dropdownItems" placeholder="Select a Type" optionLabel="name"
+                    <p-dropdown [options]="instituteTypes" placeholder="Select a Type" optionLabel="name"
                         formControlName="instituteType"></p-dropdown>
+
                     <div *ngIf="InstituteInfo.controls['instituteType'].touched && InstituteInfo.controls['instituteType'].hasError('required')"
                         style="color: red; text-align: left; margin-top: 6px;">
                         Type is required!
@@ -90,18 +91,18 @@
                         <!--
                         <p-dropdown [options]="board" [(ngModel)]="selectedBoard" placeholder="Select a Board"
                         optionLabel="name"  ></p-dropdown> -->
-                        <p-dropdown [options]="board" formControlName="board" placeholder="Select a Board"
+                        <p-dropdown [options]="board" formControlName="boardType" placeholder="Select a Board"
                             optionLabel="name">
                             <ng-template #renderTemplate3>
                                 <div class="container">
                                     <input (keyup)="onKeyUp()" style="width:10%"
                                         oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
                                         type="text" class="p-inputtext" #inputElement />
-                                    <button pButton type="button" class="p-button-text" (click)="addBoard(inputElement)"
+                                    <!-- <button pButton type="button" class="p-button-text" (click)="addBoard(inputElement)"
                                         style="margin-left: 10px;">
                                         <i class="pi pi-plus"></i>
                                         Add Board
-                                    </button>
+                                    </button> -->
                                 </div>
                             </ng-template>
                         </p-dropdown>
@@ -117,11 +118,11 @@
                                 <input (keyup)="onKeyUp()" style="width:10%"
                                     oninput="this.value = this.value.replace(/[^a-zA-Z0-9]/g, '').replace(/(\..*)\./g, '$1');"
                                     type="text" nz-input #inputElement />
-                                <button nz-button nzType="text" class="add-item" (click)="addBoard(inputElement)"
+                                <!-- <button nz-button nzType="text" class="add-item" (click)="addBoard(inputElement)"
                                     style="margin-left: 10px;">
                                     <em nz-icon nzType="plus"></em>
                                     Add Board
-                                </button>
+                                </button> -->
                             </div>
                         </ng-template>
 
@@ -131,7 +132,7 @@
                           <button (click)="addBoard()">Add</button>
                         </div> -->
                     </div>
-                    <div *ngIf="InstituteInfo.controls['board'].touched && InstituteInfo.controls['board'].hasError('required')"
+                    <div *ngIf="InstituteInfo.controls['boardType'].touched && InstituteInfo.controls['boardType'].hasError('required')"
                         style="color: red; text-align: left; margin-top: 6px;">
                         Type is required!
                     </div>
