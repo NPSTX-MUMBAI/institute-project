@@ -1,21 +1,14 @@
-body #important{
-    font-family: var(--font-family);
-   
-    color: black; 
-    background-image: url("https://images.pexels.com/photos/34088/pexels-photo.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940");
-   
-}
   .social-login img {
     width: 24px;
   }
   a {
     text-decoration: none;
+    
   }
-  
   .container {
     font-family: sans-serif;
     width: 530px;
-    height: 577px;
+    height: 522px;
     margin-left: auto;
     margin-right: auto;
     margin-top: 3em;
@@ -24,7 +17,13 @@ body #important{
     //background-color: #ffff;
     padding: 1.8rem;
     box-shadow: 2px 5px 20px rgba(0, 0, 0, 0.1);
-    background-color: rgba(229, 228, 255, 0.2);
+    //background-color: rgba(229, 228, 255, 0.2);
+    background-color: rgb(19 85 95 / 20%);
+    
+  }
+
+  .blur-effect{
+    filter:blur(0px);
   }
   
   .title {
@@ -51,7 +50,7 @@ body #important{
     flex-direction: column;
   }
   .email-login label {
-    color: rgb(170 166 166);
+    color: rgb(18, 17, 17);
   }
   
   input[type="text"],

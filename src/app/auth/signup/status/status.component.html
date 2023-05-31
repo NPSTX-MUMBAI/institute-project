@@ -1,4 +1,19 @@
 <p>status works!</p>
 
-<p-button (click)="route()" pRipple label="Go to Dashboard"></p-button>
+<div class="container" [style]="{
+    'display': 'flex',
+    'align-items': 'center',
+    'justify-content': 'center'
+}">
+
+     <div class="card" [style]="{'width':'75rem'}">
+        <div class="bar">
+            <div class="progress" style="width: 50%;"></div>
+
+          <h4> Status </h4>
+          <p-button (click)="route()" pRipple label="Go to Dashboard"></p-button>
+        </div>
+     </div>
+
+</div>
 
