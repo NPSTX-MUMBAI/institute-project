@@ -5,6 +5,8 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { BankInfoModel } from 'src/app/models/bank.info.model';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-bank-info',
@@ -13,7 +15,7 @@ import {
 })
 export class BankInfoComponent implements OnInit {
     bankDetails!: FormGroup;
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder, private msg: MessageService) {}
     ngOnInit(): void {
         this.bankDetails = this.fb.group({
             name: ['', Validators.required],
@@ -40,6 +42,27 @@ export class BankInfoComponent implements OnInit {
         { name: 'FD accoount', code: 'FD  accoount' },
     ];
     submit() {
+        if (this.bankDetails.invalid) {
+            this.msg.add({
+                severity: 'error',
+                summary: 'Invalid',
+                detail: 'All fileds Required',
+            });
+            return;
+        }
         console.log(this.bankDetails.value);
+        const data = this.bankDetails.value;
+        const bankDetailsObj: BankInfoModel = {
+            accountHolderName: data.accountHolderName,
+            accountType: data.accountType,
+            accountNo: data.accountNo,
+            ifsc: data.ifsc,
+            bankname: data.bankname,
+            branch: data.branch,
+            state: data.state,
+            district: data.district,
+            city: data.city,
+            pinCode: data.pinCode,
+        };
     }
 }

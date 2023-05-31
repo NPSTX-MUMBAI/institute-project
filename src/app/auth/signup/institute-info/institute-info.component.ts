@@ -9,6 +9,10 @@ import {
 interface Board {
     name: string;
 }
+import { MessageService } from 'primeng/api';
+
+import { InstituteInfoModel } from 'src/app/models/institute-info.model';
+
 @Component({
     selector: 'app-institute-info',
     templateUrl: './institute-info.component.html',
@@ -22,7 +26,7 @@ export class InstituteInfoComponent implements OnInit {
 
     selectedBoard!: Board;
 
-    constructor(private fb: FormBuilder) {
+    constructor(private fb: FormBuilder, private msg: MessageService) {
         this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
     }
     ngOnInit(): void {
@@ -52,6 +56,26 @@ export class InstituteInfoComponent implements OnInit {
 
         myInstitute.instituteType = selectedInsType;
         console.log(myInstitute);
+        if (this.InstituteInfo.invalid) {
+            this.msg.add({
+                severity: 'error',
+                summary: 'Invalid',
+                detail: 'All fileds Required',
+            });
+            return;
+        }
+        console.log(this.InstituteInfo.value);
+        const data = this.InstituteInfo.value;
+        const instituteInfoObj: InstituteInfoModel = {
+            instituteName: data.instituteName,
+            instituteType: data.instituteType,
+            institutePhone: data.institutePhone,
+            instituteWebsite: data.instituteWebsite,
+            instituteEmail: data.instituteEmail,
+            board: data.board,
+            address: data.address,
+        };
+        console.log(instituteInfoObj);
     }
 
     instituteTypes = [
