@@ -147,7 +147,9 @@
 
 
                 </div>
-                <button pButton pRipple label="Save" (click)="onSave()"></button>
+                <button *ngIf="this.personalGrp.invalid" [disabled]="true" pButton pRipple label="Save"></button>
+                <button *ngIf="this.personalGrp.valid" pButton pRipple label="Save" (click)="onSave()"></button>
+
 
             </form>
 
@@ -265,5 +267,6 @@
             </form> -->
         </div>
     </div>
+
 
 </div>

@@ -75,7 +75,7 @@ export class BankInfoComponent implements OnInit {
         };
 
         let myData = {
-            schoolId: '49e11f1af2ded6542ea9',
+            schoolId: '3133a7065cd763f64314',
             bank: bankDetailsObj,
         };
         console.log(myData, '<<<<<<');

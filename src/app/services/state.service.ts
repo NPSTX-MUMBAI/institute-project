@@ -5,6 +5,7 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
     private _applicationId!: string;
+    private _mobileNo: any;
 
     constructor() {}
 
@@ -16,6 +17,13 @@ export class StateService {
         return this._applicationId;
     }
 
+    public setUserMobileNo(number: string) {
+        this._mobileNo = number;
+    }
+    public getUserMobileNo() {
+        return this._mobileNo;
+    }
+
     public setUserData(key: string, userData: any) {
         localStorage.setItem(key, userData);
     }
@@ -25,4 +33,3 @@ export class StateService {
         return data;
     }
 }
-

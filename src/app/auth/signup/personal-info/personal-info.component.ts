@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
+import { StateService } from '../../../services/state.service';
 @Component({
     selector: 'app-personal-info',
     templateUrl: './personal-info.component.html',
@@ -15,7 +16,8 @@ export class PersonalInfoComponent implements OnInit {
         private fb: FormBuilder,
         private router: Router,
         private auth: AuthService,
-        private messageService: MessageService
+        private messageService: MessageService,
+        private stateSvc: StateService
     ) {}
 
     ngOnInit(): void {
@@ -82,6 +84,8 @@ export class PersonalInfoComponent implements OnInit {
                     .createUser(this.personalGrp.value)
                     .then((res: any) => {
                         if (res.status) {
+                            this.stateSvc.setUserMobileNo(user.mobileNo);
+
                             this.messageService.add({
                                 severity: 'success',
                                 summary: 'Success',

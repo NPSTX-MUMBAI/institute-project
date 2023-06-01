@@ -26,7 +26,7 @@ export class KycInfoComponent implements OnInit {
     @Input() kycData: any;
 
     @Output() onKycUpload = new EventEmitter();
-    schoolId = '49e11f1af2ded6542ea9';
+    schoolId = '3133a7065cd763f64314';
     isDisabled = true;
     PANformData = new FormData();
     aadhaarformData = new FormData();
