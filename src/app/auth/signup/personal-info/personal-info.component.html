@@ -3,7 +3,7 @@
             'align-items': 'center',
             'justify-content': 'center'
         }">
-    <div class="card" [style]="{'width':'75rem','height':'80%'}">
+    <div class="card" [style]="{'width':'75rem','height':'80%' }">
         <div class="col">
             <form class="pt-4" [formGroup]="personalGrp">
 
@@ -12,7 +12,7 @@
                         <label htmlFor="firstname2">Firstname<span class="text-red-600"> *</span></label>
 
                         <input pInputText id="firstname2" type="text" formControlName="firstName"
-                            placeholder="Firstname" pattern="^[A-Za-z ]{2,}$" />
+                            placeholder="Enter your first name" pattern="^[A-Za-z ]{2,}$" />
                         <div
                             *ngIf="personalGrp.controls['firstName'].touched && personalGrp.controls['firstName'].errors">
                             <div *ngIf="personalGrp.controls['firstName'].hasError('required')"
@@ -28,8 +28,8 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="lastname2">Lastname<span class="text-red-600"> *</span></label>
-                        <input pInputText id="lastname2" type="text" formControlName="lastName" placeholder="Lastname"
-                            pattern="^[A-Za-z ]{2,}$" />
+                        <input pInputText id="lastname2" type="text" formControlName="lastName"
+                            placeholder="Enter your last name" pattern="^[A-Za-z ]{2,}$" />
                         <div
                             *ngIf="personalGrp.controls['lastName'].touched && personalGrp.controls['lastName'].errors">
                             <div *ngIf="personalGrp.controls['lastName'].hasError('required')"
@@ -52,7 +52,8 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="email">Email <span class="text-red-600"> *</span></label>
-                        <input pInputTextarea id="email" rows="4" formControlName="email" placeholder="Email"
+                        <input pInputTextarea id="email" rows="4" formControlName="email"
+                            placeholder="Enter your email id"
                             pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
                         <div *ngIf="personalGrp.controls['email'].touched && personalGrp.controls['email'].errors">
                             <div *ngIf="personalGrp.controls['email'].hasError('required')"
@@ -68,10 +69,10 @@
                     </div>
                     <div class="field col-12 md:col-4">
                         <label htmlFor="phone">Mobile No <span class="text-red-600"> *</span></label>
-                        <input pInputText id="phone" type="text" formControlName="mobileNo" placeholder="Phone"
-                            minlength="10" maxlength="10" type="phone"
+                        <input pInputText id="phone" type="text" formControlName="mobileNo"
+                            placeholder="Enter your mobile number" minlength="10" maxlength="10" type="phone"
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                            placeholder="phone no" required pattern="[0-9 ]{10}" />
+                            required pattern="[0-9 ]{10}" />
                         <div
                             *ngIf="personalGrp.controls['mobileNo'].touched && personalGrp.controls['mobileNo'].errors">
                             <div *ngIf="personalGrp.controls['mobileNo'].hasError('required')"
@@ -142,9 +143,6 @@
                             <small class="tx-danger">Passwords do not match</small>
                         </div>
                     </div>
-
-
-
 
                 </div>
                 <button *ngIf="this.personalGrp.invalid" [disabled]="true" pButton pRipple label="Save"></button>

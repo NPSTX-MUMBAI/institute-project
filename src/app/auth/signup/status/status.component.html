@@ -1,4 +1,11 @@
-<p>status works!</p>
+<div class="container">
+    <h2>Details submitted successfully,Your profile under verification</h2>
+    <div style="margin-bottom: 50px;width:60%;margin-left: 20%;">
+        <p-messages [(value)]="messages1" [enableService]="false" [closable]="false"></p-messages>
+        <p-messages [(value)]="messages2" [enableService]="false" [closable]="false"></p-messages>
 
-<p-button (click)="route()" pRipple label="Go to Dashboard"></p-button>
-
+    </div>
+    <div style="margin-left:45%;">
+        <p-button (click)="route()" pRipple label="Go to Dashboard"></p-button>
+    </div>
+</div>
