@@ -4,6 +4,8 @@ import { KycService } from '../../services/kyc.service';
 import { OtpService } from '../../services/otp.service';
 import { MessageService } from 'primeng/api';
 
+import { FormBuilder, FormGroup } from '@angular/forms';
+
 @Component({
     selector: 'app-verify-otp',
     templateUrl: './verify-otp.component.html',
@@ -12,15 +14,33 @@ import { MessageService } from 'primeng/api';
 export class VerifyOtpComponent implements OnInit {
     userMobileNo: any;
 
+    otpGrp!: FormGroup;
+
     constructor(
         private stateSvc: StateService,
         private otpSvc: OtpService,
-        private msg: MessageService
+        private msg: MessageService,
+        private fb: FormBuilder
     ) {}
 
     ngOnInit(): void {
+        this.otpGrp = this.fb.group({
+            otp1: '',
+            otp2: '',
+            otp3: '',
+            otp4: '',
+        });
+
         this.userMobileNo = this.stateSvc.getUserMobileNo();
         console.log(this.userMobileNo);
+    }
+
+    sendOtp() {
+        console.log(this.otpGrp.value);
+        let otpData = this.otpGrp.value;
+        let myOtp = otpData.otp1 + otpData.otp2 + otpData.otp3 + otpData.otp4;
+
+        console.log(myOtp);
     }
 
     async submit() {

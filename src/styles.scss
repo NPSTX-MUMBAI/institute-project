@@ -21,6 +21,9 @@ $gutter: 1rem; //for primeflex grid system
 }
 .p-datatable .p-datatable-tbody > tr > td{
     height:60px !important;
- 
+
 }
 
+input[type=password]{
+    width: 480px !important;
+}
