@@ -47,20 +47,44 @@
          <div class="blur-effect">
         <div class="container">
 
-            <form>
+            <form [formGroup]="loginGrp">
                 <h2 class="title"> Log in</h2>
 
                 <div class="email-login">
                     <div class="field col-12 lg:col-12"></div>
                     <label for="mobile"> <b>Mobile No</b></label>
-                    <input type="text" placeholder="Enter mobile no" name="uname" required>
-                    <label for="psw"><b>Password</b></label>
-                    <input type="password" placeholder="Enter Password" name="psw" required>
+
+                    <input type="text" placeholder="Enter mobile no" name="uname" required appOnlyNumber maxlength="10" minlength="0" required
+                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                    pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no."
+                    pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
+                    <div
+                    *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
+                    <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
+                        style="color: red;text-align: left;margin-top: -22px;">
+                        Enter Mobile No!
+
+                    </div>
+                    </div>
+
+                    <!-- <label for="psw"><b>Password</b></label> -->
+                    <!--<input type="p-password" placeholder="Enter Password" name="psw" required id="password1" [toggleMask]="true"
+                    styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem">-->
+                    <label for="psw"><b>Password</b></label> 
+
+                    <p-password formControlName="password" id="password1" placeholder=" Enter Password" [toggleMask]="true"
+                    styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem "  ></p-password>
+                    
+
+                    <!-- <input type="password" placeholder="Enter mobile no" name="uname"  required placeholder="Enter mobile no."
+                    pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="password"> -->
+
+                
                 </div>
 
                 <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" (click)="signin()"></button>
                 <!--<a class="forget-pass" href="#">Forgot password?</a>-->
-
+ 
 
                 <p class="subtitle">Don't have an account? <a routerLink="/auth/signup"
                         class="font-medium no-underline ml-2 text-right cursor-pointer"
