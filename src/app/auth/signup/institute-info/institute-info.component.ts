@@ -83,7 +83,7 @@ export class InstituteInfoComponent implements OnInit {
         console.log(myInstitute, 'check thissss');
 
         const instituteInfoObj: InstituteInfoModel = {
-            userId: 'da8b516ddcea1dd85c67',
+            userId: 'd25ac5c19e3947b5e8be',
             instituteName: myInstitute.instituteName,
             instituteType: myInstitute.instituteType,
             institutePhone: myInstitute.institutePhone,
