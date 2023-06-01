@@ -1,13 +1,13 @@
-<div class="col-12" [style]="{
+<div class="col-12" class="container" [style]="{
     'display': 'flex',
     'align-items': 'center',
     'justify-content': 'center'
 }">
-    <div class="card" [style]="{'width':'75rem'}">
+    <div class="card" [style]="{'width':'75rem','height':'80%'}">
         <div class="pt-4" [formGroup]="bankDetails">
 
             <div class="p-fluid p-formgrid grid">
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="name">Account Holder's name<span class="text-red-600"> *</span></label>
                     <input pInputText id="name" type="text" placeholder=" Enter your account name"
                         formControlName="accountHolderName" pattern="^[A-Za-z ]{2,}$">
@@ -25,7 +25,7 @@
 
                 </div>
 
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="state">Account Type <span class="text-red-600"> *</span></label>
                     <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder=" Enter your account Type"
                         formControlName="accountType"></p-dropdown>
@@ -37,7 +37,7 @@
                 </div>
 
 
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="Accountno">Account no:<span class="text-red-600"> *</span></label>
                     <input pInputText id="Accountno" type="text" placeholder="Enter your account no"
                         formControlName="accountNo" pattern="^[0-9]{9,18}$">
@@ -86,7 +86,7 @@
                     <label htmlFor="MID">MID</label>
                     <input pInputText id="MID" type="text" placeholder=" Enter your MID" formControlName="mid">
                 </div> -->
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code"
                         formControlName="ifsc" pattern="^[A-Z]{4}[0][\d]{6}$" />
@@ -103,32 +103,32 @@
                     </div>
 
                 </div>
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="Bankname">Bank name</label>
                     <input pInputText id="Bankname" type="text" placeholder=" Enter your bank name"
                         formControlName="bankName">
 
 
                 </div>
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="Branchname">Branch name</label>
                     <input pInputTextarea id="Branchname" rows="4" placeholder=" Enter your branch name"
                         formControlName="branch" />
 
                 </div>
-                <div class=" field col-12 md:col-3">
+                <div class=" field col-12 md:col-4">
                     <label htmlFor="State">State </label>
                     <input pInputText id="State" type="text" placeholder=" Enter your state" formControlName="state">
 
                 </div>
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="District">District</label>
                     <input pInputText id="District" type="text" placeholder=" Enter your district"
                         formControlName="district" />
 
 
                 </div>
-                <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="email">City </label>
                     <input pInputTextarea id="email" rows="4" placeholder=" Enter your city" formControlName="city" />
 
