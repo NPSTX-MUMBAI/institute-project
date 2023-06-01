@@ -13,6 +13,7 @@ export class StatusComponent implements OnInit {
     messages1!: Message[];
 
     messages2!: Message[];
+    messages3!: Message[];
 
     instStatus = false;
 
@@ -79,6 +80,21 @@ export class StatusComponent implements OnInit {
                     {
                         severity: 'warn',
                         detail: 'Bank Details',
+                    },
+                ];
+            }
+            if (this.kycStatus == true) {
+                this.messages3 = [
+                    {
+                        severity: 'success',
+                        detail: 'Kyc Details',
+                    },
+                ];
+            } else {
+                this.messages3 = [
+                    {
+                        severity: 'warn',
+                        detail: 'Kyc Details',
                     },
                 ];
             }
