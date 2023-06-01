@@ -117,7 +117,7 @@
 
 
                     </div>
-                    <div class="field col-12 md:col-4">
+                    <!-- <div class="field col-12 md:col-4">
                         <label htmlFor="email">Confirm Password <span class="text-red-600"> *</span></label>
                         <input pInputTextarea id="email" rows="4" formControlName="confirmPassword"
                             placeholder="Email" />
@@ -128,7 +128,21 @@
                             </div>
 
                         </div>
+                    </div> -->
+                    <div class="field col-3 lg:col-4 md:col-3">
+                        <label for="firstname2">Confirm Password<span class="text-red-600"> *</span></label>
+
+                        <div class="p-inputgroup">
+
+                            <p-password [toggleMask]="true" [feedback]="false" formControlName="confirmPassword"
+                                placeholder=" Enter your confirm password" [style]="{'width':'100%'}"></p-password>
+                        </div>
+
+                        <div *ngIf="personalGrp.errors?.['mismatch']">
+                            <small class="tx-danger">Passwords do not match</small>
+                        </div>
                     </div>
+
 
 
 
