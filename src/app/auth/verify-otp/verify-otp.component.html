@@ -9,31 +9,34 @@
 
 <body>
     <form [formGroup]="otpGrp">
-        <div class="container d-flex justify-content-center align-items-center">
+        <div class="container">
 
             <div class="card text-center">
 
-                <div class="input-container d-flex flex-row justify-content-center mt-2">
+                <p style="color: red;font-size: 17px;margin-top:7px;">Please enter the one time password to verify
+                    your account</p>
+                <p style="font-size: 15px;">A code has been sent to ******1492</p>
+                <div class="input-container d-flex flex-row justify-content-center mt-2" style="margin-top: 60px;">
                     <input type="text" #txt1 class="m-1 text-center form-control rounded" maxlength="1"
-                        formControlName="otp1">
+                        (input)="eventHandler($event,0)" formControlName="otp1">
                     <input type="text" #txt2 class="m-1 text-center form-control rounded" maxlength="1"
-                        formControlName="otp2">
+                        (input)="eventHandler($event,1)" formControlName="otp2">
                     <input type="text" #txt3 class="m-1 text-center form-control rounded" maxlength="1"
-                        formControlName="otp3">
+                        (input)="eventHandler($event,2)" formControlName="otp3">
                     <input type="text" #txt4 class="m-1 text-center form-control rounded" maxlength="1"
-                        formControlName="otp4">
+                        (input)="eventHandler($event, 3); onKeyUp(3)" formControlName="otp4">
 
                 </div>
 
-                <div>
-                    <small>
-                        didn't get the otp
+                <div style="margin-top: 20px;">
+                    <p style="font-size: 13px;">
+                        Didn't get the otp
                         <a href="#" class="text-decoration-none">Resend</a>
-                    </small>
+                    </p>
                 </div>
 
                 <div class="mt-3 mb-5">
-                    <button class="btn btn-success px-4 verify-btn" (click)="sendOtp()">verify</button>
+                    <button class="btn btn-success px-4 verify-btn" (click)="sendOtp()">Verify</button>
                 </div>
 
             </div>
