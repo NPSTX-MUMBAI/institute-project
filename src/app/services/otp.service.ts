@@ -13,7 +13,7 @@ export class OtpService {
     verifyOtp(data: any) {
         return new Promise((resolve, reject) => {
             this.http
-                .post(environment.url + 'otp/verfied/user', data)
+                .post(environment.url + 'otp/verified/user', data)
                 .subscribe(
                     (res: any) => {
                         if (res.status) {
