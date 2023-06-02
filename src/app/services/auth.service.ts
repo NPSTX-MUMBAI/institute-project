@@ -30,7 +30,7 @@ export class AuthService {
                     if (res.status) {
                         resolve(res);
                     } else {
-                        reject(res);
+                        resolve(res);
                     }
                 },
                 (error) => {

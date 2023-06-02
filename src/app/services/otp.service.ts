@@ -11,11 +11,13 @@ export class OtpService {
     constructor(private http: HttpClient, private stateSvc: StateService) {}
 
     verifyOtp(data: any) {
+        console.log(data);
         return new Promise((resolve, reject) => {
             this.http
-                .post(environment.url + 'otp/verified/user', data)
+                .post(environment.url + '/otp/verified/user', data)
                 .subscribe(
                     (res: any) => {
+                        console.log(res);
                         if (res.status) {
                             resolve(res);
                         } else {

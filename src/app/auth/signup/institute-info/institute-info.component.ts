@@ -14,6 +14,7 @@ import { MessageService } from 'primeng/api';
 import { InstituteInfoModel } from 'src/app/models/institute-info.model';
 import { state } from '@angular/animations';
 import { InstituteService } from '../../../services/institute.service';
+import { StateService } from '../../../services/state.service';
 
 @Component({
     selector: 'app-institute-info',
@@ -32,7 +33,8 @@ export class InstituteInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private msg: MessageService,
-        private instSvc: InstituteService
+        private instSvc: InstituteService,
+        private stateSvc: StateService
     ) {
         this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
     }
@@ -53,6 +55,8 @@ export class InstituteInfoComponent implements OnInit {
         });
     }
     async submit() {
+        let myUserId: any = this.stateSvc.getUserId();
+
         this.loading = true;
         if (this.InstituteInfo.invalid) {
             this.msg.add({
@@ -60,6 +64,8 @@ export class InstituteInfoComponent implements OnInit {
                 summary: 'Invalid',
                 detail: 'All fields Required',
             });
+            this.loading = false;
+
             return;
         }
 
@@ -83,7 +89,7 @@ export class InstituteInfoComponent implements OnInit {
         console.log(myInstitute, 'check thissss');
 
         const instituteInfoObj: InstituteInfoModel = {
-            userId: '3ef8ee0751a09c9f8f68',
+            userId: myUserId,
             instituteName: myInstitute.instituteName,
             instituteType: myInstitute.instituteType,
             institutePhone: myInstitute.institutePhone,
@@ -105,7 +111,10 @@ export class InstituteInfoComponent implements OnInit {
                         summary: 'Created',
                         detail: 'Institute created successfully',
                     });
+
                     this.loading = false;
+
+                    this.stateSvc.setSchoolId(res.data.schoolId);
                 } else {
                     this.msg.add({
                         severity: 'warn',
@@ -121,6 +130,8 @@ export class InstituteInfoComponent implements OnInit {
                     summary: 'error',
                     detail: 'Something went wrong',
                 });
+                this.loading = false;
+
                 console.error(error);
             }
         }

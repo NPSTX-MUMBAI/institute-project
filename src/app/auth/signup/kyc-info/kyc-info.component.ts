@@ -50,7 +50,7 @@ export class KycInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private messageService: MessageService,
-        private stateSrv: StateService,
+        private stateSvc: StateService,
         private kycSvc: KycService
     ) {
         this.kycGrp = fb.group({
@@ -73,6 +73,8 @@ export class KycInfoComponent implements OnInit {
     ngOnInit(): void {}
 
     gstDetailsUpload(event: any, fileUpload: any) {
+        let mySchoolId = this.stateSvc.getSchoolId();
+
         if (this.kycGrp.controls['gst'].invalid) {
             this.messageService.add({
                 severity: 'info',
@@ -80,7 +82,7 @@ export class KycInfoComponent implements OnInit {
                 detail: 'gst Number Required',
             });
         } else {
-            this.gstformData.append('schoolId', this.schoolId.toString());
+            this.gstformData.append('schoolId', mySchoolId.toString());
             this.gstformData.append(
                 'number',
                 this.kycGrp.controls['gst'].value || ''
@@ -111,6 +113,7 @@ export class KycInfoComponent implements OnInit {
     }
 
     regDocUpload(event: any, fileUpload: any) {
+        let mySchoolId = this.stateSvc.getSchoolId();
         if (this.kycGrp.controls['reg'].invalid) {
             this.messageService.add({
                 severity: 'info',
@@ -118,7 +121,7 @@ export class KycInfoComponent implements OnInit {
                 detail: 'gst Number Required',
             });
         } else {
-            this.regformData.append('schoolId', this.schoolId.toString());
+            this.regformData.append('schoolId', mySchoolId.toString());
             this.regformData.append(
                 'number',
                 this.kycGrp.controls['reg'].value || ''
@@ -149,6 +152,7 @@ export class KycInfoComponent implements OnInit {
     }
 
     aadharUpload(event: any) {
+        let mySchoolId = this.stateSvc.getSchoolId();
         // console.log(event.files[0]);
 
         if (this.kycGrp.controls['aadhar'].invalid) {
@@ -158,7 +162,7 @@ export class KycInfoComponent implements OnInit {
                 detail: 'Aadhar  Number Required',
             });
         } else {
-            this.aadhaarformData.append('schoolId', this.schoolId.toString());
+            this.aadhaarformData.append('schoolId', mySchoolId.toString());
             this.aadhaarformData.append(
                 'number',
                 this.kycGrp.controls['aadhar'].value || ''
@@ -189,6 +193,7 @@ export class KycInfoComponent implements OnInit {
     }
 
     panDetailsUpload(event: any, fileUpload: any) {
+        let mySchoolId = this.stateSvc.getSchoolId();
         console.log(event);
 
         if (this.kycGrp.controls['panNo'].invalid) {
@@ -198,7 +203,7 @@ export class KycInfoComponent implements OnInit {
                 detail: 'Pan Card Number Required',
             });
         } else {
-            this.PANformData.append('schoolId', this.schoolId.toString());
+            this.PANformData.append('schoolId', mySchoolId.toString());
             this.PANformData.append(
                 'number',
                 this.kycGrp.controls['panNo'].value || ''
@@ -224,7 +229,7 @@ export class KycInfoComponent implements OnInit {
                 event,
                 type: DOCUMENT_TYPE.PANCARD,
                 value: this.kycGrp.controls['panNo'].value,
-                schoolId: this.schoolId,
+                schoolId: mySchoolId,
             });
         }
     }

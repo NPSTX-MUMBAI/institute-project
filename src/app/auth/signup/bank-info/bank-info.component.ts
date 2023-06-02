@@ -8,6 +8,7 @@ import {
 import { BankInfoModel } from 'src/app/models/bank.info.model';
 import { MessageService } from 'primeng/api';
 import { BankService } from 'src/app/services/bank.service';
+import { StateService } from '../../../services/state.service';
 
 @Component({
     selector: 'app-bank-info',
@@ -20,7 +21,8 @@ export class BankInfoComponent implements OnInit {
     constructor(
         private fb: FormBuilder,
         private msg: MessageService,
-        private bankSvc: BankService
+        private bankSvc: BankService,
+        private stateSvc: StateService
     ) {}
     ngOnInit(): void {
         this.bankDetails = this.fb.group({
@@ -50,6 +52,7 @@ export class BankInfoComponent implements OnInit {
         { name: 'FD accoount', code: 'FD  accoount' },
     ];
     async submit() {
+        let mySchoolId = this.stateSvc.getSchoolId();
         this.loading = true;
         if (this.bankDetails.invalid) {
             this.msg.add({
@@ -75,7 +78,7 @@ export class BankInfoComponent implements OnInit {
         };
 
         let myData = {
-            schoolId: '3133a7065cd763f64314',
+            schoolId: mySchoolId,
             bank: bankDetailsObj,
         };
         console.log(myData, '<<<<<<');

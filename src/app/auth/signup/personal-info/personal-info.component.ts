@@ -103,11 +103,6 @@ export class PersonalInfoComponent implements OnInit {
                             });
                         }
                     });
-                this.messageService.add({
-                    severity: 'success',
-                    summary: 'Success',
-                    detail: 'user created successfully',
-                });
             }
         } catch (error) {
             this.messageService.add({
