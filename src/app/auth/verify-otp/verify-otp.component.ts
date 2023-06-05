@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, OnInit, Output } from '@angular/core';
 import { StateService } from '../../services/state.service';
 import { KycService } from '../../services/kyc.service';
 import { OtpService } from '../../services/otp.service';
@@ -14,6 +14,9 @@ import { Router } from '@angular/router';
 })
 export class VerifyOtpComponent implements OnInit {
     userMobileNo: any;
+    otp: string[] = ['', '', '', ''];
+    errorArray: boolean[] = [false, false, false, false];
+    @Output() onOtpChange = new EventEmitter<string>();
 
     otpGrp!: FormGroup;
     OTP: any;
@@ -80,6 +83,43 @@ export class VerifyOtpComponent implements OnInit {
             console.error(error);
         }
     }
+    onKeyUp(index: number) {
+        if (index === 3) {
+            let otp =
+                this.otpGrp.controls['otp1'].value +
+                this.otpGrp.controls['otp2'].value +
+                this.otpGrp.controls['otp3'].value +
+                this.otpGrp.controls['otp4'].value;
+            console.log(otp);
+        }
+    }
 
-    async submit() {}
+    eventHandler(event: any, index: number) {
+        if (event.inputType == 'insertText') {
+            const value = event.target.value;
+            if (!isNaN(value)) {
+                console.log(value);
+                this.otp[index] = value;
+                this.errorArray[index] = false;
+                this.onOtpChange.emit(this.otp.join(''));
+                if (value.length > 0 && index < 3) {
+                    const nextInput = event.target.nextElementSibling;
+                    if (nextInput) {
+                        nextInput.focus();
+                    }
+                }
+            } else {
+                event.target.value = '';
+                this.otp[index] = '';
+                this.errorArray[index] = true;
+                this.onOtpChange.emit('');
+            }
+        }
+        if (event.inputType == 'deleteContentBackward') {
+            const PrevInput = event.target.previousElementSibling;
+            if (PrevInput) {
+                PrevInput.focus();
+            }
+        }
+    }
 }
