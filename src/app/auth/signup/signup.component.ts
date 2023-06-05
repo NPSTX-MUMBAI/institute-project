@@ -12,4 +12,16 @@ export class SignupComponent {
     businessInfoComplete: boolean = false;
     bankInfoComplete: boolean = false;
     kycInfoComplete: boolean = false;
+
+    async onSavePersonalInfo(event: any) {
+        console.log(event, 'child event 1');
+    }
+
+    async onSaveInstInfo(event: any) {
+        console.log(event, 'child event 2');
+    }
+
+    async onSaveBankInfo(event: any) {
+        console.log(event, 'child event 3');
+    }
 }

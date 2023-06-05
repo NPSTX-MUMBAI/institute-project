@@ -11,6 +11,8 @@ import { StateService } from '../../../services/state.service';
     styleUrls: ['./personal-info.component.scss'],
 })
 export class PersonalInfoComponent implements OnInit {
+    @Output() onSavePersonalInfo = new EventEmitter();
+
     personalGrp!: FormGroup;
     constructor(
         private fb: FormBuilder,
@@ -91,6 +93,7 @@ export class PersonalInfoComponent implements OnInit {
                                 summary: 'Success',
                                 detail: 'user created successfully',
                             });
+                            this.onSavePersonalInfo.emit(this.personalGrp.value)
 
                             setTimeout(() => {
                                 this.router.navigate(['auth/otp']);

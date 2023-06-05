@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
     FormGroup,
     FormControl,
@@ -22,6 +22,9 @@ import { StateService } from '../../../services/state.service';
     styleUrls: ['./institute-info.component.scss'],
 })
 export class InstituteInfoComponent implements OnInit {
+    @Output() onSaveInstInfo = new EventEmitter();
+
+
     InstituteInfo!: FormGroup;
 
     board!: Board[];
@@ -113,6 +116,7 @@ export class InstituteInfoComponent implements OnInit {
                     });
 
                     this.loading = false;
+                    this.onSaveInstInfo.emit(instituteInfoObj)
 
                     this.stateSvc.setSchoolId(res.data.schoolId);
                 } else {
@@ -160,4 +164,5 @@ export class InstituteInfoComponent implements OnInit {
     onKeyUp() {
         console.log('object');
     }
+ 
 }

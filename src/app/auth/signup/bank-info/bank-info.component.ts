@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, Output, EventEmitter } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
@@ -16,6 +16,9 @@ import { StateService } from '../../../services/state.service';
     styleUrls: ['./bank-info.component.scss'],
 })
 export class BankInfoComponent implements OnInit {
+
+    @Output() onSaveBankInfo = new EventEmitter();
+
     bankDetails!: FormGroup;
     loading = false;
     constructor(
@@ -92,6 +95,9 @@ export class BankInfoComponent implements OnInit {
                         summary: 'Created',
                         detail: 'Bank created successfully',
                     });
+
+                    this.onSaveBankInfo.emit(myData)
+
                     this.loading = false;
                 } else {
                     this.msg.add({
