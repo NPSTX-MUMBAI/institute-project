@@ -13,7 +13,7 @@ import { Router } from '@angular/router';
     styleUrls: ['./verify-otp.component.scss'],
 })
 export class VerifyOtpComponent implements OnInit {
-    userMobileNo: any;
+    userMobileNo : any;
     otp: string[] = ['', '', '', ''];
     errorArray: boolean[] = [false, false, false, false];
     @Output() onOtpChange = new EventEmitter<string>();
@@ -37,7 +37,9 @@ export class VerifyOtpComponent implements OnInit {
             otp4: '',
         });
 
-        this.userMobileNo = this.stateSvc.getUserMobileNo();
+         this.userMobileNo = this.stateSvc.getUserData('userMobile');
+
+        this.userMobileNo = this.userMobileNo.slice(-4);
         console.log(this.userMobileNo);
     }
 
@@ -56,7 +58,7 @@ export class VerifyOtpComponent implements OnInit {
         try {
             const res: any = await this.otpSvc.verifyOtp(data);
             if (res.status) {
-                this.stateSvc.setUserId(res.data);
+                this.stateSvc.setUserData('userId', res.data)
                 this.msg.add({
                     severity: 'success',
                     summary: 'Created',

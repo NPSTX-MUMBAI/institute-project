@@ -73,7 +73,7 @@ export class KycInfoComponent implements OnInit {
     ngOnInit(): void {}
 
     gstDetailsUpload(event: any, fileUpload: any) {
-        let mySchoolId = this.stateSvc.getSchoolId();
+        let mySchoolId: any = this.stateSvc.getUserData('schoolId');
 
         if (this.kycGrp.controls['gst'].invalid) {
             this.messageService.add({
@@ -113,7 +113,7 @@ export class KycInfoComponent implements OnInit {
     }
 
     regDocUpload(event: any, fileUpload: any) {
-        let mySchoolId = this.stateSvc.getSchoolId();
+        let mySchoolId: any = this.stateSvc.getUserData('schoolId');
         if (this.kycGrp.controls['reg'].invalid) {
             this.messageService.add({
                 severity: 'info',
@@ -152,7 +152,7 @@ export class KycInfoComponent implements OnInit {
     }
 
     aadharUpload(event: any) {
-        let mySchoolId = this.stateSvc.getSchoolId();
+        let mySchoolId: any = this.stateSvc.getUserData('schoolId');
         // console.log(event.files[0]);
 
         if (this.kycGrp.controls['aadhar'].invalid) {
@@ -193,7 +193,8 @@ export class KycInfoComponent implements OnInit {
     }
 
     panDetailsUpload(event: any, fileUpload: any) {
-        let mySchoolId = this.stateSvc.getSchoolId();
+        let mySchoolId: any = this.stateSvc.getUserData('schoolId');
+
         console.log(event);
 
         if (this.kycGrp.controls['panNo'].invalid) {

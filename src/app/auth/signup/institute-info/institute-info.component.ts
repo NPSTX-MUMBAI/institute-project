@@ -24,7 +24,6 @@ import { StateService } from '../../../services/state.service';
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
 
-
     InstituteInfo!: FormGroup;
 
     board!: Board[];
@@ -58,7 +57,7 @@ export class InstituteInfoComponent implements OnInit {
         });
     }
     async submit() {
-        let myUserId: any = this.stateSvc.getUserId();
+        let myUserId: any = this.stateSvc.getUserData('userId');
 
         this.loading = true;
         if (this.InstituteInfo.invalid) {
@@ -116,9 +115,9 @@ export class InstituteInfoComponent implements OnInit {
                     });
 
                     this.loading = false;
-                    this.onSaveInstInfo.emit(instituteInfoObj)
+                    this.onSaveInstInfo.emit(instituteInfoObj);
 
-                    this.stateSvc.setSchoolId(res.data.schoolId);
+                    this.stateSvc.setUserData('schoolId', res.data.schoolId);
                 } else {
                     this.msg.add({
                         severity: 'warn',
@@ -164,5 +163,4 @@ export class InstituteInfoComponent implements OnInit {
     onKeyUp() {
         console.log('object');
     }
- 
 }

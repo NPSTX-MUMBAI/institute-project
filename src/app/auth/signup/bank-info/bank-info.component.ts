@@ -55,7 +55,7 @@ export class BankInfoComponent implements OnInit {
         { name: 'FD accoount', code: 'FD  accoount' },
     ];
     async submit() {
-        let mySchoolId = this.stateSvc.getSchoolId();
+        let mySchoolId = this.stateSvc.getUserData('schoolId')
         this.loading = true;
         if (this.bankDetails.invalid) {
             this.msg.add({

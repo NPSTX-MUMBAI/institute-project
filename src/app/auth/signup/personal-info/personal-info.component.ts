@@ -82,35 +82,12 @@ export class PersonalInfoComponent implements OnInit {
                 let user: any = this.personalGrp.value;
                 delete user.confirmPassword;
 
-                this.auth
-                    .createUser(this.personalGrp.value)
-                    .then((res: any) => {
-                        if (res.status) {
-                            this.stateSvc.setUserMobileNo(user.mobileNo);
-
-                            this.messageService.add({
-                                severity: 'success',
-                                summary: 'Success',
-                                detail: 'user created successfully',
-                            });
-                            this.onSavePersonalInfo.emit(this.personalGrp.value)
-
-                            setTimeout(() => {
-                                this.router.navigate(['auth/otp']);
-                            }, 500);
-                        } else {
-                            this.messageService.add({
-                                severity: 'warn',
-                                summary: 'warn',
-                                detail: 'user already exists',
-                            });
-                        }
-                    });
+                this.onSavePersonalInfo.emit(this.personalGrp.value);
             }
         } catch (error) {
             this.messageService.add({
-                severity: 'success',
-                summary: 'Success',
+                severity: 'warn',
+                summary: 'error',
                 detail: 'message',
             });
         }
