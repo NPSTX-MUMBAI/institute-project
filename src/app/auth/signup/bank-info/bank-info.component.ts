@@ -87,35 +87,9 @@ export class BankInfoComponent implements OnInit {
         console.log(myData, '<<<<<<');
 
         if (myData) {
-            try {
-                const res: any = await this.bankSvc.createBank(myData);
-                if (res.status) {
-                    this.msg.add({
-                        severity: 'success',
-                        summary: 'Created',
-                        detail: 'Bank created successfully',
-                    });
+            this.onSaveBankInfo.emit(myData)
 
-                    this.onSaveBankInfo.emit(myData)
-
-                    this.loading = false;
-                } else {
-                    this.msg.add({
-                        severity: 'warn',
-                        summary: 'error',
-                        detail: 'Something went wrong',
-                    });
-                    this.loading = false;
-                }
-                console.log(res);
-            } catch (error) {
-                this.msg.add({
-                    severity: 'warn',
-                    summary: 'error',
-                    detail: 'Something went wrong',
-                });
-                console.error(error);
-            }
+           
         }
     }
 }

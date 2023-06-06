@@ -103,40 +103,7 @@ export class InstituteInfoComponent implements OnInit {
         console.log(instituteInfoObj, '<<<<<<<<<<<<');
 
         if (instituteInfoObj) {
-            try {
-                const res: any = await this.instSvc.createInstitute(
-                    instituteInfoObj
-                );
-                if (res.status) {
-                    this.msg.add({
-                        severity: 'success',
-                        summary: 'Created',
-                        detail: 'Institute created successfully',
-                    });
-
-                    this.loading = false;
-                    this.onSaveInstInfo.emit(instituteInfoObj);
-
-                    this.stateSvc.setUserData('schoolId', res.data.schoolId);
-                } else {
-                    this.msg.add({
-                        severity: 'warn',
-                        summary: 'error',
-                        detail: 'Something went wrong',
-                    });
-                    this.loading = false;
-                }
-                console.log(res);
-            } catch (error) {
-                this.msg.add({
-                    severity: 'warn',
-                    summary: 'error',
-                    detail: 'Something went wrong',
-                });
-                this.loading = false;
-
-                console.error(error);
-            }
+            this.onSaveInstInfo.emit(instituteInfoObj);
         }
     }
 
