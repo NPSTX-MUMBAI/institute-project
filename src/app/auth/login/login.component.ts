@@ -13,6 +13,7 @@ import { StateService } from '../../services/state.service';
 export class LoginComponent implements OnInit {
     loginGrp!: FormGroup;
     loading = false;
+
     constructor(
         private router: Router,
         private fb: FormBuilder,
@@ -25,8 +26,8 @@ export class LoginComponent implements OnInit {
         localStorage.clear();
 
         this.loginGrp = this.fb.group({
-            mobileNo: ['8108587537', Validators.required],
-            password: ['Shoaib@123', Validators.required],
+            mobileNo: ['7738195474', Validators.required],
+            password: ['Shivani@123', Validators.required],
         });
     }
 
@@ -42,7 +43,7 @@ export class LoginComponent implements OnInit {
             this.msgSvc.add({
                 severity: 'error',
                 summary: 'incorrect data',
-                detail: 'Enter proper email and password',
+                detail: 'Enter proper mobile No and password',
             });
             this.loading = false;
         } else {

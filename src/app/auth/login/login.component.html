@@ -1,168 +1,73 @@
-<!--<div>
-    <form [formGroup]="loginGrp">
-        <div class="flex flex-column align-items-center justify-content-center">
+<section class="section">
+    <div class="main">
 
-            <div
-                style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
-                <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-                    <div class="text-center mb-5">
+        <div class="intro-section">
+            <h6 class="intro-heading">Welcome</h6>
+            <p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe dignissimos officia
+                sint animi voluptatum est praesentium nostrum, iusto earum fugit.</p>
+            <section class="side">
+                <img src="../../../assets/layout/images/Thesis-pana.svg" alt="school">
+            </section>
+        </div>
+        <form [formGroup]="loginGrp">
+            <div class="sign-section">
 
-                        <div class="text-900 text-3xl font-medium mb-3"></div>
-                        <span class="text-600 font-medium">Sign in to continue</span>
-                    </div>
+                <div class="sign-block">
+                    <h3 class="sign-heading">Sign in here</h3>
+                    <div class="input-block">
 
-                    <div>
-                        <label for="mobileNo" class="block text-900 text-xl font-medium mb-2">Enter Mobile no.</label>
-                        <input type="text" appOnlyNumber maxlength="10" minlength="0" required
+                        <input type="phone" class="input" placeholder="| &nbsp;Phone" name="phone"
+                            formControlName="mobileNo" required appOnlyNumber maxlength="10" minlength="0" required
                             oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                            pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no."
-                            pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
+                            pattern="[- +()0-9]{10,12}">
 
                         <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
                             <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
-                                style="color: red;text-align: left;">
+                                style="color: red;margin-bottom: 10px;">
                                 Enter Mobile No!
 
                             </div>
-                            <div *ngIf="loginGrp.controls['mobileNo'].hasError('pattern')"
-                                style="color: red;text-align: left;">
-                                Enter Valid Mobile No!
-                            </div>
                         </div>
-                        <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
-                        <p-password formControlName="password" id="password1" placeholder="Password" [toggleMask]="true"
-                            styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
 
-                        <div *ngIf="loginGrp.controls['password'].touched">
-                            <div *ngIf="loginGrp.controls['password'].hasError('required')"
-                                style="color: red;text-align: left;">
-                                Enter Your Password
 
-                            </div>
+                        <input type="password" class="input" placeholder="| &nbsp;Password" id="pwd"
+                            formControlName="password">
+
+
+
+                        <div
+                            *ngIf="loginGrp.controls['password'].invalid && (loginGrp.controls['password'].dirty || loginGrp.controls['password'].touched)">
+                            <span
+                                *ngIf="loginGrp.controls['password'].errors?.['required'] && loginGrp.controls['password'].touched"
+                                style="color:red"> Enter your password</span>
+                            <span
+                                *ngIf="loginGrp.controls['password'].errors?.['password'] && loginGrp.controls['password'].touched"
+                                style="color:red">Invalid password</span>
 
                         </div>
-                        <button pButton pRipple label="Sign In" [loading]="loading" class="w-full p-3 text-xl"
-                            (click)="signin()"></button>
-
-                        <br>
-
-                        <p>Not a user? <a routerLink="/auth/signup"
-                                class="font-medium no-underline ml-2 text-right cursor-pointer"
-                                style="color: var(--primary-color)">Sign up</a> </p>
-
 
                     </div>
+
+                    <div class="password-block">
+                        <div>
+                            <p>Not a user? <a routerLink="/auth/signup"
+                                    class="font-medium no-underline ml-2 text-right cursor-pointer"
+                                    style="color: var(--primary-color)">Sign up</a> </p>
+
+                        </div>
+
+                        <a class="password-link" href="#">Forgot password..?</a>
+                    </div>
+
+                    <button class="sign-button" pButton pRipple label="Sign In" (click)="signin()"></button>
+
+                    <!--<button pButton pRipple label="Sign In" [loading]="loading" class="w-full p-3 text-xl"
+                           (click)="signin()"></button>-->
                 </div>
             </div>
-        </div>
-    </form>
-</div>-->
 
+        </form>
 
-<!--<img scr="assets/image/school12.gif">-->
-
-<div style="width: 100%; height: 100%;padding: 57.5px 0px;
-    background-image: linear-gradient(to right,rgb(173, 233, 255),rgb(229, 171, 232));">
-    <div class="blur-effect">
-        <div class="container">
-
-            <form [formGroup]="loginGrp">
-                <h2 class="title"> Log in</h2>
-
-                <div class="email-login">
-                    <div class="field col-12 lg:col-12"></div>
-                    <label for="mobile"> <b>Mobile No</b></label>
-
-                    <input type="text" placeholder="Enter mobile no" name="uname" required appOnlyNumber maxlength="10"
-                        minlength="0" required
-                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                        pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no." pInputText
-                        class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
-                    <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
-                        <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
-                            style="color: red;text-align: left;margin-top: -22px;">
-                            Enter Mobile No!
-
-                        </div>
-                    </div>
-
-                    <!-- <label for="psw"><b>Password</b></label> -->
-                    <!--<input type="p-password" placeholder="Enter Password" name="psw" required id="password1" [toggleMask]="true"
-                    styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem">-->
-                    <label for="psw"><b>Password</b></label>
-
-                    <p-password formControlName="password" id="password1" placeholder=" Enter Password"
-                        [toggleMask]="true" styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem "></p-password>
-
-
-                    <!-- <input type="password" placeholder="Enter mobile no" name="uname"  required placeholder="Enter mobile no."
-                    pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="password"> -->
-
-
-                </div>
-
-                <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" (click)="signin()"></button>
-                <!--<a class="forget-pass" href="#">Forgot password?</a>-->
-
-
-                <p class="subtitle">Don't have an account? <a routerLink="/auth/signup"
-                        class="font-medium no-underline ml-2 text-right cursor-pointer"
-                        style="color: var(--primary-color)">
-                        Sign Up</a>
-                </p>
-
-            </form>
-        </div>
     </div>
-</div>
 
-
-
-
-<div>
-    <form [formGroup]="loginGrp">
-        <div class="flex flex-column align-items-center justify-content-center">
-
-            <div
-                style="border-radius:56px; padding:0.3rem; background: linear-gradient(180deg, var(--primary-color) 10%, rgba(33, 150, 243, 0) 30%);">
-                <div class="w-full surface-card py-8 px-5 sm:px-8" style="border-radius:53px">
-                    <div class="text-center mb-5">
-
-                        <div class="text-900 text-3xl font-medium mb-3"></div>
-                        <span class="text-600 font-medium">Sign in to continue</span>
-                    </div>
-
-                    <div>
-                        <label for="mobileNo" class="block text-900 text-xl font-medium mb-2">Enter Mobile no.</label>
-                        <input type="text" appOnlyNumber maxlength="10" minlength="0" required
-                            pattern="[- +()0-9]{10,12}" id="mobileNo" type="text" placeholder="Enter mobile no."
-                            pInputText class="w-full md:w-30rem mb-5" style="padding:1rem" formControlName="mobileNo">
-
-                        <label for="password1" class="block text-900 font-medium text-xl mb-2">Password</label>
-                        <p-password formControlName="password" id="password1" placeholder="Password" [toggleMask]="true"
-                            styleClass="mb-5" inputStyleClass="w-full p-3 md:w-30rem"></p-password>
-
-                        <div class="flex align-items-center justify-content-between mb-5 gap-5">
-                            <div class="flex align-items-center">
-                                <p-checkbox id="rememberme1" [binary]="true" styleClass="mr-2"></p-checkbox>
-                                <label for="rememberme1">Remember me</label>
-                            </div>
-                            <a href="#/auth/forgot-password"
-                                class="font-medium no-underline ml-2 text-right cursor-pointer"
-                                style="color: var(--primary-color)">Forgot password?</a>
-                        </div>
-                        <button pButton pRipple label="Sign In" class="w-full p-3 text-xl" (click)="signin()"></button>
-
-                        <br>
-
-                        <p>Not a user? <a href="#/auth/signup"
-                                class="font-medium no-underline ml-2 text-right cursor-pointer"
-                                style="color: var(--primary-color)">Sign up</a> </p>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </form>
-</div>
+</section>
