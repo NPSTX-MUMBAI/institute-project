@@ -11,7 +11,7 @@ export class InstituteService {
     createInstitute(instituteData: InstituteInfoModel) {
         return new Promise(async (resolve, reject) => {
             await this.http
-                .post(environment.url + '/school/createSchool', instituteData)
+                .post(environment.url + '/school/create', instituteData)
                 .subscribe(
                     (res: any) => {
                         if (res.status) {

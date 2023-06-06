@@ -11,7 +11,7 @@ export class BankService {
     createBank(bank: any) {
         return new Promise(async (resolve, reject) => {
             await this.http
-                .post(environment.url + '/school/addbank', bank)
+                .post(environment.url + '/school/create/bank', bank)
                 .subscribe(
                     (res: any) => {
                         if (res.status) {

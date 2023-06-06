@@ -11,7 +11,7 @@ export class KycService {
     uploadKyc(data: any) {
         return new Promise(async (resolve, reject) => {
             await this.http
-                .post(environment.url + '/kyc/uploadKycForSchool', data)
+                .post(environment.url + '/kyc/upload/kyc', data)
                 .subscribe(
                     (res: any) => {
                         if (res.status) {
