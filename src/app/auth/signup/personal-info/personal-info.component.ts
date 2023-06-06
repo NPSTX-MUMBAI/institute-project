@@ -77,7 +77,6 @@ export class PersonalInfoComponent implements OnInit {
             if (this.personalGrp.invalid) {
                 this.messageService.add({
                     severity: 'danger',
-                    summary: 'invalid',
                     detail: 'Details incorrect',
                 });
             } else {
@@ -89,7 +88,6 @@ export class PersonalInfoComponent implements OnInit {
         } catch (error) {
             this.messageService.add({
                 severity: 'warn',
-                summary: 'error',
                 detail: 'Unknown error occurred',
             });
         }

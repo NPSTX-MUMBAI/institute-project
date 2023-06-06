@@ -78,8 +78,7 @@ export class KycInfoComponent implements OnInit {
         if (this.kycGrp.controls['gst'].invalid) {
             this.messageService.add({
                 severity: 'info',
-                summary: 'Info',
-                detail: 'gst Number Required',
+                detail: 'Gst Number Required',
             });
         } else {
             this.gstformData.append('schoolId', mySchoolId.toString());
@@ -98,8 +97,7 @@ export class KycInfoComponent implements OnInit {
                 if (res.status) {
                     this.messageService.add({
                         severity: 'success',
-                        summary: 'success',
-                        detail: 'gst uploaded!',
+                        detail: 'Gst uploaded!',
                     });
                 }
             });
@@ -117,8 +115,7 @@ export class KycInfoComponent implements OnInit {
         if (this.kycGrp.controls['reg'].invalid) {
             this.messageService.add({
                 severity: 'info',
-                summary: 'Info',
-                detail: 'gst Number Required',
+                detail: 'Gst Number Required',
             });
         } else {
             this.regformData.append('schoolId', mySchoolId.toString());
@@ -137,8 +134,7 @@ export class KycInfoComponent implements OnInit {
                 if (res.status) {
                     this.messageService.add({
                         severity: 'success',
-                        summary: 'success',
-                        detail: 'reg card uploaded!',
+                        detail: 'Reg card uploaded!',
                     });
                 }
             });
@@ -158,7 +154,6 @@ export class KycInfoComponent implements OnInit {
         if (this.kycGrp.controls['aadhar'].invalid) {
             this.messageService.add({
                 severity: 'info',
-                summary: 'Info',
                 detail: 'Aadhar  Number Required',
             });
         } else {
@@ -178,8 +173,7 @@ export class KycInfoComponent implements OnInit {
                 if (res.status) {
                     this.messageService.add({
                         severity: 'success',
-                        summary: 'success',
-                        detail: 'aadhaar card uploaded!',
+                        detail: 'Aadhaar card uploaded!',
                     });
                 }
             });
@@ -200,7 +194,6 @@ export class KycInfoComponent implements OnInit {
         if (this.kycGrp.controls['panNo'].invalid) {
             this.messageService.add({
                 severity: 'info',
-                summary: 'Info',
                 detail: 'Pan Card Number Required',
             });
         } else {
@@ -220,7 +213,6 @@ export class KycInfoComponent implements OnInit {
                 if (res.status) {
                     this.messageService.add({
                         severity: 'success',
-                        summary: 'success',
                         detail: 'PAN card uploaded!',
                     });
                 }

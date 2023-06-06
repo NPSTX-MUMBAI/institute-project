@@ -81,8 +81,7 @@ export class SignupComponent implements OnInit {
 
                 this.msg.add({
                     severity: 'success',
-                    summary: 'Success',
-                    detail: 'user created successfully',
+                    detail: 'User created successfully',
                 });
 
                 setTimeout(() => {
@@ -91,8 +90,7 @@ export class SignupComponent implements OnInit {
             } else {
                 this.msg.add({
                     severity: 'warn',
-                    summary: 'warn',
-                    detail: 'user already exists',
+                    detail: 'User already exists',
                 });
             }
         });
@@ -118,8 +116,7 @@ export class SignupComponent implements OnInit {
             } else {
                 this.msg.add({
                     severity: 'warn',
-                    summary: 'error',
-                    detail: 'Something went wrong',
+                    detail: 'form details present already',
                 });
             }
             console.log(res);
