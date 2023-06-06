@@ -64,7 +64,7 @@ export class InstituteInfoComponent implements OnInit {
             this.msg.add({
                 severity: 'error',
                 summary: 'Invalid',
-                detail: 'All fields Required',
+                detail: 'All fields are Required',
             });
             this.loading = false;
 

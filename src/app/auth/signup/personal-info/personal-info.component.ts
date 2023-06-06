@@ -5,6 +5,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 import { StateService } from '../../../services/state.service';
+import { HttpClient } from '@angular/common/http';
 @Component({
     selector: 'app-personal-info',
     templateUrl: './personal-info.component.html',
@@ -19,7 +20,8 @@ export class PersonalInfoComponent implements OnInit {
         private router: Router,
         private auth: AuthService,
         private messageService: MessageService,
-        private stateSvc: StateService
+        private stateSvc: StateService,
+        private http: HttpClient
     ) {}
 
     ngOnInit(): void {
@@ -88,9 +90,10 @@ export class PersonalInfoComponent implements OnInit {
             this.messageService.add({
                 severity: 'warn',
                 summary: 'error',
-                detail: 'message',
+                detail: 'Unknown error occurred',
             });
         }
-        console.log(this.personalGrp.value);
+
+        // console.log(this.personalGrp.value);
     }
 }

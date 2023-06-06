@@ -5,6 +5,7 @@ import { StateService } from '../../services/state.service';
 import { Router } from '@angular/router';
 import { InstituteService } from '../../services/institute.service';
 import { BankService } from '../../services/bank.service';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
     selector: 'app-signup',
@@ -18,6 +19,7 @@ export class SignupComponent implements OnInit {
     instituteInfoComplete: boolean = false;
     bankInfoComplete: boolean = false;
     kycInfoComplete: boolean = false;
+    internetStatus: any;
 
     constructor(
         private auth: AuthService,
@@ -25,10 +27,13 @@ export class SignupComponent implements OnInit {
         private stateSvc: StateService,
         private router: Router,
         private instSvc: InstituteService,
-        private bankSvc: BankService
+        private bankSvc: BankService,
+        private http: HttpClient
     ) {}
 
     ngOnInit(): void {
+        this.checkInternetConnection();
+
         if (this.stateSvc.getUserData('userId')) {
             this.activeIndex = 1;
             this.personalInfoComplete = true;
@@ -43,6 +48,30 @@ export class SignupComponent implements OnInit {
         }
     }
 
+    checkInternetConnection() {
+        const url = 'https://dns.google.com/resolve';
+        this.http.get(url).subscribe(
+            (e) => {
+                setTimeout(() => {
+                    alert('Hello...');
+                }, 5000);
+                console.log(e);
+            },
+            (error: any) => {
+                this.internetStatus = error.status;
+                console.log('error is', error.status);
+                if (error.status == 0) {
+                    this.msg.add({
+                        severity: 'warn',
+                        // summary: 'warn',
+                        detail: 'Check internet connection',
+                    });
+                } else {
+                    console.log('shivaniiiiiiiiiiiiiiiiiiiiiiiiii');
+                }
+            }
+        );
+    }
     async onSavePersonalInfo(event: any) {
         console.log(event, 'child event 1');
 
