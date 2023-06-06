@@ -5,9 +5,6 @@ import { Injectable } from '@angular/core';
 })
 export class StateService {
     private _applicationId!: string;
-    private _mobileNo: any;
-
-    private _mySchoolId: any;
 
     private _myUserId: any;
 
@@ -19,20 +16,6 @@ export class StateService {
 
     public get applicationId() {
         return this._applicationId;
-    }
-
-    public setUserMobileNo(number: string) {
-        this._mobileNo = number;
-    }
-    public getUserMobileNo() {
-        return this._mobileNo;
-    }
-
-    public setSchoolId(id: any) {
-        this._mySchoolId = id;
-    }
-    public getSchoolId() {
-        return this._mySchoolId;
     }
 
     public setUserId(id: any) {

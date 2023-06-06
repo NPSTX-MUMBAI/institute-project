@@ -22,10 +22,11 @@ export class LoginComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
+        localStorage.clear();
+
         this.loginGrp = this.fb.group({
             mobileNo: ['8108587537', Validators.required],
             password: ['Shoaib@123', Validators.required],
-
         });
     }
 

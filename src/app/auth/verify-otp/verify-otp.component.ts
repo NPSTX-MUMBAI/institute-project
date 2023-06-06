@@ -14,6 +14,8 @@ import { Router } from '@angular/router';
 })
 export class VerifyOtpComponent implements OnInit {
     userMobileNo : any;
+    slicedMobileNo : any;
+
     otp: string[] = ['', '', '', ''];
     errorArray: boolean[] = [false, false, false, false];
     @Output() onOtpChange = new EventEmitter<string>();
@@ -39,7 +41,7 @@ export class VerifyOtpComponent implements OnInit {
 
          this.userMobileNo = this.stateSvc.getUserData('userMobile');
 
-        this.userMobileNo = this.userMobileNo.slice(-4);
+        this.slicedMobileNo = this.userMobileNo.slice(-4);
         console.log(this.userMobileNo);
     }
 
