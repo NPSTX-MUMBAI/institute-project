@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { StateService } from '../../services/state.service';
@@ -11,11 +11,11 @@ import { BankService } from '../../services/bank.service';
     templateUrl: './signup.component.html',
     styleUrls: ['./signup.component.scss'],
 })
-export class SignupComponent {
+export class SignupComponent implements OnInit {
     activeIndex: number = 0;
     userData: any;
     personalInfoComplete: boolean = false;
-    businessInfoComplete: boolean = false;
+    instituteInfoComplete: boolean = false;
     bankInfoComplete: boolean = false;
     kycInfoComplete: boolean = false;
 
@@ -27,6 +27,21 @@ export class SignupComponent {
         private instSvc: InstituteService,
         private bankSvc: BankService
     ) {}
+
+    ngOnInit(): void {
+        if (this.stateSvc.getUserData('userId')) {
+            this.activeIndex = 1;
+            this.personalInfoComplete = true;
+        }
+        if (this.stateSvc.getUserData('schoolId')) {
+            this.activeIndex = 2;
+            this.instituteInfoComplete = true;
+        }
+        if (this.stateSvc.getUserData('ifsc')) {
+            this.activeIndex = 3;
+            this.bankInfoComplete = true;
+        }
+    }
 
     async onSavePersonalInfo(event: any) {
         console.log(event, 'child event 1');
@@ -70,6 +85,7 @@ export class SignupComponent {
                 });
 
                 this.stateSvc.setUserData('schoolId', res.data.schoolId);
+                this.activeIndex++;
             } else {
                 this.msg.add({
                     severity: 'warn',
@@ -100,6 +116,9 @@ export class SignupComponent {
                     summary: 'Created',
                     detail: 'Bank created successfully',
                 });
+                this.stateSvc.setUserData('ifsc', res.data.ifsc);
+
+                this.activeIndex++;
             } else {
                 this.msg.add({
                     severity: 'warn',
