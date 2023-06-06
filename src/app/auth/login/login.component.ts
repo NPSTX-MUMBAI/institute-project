@@ -5,7 +5,6 @@ import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { StateService } from '../../services/state.service';
 
-
 @Component({
     selector: 'app-login',
     templateUrl: './login.component.html',
@@ -14,7 +13,7 @@ import { StateService } from '../../services/state.service';
 export class LoginComponent implements OnInit {
     loginGrp!: FormGroup;
     loading = false;
-    
+
     constructor(
         private router: Router,
         private fb: FormBuilder,
@@ -27,8 +26,8 @@ export class LoginComponent implements OnInit {
         localStorage.clear();
 
         this.loginGrp = this.fb.group({
-            mobileNo: ['8108587537', Validators.required],
-            password: ['Shoaib@123', Validators.required],
+            mobileNo: ['7738195474', Validators.required],
+            password: ['Shivani@123', Validators.required],
         });
     }
 
