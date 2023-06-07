@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { Message } from 'primeng/api';
 import { StatusService } from 'src/app/services/status.service';
@@ -10,6 +10,7 @@ import { StateService } from 'src/app/services/state.service';
     styleUrls: ['./status.component.scss'],
 })
 export class StatusComponent implements OnInit {
+    @Input() index: any;
     messages1!: Message[];
 
     messages2!: Message[];
@@ -19,6 +20,8 @@ export class StatusComponent implements OnInit {
 
     bankStatus = false;
     kycStatus = false;
+    myUserId: any;
+    mySchoolId: any;
 
     constructor(
         private router: Router,
@@ -26,29 +29,23 @@ export class StatusComponent implements OnInit {
         private stateSvc: StateService
     ) {}
     ngOnInit() {
-        // this.messages2 = [
-        //     {
-        //         severity: 'warn',
-        //         detail: 'Bank Details',
-        //     },
-        //     {
-        //         severity: 'warn',
-        //         detail: 'Kyc Details',
-        //     },
-        // ];
+        this.myUserId = this.stateSvc.getUserData('userId');
+        this.mySchoolId = this.stateSvc.getUserData('schoolId');
+
+        this.checkStatus()
     }
 
     checkStatus() {
         let data = {
-            userId: '3ef8ee0751a09c9f8f68',
-            schoolId: '3133a7065cd763f64314',
+            userId: this.myUserId,
+            schoolId: this.mySchoolId,
         };
         this.statusSvc.schoolStatus(data).then((res: any) => {
             console.log(res);
 
             this.instStatus = res.schoolStatus;
             this.bankStatus = res.bankStatus;
-            this.kycStatus = res.kycDone.length === 4;
+            this.kycStatus =  (res.kycDone && res.kycDone.length === 4) ;
 
             console.log(this.instStatus, this.bankStatus, this.kycStatus);
 
