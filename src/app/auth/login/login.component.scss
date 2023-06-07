@@ -153,7 +153,7 @@
   }
   
   .intro-text {
-    margin-bottom: 120px;
+    margin-bottom: 40px;
     color: #98979E;
     font-size: 13px;
     font-weight: 700;
@@ -163,7 +163,7 @@
   .sign-section {
     flex-basis: 30%;
     color: #98979E;
-    border-radius: 2px;
+    border-radius: 15px;
     box-shadow: 0px 0px 5px 3px rgba(220,218,228,1);
   
   }
@@ -256,3 +256,24 @@
     background-color: #1f3c9d;
     box-shadow: 0px 0px 5px 1px rgb(112, 103, 232);
   }
+
+
+  /* password toggle*/
+
+  .password-toggle {
+    position: relative;
+    cursor: pointer;
+    user-select: none;
+  }
+
+  .password-toggle i {
+    position: absolute;
+    top: 50%;
+    right: 10px;
+    transform: translateY(-280%);
+    font-size: 18px;
+  }
+
+  /*.password-toggle i.fa-eye-slash {
+    display: none;
+  }*/

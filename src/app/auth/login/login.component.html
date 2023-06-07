@@ -1,13 +1,15 @@
 <section class="section">
-    <div class="main">
+    <div class="main"> 
 
         <div class="intro-section">
             <h6 class="intro-heading">Welcome</h6>
             <p class="intro-text">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Saepe dignissimos officia
                 sint animi voluptatum est praesentium nostrum, iusto earum fugit.</p>
-            <section class="side">
-                <img src="../../../assets/layout/images/Thesis-pana.svg" alt="school">
-            </section>
+             <div class="side">   
+                 <section class="side">
+                   <img src="../../../assets/layout/images/Thesis-pana.svg" alt="school">
+                 </section>
+             </div>     
         </div>
         <form [formGroup]="loginGrp">
             <div class="sign-section">
@@ -31,7 +33,8 @@
 
 
                         <input type="password" class="input" placeholder="| &nbsp;Password" id="pwd"
-                            formControlName="password">
+                            formControlName="password"  type="{{ hidePassword ? 'password' : 'text' }}" class="input" placeholder="| &nbsp;Password" id="pwd" formControlName="password">
+                            <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (hidePassword ? 'fa-eye' : 'fa-eye-slash')"></i></span>
 
 
 

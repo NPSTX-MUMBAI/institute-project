@@ -13,6 +13,8 @@ import { StateService } from '../../services/state.service';
 export class LoginComponent implements OnInit {
     loginGrp!: FormGroup;
     loading = false;
+    hidePassword: boolean = true;
+
 
     constructor(
         private router: Router,
@@ -21,6 +23,10 @@ export class LoginComponent implements OnInit {
         private msgSvc: MessageService,
         private stateSvc: StateService
     ) {}
+
+    togglePasswordVisibility() {
+        this.hidePassword = !this.hidePassword;
+      }
 
     ngOnInit(): void {
         localStorage.clear();
