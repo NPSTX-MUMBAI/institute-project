@@ -15,7 +15,11 @@ import { Router } from '@angular/router';
 export class VerifyOtpComponent implements OnInit {
     userMobileNo: any;
     slicedMobileNo: any;
-
+    minutes!: number;
+    second!: number;
+    visible!: boolean;
+    MobileNo: string = '7738195474';
+    timeerVissible!: boolean;
     otp: string[] = ['', '', '', ''];
     errorArray: boolean[] = [false, false, false, false];
     @Output() onOtpChange = new EventEmitter<string>();
@@ -43,9 +47,16 @@ export class VerifyOtpComponent implements OnInit {
 
         this.slicedMobileNo = this.userMobileNo.slice(-4);
         console.log(this.userMobileNo);
+        // this.minutes = 1;
+        // this.second = 15;
+        this.visible = false;
+        this.timeerVissible = true;
+
+        this.startTimer1();
+        this.startTimer2();
     }
 
-    async sendOtp() {
+    async verifyOTP() {
         console.log(this.otpGrp.value);
         let otpData = this.otpGrp.value;
         let myOtp = otpData.otp1 + otpData.otp2 + otpData.otp3 + otpData.otp4;
@@ -124,5 +135,80 @@ export class VerifyOtpComponent implements OnInit {
                 PrevInput.focus();
             }
         }
+    }
+    // startTimer1() {
+    //     setInterval(() => {
+    //         if (this.second > 0) {
+    //             this.second--;
+    //         } else {
+    //             this.second = 59;
+    //         }
+    //     }, 1000);
+    // }
+
+    // startTimer2() {
+    //     setInterval(() => {
+    //         if (this.minutes > 0) {
+    //             this.minutes--;
+    //         } else {
+    //             // Add any necessary logic when the minutes reach 0
+    //         }
+    //     }, 1000 * 59);
+    // }
+    async resendOTP() {
+        try {
+            const data = {
+                mobileNo: this.MobileNo, // Assuming you have the user's mobile number
+            };
+
+            const res: any = await this.otpSvc.timer(data); // Call the resend OTP service method
+
+            if (res.status) {
+                this.msg.add({
+                    severity: 'success',
+                    detail: 'OTP resent',
+                });
+            } else {
+                this.msg.add({
+                    severity: 'warn',
+                    summary: 'Error',
+                    detail: 'Something went wrong while resending OTP',
+                });
+            }
+
+            console.log(res);
+        } catch (error) {
+            this.msg.add({
+                severity: 'warn',
+                summary: 'Error',
+                detail: 'Something went wrong while resending OTP',
+            });
+            console.error(error);
+        }
+    }
+
+    startTimer1() {
+        setInterval(() => {
+            if (this.second > 0) {
+                this.second--;
+            } else {
+                this.second = 10;
+            }
+        }, 1000);
+    }
+
+    startTimer2() {
+        setInterval(() => {
+            if (this.minutes > 0) {
+                this.minutes--;
+            } else {
+                if (this.minutes > 0) {
+                    this.minutes--;
+                } else {
+                    this.timeerVissible = false;
+                    this.visible = true;
+                }
+            }
+        }, 1000 * 10);
     }
 }

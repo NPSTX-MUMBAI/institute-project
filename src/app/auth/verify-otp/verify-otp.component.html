@@ -27,16 +27,74 @@
                         (input)="eventHandler($event, 3); onKeyUp(3)" formControlName="otp4">
 
                 </div>
+                <!-- <div *ngIf="second > 9" style="display: flex;flex-direction: row;">
+                    <h4 style="margin-right:30px;font-weight:bold;" id="footer">
+                        &nbsp; 0{{ minutes }} <br>
+                        <p style="margin-left:5px;font-family: sans-serif;">MIN</p>
+                    </h4>
+                    <span style="margin-right:10px;font-size:20px;">:</span>
+                    <h4 id="footer" style="font-weight:bold;font-family: sans-serif;">
+                        &nbsp; {{ second }}<br>
+                        <p style="margin-left:5px;">SEC</p>
+                    </h4>
+                </div>
+                <div *ngIf="second <= 9" style="display: flex;flex-direction: row;">
+                    <h4 style="margin-right:30px;font-weight:bold;font-family: sans-serif;" id="footer">
+                        &nbsp; 0{{ minutes }} <br>
+                        <p style="margin-left:5px;font-family: sans-serif;">MIN</p>
+                    </h4>
+                    <span style="margin-right:10px;font-size:20px;">:</span>
+                    <h4 id="footer" style="font-weight:bold;font-family: sans-serif;">
+                        &nbsp; 0{{ second }}<br>
+                        <p style="margin-left:5px;">SEC</p>
+                    </h4>
+                </div> -->
 
-                <div style="margin-top: 20px;">
+                <div *ngIf="visible" style="margin-top: 20px;">
                     <p style="font-size: 13px;">
                         Didn't get the otp
-                        <a href="#" class="text-decoration-none">Resend</a>
+                        <a class="text-decoration-none" (click)="resendOTP()">Resend</a>
                     </p>
                 </div>
+                <div *ngIf="timeerVissible" style="margin-top: 10%;">
+                    <h6 style="text-align: center;">REQUEST EXPIRES IN</h6>
+                    <div style="  display: block;
+                          margin-left: auto;
+                          margin-right: auto;
+                          width: 130px;
+                          height:50px;
+                          background-color: #f3f7f8;
+                        ">
+                        <div *ngIf="second > 9" style="display: flex;flex-direction: row;">
+                            <h6 style="margin-right:30px;font-weight:bold;margin-top: 6px;" id="footer">
+                                &nbsp; 0{{ minutes }} <br>
+                                <p style="margin-left:9px;font-family: sans-serif;">MIN</p>
+                            </h6><span style="margin-right:10px;font-size:20px;">:</span>
+                            <h6 id="footer" style="font-weight:bold;font-family: sans-serif;margin-top: 6px;">
+                                &nbsp; {{ second }}<br>
+                                <p style="margin-left:5px;">SEC</p>
+                            </h6>
+                        </div>
+                        <div *ngIf="second <= 9" style="display: flex;flex-direction: row;">
+                            <h6 style="margin-right:30px;font-weight:bold;font-family: sans-serif;margin-top: 6px"
+                                id="footer">
+                                &nbsp; 0{{ minutes }} <br>
+                                <p style="margin-left:9px;font-family: sans-serif;">MIN</p>
+                            </h6><span style="margin-right:10px;font-size:20px;">:</span>
+                            <h6 id="footer" style="font-weight:bold;font-family: sans-serif;margin-top: 6px">
+                                &nbsp; 0{{ second }}<br>
+                                <p style="margin-left:5px;">SEC</p>
+
+                            </h6>
+
+                        </div>
+
+                    </div>
+                </div>
+
 
                 <div class="mt-3 mb-5">
-                    <button class="btn btn-success px-4 verify-btn" (click)="sendOtp()">Verify</button>
+                    <button class="btn btn-success px-4 verify-btn" (click)="verifyOTP()">Verify</button>
                 </div>
 
             </div>

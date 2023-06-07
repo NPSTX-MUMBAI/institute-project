@@ -116,7 +116,7 @@ export class SignupComponent implements OnInit {
             } else {
                 this.msg.add({
                     severity: 'warn',
-                    detail: 'form details present already',
+                    detail: 'Please make sure your Phone number, Email id ,Website are unique ',
                 });
             }
             console.log(res);
