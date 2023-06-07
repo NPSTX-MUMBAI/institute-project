@@ -30,4 +30,23 @@ export class OtpService {
                 );
         });
     }
+
+    timer(data: any) {
+        console.log(data);
+        return new Promise((resolve, reject) => {
+            this.http.post(environment.url + '/otp/create', data).subscribe(
+                (res: any) => {
+                    console.log(res);
+                    if (res.status) {
+                        resolve(res);
+                    } else {
+                        resolve(res);
+                    }
+                },
+                (error) => {
+                    reject(error);
+                }
+            );
+        });
+    }
 }
