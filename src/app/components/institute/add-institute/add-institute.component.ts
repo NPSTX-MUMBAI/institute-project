@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, } from '@angular/core';
 import {
     FormGroup,
     FormControl,
@@ -6,6 +6,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { AddressService } from 'src/app/demo/service/address.service';
+import { AddressDetails, PostOffice } from 'src/app/models/addressDetails.models';
+
 
 @Component({
     selector: 'app-add-institute',
@@ -17,6 +20,9 @@ export class AddInstituteComponent implements OnInit {
     standard = [{ name: 'I' }, { name: 'II' }, { name: 'III' }];
     boards = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBSE' }];
     division = [{ name: 'A' }, { name: 'B' }, { name: 'C' }];
+
+
+
 
     constructor(private fb: FormBuilder, private router: Router) {}
     ngOnInit(): void {
@@ -59,4 +65,15 @@ export class AddInstituteComponent implements OnInit {
     AddInstitute() {
         this.router.navigate(['/institute/add']);
     }
+
+    
+             
+             
+
+            
+
+        
+    
+    
+
 }

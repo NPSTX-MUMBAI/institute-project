@@ -141,7 +141,7 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
-                        formControlName="pinCode" pattern="^\d{6}$" maxlength="6" minlength="6" />
+                        formControlName="pinCode" pattern="^\d{6}$" maxlength="6" minlength="6" (keyup)="getPin()" type="search" />
                     <div *ngIf=" InstituteInfo.controls['pinCode'].touched &&
                         InstituteInfo.controls['pinCode'].errors">
                         <div *ngIf="InstituteInfo.controls['pinCode'].hasError('required')"

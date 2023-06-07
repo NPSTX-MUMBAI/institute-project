@@ -15,6 +15,9 @@ import { InstituteInfoModel } from 'src/app/models/institute-info.model';
 import { state } from '@angular/animations';
 import { InstituteService } from '../../../services/institute.service';
 import { StateService } from '../../../services/state.service';
+import { AddressDetails,PostOffice } from 'src/app/models/addressDetails.models';
+import { AddressService } from 'src/app/demo/service/address.service';
+import { log } from 'console';
 
 @Component({
     selector: 'app-institute-info',
@@ -24,6 +27,9 @@ import { StateService } from '../../../services/state.service';
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
 
+    
+    
+
     InstituteInfo!: FormGroup;
 
     board!: Board[];
@@ -31,12 +37,17 @@ export class InstituteInfoComponent implements OnInit {
 
     selectedBoard!: Board;
     loading = false;
+    addressDetails!:AddressDetails;
+    toggleDisplay: boolean = false;
+    postOfficeDetails!: PostOffice;
 
     constructor(
         private fb: FormBuilder,
         private msg: MessageService,
         private instSvc: InstituteService,
-        private stateSvc: StateService
+        private stateSvc: StateService,
+        private addressService: AddressService
+
     ) {
         this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
     }
@@ -130,4 +141,33 @@ export class InstituteInfoComponent implements OnInit {
     onKeyUp() {
         console.log('object');
     }
+
+
+    getPin() {
+        console.log("Call...........")
+       
+       const {pinCode}=this.InstituteInfo.value;
+      console.log(pinCode)
+      if(pinCode.length==6){
+        let temp:any;
+          this.addressService.getPinData(pinCode).subscribe((data: any) => {
+               this.toggleDisplay = true;
+                   for (let pinData of data) {
+                      if (pinData.Status === "Success") {
+                          let postOfficeData = pinData.PostOffice[0];
+                          temp=postOfficeData
+                          console.log(postOfficeData);
+                      }
+                      if (this.InstituteInfo.get("country")) {
+                          console.log("country found");
+                        }
+
+                        this.InstituteInfo.get("country")?.setValue(temp.Country);
+                   }
+                   
+              
+  
+              });
+      }
+}
 }
