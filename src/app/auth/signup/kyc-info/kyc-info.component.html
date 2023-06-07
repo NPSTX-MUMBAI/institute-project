@@ -115,6 +115,12 @@
 
 
     </div>
-    <button pButton pRipple label="Submit" (click)="submit()"></button>
+    <button *ngIf="aadhaarStatus &&
+    PANStatus &&
+    REGStatus &&
+    GSTStatus" pButton pRipple label="Submit" (click)="submit()"></button>
+    <button *ngIf="!GSTStatus" [disabled]="true" pButton pRipple label="Save"></button>
+
+
 
 </form>

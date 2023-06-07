@@ -46,7 +46,8 @@
                     <h4><span *ngIf="kycInfoComplete"></span> Kyc
                     </h4>
                 </ng-template>
-                <app-kyc-info></app-kyc-info>
+                <app-kyc-info (onKycUpload)="KycUploadfn($event)" [aadhaarStatus]="uploadAadhaar"
+                    [PANStatus]="uploadPAN" [REGStatus]="uploadREG" [GSTStatus]="uploadGST"></app-kyc-info>
                 <!-- <app-kyc-info (onSaveKycInfo)="onSaveKycInfo($event)"></app-kyc-info> -->
 
             </p-tabPanel>
@@ -57,7 +58,7 @@
                 <ng-template pTemplate="header">
                     <h4> <span> </span> Status</h4>
                 </ng-template>
-                <app-status></app-status>
+                <app-status [index]="activeIndex" ></app-status>
             </p-tabPanel>
         </p-tabView>
     </div>

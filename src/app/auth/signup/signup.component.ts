@@ -6,6 +6,7 @@ import { Router } from '@angular/router';
 import { InstituteService } from '../../services/institute.service';
 import { BankService } from '../../services/bank.service';
 import { HttpClient } from '@angular/common/http';
+import { KycService } from '../../services/kyc.service';
 
 @Component({
     selector: 'app-signup',
@@ -20,6 +21,10 @@ export class SignupComponent implements OnInit {
     bankInfoComplete: boolean = false;
     kycInfoComplete: boolean = false;
     internetStatus: any;
+    uploadAadhaar = false;
+    uploadPAN = false;
+    uploadGST = false;
+    uploadREG = false;
 
     constructor(
         private auth: AuthService,
@@ -28,7 +33,8 @@ export class SignupComponent implements OnInit {
         private router: Router,
         private instSvc: InstituteService,
         private bankSvc: BankService,
-        private http: HttpClient
+        private http: HttpClient,
+        private kycSvc: KycService
     ) {}
 
     ngOnInit(): void {
@@ -45,6 +51,10 @@ export class SignupComponent implements OnInit {
         if (this.stateSvc.getUserData('ifsc')) {
             this.activeIndex = 3;
             this.bankInfoComplete = true;
+        }
+        if (this.stateSvc.getUserData('PAN')) {
+            this.activeIndex = 4;
+            this.kycInfoComplete = true;
         }
     }
 
@@ -67,7 +77,7 @@ export class SignupComponent implements OnInit {
                         detail: 'Check internet connection',
                     });
                 } else {
-                    console.log('shivaniiiiiiiiiiiiiiiiiiiiiiiiii');
+                    console.log('working');
                 }
             }
         );
@@ -81,7 +91,7 @@ export class SignupComponent implements OnInit {
 
                 this.msg.add({
                     severity: 'success',
-                    detail: 'User created successfully',
+                    detail: 'OTP sent!',
                 });
 
                 setTimeout(() => {
@@ -161,5 +171,43 @@ export class SignupComponent implements OnInit {
             });
             console.error(error);
         }
+    }
+
+    async KycUploadfn(event: any) {
+        console.log(event);
+        console.log(event.type);
+        console.log(event.value);
+
+        this.kycSvc.uploadKyc(event.data).then((res: any) => {
+            if (res.status) {
+                this.msg.add({
+                    severity: 'success',
+                    detail: `${event.type}  uploaded successfully!`,
+                });
+
+                if (event.type === 'ADHARCARD') {
+                    this.uploadAadhaar = true;
+                    this.stateSvc.setUserData('PAN', event.number);
+                }
+                if (event.type === 'PANCARD') {
+                    this.uploadPAN = true;
+                }
+                if (event.type === 'GST') {
+                    this.uploadGST = true;
+                }
+                if (event.type === 'REG') {
+                    this.uploadREG = true;
+                }
+
+                if (
+                    this.uploadAadhaar &&
+                    this.uploadPAN &&
+                    this.uploadGST &&
+                    this.uploadREG
+                ) {
+                    this.activeIndex++;
+                }
+            }
+        });
     }
 }

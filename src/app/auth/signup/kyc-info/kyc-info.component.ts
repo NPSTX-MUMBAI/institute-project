@@ -24,6 +24,10 @@ export class KycInfoComponent implements OnInit {
     @ViewChild('fileUpload', { static: false }) fileUpload!: FileUpload;
 
     @Input() kycData: any;
+    @Input() aadhaarStatus = false;
+    @Input() PANStatus = false;
+    @Input() REGStatus = false;
+    @Input() GSTStatus = false;
 
     @Output() onKycUpload = new EventEmitter();
     schoolId = '3133a7065cd763f64314';
@@ -92,21 +96,20 @@ export class KycInfoComponent implements OnInit {
             this.gstformData.forEach((v) => {
                 console.log(v);
             });
-
-            this.kycSvc.uploadKyc(this.gstformData).then((res: any) => {
-                if (res.status) {
-                    this.messageService.add({
-                        severity: 'success',
-                        detail: 'Gst uploaded!',
-                    });
-                }
-            });
-
             this.onKycUpload.emit({
+                data: this.gstformData,
                 event,
                 type: DOCUMENT_TYPE.GST,
                 value: this.kycGrp.controls['gst'].value,
             });
+            // this.kycSvc.uploadKyc(this.gstformData).then((res: any) => {
+            //     if (res.status) {
+            //         this.messageService.add({
+            //             severity: 'success',
+            //             detail: 'Gst uploaded!',
+            //         });
+            //     }
+            // });
         }
     }
 
@@ -130,16 +133,17 @@ export class KycInfoComponent implements OnInit {
                 console.log(v);
             });
 
-            this.kycSvc.uploadKyc(this.regformData).then((res: any) => {
-                if (res.status) {
-                    this.messageService.add({
-                        severity: 'success',
-                        detail: 'Reg card uploaded!',
-                    });
-                }
-            });
+            // this.kycSvc.uploadKyc(this.regformData).then((res: any) => {
+            //     if (res.status) {
+            //         this.messageService.add({
+            //             severity: 'success',
+            //             detail: 'Reg card uploaded!',
+            //         });
+            //     }
+            // });
 
             this.onKycUpload.emit({
+                data: this.regformData,
                 event,
                 type: DOCUMENT_TYPE.REG,
                 value: this.kycGrp.controls['reg'].value,
@@ -169,16 +173,18 @@ export class KycInfoComponent implements OnInit {
                 console.log(v);
             });
 
-            this.kycSvc.uploadKyc(this.aadhaarformData).then((res: any) => {
-                if (res.status) {
-                    this.messageService.add({
-                        severity: 'success',
-                        detail: 'Aadhaar card uploaded!',
-                    });
-                }
-            });
+            // this.kycSvc.uploadKyc(this.aadhaarformData).then((res: any) => {
+            //     if (res.status) {
+            //         this.messageService.add({
+            //             severity: 'success',
+            //             detail: 'Aadhaar card uploaded!',
+            //         });
+            //     }
+            // });
 
             this.onKycUpload.emit({
+                data: this.aadhaarformData,
+
                 event,
                 type: DOCUMENT_TYPE.ADHARCARD,
                 value: this.kycGrp.controls['aadhar'].value,
@@ -209,16 +215,8 @@ export class KycInfoComponent implements OnInit {
                 console.log(v);
             });
 
-            this.kycSvc.uploadKyc(this.PANformData).then((res: any) => {
-                if (res.status) {
-                    this.messageService.add({
-                        severity: 'success',
-                        detail: 'PAN card uploaded!',
-                    });
-                }
-            });
-
             this.onKycUpload.emit({
+                data: this.PANformData,
                 event,
                 type: DOCUMENT_TYPE.PANCARD,
                 value: this.kycGrp.controls['panNo'].value,
