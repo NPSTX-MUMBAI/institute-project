@@ -1,16 +1,10 @@
 <div class="container">
     <div class="main"
         style="width: 50%;height:80%;border: 1px solid rgb(221, 215, 215);margin-top: 40px;margin-left:27%;border-radius: 10px;">
-        <h2>Details submitted successfully,Your profile under verification</h2>
+        <h2>Details submitted successfully,Your profile is under verification</h2>
         <div style="display: flex;flex-direction: row;justify-content: center;align-items: center;">
-            <div>
-                <p-button (click)="checkStatus()" pRipple label="Check Status" [style]="{'margin-left':'30%'}">
-                </p-button>
 
-            </div>
-            <div style="margin-left: 90px;">
-                <p-button (click)="route()" pRipple label="Back to login"></p-button>
-            </div>
+
 
         </div>
         <div style="margin-bottom: 50px;width:60%;margin-left: 20%;">
@@ -19,9 +13,10 @@
             <p-messages [(value)]="messages3" [enableService]="false" [closable]="false"></p-messages>
 
         </div>
-        <!-- <div style="margin-left:45%;">
+       
+        <div style="margin-left:45%;">
             <p-button (click)="route()" pRipple label="Go to Dashboard"></p-button>
-        </div> -->
+        </div>
     </div>
 
 </div>

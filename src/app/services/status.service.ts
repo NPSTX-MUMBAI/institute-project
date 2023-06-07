@@ -10,7 +10,7 @@ export class StatusService {
     schoolStatus(data: any) {
         return new Promise((resolve, reject) => {
             this.http
-                .post(environment.url + '/school/verify/status', data)
+                .post(environment.url + '/school/kyc/status', data)
                 .subscribe((res) => {
                     resolve(res);
                 });

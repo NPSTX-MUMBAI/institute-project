@@ -31,6 +31,8 @@ export class StatusComponent implements OnInit {
     ngOnInit() {
         this.myUserId = this.stateSvc.getUserData('userId');
         this.mySchoolId = this.stateSvc.getUserData('schoolId');
+
+        this.checkStatus()
     }
 
     checkStatus() {
@@ -43,7 +45,7 @@ export class StatusComponent implements OnInit {
 
             this.instStatus = res.schoolStatus;
             this.bankStatus = res.bankStatus;
-            this.kycStatus = res.kycDone.length === 4;
+            this.kycStatus =  (res.kycDone && res.kycDone.length === 4) ;
 
             console.log(this.instStatus, this.bankStatus, this.kycStatus);
 
