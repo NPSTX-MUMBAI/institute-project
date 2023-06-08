@@ -28,10 +28,7 @@ export class AppTopBarComponent implements OnInit {
         private stateSvc: StateService,
         private instSvc: InstituteService
     ) {
-        this.institute = [
-            { instituteName: 'MGM College' },
-            { instituteName: 'Don Bosco' },
-        ];
+        this.institute = [];
 
         this.items = [
             {
@@ -50,7 +47,7 @@ export class AppTopBarComponent implements OnInit {
         console.log(myUser);
         this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
             temp = res.data[0];
-            this.institute.push({instituteName:temp.instituteName});
+            this.institute =[temp];
             console.log(this.institute);
         });
     }
