@@ -146,28 +146,56 @@ export class InstituteInfoComponent implements OnInit {
     getPin() {
         console.log("Call...........")
        
-       const {pinCode}=this.InstituteInfo.value;
-      console.log(pinCode)
-      if(pinCode.length==6){
-        let temp:any;
-          this.addressService.getPinData(pinCode).subscribe((data: any) => {
-               this.toggleDisplay = true;
-                   for (let pinData of data) {
-                      if (pinData.Status === "Success") {
-                          let postOfficeData = pinData.PostOffice[0];
-                          temp=postOfficeData
-                          console.log(postOfficeData);
-                      }
-                      if (this.InstituteInfo.get("country")) {
-                          console.log("country found");
-                        }
+         const {pinCode}=this.InstituteInfo.value;
+          console.log(pinCode)
+           if(pinCode.length==6){
+                let temp:any;
+                this.addressService.getPinData(pinCode).subscribe((data: any) => {
+                    this.toggleDisplay = true;
 
-                        this.InstituteInfo.get("country")?.setValue(temp.Country);
-                   }
+                    for (let pinData of data) {
+                        console.log(pinData);
+                        if (pinData.Status === "Success") {
+                            let postOfficeData = pinData.PostOffice[0];
+                            temp=postOfficeData
+                            console.log(postOfficeData);
+
+                            if (this.InstituteInfo.get("country")) {
+                                console.log("country found");
+                            }
+
+                         
+                        }else if (pinData.Status === "Error"){
+                            {
+                                this.InstituteInfo.get("country")?.setValue("Invalid pincode!!!");
+                                this.InstituteInfo.get("state")?.setValue("Invalid pincode!!!");
+                                this.InstituteInfo.get("state")?.setValue("Invalid pincode!!!");
+                                this.InstituteInfo.get("city")?.setValue("Invalid pincode!!!");
+                            }    
+                        } 
+                        
+                          
+                          this.InstituteInfo.get("country")?.setValue(temp.Country);
+                          this.InstituteInfo.get("state")?.setValue(temp.State);
+                          this.InstituteInfo.get("city")?.setValue(temp.District);
+                    }    
+
+                    
+                    
+                    
+                       
+                 });
+
+                   
                    
               
   
-              });
-      }
+            
+              
+
+            }
+    }
+
 }
-}
+
+
