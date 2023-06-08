@@ -6,6 +6,9 @@ import {
     Validators,
 } from '@angular/forms';
 import { Router } from '@angular/router';
+import { InstituteService } from '../../../services/institute.service';
+import { StateService } from '../../../services/state.service';
+import { Institute } from 'src/app/models/institute.model';
 
 @Component({
     selector: 'app-list-institute',
@@ -15,24 +18,24 @@ import { Router } from '@angular/router';
 export class ListInstituteComponent implements OnInit {
     value5: any;
     listInstitute!: FormGroup;
+    institute!: Institute[];
+
     //dropdownItems=[]
 
-    school: any = [
-        {
-            name: 'NPST Test School',
-            uniqueId: 1000,
-            type: 'Primary',
-            board: 'State',
-            phone: '1234567890',
 
-            city: 'Mumbai',
-            state: 'Maharashtra',
-            action: 'Edit',
-        },
-    ];
-
-    constructor(private fb: FormBuilder, private router: Router) {}
+    constructor(
+        private fb: FormBuilder,
+        private router: Router,
+        private stateSvc: StateService,
+        private instSvc: InstituteService
+    ) {}
     ngOnInit(): void {
+        let myUser: any = this.stateSvc.getUserData('userId');
+        console.log(myUser);
+        this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
+            this.institute = res.data;
+            console.log(this.institute);
+        });
         this.listInstitute = this.fb.group({
             instituteName: ['', Validators.required],
             instituteType: ['', Validators.required],

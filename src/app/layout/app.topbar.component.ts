@@ -28,8 +28,6 @@ export class AppTopBarComponent implements OnInit {
         private stateSvc: StateService,
         private instSvc: InstituteService
     ) {
-        this.institute = [];
-
         this.items = [
             {
                 label: 'Logout',
@@ -43,11 +41,9 @@ export class AppTopBarComponent implements OnInit {
 
     ngOnInit(): void {
         let myUser: any = this.stateSvc.getUserData('userId');
-        let temp: any;
         console.log(myUser);
         this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
-            temp = res.data[0];
-            this.institute =[temp];
+            this.institute = res.data;
             console.log(this.institute);
         });
     }
