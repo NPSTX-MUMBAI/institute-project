@@ -1,9 +1,9 @@
 <div class="col-12" class="container" [style]="{
     'display': 'flex',
     'align-items': 'center',
-    'justify-content': 'center'
+    'justify-content': 'flex-start'
 }">
-    <div class="card" [style]="{'width':'75rem','height':'80%'}">
+    <div class="card" [style]="{'width':'50%','height':'88%'}" >
         <div class="pt-4" [formGroup]="bankDetails">
 
             <div class="p-fluid p-formgrid grid">
@@ -89,7 +89,7 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code"
-                        formControlName="ifsc" pattern="^[A-Z]{4}[0][\d]{6}$" maxlength="11" minlength="11" />
+                        formControlName="ifsc" pattern="^[A-Z]{4}[0][\d]{6}$" maxlength="11" minlength="11" (blur)="getBank()" type="search" />
                     <div *ngIf="bankDetails.controls['ifsc'].touched && bankDetails.controls['ifsc'].errors">
                         <div *ngIf="bankDetails.controls['ifsc'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
@@ -106,7 +106,7 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="Bankname">Bank name</label>
                     <input pInputText id="Bankname" type="text" placeholder=" Enter your bank name"
-                        formControlName="bankName">
+                        formControlName="bankname">
 
 
                 </div>
@@ -136,7 +136,7 @@
                 <div class="field col-12 md:col-3">
                     <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
-                        formControlName="pinCode" pattern="^\d{6}$"  maxlength="6" minlength="6" />
+                        formControlName="pinCode" pattern="^\d{6}$"  maxlength="7" minlength="6" />
 
 
                 </div>

@@ -9,6 +9,7 @@ import { BankInfoModel } from 'src/app/models/bank.info.model';
 import { MessageService } from 'primeng/api';
 import { BankService } from 'src/app/services/bank.service';
 import { StateService } from '../../../services/state.service';
+import { Bank } from 'src/app/models/bank.model';
 
 @Component({
     selector: 'app-bank-info',
@@ -21,6 +22,7 @@ export class BankInfoComponent implements OnInit {
 
     bankDetails!: FormGroup;
     loading = false;
+    toggleDisplay: boolean = false;
     constructor(
         private fb: FormBuilder,
         private msg: MessageService,
@@ -36,7 +38,7 @@ export class BankInfoComponent implements OnInit {
             // upi: ['', Validators.required],
             // SID: ['', Validators.required],
             // mid: ['', Validators.required],
-            bankName: ['', Validators.required],
+            bankname: ['', Validators.required],
             branch: ['', Validators.required],
             state: ['', Validators.required],
             district: ['', Validators.required],
@@ -72,7 +74,7 @@ export class BankInfoComponent implements OnInit {
             accountType: myBank.accountType.name,
             accountNo: myBank.accountNo,
             ifsc: myBank.ifsc,
-            bankName: myBank.bankName,
+            bankname: myBank.bankname,
             branch: myBank.branch,
             state: myBank.state,
             district: myBank.district,
@@ -92,4 +94,31 @@ export class BankInfoComponent implements OnInit {
            
         }
     }
+
+
+
+    getBank(){
+        
+            let ifscCode = this.bankDetails.controls["ifsc"].value.toUpperCase();
+            console.warn("ifsc:", ifscCode);
+
+            this.bankSvc.findBankByIFSCCode(ifscCode).subscribe(
+                (data: Bank) => {
+                    let myPin = data.address?.slice(-7)
+                    this.bankDetails.get("branch")?.setValue(data.branch);
+                    this.bankDetails.get("bankname")?.setValue(data.bankname);
+                    this.bankDetails.get("state")?.setValue(data.state);
+                    this.bankDetails.get("district")?.setValue(data.district);
+                    this.bankDetails.get("city")?.setValue(data.city);
+                    this.bankDetails.get("centre")?.setValue(data.centre);
+                    this.bankDetails.get("address")?.setValue(data.address);
+                    this.bankDetails.get("bankCode")?.setValue(data.bankCode);
+                    this.bankDetails.get("pinCode")?.setValue(myPin);
+
+
+                    this.toggleDisplay = true;
+                }
+            )
+    }
+
 }
