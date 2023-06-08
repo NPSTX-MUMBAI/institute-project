@@ -1,17 +1,16 @@
-import { Component, ElementRef, ViewChild } from '@angular/core';
+import { Component, ElementRef, ViewChild, OnInit } from '@angular/core';
 import { MenuItem } from 'primeng/api';
 import { LayoutService } from './service/app.layout.service';
 import { Router } from '@angular/router';
-interface Institute {
-    name: string;
-    code: string;
-}
+import { StateService } from '../services/state.service';
+import { InstituteService } from '../services/institute.service';
+import { Institute } from '../models/institute.model';
 
 @Component({
     selector: 'app-topbar',
     templateUrl: './app.topbar.component.html',
 })
-export class AppTopBarComponent {
+export class AppTopBarComponent implements OnInit {
     items!: MenuItem[];
 
     @ViewChild('menubutton') menuButton!: ElementRef;
@@ -23,11 +22,15 @@ export class AppTopBarComponent {
 
     selectedInstitute!: Institute;
 
-    constructor(public layoutService: LayoutService, private router: Router) {
+    constructor(
+        public layoutService: LayoutService,
+        private router: Router,
+        private stateSvc: StateService,
+        private instSvc: InstituteService
+    ) {
         this.institute = [
-            { name: 'NPST Test School', code: 'NY' },
-            { name: 'MGM College', code: 'RM' },
-            { name: 'Don Bosco', code: 'LDN' },
+            { instituteName: 'MGM College' },
+            { instituteName: 'Don Bosco' },
         ];
 
         this.items = [
@@ -39,6 +42,17 @@ export class AppTopBarComponent {
                 },
             },
         ];
+    }
+
+    ngOnInit(): void {
+        let myUser: any = this.stateSvc.getUserData('userId');
+        let temp: any;
+        console.log(myUser);
+        this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
+            temp = res.data[0];
+            this.institute.push({instituteName:temp.instituteName});
+            console.log(this.institute);
+        });
     }
 
     logOut() {

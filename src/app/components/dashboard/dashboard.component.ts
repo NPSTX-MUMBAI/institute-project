@@ -2,6 +2,7 @@ import { Component, OnInit, ViewChild } from '@angular/core';
 import { StateService } from '../../services/state.service';
 import { ChartOptions } from 'chart.js';
 import Chart from 'chart.js/auto';
+import { InstituteService } from '../../services/institute.service';
 
 @Component({
     selector: 'app-dashboard',
@@ -9,7 +10,10 @@ import Chart from 'chart.js/auto';
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
-    constructor(private stateSvc: StateService) {}
+    constructor(
+        private stateSvc: StateService,
+        private instSvc: InstituteService
+    ) {}
 
     chartData: any;
     chartOptions: any;
@@ -17,6 +21,14 @@ export class DashboardComponent implements OnInit {
     canvas: any;
     ctx: any;
     @ViewChild('mychart') mychart: any;
+
+    ngOnInit(): void {
+        let myUser: any = this.stateSvc.getUserData('userId');
+        console.log(myUser);
+        this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
+            console.log(res);
+        });
+    }
 
     ngAfterViewInit() {
         this.canvas = this.mychart.nativeElement;
@@ -137,8 +149,5 @@ export class DashboardComponent implements OnInit {
         });
     }
 
-    ngOnInit(): void {
-        let myUser: any = this.stateSvc.getUserData('userId');
-        console.log(myUser);
-    }
+
 }
