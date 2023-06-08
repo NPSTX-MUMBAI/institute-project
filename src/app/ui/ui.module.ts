@@ -36,7 +36,7 @@ import { TabMenuModule } from 'primeng/tabmenu';
 import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { TimelineModule } from 'primeng/timeline';
-
+import { MenubarModule } from 'primeng/menubar';
 const arrays = [
     CommonModule,
     CarouselModule,
@@ -82,6 +82,7 @@ const arrays = [
     InputSwitchModule,
     FormsModule,
     TimelineModule,
+    MenubarModule,
 ];
 @NgModule({
     imports: arrays,

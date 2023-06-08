@@ -23,7 +23,6 @@ import { StateService } from '../../../services/state.service';
 })
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
-
     InstituteInfo!: FormGroup;
 
     board!: Board[];
