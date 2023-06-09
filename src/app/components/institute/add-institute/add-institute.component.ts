@@ -1,14 +1,17 @@
-import { Component, OnInit, } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import {
     FormGroup,
     FormControl,
     FormBuilder,
     Validators,
 } from '@angular/forms';
-import { Router } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { AddressService } from 'src/app/demo/service/address.service';
-import { AddressDetails, PostOffice } from 'src/app/models/addressDetails.models';
-
+import {
+    AddressDetails,
+    PostOffice,
+} from 'src/app/models/addressDetails.models';
+import { InstituteService } from '../../../services/institute.service';
 
 @Component({
     selector: 'app-add-institute',
@@ -20,12 +23,23 @@ export class AddInstituteComponent implements OnInit {
     standard = [{ name: 'I' }, { name: 'II' }, { name: 'III' }];
     boards = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBSE' }];
     division = [{ name: 'A' }, { name: 'B' }, { name: 'C' }];
+    schoolId: any;
+    institute: any;
 
-
-
-
-    constructor(private fb: FormBuilder, private router: Router) {}
+    constructor(
+        private fb: FormBuilder,
+        private router: Router,
+        private instSvc: InstituteService,
+        private route: ActivatedRoute
+    ) {}
     ngOnInit(): void {
+        this.schoolId = this.route.snapshot.queryParamMap.get('schoolId');
+        console.log(this.schoolId);
+
+        this.instSvc.getInstituteDetails(this.schoolId).then((res: any) => {
+            this.institute = res.data;
+            console.log(this.institute.instituteName);
+        });
         this.listInstitute = this.fb.group({
             instituteName: ['', Validators.required],
             instituteType: ['', Validators.required],
@@ -65,15 +79,4 @@ export class AddInstituteComponent implements OnInit {
     AddInstitute() {
         this.router.navigate(['/institute/add']);
     }
-
-    
-             
-             
-
-            
-
-        
-    
-    
-
 }

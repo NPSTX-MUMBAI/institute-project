@@ -1,6 +1,10 @@
 <!-- <button pButton pRipple label="+ Add Institute" (click)="AddInstitute()"></button> -->
 
+<p-confirmPopup></p-confirmPopup>
+<p-toast></p-toast>
 
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
 
 <div style="margin-top:4%;">
     <p-table #dt2 [value]="institute" dataKey="id" [rows]="10"
@@ -29,16 +33,26 @@
         </ng-template>
         <ng-template pTemplate="body" let-institute>
             <tr>
-                <td style="color:#01A9F1;font-weight: bold;">{{ institute.uniqueId }}</td>
+                <td> {{ institute.uniqueId }} </td>
 
-                <td>{{ institute.name }}</td>
-                <td>{{ institute.type }}</td>
+
+
+                <td>{{ institute.instituteName }}</td>
+                <td>{{ institute.instituteType }}</td>
                 <td>{{ institute.board }}</td>
-                <td>{{ institute.phone }}</td>
+                <td>{{ institute.institutePhone }}</td>
 
                 <td>{{ institute.city }}</td>
                 <td>{{ institute.state }}</td>
-                <td style="color:#0257FF;font-weight: bold;">{{ institute.action }}</td>
+                <td style="color:#0257FF;font-weight: bold;">
+
+
+                    <p-button  (click)="handleClick( institute.schoolId ); menu.toggle($event)" icon="pi pi-ellipsis-v"
+
+                    styleClass="p-button-rounded p-button-text">
+
+                  </p-button>
+                </td>
 
             </tr>
         </ng-template>

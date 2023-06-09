@@ -56,4 +56,34 @@ export class InstituteService {
                 );
         });
     }
+
+    getInstituteDetails(id: string) {
+        let token = this.stateSvc.getUserData('accessToken');
+
+        const headers = new HttpHeaders().set(
+            'Authorization',
+            `Bearer ${token}`
+        );
+
+        return new Promise(async (resolve, reject) => {
+            await this.http
+                .post(
+                    environment.url + '/school/get/School/Id',
+                    { schoolId: id },
+                    { headers }
+                )
+                .subscribe(
+                    (res: any) => {
+                        if (res.status) {
+                            resolve(res);
+                        } else {
+                            resolve(res);
+                        }
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+        });
+    }
 }
