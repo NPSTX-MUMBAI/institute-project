@@ -14,6 +14,7 @@ import { DialogService } from 'primeng/dynamicdialog';
 export class ListBankComponent implements OnInit {
     bank = [];
     items!: MenuItem[];
+    schoolId: any;
 
     constructor(
         private router: Router,
@@ -22,13 +23,21 @@ export class ListBankComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.bankSvc
-            .getBanksBySchoolId('d04d7a281927a05db98f')
-            .then((res: any) => {
-                console.log(res);
-                this.bank = res.data;
-            });
+        this.updateBankList();
+
+        this.stateSvc.schoolIdChange.subscribe((newSchoolId: string) => {
+          this.schoolId = newSchoolId;
+          this.updateBankList();
+        });
     }
+
+
+    updateBankList() {
+        this.bankSvc.getBanksBySchoolId(this.schoolId).then((res: any) => {
+          console.log(res);
+          this.bank = res.data;
+        });
+      }
     navigateToAddBank() {
         this.router.navigate(['/institute/bank/add']);
     }

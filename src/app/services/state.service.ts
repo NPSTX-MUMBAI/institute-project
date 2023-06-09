@@ -1,4 +1,4 @@
-import { Injectable } from '@angular/core';
+import { Injectable, EventEmitter } from '@angular/core';
 
 @Injectable({
     providedIn: 'root',
@@ -8,7 +8,13 @@ export class StateService {
 
     private _myUserId: any;
 
-    constructor() {}
+    schoolIdChange: EventEmitter<string> = new EventEmitter<string>();
+    schoolId: string;
+
+    constructor() {
+        this.schoolId = localStorage.getItem('schoolId') || '';
+        this.emitSchoolIdChange();
+    }
 
     public set applicationId(id: string) {
         this._applicationId = id;
@@ -27,6 +33,14 @@ export class StateService {
 
     public setUserData(key: string, userData: any) {
         localStorage.setItem(key, userData);
+
+        if (key == 'schoolId') {
+            this.emitSchoolIdChange();
+        }
+    }
+
+    emitSchoolIdChange() {
+        this.schoolIdChange.emit(this.schoolId);
     }
     public getUserData(key: string) {
         let data = localStorage.getItem(key);

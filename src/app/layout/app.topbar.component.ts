@@ -66,8 +66,12 @@ export class AppTopBarComponent implements OnInit {
                     return 0;
                 }
             });
-
         });
+    }
+
+    setSchool(event: any) {
+        this.stateSvc.setUserData('schoolId', event.schoolId);
+        console.log(event);
     }
 
     logOut() {
