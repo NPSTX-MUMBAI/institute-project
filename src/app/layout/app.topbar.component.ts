@@ -43,7 +43,16 @@ export class AppTopBarComponent implements OnInit {
         let myUser: any = this.stateSvc.getUserData('userId');
         console.log(myUser);
         this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
-            this.institute = res.data;
+            const finalArray = [];
+
+            for (const item of res.data) {
+                const schoolData = {
+                    ...item.school,
+                    ...item.address,
+                };
+                finalArray.push(schoolData);
+            }
+            this.institute = finalArray;
 
             this.institute.sort((a: any, b: any) => {
                 const uniqueIdA = parseInt(a.uniqueId);
@@ -58,7 +67,6 @@ export class AppTopBarComponent implements OnInit {
                 }
             });
 
-            console.log(this.institute);
         });
     }
 

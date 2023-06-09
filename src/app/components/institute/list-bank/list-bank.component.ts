@@ -1,73 +1,54 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { StateService } from '../../../services/state.service';
+import { BankService } from '../../../services/bank.service';
+import { ConfirmationService, MenuItem } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
     selector: 'app-list-bank',
     templateUrl: './list-bank.component.html',
     styleUrls: ['./list-bank.component.scss'],
+    providers: [ConfirmationService, DialogService],
 })
-export class ListBankComponent {
-    bank: any = [
-        {
-            AccountName: 'abc',
-            AccountType: 'current',
-            AccountNo: '7841254125841',
-            IFSCCode: 'SBIN0011513',
-            BankName: 'SBI',
-            BranchName: 'Invalid ',
-        },
-        {
-            AccountName: 'Fan',
-            AccountType: 'current',
-            AccountNo: '8741254125861',
-            IFSCCode: 'HDfN0011545',
-            BankName: 'HDFC',
-            BranchName: 'Valid ',
-        },
-        {
-            AccountName: 'Team',
-            AccountType: 'current',
-            AccountNo: '6441254125841',
-            IFSCCode: 'SBIN0011513',
-            BankName: 'SBI',
-            BranchName: 'Valid ',
-        },
-        {
-            AccountName: 'Vishal',
-            AccountType: 'current',
-            AccountNo: '5641254125841',
-            IFSCCode: 'BOIN0011513',
-            BankName: 'BOI',
-            BranchName: 'Valid ',
-        },
-        {
-            AccountName: 'abc',
-            AccountType: 'current',
-            AccountNo: '7841254125841',
-            IFSCCode: 'SBIN0011513',
-            BankName: 'SBI',
-            BranchName: 'Invalid ',
-        },
-        {
-            AccountName: 'Vishal',
-            AccountType: 'current',
-            AccountNo: '5641254125841',
-            IFSCCode: 'BOIN0011513',
-            BankName: 'BOI',
-            BranchName: 'Valid ',
-        },
-        {
-            AccountName: 'abc',
-            AccountType: 'current',
-            AccountNo: '7841254125841',
-            IFSCCode: 'SBIN0011513',
-            BankName: 'SBI',
-            BranchName: 'Invalid ',
-        },
-    ];
+export class ListBankComponent implements OnInit {
+    bank = [];
+    items!: MenuItem[];
 
-    constructor(private router: Router) {}
+    constructor(
+        private router: Router,
+        private stateSvc: StateService,
+        private bankSvc: BankService
+    ) {}
+
+    ngOnInit(): void {
+        this.bankSvc
+            .getBanksBySchoolId('d04d7a281927a05db98f')
+            .then((res: any) => {
+                console.log(res);
+                this.bank = res.data;
+            });
+    }
     navigateToAddBank() {
         this.router.navigate(['/institute/bank/add']);
+    }
+
+    handleClick(accNo: any) {
+        console.log(event);
+
+        this.items = [
+            {
+                label: 'Update',
+                icon: 'pi pi-pencil',
+                routerLink: ['/institute/bank/add'],
+                queryParams: { accNo: accNo },
+                queryParamsHandling: 'merge',
+            },
+            {
+                label: 'Delete',
+                icon: 'pi pi-trash',
+                command: () => {},
+            },
+        ];
     }
 }

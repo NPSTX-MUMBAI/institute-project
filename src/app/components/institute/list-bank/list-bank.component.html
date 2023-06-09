@@ -1,8 +1,13 @@
+<p-confirmPopup></p-confirmPopup>
+<p-toast></p-toast>
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
+
+
 <button pButton pRipple label="+ Add Bank" (click)="navigateToAddBank()"></button>
 
 <div style="margin-top:8%;">
-    <p-table #dt2 [value]="bank" dataKey="id" [rows]="10"
-        [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
+    <p-table #dt2 [value]="bank" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
                 <h2>List of Bank</h2>
@@ -17,6 +22,8 @@
                 <th>IFSC CODE</th>
                 <th>BANK NAME</th>
                 <th>BRANCH NAME</th>
+                <th> ACTION</th>
+
 
 
             </tr>
@@ -25,12 +32,20 @@
         </ng-template>
         <ng-template pTemplate="body" let-bank>
             <tr>
-                <td>{{ bank.AccountName }}</td>
-                <td>{{ bank.AccountType }}</td>
-                <td>{{ bank.AccountNo }}</td>
-                <td>{{ bank.IFSCCode }}</td>
-                <td>{{ bank.BankName }}</td>
-                <td>{{ bank.BranchName }}</td>
+                <td>{{ bank.accountHolderName }}</td>
+                <td>{{ bank.accountType | uppercase }}</td>
+                <td>{{ bank.accountNo }}</td>
+                <td>{{ bank.ifsc }}</td>
+                <td>{{ bank.bankName }}</td>
+                <td>{{ bank.branch }}</td>
+                <td style="color:#0257FF;font-weight: bold;">
+
+
+                    <p-button (click)="handleClick( bank.accountNo ); menu.toggle($event)" icon="pi pi-ellipsis-v"
+                        styleClass="p-button-rounded p-button-text">
+
+                    </p-button>
+                </td>
 
 
 

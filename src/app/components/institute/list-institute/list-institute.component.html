@@ -8,20 +8,14 @@
 
 <div style="margin-top:4%;">
     <p-table #dt2 [value]="institute" dataKey="id" [rows]="10"
-        [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
-        <!-- <ng-template pTemplate="caption">
-            <div class="flex-container">
-                <h2>List of Institutes</h2>
+        [tableStyle]="{ 'min-width': '75rem' }">
 
-            </div>
-        </ng-template> -->
         <ng-template pTemplate="header">
             <tr>
                 <th>UNIQUE NO.</th>
 
                 <th> NAME</th>
                 <th>INSTITUTE TYPE</th>
-                <th> BOARD</th>
                 <th> PHONE</th>
 
                 <th> CITY</th>
@@ -37,9 +31,8 @@
 
 
 
-                <td>{{ institute.instituteName }}</td>
-                <td>{{ institute.instituteType }}</td>
-                <td>{{ institute.board }}</td>
+                <td>{{ institute.instituteName  }}</td>
+                <td>{{ institute.instituteType  | uppercase }}</td>
                 <td>{{ institute.institutePhone }}</td>
 
                 <td>{{ institute.city }}</td>

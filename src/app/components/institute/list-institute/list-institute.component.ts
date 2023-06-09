@@ -36,7 +36,17 @@ export class ListInstituteComponent implements OnInit {
         let myUser: any = this.stateSvc.getUserData('userId');
         console.log(myUser);
         this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
-            this.institute = res.data;
+            const finalArray = [];
+
+            for (const item of res.data) {
+                const schoolData = {
+                    ...item.school,
+                    ...item.address,
+                };
+                finalArray.push(schoolData);
+            }
+            this.institute = finalArray;
+
             console.log(this.institute);
         });
         this.listInstitute = this.fb.group({
@@ -69,7 +79,7 @@ export class ListInstituteComponent implements OnInit {
         console.log(this.listInstitute.value);
     }
 
-    handleClick( id:any) {
+    handleClick(id: any) {
         console.log(event);
 
         this.items = [
@@ -77,15 +87,14 @@ export class ListInstituteComponent implements OnInit {
                 label: 'Update',
                 icon: 'pi pi-pencil',
                 routerLink: ['/institute/add'],
-                  queryParams: { schoolId: id },
-                  queryParamsHandling: 'merge',
+                queryParams: { schoolId: id },
+                queryParamsHandling: 'merge',
             },
             {
                 label: 'Delete',
                 icon: 'pi pi-trash',
                 command: () => {},
             },
-
         ];
     }
 
