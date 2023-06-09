@@ -3,7 +3,7 @@
 
 
 <div style="margin-top:4%;">
-    <p-table #dt2 [value]="school" dataKey="id" [rows]="10"
+    <p-table #dt2 [value]="institute" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
@@ -27,18 +27,18 @@
             </tr>
 
         </ng-template>
-        <ng-template pTemplate="body" let-school>
+        <ng-template pTemplate="body" let-institute>
             <tr>
-                <td style="color:#01A9F1;font-weight: bold;">{{ school.uniqueId }}</td>
+                <td style="color:#01A9F1;font-weight: bold;">{{ institute.uniqueId }}</td>
 
-                <td>{{ school.name }}</td>
-                <td>{{ school.type }}</td>
-                <td>{{ school.board }}</td>
-                <td>{{ school.phone }}</td>
+                <td>{{ institute.name }}</td>
+                <td>{{ institute.type }}</td>
+                <td>{{ institute.board }}</td>
+                <td>{{ institute.phone }}</td>
 
-                <td>{{ school.city }}</td>
-                <td>{{ school.state }}</td>
-                <td style="color:#0257FF;font-weight: bold;">{{ school.action }}</td>
+                <td>{{ institute.city }}</td>
+                <td>{{ institute.state }}</td>
+                <td style="color:#0257FF;font-weight: bold;">{{ institute.action }}</td>
 
             </tr>
         </ng-template>

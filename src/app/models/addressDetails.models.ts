@@ -10,6 +10,9 @@ export class AddressDetails {
   PostOffice!: PostOffice[];
 }
 export class PostOffice {
+  static Country(Country: any) {
+      throw new Error('Method not implemented.');
+  }
   Region!: string;
   State!: string;
   Country!: string;

@@ -4,7 +4,7 @@ export interface BankInfoModel {
     accountNo: string;
     ifsc: string;
 
-    bankName: string;
+    bankname: string;
     branch: string;
     state: string;
     district: string;

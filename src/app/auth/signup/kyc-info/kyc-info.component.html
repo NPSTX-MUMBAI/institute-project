@@ -119,7 +119,7 @@
     PANStatus &&
     REGStatus &&
     GSTStatus" pButton pRipple label="Submit" (click)="submit()"></button>
-    <button *ngIf="!GSTStatus" [disabled]="true" pButton pRipple label="Save"></button>
+    <button *ngIf="!REGStatus" [disabled]="true" pButton pRipple label="Save"></button>
 
 
 

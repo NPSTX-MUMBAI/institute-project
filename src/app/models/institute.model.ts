@@ -5,9 +5,9 @@ import { User } from "./user.model";
 export interface Institute {
   _id?: string;
   currency?: string;
-  name: string;
-  instituteType: INSTITUTE_TYPE;
-  mobileNo: string;
+  instituteName: string;
+  instituteType?: INSTITUTE_TYPE;
+  mobileNo?: string;
   website?: string;
   email?: string;
   board?: string[];

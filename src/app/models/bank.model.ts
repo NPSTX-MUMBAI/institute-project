@@ -1,4 +1,5 @@
 export interface Bank {
+  
   instituteId?: string;
   _id?: string;
   accountHolderName: string;
@@ -13,7 +14,7 @@ export interface Bank {
   district: string;
   city: string;
   centre: string;
-  address: string;
+  address?: string;
   bankCode: string;
 
   contact?: string;

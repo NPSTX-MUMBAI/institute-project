@@ -15,7 +15,6 @@ export class LoginComponent implements OnInit {
     loading = false;
     hidePassword: boolean = true;
 
-
     constructor(
         private router: Router,
         private fb: FormBuilder,
@@ -26,14 +25,14 @@ export class LoginComponent implements OnInit {
 
     togglePasswordVisibility() {
         this.hidePassword = !this.hidePassword;
-      }
+    }
 
     ngOnInit(): void {
         localStorage.clear();
 
         this.loginGrp = this.fb.group({
-            mobileNo: ['7738195474', Validators.required],
-            password: ['Shivani@123', Validators.required],
+            mobileNo: ['8108587537', Validators.required],
+            password: ['Shoaib@123', Validators.required],
         });
     }
 
