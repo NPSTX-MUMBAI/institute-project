@@ -24,20 +24,18 @@ export class ListBankComponent implements OnInit {
 
     ngOnInit(): void {
         this.updateBankList();
-
-        this.stateSvc.schoolIdChange.subscribe((newSchoolId: string) => {
-          this.schoolId = newSchoolId;
-          this.updateBankList();
-        });
     }
 
+    async updateBankList() {
+        this.schoolId = this.stateSvc.getUserData('schoolId');
 
-    updateBankList() {
-        this.bankSvc.getBanksBySchoolId(this.schoolId).then((res: any) => {
-          console.log(res);
-          this.bank = res.data;
-        });
-      }
+        await this.bankSvc
+            .getBanksBySchoolId(this.schoolId)
+            .then((res: any) => {
+                console.log(res);
+                this.bank = res.data;
+            });
+    }
     navigateToAddBank() {
         this.router.navigate(['/institute/bank/add']);
     }
