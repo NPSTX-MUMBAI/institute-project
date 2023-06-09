@@ -1,9 +1,8 @@
 <div class="container" [style]="{
             'display': 'flex',
             'align-items': 'center',
-            'justify-content': 'center'
         }">
-    <div class="card" [style]="{'width':'75rem','height':'80%' }">
+    <div class="card" [style]="{'width':'50%','height':'88%'}">
         <div class="col">
 
             <form class="pt-4" [formGroup]="personalGrp">
@@ -268,4 +267,61 @@
     </div>
 
 
+</div>
+<!-- <div class="tabs">
+    <div class="tab-header">
+        <div class="active">Home</div>
+        <div>About</div>
+        <div>Contact</div>
+        <div>Dashboard</div>
+    </div>
+    <div class="tab-indicator"> </div>
+    <div class="tab-body">
+        <div class="active">
+            <h1>Home</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ullam, rem dolorem voluptatibus molestiae
+                facilis corrupti sed aperiam a cumque. Adipisci voluptatem animi, temporibus facilis quasi nihil
+                corporis molestiae incidunt.</p>
+        </div>
+        <div>
+            <h1>About</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ullam, rem dolorem voluptatibus molestiae
+                facilis corrupti sed aperiam a cumque. Adipisci voluptatem animi, temporibus facilis quasi nihil
+                corporis molestiae incidunt.</p>
+        </div>
+        <div>
+            <h1>contact</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Quos ullam, rem dolorem voluptatibus molestiae
+                facilis corrupti sed aperiam a cumque. Adipisci voluptatem animi, temporibus facilis quasi nihil
+                corporis molestiae incidunt.</p>
+        </div>
+    </div> -->
+<div class="tabs">
+    <div class="tab-header">
+        <div [class.active]="activeTab === 'Home'" (click)="setActiveTab('Home')">Home</div>
+        <div [class.active]="activeTab === 'About'" (click)="setActiveTab('About')">About</div>
+        <div [class.active]="activeTab === 'Contact'" (click)="setActiveTab('Contact')">Contact</div>
+        <div [class.active]="activeTab === 'Dashboard'" (click)="setActiveTab('Dashboard')">Dashboard</div>
+    </div>
+    <div class="tab-indicator" [style.left.%]="getActiveTabIndex() * 25"></div>
+    <div class="tab-body">
+        <div [class.active]="activeTab === 'Home'">
+            <h1>Home</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.
+                Lorem ipsum dolor sit amet consectetur adipisicing elit.
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'About'">
+            <h1>About</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div [class.active]="activeTab === 'Contact'">
+            <h1>Contact</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+        <div [class.active]="activeTab === 'Dashboard'">
+            <h1>Dashboard</h1>
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
+        </div>
+    </div>
 </div>

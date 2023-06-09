@@ -6,7 +6,7 @@
     <div class="card">
 
         <p-tabView [(activeIndex)]="activeIndex" styleClass="tabview-custom">
-            <p-tabPanel [disabled]="activeIndex !== 0">
+            <p-tabPanel>
 
                 <ng-template pTemplate="header">
                     <h4><span *ngIf="personalInfoComplete"></span>
@@ -18,7 +18,7 @@
                 </p>
             </p-tabPanel>
 
-            <p-tabPanel header="Institute" [disabled]="activeIndex !== 1">
+            <p-tabPanel header="Institute">
 
                 <ng-template pTemplate="header">
                     <h4><span *ngIf="instituteInfoComplete"></span>
@@ -27,7 +27,7 @@
                 <app-institute-info (onSaveInstInfo)="onSaveInstInfo($event)"></app-institute-info>
             </p-tabPanel>
 
-            <p-tabPanel header="Bank" [disabled]="activeIndex !== 2">
+            <p-tabPanel header="Bank">
 
                 <ng-template pTemplate="header">
                     <h4> <span *ngIf="bankInfoComplete"></span>
@@ -38,8 +38,8 @@
             </p-tabPanel>
 
 
-            <!-- <p-tabPanel [disabled]="activeIndex !== 3" header="Kyc"> -->
-            <p-tabPanel header="KYC" [disabled]="activeIndex !== 3">
+            <!-- <p-tabPanel  header="Kyc"> -->
+            <p-tabPanel header="KYC">
 
                 <ng-template pTemplate="header">
                     <!-- -->
@@ -52,13 +52,13 @@
 
             </p-tabPanel>
 
-            <!-- <p-tabPanel [disabled]="activeIndex !== 4" header="Status"> -->
-            <p-tabPanel header="Status" [disabled]="activeIndex !== 4">
+            <!-- <p-tabPanel  header="Status"> -->
+            <p-tabPanel header="Status">
 
                 <ng-template pTemplate="header">
                     <h4> <span> </span> Status</h4>
                 </ng-template>
-                <app-status [index]="activeIndex" ></app-status>
+                <app-status [index]="activeIndex"></app-status>
             </p-tabPanel>
         </p-tabView>
     </div>
