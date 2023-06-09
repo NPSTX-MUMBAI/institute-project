@@ -102,13 +102,22 @@
                             </div>
                         </div>
     
-                        <div class="login__box">
+                        <!--<div class="login__box">
                             <i class='bx bx-lock-alt login__icon'></i>
-                            <input type="password" placeholder="Password" class="login__input"  formControlName="password" type="{{ hidePassword ? 'password' : 'text' }}"   >
-                            <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (hidePassword ? 'fa-eye' : 'fa-eye-slash')" ></i></span>
+                            <input type="password" placeholder="Password" class="login__input"  formControlName="password" type="{{ Password ? 'password' : 'text' }}"   >
+                            <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (!hidePassword ? 'fa-eye' : 'fa-eye-slash')" ></i></span>
             
-                    
-                        </div>
+                           
+                        </div> -->
+
+                        <div class="login__box">
+                            <i class="bx bx-lock-alt login__icon"></i>
+                            <input type="{{ hidePassword ? 'password' : 'text' }}" placeholder="Password" class="login__input" formControlName="password">
+                            <span class="password-toggle" (click)="togglePasswordVisibility()">
+                              <i id="toggle-icon" [class]="!hidePassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                            </span>
+                          </div>
+                          
                         
                         <div>
 
