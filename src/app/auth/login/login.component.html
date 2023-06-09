@@ -1,4 +1,4 @@
-<section class="section">
+<!-- <section class="section">
     <div class="main">
 
         <div class="intro-section">
@@ -64,8 +64,7 @@
 
                     <button class="sign-button" pButton pRipple label="Sign In" (click)="signin()"></button>
 
-                    <!--<button pButton pRipple label="Sign In" [loading]="loading" class="w-full p-3 text-xl"
-                           (click)="signin()"></button>-->
+                  
                 </div>
             </div>
 
@@ -73,4 +72,68 @@
 
     </div>
 
-</section>
+</section> -->
+
+
+
+        <div class="login">
+            <div class="login__content">
+                <div class="login__img">
+                    <img src="../../../assets/layout/images/img-login.svg" alt="">
+                    <!-- <img src="../../../assets/layout/images/school3.gif" alt="school"> -->
+                </div>
+                
+                <div class="login__forms">
+                    <form action="" class="login__registre" id="login-in" [formGroup]="loginGrp">
+                        <h1 class="login__title">Sign In</h1>
+    
+                        <div class="login__box">
+                            <i class='bx bx-user login__icon'></i>
+                            <input type="text" placeholder="MobileNo" class="login__input" formControlName="mobileNo" required appOnlyNumber maxlength="10" minlength="0" required
+                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                            pattern="[- +()0-9]{10,12}">
+
+                        </div>
+                        <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
+                            <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
+                                style="color: red;margin-bottom: 5px; text-align: left;">
+                                Enter Mobile No!
+
+                            </div>
+                        </div>
+    
+                        <div class="login__box">
+                            <i class='bx bx-lock-alt login__icon'></i>
+                            <input type="password" placeholder="Password" class="login__input"  formControlName="password" type="{{ hidePassword ? 'password' : 'text' }}"   >
+                            <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (hidePassword ? 'fa-eye' : 'fa-eye-slash')" ></i></span>
+            
+                    
+                        </div>
+                        
+                        <div>
+
+                            <div *ngIf="loginGrp.controls['password'].touched && loginGrp.controls['password'].errors">
+                                <div *ngIf="loginGrp.controls['password'].hasError('required')"
+                                    style="color: red;margin-bottom: 5px; text-align: left;">
+                                    Enter your password!
+    
+                                </div>
+                            </div>
+
+                    </div>
+
+                        
+                        <a href="#" class="login__forgot">Forgot password?</a>
+
+                        <a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>
+
+                        <div>
+                            <span class="login__account">Don't have an Account ?</span>
+                            <span class="login__signin" id="sign-up" routerLink="/auth/signup">Sign Up</span>
+                        </div>
+                    </form>
+
+                  
+                </div>
+            </div>
+        </div>
