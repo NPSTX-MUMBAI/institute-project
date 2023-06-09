@@ -32,12 +32,12 @@
         </ng-template>
         <ng-template pTemplate="body" let-bank>
             <tr>
-                <td>{{ bank.accountHolderName }}</td>
+                <td>{{ bank.accountHolderName | uppercase  }}</td>
                 <td>{{ bank.accountType | uppercase }}</td>
                 <td>{{ bank.accountNo }}</td>
-                <td>{{ bank.ifsc }}</td>
-                <td>{{ bank.bankName }}</td>
-                <td>{{ bank.branch }}</td>
+                <td>{{ bank.ifsc | uppercase }}</td>
+                <td>{{ bank.bankName | uppercase  }}</td>
+                <td>{{ bank.branch | uppercase }}</td>
                 <td style="color:#0257FF;font-weight: bold;">
 
 
