@@ -44,6 +44,20 @@ export class AppTopBarComponent implements OnInit {
         console.log(myUser);
         this.instSvc.getInstitutesForUser(myUser).then((res: any) => {
             this.institute = res.data;
+
+            this.institute.sort((a: any, b: any) => {
+                const uniqueIdA = parseInt(a.uniqueId);
+                const uniqueIdB = parseInt(b.uniqueId);
+
+                if (uniqueIdA < uniqueIdB) {
+                    return -1;
+                } else if (uniqueIdA > uniqueIdB) {
+                    return 1;
+                } else {
+                    return 0;
+                }
+            });
+
             console.log(this.institute);
         });
     }

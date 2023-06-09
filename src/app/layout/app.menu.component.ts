@@ -27,7 +27,6 @@ export class AppMenuComponent implements OnInit {
             this.stateSvc.getUserData('refreshToken') &&
             this.stateSvc.getUserData('newUser')
         ) {
-            console.log('hiiiii');
             this.model = [
                 {
                     label: 'Home',
@@ -40,7 +39,7 @@ export class AppMenuComponent implements OnInit {
                     ],
                 },
                 {
-                    label: 'Institute',
+                    label: 'Admission Form',
                     items: [
                         {
                             label: 'Admission Form ',
@@ -49,7 +48,10 @@ export class AppMenuComponent implements OnInit {
                         },
                     ],
                 },
+
                 {
+                    label: 'Institute',
+
                     items: [
                         {
                             label: 'Institute ',
