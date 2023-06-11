@@ -24,6 +24,11 @@ export class ListBankComponent implements OnInit {
 
     ngOnInit(): void {
         this.updateBankList();
+
+        this.stateSvc.getData().subscribe((response: any) => {
+            console.log('ins--->', response);
+            this.updateBankList();
+        });
     }
 
     async updateBankList() {

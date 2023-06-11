@@ -72,6 +72,8 @@ export class AppTopBarComponent implements OnInit {
     setSchool(event: any) {
         this.stateSvc.setUserData('schoolId', event.schoolId);
         console.log(event);
+
+        this.stateSvc.setData(event.schoolId);
     }
 
     logOut() {
