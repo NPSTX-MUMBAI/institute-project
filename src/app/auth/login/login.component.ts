@@ -13,8 +13,7 @@ import { StateService } from '../../services/state.service';
 export class LoginComponent implements OnInit {
     loginGrp!: FormGroup;
     loading = false;
-    hidePassword= true;
-   
+    hidePassword = true;
 
     constructor(
         private router: Router,
@@ -25,7 +24,7 @@ export class LoginComponent implements OnInit {
     ) {}
 
     togglePasswordVisibility() {
-        this.hidePassword = ! this.hidePassword;
+        this.hidePassword = !this.hidePassword;
     }
 
     ngOnInit(): void {
@@ -82,7 +81,7 @@ export class LoginComponent implements OnInit {
                         this.stateSvc.setUserData('user', loggedInUser);
                         this.loading = false;
 
-                        this.router.navigate(['/admin-dashboard']);
+                        this.router.navigate(['/main/admin-dashboard']);
                     }
                 } else {
                     this.msgSvc.add({
@@ -95,5 +94,4 @@ export class LoginComponent implements OnInit {
             });
         }
     }
-    
 }

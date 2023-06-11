@@ -101,6 +101,6 @@ export class ListStudentComponent {
     constructor(private router: Router) {}
     ngOnInit(): void {}
     navigateToAddStudents() {
-        this.router.navigate(['/student/add']);
+        this.router.navigate(['/main/student/add']);
     }
 }

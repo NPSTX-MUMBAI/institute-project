@@ -34,7 +34,7 @@ export class AppMenuComponent implements OnInit {
                         {
                             label: 'Dashboard',
                             icon: 'pi pi-fw pi-home',
-                            routerLink: ['/admin-dashboard'],
+                            routerLink: ['/main/admin-dashboard'],
                         },
                     ],
                 },
@@ -44,7 +44,7 @@ export class AppMenuComponent implements OnInit {
                         {
                             label: 'Admission Form ',
                             icon: 'pi pi-fw pi-id-card',
-                            routerLink: ['/admission'],
+                            routerLink: ['/main/admission'],
                         },
                     ],
                 },
@@ -61,27 +61,27 @@ export class AppMenuComponent implements OnInit {
                                 {
                                     label: 'Institute list',
                                     icon: 'fa-solid fa-school',
-                                    routerLink: ['/institute/list'],
+                                    routerLink: ['/main/institute/list'],
                                 },
                                 {
                                     label: 'Bank',
                                     icon: 'fa fa-money-bill-transfer',
-                                    routerLink: ['/institute/bank'],
+                                    routerLink: ['/main/institute/bank'],
                                 },
                                 {
                                     label: 'Staff',
                                     icon: 'fa-solid fa-users',
-                                    routerLink: ['/institute/staff'],
+                                    routerLink: ['/main/institute/staff'],
                                 },
                                 {
                                     label: 'KYC',
                                     icon: 'fa-solid fa-file-contract',
-                                    routerLink: ['/institute/kyc'],
+                                    routerLink: ['/main/institute/kyc'],
                                 },
                                 {
                                     label: 'Add Institute',
                                     icon: 'fa fa-money-bill-transfer',
-                                    routerLink: ['/institute/add'],
+                                    routerLink: ['/main/institute/add'],
                                 },
                             ],
                         },
@@ -94,7 +94,7 @@ export class AppMenuComponent implements OnInit {
                         {
                             label: 'Students ',
                             icon: 'fa-solid fa-graduation-cap',
-                            routerLink: ['/student'],
+                            routerLink: ['/main/student'],
                         },
                     ],
                 },
@@ -104,7 +104,7 @@ export class AppMenuComponent implements OnInit {
                         {
                             label: 'Charges ',
                             icon: 'pi pi-fw pi-id-card',
-                            routerLink: ['/student'],
+                            routerLink: ['/main/student'],
                         },
                         {
                             label: 'Charge group ',

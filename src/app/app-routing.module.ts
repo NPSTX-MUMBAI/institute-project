@@ -7,7 +7,7 @@ import { AuthGuardGuard } from './guards/auth-guard.guard';
 const routes: Routes = [
     {
         path: '',
-        redirectTo: 'admin-dashboard',
+        redirectTo: 'main/admin-dashboard',
         pathMatch: 'full',
     },
 
@@ -16,50 +16,109 @@ const routes: Routes = [
         loadChildren: () =>
             import('./auth/auth.module').then((m) => m.AuthModule),
     },
-    {
-        path: 'admin-dashboard',
-        component: AppLayoutComponent,
-
-        loadChildren: () =>
-            import('./components/dashboard/dashboard.module').then(
-                (m) => m.DashboardModule
-            ),
-        canActivate: [AuthGuardGuard],
-        // canDeactivate: [AuthGuardGuard],
-    },
+    //
 
     {
+        path: 'main',
         component: AppLayoutComponent,
-        path: 'admission',
-
-        loadChildren: () =>
-            import('./components/admission/admission.module').then(
-                (m) => m.AdmissionModule
-            ),
         canActivate: [AuthGuardGuard],
-    },
-    {
-        component: AppLayoutComponent,
-        path: 'institute',
 
-        loadChildren: () =>
-            import('./components/institute/institute.module').then(
-                (m) => m.InstituteModule
-            ),
-        canActivate: [AuthGuardGuard],
+        children: [
+            {
+                path: 'admin-dashboard',
+                loadChildren: () =>
+                    import('./components/dashboard/dashboard.module').then(
+                        (m) => m.DashboardModule
+                    ),
+                // canDeactivate: [AuthGuardGuard],
+            },
+            {
+                path: 'admission',
+
+                loadChildren: () =>
+                    import('./components/admission/admission.module').then(
+                        (m) => m.AdmissionModule
+                    ),
+            },
+            {
+                path: 'institute',
+
+                loadChildren: () =>
+                    import('./components/institute/institute.module').then(
+                        (m) => m.InstituteModule
+                    ),
+            },
+            {
+                path: 'student',
+
+                loadChildren: () =>
+                    import('./components/student/student.module').then(
+                        (m) => m.StudentModule
+                    ),
+            },
+        ],
     },
 
-    {
-        component: AppLayoutComponent,
-        path: 'student',
-
-        loadChildren: () =>
-            import('./components/student/student.module').then(
-                (m) => m.StudentModule
-            ),
-        canActivate: [AuthGuardGuard],
-    },
+    //
 ];
+
+// const routes: Routes = [
+//     { path: "", redirectTo: "auth", pathMatch: "full" },
+//     {
+//       path: "auth",
+//       loadChildren: () => import("./auth/auth.module").then((r) => r.AuthModule),
+//     },
+
+//     {
+//       path: "main",
+//       component: LayoutComponent,
+//       // canActivate: [AuthguardGuard],
+//       children: [
+//         {
+//           path: "student",
+//           loadChildren: () =>
+//             import("./students/students.module").then((s) => s.StudentsModule),
+//         },
+//         {
+//           path: "institute",
+//           loadChildren: () =>
+//             import("./institute/institute.module").then((s) => s.InstituteModule),
+//         },
+//         {
+//           path: "collection",
+//           loadChildren: () =>
+//             import("./collection/collection.module").then(
+//               (s) => s.CollectionModule
+//             ),
+//         },
+//         {
+//           path: "dashboard",
+//           loadChildren: () =>
+//             import("./dashboard/dashboard.module").then((s) => s.DashboardModule),
+//         },
+//         {
+//           path: "reporting",
+//           loadChildren: () =>
+//             import("./reporting/reporting.module").then((s) => s.ReportingModule),
+//         },
+
+//         {
+//           path: "payment",
+//           loadChildren: () =>
+//             import("./payment/payment.module").then((p) => p.PaymentModule),
+//         },
+//         {
+//           path: "auth",
+//           loadChildren: () =>
+//             import("./auth/auth.module").then((p) => p.AuthModule),
+//         },
+//         {
+//           path: "**",
+//           component: PagenotfoundComponent,
+//         },
+//       ],
+//     },
+//   ];
 @NgModule({
     imports: [
         RouterModule.forRoot(routes, {

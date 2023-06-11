@@ -37,7 +37,7 @@ export class ListBankComponent implements OnInit {
             });
     }
     navigateToAddBank() {
-        this.router.navigate(['/institute/bank/add']);
+        this.router.navigate(['/main/institute/bank/add']);
     }
 
     handleClick(accNo: any) {

@@ -77,6 +77,6 @@ export class AddInstituteComponent implements OnInit {
         { name: 'Jr School' },
     ];
     AddInstitute() {
-        this.router.navigate(['/institute/add']);
+        this.router.navigate(['/main/institute/add']);
     }
 }
