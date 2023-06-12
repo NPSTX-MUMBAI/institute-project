@@ -68,7 +68,7 @@
         <div [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')">Status</div>
 
     </div>
-    <div class="tab-indicator" [style.left.%]="getActiveTabIndex() * 25"></div>
+    <div class="tab-indicator" [style.left.%]="getActiveTabIndex()* (100 / tabs.length)"></div>
     <div class="tab-body">
         <div [class.active]="activeTab === 'Home'">
             <p>
