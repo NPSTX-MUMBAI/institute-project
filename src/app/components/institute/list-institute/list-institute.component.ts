@@ -86,7 +86,7 @@ export class ListInstituteComponent implements OnInit {
             {
                 label: 'Update',
                 icon: 'pi pi-pencil',
-                routerLink: ['/institute/add'],
+                routerLink: ['/main/institute/add'],
                 queryParams: { schoolId: id },
                 queryParamsHandling: 'merge',
             },
