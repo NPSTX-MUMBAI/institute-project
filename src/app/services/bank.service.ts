@@ -102,4 +102,33 @@ export class BankService {
                 );
         });
     }
+    getBankDetailsById(data: any) {
+        let token = this.stateSvc.getUserData('accessToken');
+
+        const headers = new HttpHeaders().set(
+            'Authorization',
+            `Bearer ${token}`
+        );
+
+        return new Promise(async (resolve, reject) => {
+            await this.http
+                .post(
+                    environment.url + '/school/get/bank/Id',
+                   data,
+                    { headers }
+                )
+                .subscribe(
+                    (res: any) => {
+                        if (res.status) {
+                            resolve(res);
+                        } else {
+                            resolve(res);
+                        }
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+        });
+    }
 }

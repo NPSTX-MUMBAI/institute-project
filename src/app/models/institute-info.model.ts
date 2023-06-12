@@ -7,6 +7,11 @@ export interface InstituteInfoModel {
     instituteWebsite: string;
     instituteEmail: string;
     boardType: any;
+
+    spocName: string;
+    spocNumber: string;
+    spocEmail: any;
+
     address?: Address;
 }
 

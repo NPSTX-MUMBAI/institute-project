@@ -72,7 +72,7 @@ export class AddInstituteComponent implements OnInit {
                 instituteDiv: ['', Validators.required],
 
                 spocName: ['', Validators.required],
-                spocPhone: ['', Validators.required],
+                spocNumber: ['', Validators.required],
                 spocEmail: ['', Validators.required],
 
                 line1: [this.institute.line1, Validators.required],
@@ -95,7 +95,7 @@ export class AddInstituteComponent implements OnInit {
             instituteDiv: ['', Validators.required],
 
             spocName: ['', Validators.required],
-            spocPhone: ['', Validators.required],
+            spocNumber: ['', Validators.required],
             spocEmail: ['', Validators.required],
 
             line1: ['', Validators.required],
@@ -113,14 +113,13 @@ export class AddInstituteComponent implements OnInit {
             .then((res: any) => {
                 const finalArray = [];
 
-                for (const item of res.data) {
-                    const schoolData = {
-                        ...item.school,
-                        ...item.address,
-                        ...item.board,
-                    };
-                    finalArray.push(schoolData);
-                }
+                const schoolData = {
+                    ...res.data.school,
+                    ...res.data.address,
+                    ...res.data.board[0],
+                };
+                finalArray.push(schoolData);
+
                 this.institute = finalArray[0];
 
                 console.log(this.institute);

@@ -171,11 +171,11 @@
 
                 </div>
                 <div class="field col-12 md:col-4">
-                    <label htmlFor="spocphone"> SPOC Phone </label>
-                    <input pInputTextarea id="spocphone" rows="4" placeholder="SPOC Phone" formControlName="spocPhone"
-                        minlength="10" maxlength="10" type="spocphone"
+                    <label htmlFor="spocNumber"> SPOC Phone </label>
+                    <input pInputTextarea id="spocNumber" rows="4" placeholder="SPOC Phone" formControlName="spocNumber"
+                        minlength="10" maxlength="10" type="spocNumber"
                         oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                        placeholder="spocphone " required pattern="[0-9 ]{10}" />
+                        placeholder="Enter phone no for SPOC " required pattern="[0-9 ]{10}" />
                 </div>
                 <div class="field col-12 md:col-4">
                     <label htmlFor="spocemail">SPOC Email</label>
@@ -242,5 +242,5 @@
 </form>
 <div style="margin-top: 20px;">
     <p-button label="Submit" (click)="submit()"></p-button>
-    <p-button label="Reset" style="margin-left: 20px;"></p-button>
+    <p-button label="Reset" [style]="{'margin-left': '20px'}"></p-button>
 </div>

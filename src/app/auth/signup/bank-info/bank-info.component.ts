@@ -17,7 +17,6 @@ import { Bank } from 'src/app/models/bank.model';
     styleUrls: ['./bank-info.component.scss'],
 })
 export class BankInfoComponent implements OnInit {
-
     @Output() onSaveBankInfo = new EventEmitter();
 
     bankDetails!: FormGroup;
@@ -53,11 +52,11 @@ export class BankInfoComponent implements OnInit {
     dropdownItems = [
         { name: 'Current account', code: 'Current account' },
         { name: 'Saving account', code: 'Saving account' },
-        { name: 'Salary accoount', code: 'Salary accoount' },
-        { name: 'FD accoount', code: 'FD  accoount' },
+        { name: 'Salary account', code: 'Salary account' },
+        { name: 'FD account', code: 'FD  account' },
     ];
     async submit() {
-        let mySchoolId = this.stateSvc.getUserData('schoolId')
+        let mySchoolId = this.stateSvc.getUserData('schoolId');
         this.loading = true;
         if (this.bankDetails.invalid) {
             this.msg.add({
@@ -89,36 +88,27 @@ export class BankInfoComponent implements OnInit {
         console.log(myData, '<<<<<<');
 
         if (myData) {
-            this.onSaveBankInfo.emit(myData)
-
-           
+            this.onSaveBankInfo.emit(myData);
         }
     }
 
+    getBank() {
+        let ifscCode = this.bankDetails.controls['ifsc'].value.toUpperCase();
+        console.warn('ifsc:', ifscCode);
 
+        this.bankSvc.findBankByIFSCCode(ifscCode).subscribe((data: Bank) => {
+            let myPin = data.address?.slice(-7);
+            this.bankDetails.get('branch')?.setValue(data.branch);
+            this.bankDetails.get('bankname')?.setValue(data.bankname);
+            this.bankDetails.get('state')?.setValue(data.state);
+            this.bankDetails.get('district')?.setValue(data.district);
+            this.bankDetails.get('city')?.setValue(data.city);
+            this.bankDetails.get('centre')?.setValue(data.centre);
+            this.bankDetails.get('address')?.setValue(data.address);
+            this.bankDetails.get('bankCode')?.setValue(data.bankCode);
+            this.bankDetails.get('pinCode')?.setValue(myPin);
 
-    getBank(){
-        
-            let ifscCode = this.bankDetails.controls["ifsc"].value.toUpperCase();
-            console.warn("ifsc:", ifscCode);
-
-            this.bankSvc.findBankByIFSCCode(ifscCode).subscribe(
-                (data: Bank) => {
-                    let myPin = data.address?.slice(-7)
-                    this.bankDetails.get("branch")?.setValue(data.branch);
-                    this.bankDetails.get("bankname")?.setValue(data.bankname);
-                    this.bankDetails.get("state")?.setValue(data.state);
-                    this.bankDetails.get("district")?.setValue(data.district);
-                    this.bankDetails.get("city")?.setValue(data.city);
-                    this.bankDetails.get("centre")?.setValue(data.centre);
-                    this.bankDetails.get("address")?.setValue(data.address);
-                    this.bankDetails.get("bankCode")?.setValue(data.bankCode);
-                    this.bankDetails.get("pinCode")?.setValue(myPin);
-
-
-                    this.toggleDisplay = true;
-                }
-            )
+            this.toggleDisplay = true;
+        });
     }
-
 }

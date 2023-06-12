@@ -29,7 +29,7 @@ import { log } from 'console';
 })
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
-    InstituteInfo!: FormGroup;
+    instituteInfo!: FormGroup;
 
     board!: Board[];
     // newBoardName: any;
@@ -50,7 +50,7 @@ export class InstituteInfoComponent implements OnInit {
         this.board = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBE' }];
     }
     ngOnInit(): void {
-        this.InstituteInfo = this.fb.group({
+        this.instituteInfo = this.fb.group({
             instituteName: ['', Validators.required],
             instituteType: ['', Validators.required],
             institutePhone: ['', Validators.required],
@@ -64,7 +64,7 @@ export class InstituteInfoComponent implements OnInit {
             city: ['', Validators.required],
             boardType: ['', Validators.required],
             spocName: ['', Validators.required],
-            spocPhone: ['', Validators.required],
+            spocNumber: ['', Validators.required],
             spocEmail: ['', Validators.required],
         });
     }
@@ -72,7 +72,7 @@ export class InstituteInfoComponent implements OnInit {
         let myUserId: any = this.stateSvc.getUserData('userId');
 
         // this.loading = true;
-        if (this.InstituteInfo.invalid) {
+        if (this.instituteInfo.invalid) {
             this.msg.add({
                 severity: 'error',
                 summary: 'Invalid',
@@ -83,10 +83,10 @@ export class InstituteInfoComponent implements OnInit {
             return;
         }
 
-        const myInstitute = this.InstituteInfo.value;
+        const myInstitute = this.instituteInfo.value;
         const selectedInsType =
-            this.InstituteInfo.get('instituteType')?.value.name;
-        const selectedBoard = this.InstituteInfo.get('boardType')?.value.name;
+            this.instituteInfo.get('instituteType')?.value.name;
+        const selectedBoard = this.instituteInfo.get('boardType')?.value.name;
 
         myInstitute.boardType = selectedBoard;
         myInstitute.instituteType = selectedInsType;
@@ -110,6 +110,10 @@ export class InstituteInfoComponent implements OnInit {
             instituteWebsite: myInstitute.instituteWebsite,
             instituteEmail: myInstitute.instituteEmail,
             boardType: myInstitute.boardType,
+
+            spocName: myInstitute.spocName,
+            spocEmail: myInstitute.spocEmail,
+            spocNumber: myInstitute.spocNumber,
             address: institutesAddress,
         };
         console.log(instituteInfoObj, '<<<<<<<<<<<<');
@@ -146,7 +150,7 @@ export class InstituteInfoComponent implements OnInit {
     getPin() {
         console.log('Call...........');
 
-        const { pinCode } = this.InstituteInfo.value;
+        const { pinCode } = this.instituteInfo.value;
         console.log(pinCode);
         if (pinCode.length == 6) {
             let temp: any;
@@ -160,29 +164,29 @@ export class InstituteInfoComponent implements OnInit {
                         temp = postOfficeData;
                         console.log(postOfficeData);
 
-                        if (this.InstituteInfo.get('country')) {
+                        if (this.instituteInfo.get('country')) {
                             console.log('country found');
                         }
                     } else if (pinData.Status === 'Error') {
                         {
-                            this.InstituteInfo.get('country')?.setValue(
-                                'Invalid pincode!!!'
-                            );
-                            this.InstituteInfo.get('state')?.setValue(
-                                'Invalid pincode!!!'
-                            );
-                            this.InstituteInfo.get('state')?.setValue(
-                                'Invalid pincode!!!'
-                            );
-                            this.InstituteInfo.get('city')?.setValue(
-                                'Invalid pincode!!!'
-                            );
+                            this.instituteInfo
+                                .get('country')
+                                ?.setValue('Invalid pincode!!!');
+                            this.instituteInfo
+                                .get('state')
+                                ?.setValue('Invalid pincode!!!');
+                            this.instituteInfo
+                                .get('state')
+                                ?.setValue('Invalid pincode!!!');
+                            this.instituteInfo
+                                .get('city')
+                                ?.setValue('Invalid pincode!!!');
                         }
                     }
 
-                    this.InstituteInfo.get('country')?.setValue(temp.Country);
-                    this.InstituteInfo.get('state')?.setValue(temp.State);
-                    this.InstituteInfo.get('city')?.setValue(temp.District);
+                    this.instituteInfo.get('country')?.setValue(temp.Country);
+                    this.instituteInfo.get('state')?.setValue(temp.State);
+                    this.instituteInfo.get('city')?.setValue(temp.District);
                 }
             });
         }

@@ -52,7 +52,7 @@ export class ListBankComponent implements OnInit {
             {
                 label: 'Update',
                 icon: 'pi pi-pencil',
-                routerLink: ['/institute/bank/add'],
+                routerLink: ['/main/institute/bank/add'],
                 queryParams: { accNo: accNo },
                 queryParamsHandling: 'merge',
             },

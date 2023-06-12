@@ -61,7 +61,7 @@ export class ListInstituteComponent implements OnInit {
             institutediv: ['', Validators.required],
 
             spocname: ['', Validators.required],
-            spocphone: ['', Validators.required],
+            spocNumber: ['', Validators.required],
             spocemail: ['', Validators.required],
 
             address1: ['', Validators.required],

@@ -16,7 +16,7 @@ export interface Institute {
   upi?: string;
   regionCode?: REGION_CODE;
   spocname?: string;
-  spocphone?: string;
+  spocNumber?: string;
   spocemail?: string;
 
   line1?: string;
