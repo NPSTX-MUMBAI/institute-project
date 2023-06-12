@@ -1,12 +1,11 @@
 <div class="steper" [style]="{
 
     'align-items': 'center',
-    'justify-content': 'center'
 }">
-    <div class="card">
+    <!-- <div class="card">
 
         <p-tabView [(activeIndex)]="activeIndex" styleClass="tabview-custom">
-            <p-tabPanel [disabled]="activeIndex !== 0">
+            <p-tabPanel>
 
                 <ng-template pTemplate="header">
                     <h4><span *ngIf="personalInfoComplete"></span>
@@ -18,7 +17,7 @@
                 </p>
             </p-tabPanel>
 
-            <p-tabPanel header="Institute" [disabled]="activeIndex !== 1">
+            <p-tabPanel header="Institute">
 
                 <ng-template pTemplate="header">
                     <h4><span *ngIf="instituteInfoComplete"></span>
@@ -27,7 +26,7 @@
                 <app-institute-info (onSaveInstInfo)="onSaveInstInfo($event)"></app-institute-info>
             </p-tabPanel>
 
-            <p-tabPanel header="Bank" [disabled]="activeIndex !== 2">
+            <p-tabPanel header="Bank">
 
                 <ng-template pTemplate="header">
                     <h4> <span *ngIf="bankInfoComplete"></span>
@@ -38,31 +37,72 @@
             </p-tabPanel>
 
 
-            <!-- <p-tabPanel [disabled]="activeIndex !== 3" header="Kyc"> -->
-            <p-tabPanel header="KYC" [disabled]="activeIndex !== 3">
+            <p-tabPanel header="KYC">
 
                 <ng-template pTemplate="header">
-                    <!-- -->
                     <h4><span *ngIf="kycInfoComplete"></span> Kyc
                     </h4>
                 </ng-template>
                 <app-kyc-info (onKycUpload)="KycUploadfn($event)" [aadhaarStatus]="uploadAadhaar"
                     [PANStatus]="uploadPAN" [REGStatus]="uploadREG" [GSTStatus]="uploadGST"></app-kyc-info>
-                <!-- <app-kyc-info (onSaveKycInfo)="onSaveKycInfo($event)"></app-kyc-info> -->
 
             </p-tabPanel>
 
-            <!-- <p-tabPanel [disabled]="activeIndex !== 4" header="Status"> -->
-            <p-tabPanel header="Status" [disabled]="activeIndex !== 4">
+            <p-tabPanel header="Status">
 
                 <ng-template pTemplate="header">
                     <h4> <span> </span> Status</h4>
                 </ng-template>
-                <app-status [index]="activeIndex" ></app-status>
+                <app-status [index]="activeIndex"></app-status>
             </p-tabPanel>
         </p-tabView>
-    </div>
+    </div> -->
 
 </div>
+<div class="tabs">
+    <div class="tab-header">
+        <div [class.active]="activeTab === 'Home'" (click)="setActiveTab('Home')">Personal</div>
+        <div [class.active]="activeTab === 'About'" (click)="setActiveTab('About')">Institute</div>
+        <div [class.active]="activeTab === 'Contact'" (click)="setActiveTab('Contact')">Bank</div>
+        <div [class.active]="activeTab === 'Dashboard'" (click)="setActiveTab('Dashboard')">Kyc</div>
+        <div [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')">Status</div>
 
+    </div>
+    <div class="tab-indicator" [style.left.%]="getActiveTabIndex() * 25"></div>
+    <div class="tab-body">
+        <div [class.active]="activeTab === 'Home'">
+            <p>
+
+                <app-personal-info (onSavePersonalInfo)="onSavePersonalInfo($event)"></app-personal-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'About'">
+            <p>
+                <app-institute-info (onSaveInstInfo)="onSaveInstInfo($event)"></app-institute-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Contact'">
+
+            <p>
+                <app-bank-info (onSaveBankInfo)="onSaveBankInfo($event)"></app-bank-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Dashboard'">
+            <p>
+                <app-kyc-info (onKycUpload)="KycUploadfn($event)" [aadhaarStatus]="uploadAadhaar"
+                    [PANStatus]="uploadPAN" [REGStatus]="uploadREG" [GSTStatus]="uploadGST"></app-kyc-info>
+
+            </p>
+        </div>
+        <div [class.active]="activeTab === 'Status'">
+            <p>
+                <app-status [index]="activeIndex"></app-status>
+
+            </p>
+        </div>
+    </div>
+</div>
 <router-outlet></router-outlet>

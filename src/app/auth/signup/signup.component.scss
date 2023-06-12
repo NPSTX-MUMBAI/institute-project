@@ -1,0 +1,83 @@
+.nav-link {
+    color: #666;
+}
+
+.tabs {
+    position: absolute;
+    top: 50%;
+    left: 26%;
+    transform: translate(-50%, -50%);
+    width: 50%;
+    height: 100%;
+    margin-top: 10px;
+}
+
+.tabs .tab-header {
+    //     background: #f5f5f5;
+    padding: 10px;
+    display: flex;
+    font-size: 20px;
+    height: 70px;
+}
+
+.tabs .tab-header > div {
+    position: relative;
+    flex: 1;
+    text-align: center;
+    padding: 10px;
+    z-index: 2;
+    font-weight: 600;
+    color: #888;
+    cursor: pointer;
+    transition: color 300ms ease-in-out;
+}
+
+.tabs .tab-header > div.active {
+    color: white;
+    border-radius: 20px;
+}
+
+.tabs .tab-indicator {
+    position: absolute;
+    width: 25%;
+    height: 40px;
+    background-image: linear-gradient(to right, #835dea, #462ea5);
+    border: none;
+    top: 10px;
+    left: 10px;
+    border-radius: 10px 50px;
+    transition: left 200ms ease-in-out;
+}
+
+.tabs .tab-body {
+    position: relative;
+    padding: 10px;
+    // background: #f5f5f5;
+    border-top: 1px solid #ddd;
+    // height: 100%;
+    // overflow: hidden;
+}
+
+.tabs .tab-body > div {
+    position: absolute;
+    opacity: 0;
+    top: -10px;
+    left: 0;
+    right: 0;
+    transition: opacity 300ms ease-in-out, top 300ms ease-in-out;
+}
+
+.tabs .tab-body > div.active {
+    top: 30px;
+    opacity: 1;
+}
+
+.tabs .tab-body h1 {
+    color: #222;
+    margin-bottom: 10px;
+}
+
+.tabs .tab-body p {
+    color: #555;
+    font-size: 15px;
+}

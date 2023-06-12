@@ -18,7 +18,7 @@ export class VerifyOtpComponent implements OnInit {
     minutes!: number;
     second!: number;
     visible!: boolean;
-    MobileNo: string = '7738195474';
+    mobileNo: string = '7738195474';
     timeerVissible!: boolean;
     otp: string[] = ['', '', '', ''];
     errorArray: boolean[] = [false, false, false, false];
@@ -156,9 +156,11 @@ export class VerifyOtpComponent implements OnInit {
     //     }, 1000 * 59);
     // }
     async resendOTP() {
+        console.log('!!!!!!!!!!');
+
         try {
             const data = {
-                mobileNo: this.MobileNo, // Assuming you have the user's mobile number
+                mobileNo: this.mobileNo, // Assuming you have the user's mobile number
             };
 
             const res: any = await this.otpSvc.timer(data); // Call the resend OTP service method

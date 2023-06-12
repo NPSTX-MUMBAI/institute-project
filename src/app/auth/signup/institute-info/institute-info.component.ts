@@ -68,14 +68,14 @@ export class InstituteInfoComponent implements OnInit {
     async submit() {
         let myUserId: any = this.stateSvc.getUserData('userId');
 
-        this.loading = true;
+        // this.loading = true;
         if (this.InstituteInfo.invalid) {
             this.msg.add({
                 severity: 'error',
                 summary: 'Invalid',
                 detail: 'All fields are Required',
             });
-            this.loading = false;
+            // this.loading = false;
 
             return;
         }
