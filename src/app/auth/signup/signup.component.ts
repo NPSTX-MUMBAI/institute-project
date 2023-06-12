@@ -25,6 +25,7 @@ export class SignupComponent implements OnInit {
     uploadPAN = false;
     uploadGST = false;
     uploadREG = false;
+    activeTab: string = 'Home';
 
     constructor(
         private auth: AuthService,
@@ -209,5 +210,40 @@ export class SignupComponent implements OnInit {
                 }
             }
         });
+    }
+    tabs = [
+        {
+            title: 'Home',
+            content:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Home content goes here.',
+        },
+        {
+            title: 'About',
+            content:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. About content goes here.',
+        },
+        {
+            title: 'Contact',
+            content:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Contact content goes here.',
+        },
+        {
+            title: 'Dashboard',
+            content:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dashboard content goes here.',
+        },
+        {
+            title: 'Status',
+            content:
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dashboard content goes here.',
+        },
+    ];
+
+    setActiveTab(tab: string): void {
+        this.activeTab = tab;
+    }
+
+    getActiveTabIndex(): number {
+        return this.tabs.findIndex((tab) => tab.title === this.activeTab);
     }
 }

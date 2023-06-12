@@ -13,7 +13,6 @@ import { HttpClient } from '@angular/common/http';
 })
 export class PersonalInfoComponent implements OnInit {
     @Output() onSavePersonalInfo = new EventEmitter();
-    activeTab: string = 'Home';
 
     personalGrp!: FormGroup;
     constructor(
@@ -94,35 +93,5 @@ export class PersonalInfoComponent implements OnInit {
         }
 
         // console.log(this.personalGrp.value);
-    }
-    tabs = [
-        {
-            title: 'Home',
-            content:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Home content goes here.',
-        },
-        {
-            title: 'About',
-            content:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. About content goes here.',
-        },
-        {
-            title: 'Contact',
-            content:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Contact content goes here.',
-        },
-        {
-            title: 'Dashboard',
-            content:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dashboard content goes here.',
-        },
-    ];
-
-    setActiveTab(tab: string): void {
-        this.activeTab = tab;
-    }
-
-    getActiveTabIndex(): number {
-        return this.tabs.findIndex((tab) => tab.title === this.activeTab);
     }
 }
