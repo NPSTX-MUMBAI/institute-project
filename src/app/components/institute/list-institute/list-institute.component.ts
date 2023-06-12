@@ -23,6 +23,7 @@ export class ListInstituteComponent implements OnInit {
     listInstitute!: FormGroup;
     institute!: Institute[];
     items!: MenuItem[];
+    selectedInstitute:any
 
     //dropdownItems=[]
 

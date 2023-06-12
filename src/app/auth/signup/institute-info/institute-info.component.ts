@@ -63,6 +63,9 @@ export class InstituteInfoComponent implements OnInit {
             state: ['', Validators.required],
             city: ['', Validators.required],
             boardType: ['', Validators.required],
+            spocName: ['', Validators.required],
+            spocPhone: ['', Validators.required],
+            spocEmail: ['', Validators.required],
         });
     }
     async submit() {

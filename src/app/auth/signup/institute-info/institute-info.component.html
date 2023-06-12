@@ -122,6 +122,29 @@
 
             </div>
 
+            <h3>SPOC</h3>
+
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="spocname">SPOC Name</label>
+                    <input pInputText id="spocname" type="text" placeholder="SPOC Name" formControlName="spocName" />
+
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="spocphone"> SPOC Phone </label>
+                    <input pInputTextarea id="spocphone" rows="4" placeholder="SPOC Phone" formControlName="spocPhone"
+                        minlength="10" maxlength="10" type="spocphone"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        placeholder="spocphone " required pattern="[0-9 ]{10}" />
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="spocemail">SPOC Email</label>
+                    <input pInputTextarea id="spocemail" rows="4" placeholder="SPOC Email" formControlName="spocEmail"
+                        pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" />
+                </div>
+            </div>
+
+
 
             <h3>Address</h3>
 
