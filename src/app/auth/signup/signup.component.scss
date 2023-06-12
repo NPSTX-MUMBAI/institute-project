@@ -5,9 +5,9 @@
 .tabs {
     position: absolute;
     top: 50%;
-    left: 26%;
+    left: 32%;
     transform: translate(-50%, -50%);
-    width: 50%;
+    width: 62%;
     height: 100%;
     margin-top: 10px;
 }
@@ -39,13 +39,13 @@
 
 .tabs .tab-indicator {
     position: absolute;
-    width: 25%;
+    width: 20%;
     height: 40px;
     background-image: linear-gradient(to right, #835dea, #462ea5);
     border: none;
     top: 10px;
     left: 10px;
-    border-radius: 10px 50px;
+    border-radius: 10px 40px;
     transition: left 200ms ease-in-out;
 }
 
@@ -58,18 +58,28 @@
     // overflow: hidden;
 }
 
+// .tabs .tab-body > div {
+//     opacity: 0;
+//     transition: opacity 300ms ease-in-out, top 300ms ease-in-out;
+// }
+
+// .tabs .tab-body > div.active {
+//     top: 30px;
+//     opacity: 1;
+// }
 .tabs .tab-body > div {
-    position: absolute;
-    opacity: 0;
-    top: -10px;
-    left: 0;
-    right: 0;
-    transition: opacity 300ms ease-in-out, top 300ms ease-in-out;
+    display: none; /* Hide all tab content by default */
 }
 
 .tabs .tab-body > div.active {
-    top: 30px;
-    opacity: 1;
+    display: block; /* Show the active tab content */
+}
+
+.tabs .tab-body {
+    position: relative;
+    padding: 10px;
+    height: auto; /* Remove the fixed height */
+    // overflow: hidden;
 }
 
 .tabs .tab-body h1 {

@@ -235,7 +235,7 @@ export class SignupComponent implements OnInit {
         {
             title: 'Status',
             content:
-                'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dashboard content goes here.',
+                'Lorem ipsum dolor sit amet consectetur adipisicing elit. status content goes here.',
         },
     ];
 
