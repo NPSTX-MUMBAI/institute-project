@@ -57,16 +57,6 @@
     // height: 100%;
     // overflow: hidden;
 }
-
-// .tabs .tab-body > div {
-//     opacity: 0;
-//     transition: opacity 300ms ease-in-out, top 300ms ease-in-out;
-// }
-
-// .tabs .tab-body > div.active {
-//     top: 30px;
-//     opacity: 1;
-// }
 .tabs .tab-body > div {
     display: none; /* Hide all tab content by default */
 }
@@ -90,4 +80,64 @@
 .tabs .tab-body p {
     color: #555;
     font-size: 15px;
+}
+
+.container {
+    position: absolute;
+    top: 45%;
+    left: 80%;
+    transform: translate(-50%, -50%);
+    overflow: hidden;
+    width: 100%;
+    max-width: 30%;
+}
+.img-container {
+    width: 100%;
+    display: flex;
+    animation: slide 24s infinite;
+}
+img {
+    width: 100%;
+}
+
+@keyframes slide {
+    0% {
+        transform: translateX(0);
+    }
+    25% {
+        transform: translateX(0);
+    }
+    30% {
+        transform: translateX(-100%);
+    }
+    35% {
+        transform: translateX(-100%);
+    }
+    45% {
+        transform: translateX(-200%);
+    }
+    50% {
+        transform: translateX(-200%);
+    }
+    55% {
+        transform: translateX(-300%);
+    }
+    60% {
+        transform: translateX(-300%);
+    }
+    65% {
+        transform: translateX(-400%);
+    }
+    76% {
+        transform: translateX(-500%);
+    }
+    85% {
+        transform: translateX(-600%);
+    }
+    95% {
+        transform: translateX(-700%);
+    }
+    100% {
+        transform: translateX(-800%);
+    }
 }

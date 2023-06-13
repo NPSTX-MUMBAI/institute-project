@@ -30,6 +30,8 @@ import { log } from 'console';
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
     InstituteInfo!: FormGroup;
+    submitted = false;
+    showError = false;
 
     board!: Board[];
     // newBoardName: any;
@@ -70,6 +72,7 @@ export class InstituteInfoComponent implements OnInit {
 
         // this.loading = true;
         if (this.InstituteInfo.invalid) {
+            this.showError = true;
             this.msg.add({
                 severity: 'error',
                 summary: 'Invalid',
@@ -79,6 +82,7 @@ export class InstituteInfoComponent implements OnInit {
 
             return;
         }
+        this.showError = false;
 
         const myInstitute = this.InstituteInfo.value;
         const selectedInsType =
@@ -183,5 +187,8 @@ export class InstituteInfoComponent implements OnInit {
                 }
             });
         }
+    }
+    onSubmit() {
+        this.submitted = true;
     }
 }

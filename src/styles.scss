@@ -12,19 +12,26 @@ $gutter: 1rem; //for primeflex grid system
 @import "assets/demo/styles/flags/flags.css";
 @import "assets/demo/styles/badges.scss";
 @import "assets/demo/styles/code.scss";
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700&display=swap");
 
-
-.p-datatable .p-datatable-thead > tr > th{
-    background-color:#E2E7F7 !important;
-    color: #462EA5;
-    height:75px;
+.p-datatable .p-datatable-thead > tr > th {
+    background-color: #e2e7f7 !important;
+    color: #462ea5;
+    height: 75px;
 }
-.p-datatable .p-datatable-tbody > tr > td{
-    height:60px !important;
-
+.p-datatable .p-datatable-tbody > tr > td {
+    height: 60px !important;
 }
 
-/*input[type=password]{
-    //width: 480px !important;
-}*/
+.p-inputgroup-addon:last-child,
+.p-inputgroup button:last-child,
+.p-inputgroup input:last-child,
+.p-inputgroup > .p-inputwrapper:last-child > .p-component,
+.p-inputgroup > .p-inputwrapper:last-child > .p-component > .p-inputtext {
+    background-color: #f4f6ff;
+    font-size: 13px;
+}
+.p-dropdown {
+    background-color: #f4f6ff !important;
+    font-size: 13px;
+}

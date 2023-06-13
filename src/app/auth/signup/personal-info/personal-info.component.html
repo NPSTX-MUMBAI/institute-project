@@ -113,18 +113,6 @@
 
 
                 </div>
-                <!-- <div class="field col-12 md:col-4">
-                        <label htmlFor="email">Confirm Password <span class="text-red-600"> *</span></label>
-                        <input pInputTextarea id="email" rows="4" formControlName="confirmPassword"
-                            placeholder="Email" />
-                        <div *ngIf="personalGrp.controls['confirmPassword'].touched ">
-                            <div *ngIf="personalGrp.controls['confirmPassword'].hasError('required')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter confirm password!
-                            </div>
-
-                        </div>
-                    </div> -->
                 <div class="field col-12 md:col-4">
                     <label for="firstname2">Confirm Password<span class="text-red-600"> *</span></label>
 
@@ -140,125 +128,14 @@
                 </div>
 
             </div>
-            <button *ngIf="this.personalGrp.invalid" [disabled]="true" pButton pRipple label="Save"></button>
-            <button *ngIf="this.personalGrp.valid" pButton pRipple label="Save" (click)="onSave()"></button>
+            <button *ngIf="this.personalGrp.invalid" [disabled]="true" pButton pRipple label="SAVE" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"> </button>
+            <button *ngIf="this.personalGrp.valid" pButton pRipple label="Save" (click)="onSave()" style=" background-image: linear-gradient(to right, #835dea, #462ea5);
+            border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"></button>
 
 
         </form>
 
-        <!-- <form [formGroup]="personalGrp">
-
-                <div class="grid ">
-                    <div class="col-12 flex align-items-center justify-content-center">
-
-                    </div>
-
-                </div>
-
-                <hr>
-                <div class="formgrid grid">
-                    <div class="field col-3 lg:col-4 md:col-3 ">
-                        <label for="firstname2" htmlFor="username">First Name<span class="text-red-600">
-                                *</span></label>
-                        <div class="p-inputgroup">
-
-                            <input pInputText placeholder=" Enter your first name" formControlName="firstName"
-                                maxlength="45" requiredpattern="^[A-Za-z]{2,}$" />
-                            <div
-                                *ngIf="personalGrp.controls['firstName'].touched && personalGrp.controls['firstName'].errors">
-                                <div *ngIf="personalGrp.controls['firstName'].hasError('required')"
-                                    style="color: red;text-align: left;margin-top: 6px;">
-                                    Enter Institute name!
-                                </div>
-                                <div *ngIf="personalGrp.controls['firstName'].hasError('pattern')"
-                                    style="color: red;text-align: left;margin-top: 6px;">
-                                    Enter a valid Institute name!
-                                </div>
-                            </div>
-
-                        </div>
-                    </div>
-
-                    <div class="field col-3 lg:col-4 md:col-3">
-                        <label for="firstname2">Last Name<span class="text-red-600"> *</span></label>
-                        <div class="p-inputgroup">
-
-                            <input pInputText placeholder="Enter your last name" formControlName="lastName"
-                                maxlength="45" oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
-                        </div>
-
-                    </div>
-                    <div class="field col-3 lg:col-4 md:col-3 ">
-                        <label for="firstname2">Email Id<span class="text-red-600"> *</span></label>
-                        <div class="p-inputgroup">
-
-                            <input pInputText placeholder=" Enter your email id" formControlName="email"
-                                oninput="this.value = this.value.replace(/[^a-z0-9.@]/g, '')" />
-                        </div>
-
-                    </div>
-                    <div class="field col-3 lg:col-4 md:col-3">
-                        <label for="firstname2">Mobile No<span class="text-red-600"> *</span></label>
-                        <div class="p-inputgroup">
-
-                            <input type="text" appOnlyNumber maxlength="10" minlength="0" required
-                                pattern="[- +()0-9]{10,12}" pInputText placeholder=" Enter your mobile no"
-                                formControlName="mobileNo" />
-                        </div>
-
-                    </div>
-
-                    <div class="field col-3 lg:col-4 md:col-3 ">
-                        <label htmlFor="password" for="password">Password<span class="text-red-600"> *</span></label>
-                        <div class="p-inputgroup">
-
-                            <p-password [toggleMask]="true" formControlName="password" placeholder="Enter your password"
-                                [style]="{'width':'100%'}">
-                                <ng-template pTemplate="header">
-                                    <h6>Pick a password</h6>
-                                </ng-template>
-                                <ng-template pTemplate="footer">
-                                    <p-divider></p-divider>
-                                    <p class="mt-2">Suggestions</p>
-                                    <ul class="pl-2 ml-2 mt-0" style="line-height: 1.5">
-                                        <li>At least one lowercase</li>
-                                        <li>At least one uppercase</li>
-                                        <li>At least one numeric</li>
-                                        <li>Minimum 8 characters</li>
-                                    </ul>
-                                </ng-template>
-                            </p-password>
-                        </div>
-                    </div>
-
-                    <div class="field col-3 lg:col-4 md:col-3">
-                        <label for="firstname2">Confirm Password<span class="text-red-600"> *</span></label>
-
-                        <div class="p-inputgroup">
-
-                            <p-password [toggleMask]="true" [feedback]="false" formControlName="confirmPassword"
-                                placeholder=" Enter your confirm password" [style]="{'width':'100%'}"></p-password>
-                        </div>
-
-                        <div *ngIf="personalGrp.errors?.['mismatch']">
-                            <small class="tx-danger">Passwords do not match</small>
-                        </div>
-                    </div>
-                </div>
-
-
-
-
-
-
-                <div class="formgrid grid">
-                    <div class="col-12 flex align-items-center justify-content-center">
-                        <p-button label="Save" (click)="onSave()"></p-button>
-                    </div>
-                </div>
-
-            </form> -->
     </div>
-
 
 </div>

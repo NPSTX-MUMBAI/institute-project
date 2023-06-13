@@ -16,8 +16,8 @@
                         formControlName="instituteName" pattern="^[A-Za-z ]{2,}$" />
 
                     <div
-                        *ngIf="InstituteInfo.controls['instituteName'].touched && InstituteInfo.controls['instituteName'].errors">
-                        <div *ngIf="InstituteInfo.controls['instituteName'].hasError('required')"
+                        *ngIf="InstituteInfo.controls['instituteName'].touched && InstituteInfo.controls['instituteName'].errors ">
+                        <div *ngIf="InstituteInfo.controls['instituteName'].hasError('required') "
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter institute name!
                         </div>
@@ -25,6 +25,8 @@
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter a valid institute name!
                         </div>
+
+
                     </div>
 
 
@@ -176,8 +178,11 @@
 
         </form>
 
-        <p-button label="Submit" (click)="submit()"></p-button>
-        <p-button label="Reset" class="resetButton"></p-button>
+        <!-- <p-button label="Submit" (click)="submit()"></p-button> -->
+        <button pButton pRipple label="Submit" (click)="submit()" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"> </button>
+        <button pButton pRipple label="Reset" class="resetButton" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"></button>
 
     </div>
 </div>
