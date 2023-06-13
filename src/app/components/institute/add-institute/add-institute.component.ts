@@ -10,6 +10,8 @@ import { AddressService } from 'src/app/demo/service/address.service';
 import {
     AddressDetails,
     PostOffice,
+
+
 } from 'src/app/models/addressDetails.models';
 import { InstituteService } from '../../../services/institute.service';
 
@@ -25,13 +27,36 @@ export class AddInstituteComponent implements OnInit {
     division = [{ name: 'A' }, { name: 'B' }, { name: 'C' }];
     schoolId: any;
     institute: any;
+    items: any;
+    messageService: any;
+    visible: boolean = false;
+    Stdvisible: boolean = false;
+    index: any;
+    value?: string;
+    typedValue:any
+    value1?: string;
+    typedValueDiv: any;
 
     constructor(
         private fb: FormBuilder,
         private router: Router,
         private instSvc: InstituteService,
         private route: ActivatedRoute
-    ) {}
+    ) {
+        this.items =[
+            {
+                label: 'Users',
+                icon: 'pi pi-fw pi-user',
+                items: [
+                    {
+                        label: 'New',
+                        icon: 'pi pi-fw pi-user-plus'
+                    },
+                ]
+                }   
+        ]
+    }
+
     ngOnInit(): void {
         let i = 0;
         this.schoolId = this.route.snapshot.queryParamMap.get('schoolId');
@@ -138,4 +163,56 @@ export class AddInstituteComponent implements OnInit {
     AddInstitute() {
         this.router.navigate(['/main/institute/add']);
     }
+
+    save(severity: string){
+        this.messageService.add({ severity: severity, summary: 'Success', detail: 'Data Saved' });
+    }
+
+    onKey(value: any): void {
+        this.typedValue = value;
+      }
+
+      onKeyup(value:any): void {
+        this.typedValueDiv = value;
+      }
+      
+
+
+    //   addStd(input: HTMLInputElement): void {
+    //     console.log('hi', input);
+        
+    //    const value = input.value;
+    //     if (this.standard.indexOf((value:number)=>value === -1)) {
+    //       this.standard = [
+    //         ...this.standard,
+    //         //input.value || `New item ${this.index++}`,
+    //       ];
+    //     }
+    //   }
+
+      addStd(value: string): void {
+        console.log(value);
+
+        this.standard.push({name:value})
+
+
+      }
+
+      addDiv(value: string): void{
+        console.log(value);
+
+        this.division.push({name:value})
+      }
+      
+
+    
+          
+        
+        
 }
+
+
+
+
+
+

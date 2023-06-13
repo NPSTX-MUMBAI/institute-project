@@ -102,50 +102,85 @@
 
                     </div> -->
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
+                        <!--<label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
                         <p-dropdown [options]="standard" placeholder="Select Standard" optionLabel="name"
-                            formControlName="instituteStd"></p-dropdown>
+                            formControlName="instituteStd"></p-dropdown>-->
 
                         <!-- <input pInputText id="std" type="text" formControlName="std"
                             placeholder="Select Standard" /> -->
-                        <div *ngIf="listInstitute.controls['instituteStd'].touched ">
+                        <!--<div *ngIf="listInstitute.controls['instituteStd'].touched ">
                             <div *ngIf=" listInstitute.controls['instituteStd'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Please select Student's Standard!
                             </div>
+                        </div>-->
+
+
+
+                        <label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
+                         <p-multiSelect [options]="standard" formControlName="instituteStd" optionLabel="name"
+                         placeholder="Select Standard"></p-multiSelect>
+
+                                <div *ngIf="listInstitute.controls['instituteStd'].touched ">
+                                    <div *ngIf=" listInstitute.controls['instituteStd'].hasError('required')"
+                                        style="color: red;text-align: left;margin-top: 6px;">
+                                        Please select Student's Standard!
+                                    </div>
+                                </div>
+
+
+
+                        <div class="container">
+                            <input (keyup)="onKey($event.target)" style="width: 20%" type="text"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1');"
+                            nz-input #inputElement />
+
+                            <button nz-button nzType="text" class="add-item"
+                            (click)="addStd(inputElement.value); inputElement.value = ''" style="margin-left: 10px;">
+                            <em nz-icon nzType="plus"></em>
+                            Add Std
+                          </button>
                         </div>
 
 
                     </div>
-                    <!-- <div class="field col-12 md:col-3">
-                        <label htmlFor="Std">Standard<span class="text-red-600"> *</span></label>
-                        <input pInputTextarea id="Std" rows="4" formControlName="instituteStd" placeholder="Standard"
-                            pattern="" />
 
-                        <div
-                            *ngIf="listInstitute.controls['instituteStd'].touched && listInstitute.controls['instituteStd'].errors">
-                            <div *ngIf="listInstitute.controls['instituteStd'].hasError('required')"
-                                style="color: red;text-align: left;">
-                                Enter your standard!
-                            </div>
-                            <div *ngIf="listInstitute.controls['instituteStd'].hasError('pattern')"
-                                style="color: red;text-align: left;">
-                                Enter a valid Institute name!
-                            </div>
-                        </div>
-                    </div> -->
                     <div class="field col-12 md:col-4">
-                        <label htmlFor="std">Division<span class="text-red-600"> *</span></label>
+                        <!--<label htmlFor="std">Division<span class="text-red-600"> *</span></label>
                         <p-dropdown [options]="division" placeholder="Select division" optionLabel="name"
-                            formControlName="instituteDiv"></p-dropdown>
+                            formControlName="instituteDiv"></p-dropdown>-->
 
                         <!-- <input pInputText id="std" type="text" formControlName="std"
                             placeholder="Select Standard" /> -->
-                        <div *ngIf="listInstitute.controls['instituteDiv'].touched ">
+                        <!--<div *ngIf="listInstitute.controls['instituteDiv'].touched ">
                             <div *ngIf=" listInstitute.controls['instituteDiv'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Please select Student's division!
                             </div>
+                        </div>-->
+
+
+                        <label htmlFor="division">Select Division <span class="text-red-600"> *</span></label>
+                         <p-multiSelect [options]="division" formControlName="instituteDiv" optionLabel="name"
+                         placeholder="Select Division"></p-multiSelect>
+
+                         <div *ngIf="listInstitute.controls['instituteDiv'].touched ">
+                            <div *ngIf=" listInstitute.controls['instituteDiv'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Please select Student's division!
+                            </div>
+                            </div>
+
+                        <div class="container">
+                            <input (keyup)="onKeyup($event.target)" style="width: 20%" type="text"
+                            oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1');"
+                            nz-input #inputElement1 />
+
+                            <button nz-button nzType="text" class="add-item"
+                            (click)="addDiv(inputElement1.value); inputElement.value = ''" style="margin-left: 10px;">
+                            <em nz-icon nzType="plus"></em>
+                            Add Div
+                          </button>
                         </div>
 
 
@@ -203,7 +238,7 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="zipcode">Zip Code<span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="zipcode" rows="4" placeholder="Zip Code" formControlName="zipcode"
-                        pattern="[0-9]{5}"/>
+                        pattern="[0-9]{5}" />
 
                     <div *ngIf="listInstitute.controls['zipcode'].touched && listInstitute.controls['zipcode'].errors">
                         <div *ngIf="listInstitute.controls['zipcode'].hasError('required')"
