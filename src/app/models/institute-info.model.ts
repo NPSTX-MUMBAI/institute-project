@@ -18,6 +18,7 @@ export interface InstituteInfoModel {
 export enum INSTITUTE_TYPE {
     'SCHOOL' = 'SCHOOL',
     'JrCollege' = 'JrCollege',
-    'UNIVERSITY' = 'UNIVERSTITY',
+    'UNIVERSITY' = 'UNIVERSITY',
     'COACHING' = 'COACHING',
+    'KG' = 'KG',
 }

@@ -124,9 +124,11 @@ export class InstituteInfoComponent implements OnInit {
     }
 
     instituteTypes = [
-        { name: 'Bank' },
-        { name: 'School' },
-        { name: 'Jr School' },
+        { name: 'SCHOOL' },
+        { name: 'JrCollege' },
+        { name: 'UNIVERSITY' },
+        { name: 'COACHING' },
+        { name: 'KG' },
     ];
 
     // addBoard(board: any) {

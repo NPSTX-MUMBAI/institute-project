@@ -101,15 +101,15 @@
                         </div>
 
                     </div> -->
-                    <div class="field col-12 md:col-4">
-                        <!--<label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
+                    <!-- <div class="field col-12 md:col-4"> -->
+                    <!--<label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
                         <p-dropdown [options]="standard" placeholder="Select Standard" optionLabel="name"
-                            formControlName="instituteStd"></p-dropdown>-->
+                            formControlName="std"></p-dropdown>-->
 
-                        <!-- <input pInputText id="std" type="text" formControlName="std"
+                    <!-- <input pInputText id="std" type="text" formControlName="std"
                             placeholder="Select Standard" /> -->
-                        <!--<div *ngIf="listInstitute.controls['instituteStd'].touched ">
-                            <div *ngIf=" listInstitute.controls['instituteStd'].hasError('required')"
+                    <!--<div *ngIf="listInstitute.controls['std'].touched ">
+                            <div *ngIf=" listInstitute.controls['std'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Please select Student's Standard!
                             </div>
@@ -117,42 +117,43 @@
 
 
 
-                        <label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
-                         <p-multiSelect [options]="standard" formControlName="instituteStd" optionLabel="name"
-                         placeholder="Select Standard"></p-multiSelect>
+                    <!-- <label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
+                        <p-multiSelect [options]="standard" formControlName="std" optionLabel="name"
+                            placeholder="Select Standard"></p-multiSelect>
 
-                                <div *ngIf="listInstitute.controls['instituteStd'].touched ">
-                                    <div *ngIf=" listInstitute.controls['instituteStd'].hasError('required')"
-                                        style="color: red;text-align: left;margin-top: 6px;">
-                                        Please select Student's Standard!
-                                    </div>
-                                </div>
+                        <div *ngIf="listInstitute.controls['std'].touched ">
+                            <div *ngIf=" listInstitute.controls['std'].hasError('required')"
+                                style="color: red;text-align: left;margin-top: 6px;">
+                                Please select Student's Standard!
+                            </div>
+                        </div>
 
 
 
                         <div class="container">
                             <input (keyup)="onKey($event.target)" style="width: 20%" type="text"
-                            oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1');"
-                            nz-input #inputElement />
+                                oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1');"
+                                nz-input #inputElement />
 
                             <button nz-button nzType="text" class="add-item"
-                            (click)="addStd(inputElement.value); inputElement.value = ''" style="margin-left: 10px;">
-                            <em nz-icon nzType="plus"></em>
-                            Add Std
-                          </button>
+                                (click)="addStd(inputElement.value); inputElement.value = ''"
+                                style="margin-left: 10px;">
+                                <em nz-icon nzType="plus"></em>
+                                Add Std
+                            </button>
                         </div>
+ -->
 
+                    <!-- </div> -->
 
-                    </div>
-
-                    <div class="field col-12 md:col-4">
-                        <!--<label htmlFor="std">Division<span class="text-red-600"> *</span></label>
+                    <!-- <div class="field col-12 md:col-4"> -->
+                    <!--<label htmlFor="std">Division<span class="text-red-600"> *</span></label>
                         <p-dropdown [options]="division" placeholder="Select division" optionLabel="name"
                             formControlName="instituteDiv"></p-dropdown>-->
 
-                        <!-- <input pInputText id="std" type="text" formControlName="std"
+                    <!-- <input pInputText id="std" type="text" formControlName="std"
                             placeholder="Select Standard" /> -->
-                        <!--<div *ngIf="listInstitute.controls['instituteDiv'].touched ">
+                    <!--<div *ngIf="listInstitute.controls['instituteDiv'].touched ">
                             <div *ngIf=" listInstitute.controls['instituteDiv'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Please select Student's division!
@@ -160,38 +161,39 @@
                         </div>-->
 
 
-                        <label htmlFor="division">Select Division <span class="text-red-600"> *</span></label>
-                         <p-multiSelect [options]="division" formControlName="instituteDiv" optionLabel="name"
-                         placeholder="Select Division"></p-multiSelect>
+                    <!-- <label htmlFor="division">Select Division <span class="text-red-600"> *</span></label>
+                        <p-multiSelect [options]="division" formControlName="div" optionLabel="name"
+                            placeholder="Select Division"></p-multiSelect>
 
-                         <div *ngIf="listInstitute.controls['instituteDiv'].touched ">
-                            <div *ngIf=" listInstitute.controls['instituteDiv'].hasError('required')"
+                        <div *ngIf="listInstitute.controls['div'].touched ">
+                            <div *ngIf=" listInstitute.controls['div'].hasError('required')"
                                 style="color: red;text-align: left;margin-top: 6px;">
                                 Please select Student's division!
                             </div>
-                            </div>
+                        </div>
 
                         <div class="container">
                             <input (keyup)="onKeyup($event.target)" style="width: 20%" type="text"
-                            oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1');"
-                            nz-input #inputElement1 />
+                                oninput="this.value = this.value.replace(/[^a-zA-Z.]/g, '').replace(/(\..*)\./g, '$1');"
+                                nz-input #inputElement1 />
 
                             <button nz-button nzType="text" class="add-item"
-                            (click)="addDiv(inputElement1.value); inputElement.value = ''" style="margin-left: 10px;">
-                            <em nz-icon nzType="plus"></em>
-                            Add Div
-                          </button>
-                        </div>
+                                (click)="addDiv(inputElement1.value); inputElement.value = ''"
+                                style="margin-left: 10px;">
+                                <em nz-icon nzType="plus"></em>
+                                Add Div
+                            </button>
+                        </div> -->
 
 
-                    </div>
-                    <!-- <div class="field col-12 md:col-4">
+                </div>
+                <!-- <div class="field col-12 md:col-4">
                         <label htmlFor="Div">Division</label>
                         <input pInputTextarea id="Div" rows="4" formControlName="instituteDiv" placeholder="Div"
                             pattern="" />
                     </div> -->
-                </div>
             </div>
+            <!-- </div> -->
 
         </p-accordionTab>
 
@@ -245,7 +247,7 @@
                             style="color: red;text-align: left;">
                             Enter your zipcode!
                         </div>
-                        <div *ngIf="listInstitute.controls['institutestd'].hasError('pattern')"
+                        <div *ngIf="listInstitute.controls['std'].hasError('pattern')"
                             style="color: red;text-align: left;">
                             Enter a valid Institute name!
                         </div>

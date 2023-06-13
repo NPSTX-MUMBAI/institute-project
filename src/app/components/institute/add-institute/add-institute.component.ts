@@ -10,8 +10,6 @@ import { AddressService } from 'src/app/demo/service/address.service';
 import {
     AddressDetails,
     PostOffice,
-
-
 } from 'src/app/models/addressDetails.models';
 import { InstituteService } from '../../../services/institute.service';
 
@@ -33,7 +31,7 @@ export class AddInstituteComponent implements OnInit {
     Stdvisible: boolean = false;
     index: any;
     value?: string;
-    typedValue:any
+    typedValue: any;
     value1?: string;
     typedValueDiv: any;
 
@@ -43,34 +41,53 @@ export class AddInstituteComponent implements OnInit {
         private instSvc: InstituteService,
         private route: ActivatedRoute
     ) {
-        this.items =[
+        this.items = [
             {
                 label: 'Users',
                 icon: 'pi pi-fw pi-user',
                 items: [
                     {
                         label: 'New',
-                        icon: 'pi pi-fw pi-user-plus'
+                        icon: 'pi pi-fw pi-user-plus',
                     },
-                ]
-                }   
-        ]
+                ],
+            },
+        ];
     }
 
     ngOnInit(): void {
         let i = 0;
+        let j = 0;
         this.schoolId = this.route.snapshot.queryParamMap.get('schoolId');
         console.log(this.schoolId);
         this.fetchInstitute().then(() => {
             switch (this.institute.instituteType) {
-                case 'Bank':
+                case 'KG':
                     i = 0;
                     break;
-                case 'School':
+                case 'SCHOOL':
                     i = 1;
                     break;
-                case 'JrCollege':
+                case 'COACHING':
                     i = 2;
+                    break;
+                case 'JrCollege':
+                    i = 3;
+                    break;
+                case 'UNIVERSITY':
+                    i = 4;
+                    break;
+            }
+
+            switch (this.institute.boardType) {
+                case 'CBSE':
+                    j = 0;
+                    break;
+                case 'ICSE':
+                    j = 1;
+                    break;
+                case 'MSBSE':
+                    j = 2;
                     break;
             }
 
@@ -92,9 +109,9 @@ export class AddInstituteComponent implements OnInit {
                     this.institute.instituteEmail,
                     Validators.required,
                 ],
-                instituteBoard: ['', Validators.required],
-                instituteStd: ['', Validators.required],
-                instituteDiv: ['', Validators.required],
+                instituteBoard: [this.boards[j], Validators.required],
+                // std: ['', Validators.required],
+                // div: ['', Validators.required],
 
                 spocName: ['', Validators.required],
                 spocNumber: ['', Validators.required],
@@ -116,8 +133,8 @@ export class AddInstituteComponent implements OnInit {
             instituteWebsite: ['', Validators.required],
             instituteEmail: ['', Validators.required],
             instituteBoard: ['', Validators.required],
-            instituteStd: ['', Validators.required],
-            instituteDiv: ['', Validators.required],
+            // std: ['', Validators.required],
+            // div: ['', Validators.required],
 
             spocName: ['', Validators.required],
             spocNumber: ['', Validators.required],
@@ -153,34 +170,40 @@ export class AddInstituteComponent implements OnInit {
     }
     submit() {
         console.log(this.listInstitute.value);
+
+        // this.instSvc.createInstitute()
     }
 
     dropdownItems = [
-        { name: 'Bank' },
-        { name: 'School' },
+        { name: 'KG' },
+        { name: 'SCHOOL' },
+        { name: 'COACHING' },
         { name: 'JrCollege' },
+        { name: 'UNIVERSITY' },
     ];
     AddInstitute() {
         this.router.navigate(['/main/institute/add']);
     }
 
-    save(severity: string){
-        this.messageService.add({ severity: severity, summary: 'Success', detail: 'Data Saved' });
+    save(severity: string) {
+        this.messageService.add({
+            severity: severity,
+            summary: 'Success',
+            detail: 'Data Saved',
+        });
     }
 
     onKey(value: any): void {
         this.typedValue = value;
-      }
+    }
 
-      onKeyup(value:any): void {
+    onKeyup(value: any): void {
         this.typedValueDiv = value;
-      }
-      
-
+    }
 
     //   addStd(input: HTMLInputElement): void {
     //     console.log('hi', input);
-        
+
     //    const value = input.value;
     //     if (this.standard.indexOf((value:number)=>value === -1)) {
     //       this.standard = [
@@ -190,29 +213,15 @@ export class AddInstituteComponent implements OnInit {
     //     }
     //   }
 
-      addStd(value: string): void {
+    addStd(value: string): void {
         console.log(value);
 
-        this.standard.push({name:value})
+        this.standard.push({ name: value });
+    }
 
-
-      }
-
-      addDiv(value: string): void{
+    addDiv(value: string): void {
         console.log(value);
 
-        this.division.push({name:value})
-      }
-      
-
-    
-          
-        
-        
+        this.division.push({ name: value });
+    }
 }
-
-
-
-
-
-

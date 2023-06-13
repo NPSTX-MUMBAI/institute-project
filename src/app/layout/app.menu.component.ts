@@ -39,7 +39,7 @@ export class AppMenuComponent implements OnInit {
                     ],
                 },
                 {
-                    label: 'Admission Form',
+                    // label: 'Admission Form',
                     items: [
                         {
                             label: 'Admission Form ',
@@ -50,11 +50,10 @@ export class AppMenuComponent implements OnInit {
                 },
 
                 {
-                    label: 'Institute',
 
                     items: [
                         {
-                            label: 'Institute ',
+                            label: 'Manage Institutes ',
                             icon: 'fa-solid fa-school',
 
                             items: [
