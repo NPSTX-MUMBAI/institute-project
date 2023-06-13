@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpHeaders } from '@angular/common/http';
 
 import { environment } from 'src/environments/environment';
 import { StateService } from './state.service';
@@ -37,6 +37,36 @@ export class AuthService {
                     reject(error);
                 }
             );
+        });
+    }
+
+    createStaff(data: any) {
+        let token = this.stateSvc.getUserData('accessToken');
+
+        const headers = new HttpHeaders().set(
+            'Authorization',
+            `Bearer ${token}`
+        );
+
+        return new Promise(async (resolve, reject) => {
+            await this.http
+                .post(
+                    environment.url + '/auth/create/staff',
+                   data,
+                    { headers }
+                )
+                .subscribe(
+                    (res: any) => {
+                        if (res.status) {
+                            resolve(res);
+                        } else {
+                            resolve(res);
+                        }
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
         });
     }
 

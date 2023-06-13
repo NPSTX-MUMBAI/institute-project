@@ -1,4 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
+import { StateService } from '../../../services/state.service';
+import { AuthService } from '../../../services/auth.service';
 import {
     FormBuilder,
     FormControl,
@@ -14,7 +17,13 @@ import {
 export class AddStaffComponent implements OnInit {
     staffDetails!: FormGroup;
 
-    constructor(private fb: FormBuilder) {}
+    constructor(
+        private fb: FormBuilder,
+        private route: ActivatedRoute,
+        private router: Router,
+        private authSvc: AuthService,
+        private stateSvc: StateService
+    ) {}
 
     ngOnInit(): void {
         this.staffDetails = this.fb.group({
@@ -23,10 +32,18 @@ export class AddStaffComponent implements OnInit {
             email: ['', Validators.required],
             mobileNo: ['', Validators.required],
             password: ['', Validators.required],
-            pin: ['', Validators.required],
+            // pin: ['', Validators.required],
         });
     }
     submit() {
-        console.log(this.staffDetails.value);
+        let data: any = this.staffDetails.value;
+        console.log(data);
+
+        data.schoolId = this.stateSvc.getUserData('schoolId');
+        data.userType = 'STAFF';
+
+        this.authSvc.createStaff(data).then((res: any) => {
+            console.log(res);
+        });
     }
 }
