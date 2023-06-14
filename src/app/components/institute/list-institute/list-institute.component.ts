@@ -92,6 +92,13 @@ export class ListInstituteComponent implements OnInit {
                 queryParamsHandling: 'merge',
             },
             {
+                label: 'Add std & div',
+                icon: 'pi pi-pencil',
+                routerLink: ['/main/institute/addstddiv'],
+                queryParams: { schoolId: id },
+                queryParamsHandling: 'merge',
+            },
+            {
                 label: 'Delete',
                 icon: 'pi pi-trash',
                 command: () => {},

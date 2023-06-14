@@ -1,0 +1,58 @@
+<div class="card">
+
+    <form class="pt-4" [formGroup]="addStdDiv">
+
+        <p-multiSelect [options]="standards" formControlName="std" optionLabel="name"></p-multiSelect>
+
+    </form>
+
+    <button pButton pRipple label="Submit" (click)="submit()"></button>
+
+
+
+
+
+
+
+    <div *ngIf="show">
+        <p-table #dt2 [value]="stds" dataKey="id" [rows]="10">
+            <!-- <ng-template pTemplate="caption">
+            <div class="flex-container">
+                <h2>List of Bank</h2>
+
+            </div>
+        </ng-template> -->
+            <ng-template pTemplate="header">
+                <tr>
+
+                    <th> STD</th>
+                    <th> DIV</th>
+
+
+
+
+                </tr>
+
+
+            </ng-template>
+            <ng-template pTemplate="body" let-stds>
+                <tr>
+                    <td>{{ stds.name  }}</td>
+
+                    <td>
+                        <p-multiSelect [options]="divisions" optionLabel="name"></p-multiSelect>
+                    </td>
+
+
+                    <td>     <button pButton pRipple label="addDiv" (click)="addDiv()"></button>
+                    </td>
+
+
+
+                </tr>
+            </ng-template>
+
+        </p-table>
+    </div>
+
+</div>

@@ -21,7 +21,7 @@ import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, DashboardComponent],
+    declarations: [AppComponent, NotfoundComponent, DashboardComponent,],
     imports: [
         AppRoutingModule,
         AppLayoutModule,

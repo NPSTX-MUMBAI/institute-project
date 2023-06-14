@@ -10,6 +10,7 @@ import { ListStaffComponent } from './list-staff/list-staff.component';
 import { UiModule } from '../../ui/ui.module';
 import { Routes, RouterModule } from '@angular/router';
 import { AdmissionModule } from '../admission/admission.module';
+import { AddStdDivComponent } from './add-std-div/add-std-div.component';
 
 const routes: Routes = [
     { path: 'list', component: ListInstituteComponent },
@@ -19,6 +20,8 @@ const routes: Routes = [
     { path: 'kyc', component: AddKycComponent },
     { path: 'staff/add', component: AddStaffComponent },
     { path: 'staff', component: ListStaffComponent },
+    { path: 'addstddiv', component: AddStdDivComponent },
+
 ];
 
 @NgModule({
@@ -30,6 +33,7 @@ const routes: Routes = [
         AddKycComponent,
         AddStaffComponent,
         ListStaffComponent,
+        AddStdDivComponent,
     ],
     imports: [
         CommonModule,
