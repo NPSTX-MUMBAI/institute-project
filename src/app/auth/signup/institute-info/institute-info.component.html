@@ -25,6 +25,8 @@
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter a valid institute name!
                         </div>
+
+
                     </div>
 
 
@@ -199,8 +201,30 @@
 
         </form>
 
-        <p-button label="Submit" (click)="submit()"></p-button>
-        <p-button label="Reset" class="resetButton"></p-button>
+        <!-- <p-button label="Submit" (click)="submit()"></p-button> -->
+        <button pButton pRipple label="Submit" (click)="submit()" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"> </button>
+        <button pButton pRipple label="Reset" class="resetButton" style="background-image: linear-gradient(to right, #835dea, #462ea5);
+        border: none; padding: 15px 40px;margin-top: 50px;font-size:17px;font-weight: bold;"></button>
 
     </div>
+    <<<<<<< HEAD </div>=======<!-- <form [formGroup]="myForm" (ngSubmit)="onSub()" novalidate>
+        <div>
+            <label for="name">Name</label>
+            <input type="text" id="name" formControlName="name">
+            <div *ngIf="isFieldInvalid('name') && isFieldTouched('name')">Name is required</div>
+            <div *ngIf="isFieldEmptyOnSubmit('name') && !myForm.touched">Name field is required</div>
+        </div>
+        <div>
+            <label for="email">Email</label>
+            <input type="email" id="email" formControlName="email">
+            <div *ngIf="isFieldInvalid('email') && isFieldTouched('email')">Invalid email</div>
+            <div *ngIf="isFieldEmptyOnSubmit('email') && !myForm.touched">Email field is required</div>
+        </div>
+        <button type="submit">Submit</button> -->
+        <!-- <div *ngIf="myForm.invalid && myForm.touched">Please fill in all fields</div> -->
+        <!-- </form> -->
+
+
 </div>
+>>>>>>> 3bce9ac1dee8fa36a148ad3b369447c95b309a37

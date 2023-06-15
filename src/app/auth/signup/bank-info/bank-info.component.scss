@@ -1,6 +1,14 @@
-.container{
-    height:595px;
+.container {
+    height: 595px;
 }
-label{
+label {
     font-weight: bold;
+}
+input {
+    background-color: #f4f6ff;
+    font-size: 13px;
+}
+.card {
+    box-shadow: 0 12px 34px 0 rgba(57, 67, 87, 0.1);
+    border: none;
 }

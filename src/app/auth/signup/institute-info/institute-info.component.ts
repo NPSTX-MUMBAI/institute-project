@@ -33,7 +33,6 @@ export class InstituteInfoComponent implements OnInit {
 
     board!: Board[];
     // newBoardName: any;
-
     selectedBoard!: Board;
     loading = false;
     addressDetails!: AddressDetails;
@@ -78,7 +77,7 @@ export class InstituteInfoComponent implements OnInit {
                 summary: 'Invalid',
                 detail: 'All fields are Required',
             });
-            // this.loading = false;
+            this.loading = false;
 
             return;
         }
@@ -122,7 +121,7 @@ export class InstituteInfoComponent implements OnInit {
             this.onSaveInstInfo.emit(instituteInfoObj);
         }
     }
-
+    submitForm() {}
     instituteTypes = [
         { name: 'SCHOOL' },
         { name: 'JrCollege' },
