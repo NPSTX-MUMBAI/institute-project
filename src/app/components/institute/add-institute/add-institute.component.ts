@@ -12,6 +12,9 @@ import {
     PostOffice,
 } from 'src/app/models/addressDetails.models';
 import { InstituteService } from '../../../services/institute.service';
+import { MessageService } from 'primeng/api';
+import { StateService } from '../../../services/state.service';
+import { InstituteInfoModel } from '../../../models/institute-info.model';
 
 @Component({
     selector: 'app-add-institute',
@@ -39,7 +42,9 @@ export class AddInstituteComponent implements OnInit {
         private fb: FormBuilder,
         private router: Router,
         private instSvc: InstituteService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private msg: MessageService,
+        private stateSvc: StateService
     ) {
         this.items = [
             {
@@ -60,71 +65,74 @@ export class AddInstituteComponent implements OnInit {
         let j = 0;
         this.schoolId = this.route.snapshot.queryParamMap.get('schoolId');
         console.log(this.schoolId);
-        this.fetchInstitute().then(() => {
-            switch (this.institute.instituteType) {
-                case 'KG':
-                    i = 0;
-                    break;
-                case 'SCHOOL':
-                    i = 1;
-                    break;
-                case 'COACHING':
-                    i = 2;
-                    break;
-                case 'JrCollege':
-                    i = 3;
-                    break;
-                case 'UNIVERSITY':
-                    i = 4;
-                    break;
-            }
 
-            switch (this.institute.boardType) {
-                case 'CBSE':
-                    j = 0;
-                    break;
-                case 'ICSE':
-                    j = 1;
-                    break;
-                case 'MSBSE':
-                    j = 2;
-                    break;
-            }
+        if (this.schoolId) {
+            this.fetchInstitute().then(() => {
+                switch (this.institute.instituteType) {
+                    case 'KG':
+                        i = 0;
+                        break;
+                    case 'SCHOOL':
+                        i = 1;
+                        break;
+                    case 'COACHING':
+                        i = 2;
+                        break;
+                    case 'JrCollege':
+                        i = 3;
+                        break;
+                    case 'UNIVERSITY':
+                        i = 4;
+                        break;
+                }
 
-            this.listInstitute = this.fb.group({
-                instituteName: [
-                    this.institute.instituteName,
-                    Validators.required,
-                ],
-                instituteType: [this.dropdownItems[i], Validators.required],
-                institutePhone: [
-                    this.institute.institutePhone,
-                    Validators.required,
-                ],
-                instituteWebsite: [
-                    this.institute.instituteWebsite,
-                    Validators.required,
-                ],
-                instituteEmail: [
-                    this.institute.instituteEmail,
-                    Validators.required,
-                ],
-                instituteBoard: [this.boards[j], Validators.required],
-                // std: ['', Validators.required],
-                // div: ['', Validators.required],
+                switch (this.institute.boardType) {
+                    case 'CBSE':
+                        j = 0;
+                        break;
+                    case 'ICSE':
+                        j = 1;
+                        break;
+                    case 'MSBSE':
+                        j = 2;
+                        break;
+                }
 
-                spocName: ['', Validators.required],
-                spocNumber: ['', Validators.required],
-                spocEmail: ['', Validators.required],
+                this.listInstitute = this.fb.group({
+                    instituteName: [
+                        this.institute.instituteName,
+                        Validators.required,
+                    ],
+                    instituteType: [this.dropdownItems[i], Validators.required],
+                    institutePhone: [
+                        this.institute.institutePhone,
+                        Validators.required,
+                    ],
+                    instituteWebsite: [
+                        this.institute.instituteWebsite,
+                        Validators.required,
+                    ],
+                    instituteEmail: [
+                        this.institute.instituteEmail,
+                        Validators.required,
+                    ],
+                    instituteBoard: [this.boards[j], Validators.required],
+                    // std: ['', Validators.required],
+                    // div: ['', Validators.required],
 
-                line1: [this.institute.line1, Validators.required],
-                line2: [this.institute.line2, Validators.required],
-                zipcode: [this.institute.zipCode, Validators.required],
-                country: [this.institute.country, Validators.required],
-                state: [this.institute.state, Validators.required],
-                city: [this.institute.city, Validators.required],
+                    spocName: ['', Validators.required],
+                    spocNumber: ['', Validators.required],
+                    spocEmail: ['', Validators.required],
+
+                    line1: [this.institute.line1, Validators.required],
+                    line2: [this.institute.line2, Validators.required],
+                    zipcode: [this.institute.zipCode, Validators.required],
+                    country: [this.institute.country, Validators.required],
+                    state: [this.institute.state, Validators.required],
+                    city: [this.institute.city, Validators.required],
+                });
             });
-        });
+        }
 
         this.listInstitute = this.fb.group({
             instituteName: ['', Validators.required],
@@ -168,10 +176,83 @@ export class AddInstituteComponent implements OnInit {
             });
         return true;
     }
-    submit() {
-        console.log(this.listInstitute.value);
+    async submit() {
+        let myUserId: any = this.stateSvc.getUserData('userId');
 
-        // this.instSvc.createInstitute()
+        // this.loading = true;
+        if (this.listInstitute.invalid) {
+            this.msg.add({
+                severity: 'error',
+                summary: 'Invalid',
+                detail: 'All fields are Required',
+            });
+            // this.loading = false;
+
+            return;
+        }
+
+        const myInstitute = this.listInstitute.value;
+        const selectedInsType =
+            this.listInstitute.get('instituteType')?.value.name;
+        const selectedBoard = this.listInstitute.get('boardType')?.value.name;
+
+        myInstitute.boardType = selectedBoard;
+        myInstitute.instituteType = selectedInsType;
+
+        const institutesAddress = {
+            line1: myInstitute.line1,
+            line2: myInstitute.line2,
+            pinCode: myInstitute.pinCode,
+            state: myInstitute.state,
+            city: myInstitute.city,
+            country: myInstitute.country,
+        };
+
+        console.log(myInstitute, 'check thissss');
+
+        const instituteInfoObj: InstituteInfoModel = {
+            userId: myUserId,
+            instituteName: myInstitute.instituteName,
+            instituteType: myInstitute.instituteType,
+            institutePhone: myInstitute.institutePhone,
+            instituteWebsite: myInstitute.instituteWebsite,
+            instituteEmail: myInstitute.instituteEmail,
+            boardType: myInstitute.boardType,
+
+            spocName: myInstitute.spocName,
+            spocEmail: myInstitute.spocEmail,
+            spocNumber: myInstitute.spocNumber,
+            address: institutesAddress,
+        };
+        console.log(instituteInfoObj, '<<<<<<<<<<<<');
+
+        try {
+            const res: any = await this.instSvc.createInstitute(
+                instituteInfoObj
+            );
+            if (res.status) {
+                this.msg.add({
+                    severity: 'success',
+                    summary: 'Created',
+                    detail: 'Institute created successfully',
+                });
+                this.router.navigate(['main/institute/list']);
+            } else {
+                this.msg.add({
+                    severity: 'warn',
+                    detail: 'Please make sure your Phone number, Email id ,Website are unique ',
+                });
+            }
+            console.log(res);
+        } catch (error) {
+            this.msg.add({
+                severity: 'warn',
+                summary: 'error',
+                detail: 'Something went wrong',
+            });
+
+            console.error(error);
+        }
     }
 
     dropdownItems = [

@@ -2,7 +2,44 @@
 
     <form class="pt-4" [formGroup]="addStdDiv">
 
-        <p-multiSelect [options]="standards" formControlName="std" optionLabel="name"></p-multiSelect>
+        <p-multiSelect [style]="{'width':'25rem'}" defaultLabel="Select a Standard " [virtualScroll]="true"
+            [filter]="false" [virtualScrollItemSize]="43" [options]="standards" formControlName="std"
+            optionLabel="name">
+            <ng-template pTemplate="header">
+
+
+                <div class="container">
+                    <input [style]="{'width':'100%'}" pInputText id="name" (keyup)="onKey()" style="width: 10%"
+                        type="text"
+                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        nz-input #inputElement />
+
+
+                    <button pButton pRipple label="Add" class="add-item"
+                        (click)="addStd(inputElement.value); inputElement.value = ''" style="margin-left: 10px;">
+
+                    </button>
+
+
+                </div>
+
+            </ng-template>
+
+
+        </p-multiSelect>
+
+
+        <!-- <ng-template #renderTemplate> -->
+
+        <br>
+        <br>
+        <br>
+        <br>
+        <br>
+
+
+
+
 
     </form>
 
@@ -27,6 +64,8 @@
 
                     <th> STD</th>
                     <th> DIV</th>
+                    <th> ACTION</th>
+
 
 
 
@@ -37,14 +76,18 @@
             </ng-template>
             <ng-template pTemplate="body" let-stds>
                 <tr>
-                    <td>{{ stds.name  }}</td>
+                    <td>{{ stds.std  }}</td>
 
                     <td>
-                        <p-multiSelect [options]="divisions" optionLabel="name"></p-multiSelect>
+
+                        <form [formGroup]="addDivGrp">
+                            <p-multiSelect [virtualScroll]="true" [filter]="false" [virtualScrollItemSize]="43"
+                                formControlName="div" [options]="divisions" optionLabel="name"></p-multiSelect>
+                        </form>
                     </td>
 
 
-                    <td>     <button pButton pRipple label="addDiv" (click)="addDiv()"></button>
+                    <td> <button pButton pRipple label="addDiv" (click)="addDiv(stds.standardId)"></button>
                     </td>
 
 
