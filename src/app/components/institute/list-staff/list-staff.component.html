@@ -1,6 +1,6 @@
 <button pButton pRipple label="+ Add Staff" (click)="navigateToAddBank()"></button>
 
-<div style="margin-top:8%;">
+<div  *ngIf="staff" style="margin-top:8%;">
     <p-table #dt2 [value]="staff" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
@@ -36,4 +36,11 @@
         </ng-template>
 
     </p-table>
+</div>
+
+<div  *ngIf="!staff" >
+
+    <div class="card"> 
+    <img src="src=../../../assets/layout/images/no-data-loader.gif" style="margin-left: 410px; border-radius: 5px 5px 0 0;">
+</div>
 </div>

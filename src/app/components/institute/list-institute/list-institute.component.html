@@ -6,7 +6,7 @@
 
 <p-menu #menu [model]="items" [popup]="true"></p-menu>
 
-<div style="margin-top:4%;">
+<div  *ngIf="institute" style="margin-top:4%;">
     <p-table #dt2 [value]="institute" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }"
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [lazy]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
@@ -15,7 +15,6 @@
         <ng-template pTemplate="header">
             <tr>
                 <th>UNIQUE NO.</th>
-
                 <th> NAME</th>
                 <th> TYPE</th>
                 <th> PHONE</th>
@@ -54,4 +53,11 @@
     </p-table>
 
 
+</div>
+
+<div  *ngIf="!institute" >
+
+    <div class="card"> 
+    <img src="src=../../../assets/layout/images/no-data-loader.gif" style="margin-left: 410px; border-radius: 5px 5px 0 0;">
+</div>
 </div>
