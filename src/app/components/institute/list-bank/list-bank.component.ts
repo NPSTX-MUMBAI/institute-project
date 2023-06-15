@@ -38,6 +38,8 @@ export class ListBankComponent implements OnInit {
             .getBanksBySchoolId(this.schoolId)
             .then((res: any) => {
                 console.log(res);
+
+                //close this after exiting bank component
                 this.bank = res.data;
             });
     }

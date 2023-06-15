@@ -76,11 +76,22 @@
 
 
 
-        <div class="login">
-            <div class="login__content">
-                <div class="login__img">
-                    <img src="../../../assets/layout/images/img-login.svg" alt="">
+        <div class="login">          
+            <div class="login__content" >
+               
+                <div class="login__img" style="display: flex;flex-direction: column;">
+                    <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                        <div class="time" style=" width: 45%;margin-top: 10px;">
+                        <img src="../../../assets/layout/images/TimePay.png" >
+                        </div>
+                        <h4 style="text-align:center;" >School App</h4>
+                        <i class="intro-text" style="text-align: center;">"Investing in education pays the best interest."</i> 
+                    
+                    </div>
+                    <img src="../../../assets/layout/images/Thesis-pana (2).svg" alt="">
+                   
                     <!-- <img src="../../../assets/layout/images/school3.gif" alt="school"> -->
+                   
                 </div>
                 
                 <div class="login__forms">
@@ -134,7 +145,16 @@
                         
                         <a href="#" class="login__forgot">Forgot password?</a>
 
-                        <a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>
+                       <!--<a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>-->
+                       <button class="learn-more">
+                        <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                        </span>
+                        <span class="button-text"   (click)="signin()">Sign In</span>
+                      </button>
+
+
+                        
 
                         <div>
                             <span class="login__account">Don't have an Account ?</span>

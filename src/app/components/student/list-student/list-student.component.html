@@ -1,6 +1,6 @@
 <button pButton pRipple label="+ Add Student" (click)="navigateToAddStudents()"></button>
 
-<div style="margin-top:8%;">
+<div *ngIf="school" style="margin-top:8%;">
 
     <p-table #dt2 [value]="school" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
@@ -53,4 +53,10 @@
         </ng-template>
 
     </p-table>
+</div>
+
+<div *ngIf="!school">
+    <div class="card"> 
+        <img src="src=../../../assets/layout/images/no-data-loader.gif" style="margin-left: 410px; border-radius: 5px 5px 0 0;">
+    </div>
 </div>
