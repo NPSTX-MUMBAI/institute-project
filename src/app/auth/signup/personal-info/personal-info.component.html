@@ -12,7 +12,7 @@
 
                     <input pInputText id="firstname2" type="text" formControlName="firstName"
                         placeholder="Enter your first name" pattern="^[A-Za-z ]{2,}$" />
-                    <div *ngIf="personalGrp.controls['firstName'].touched && personalGrp.controls['firstName'].errors">
+                    <div *ngIf="personalGrp.controls['firstName'].touched && personalGrp.controls['firstName'].errors ">
                         <div *ngIf="personalGrp.controls['firstName'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter your first name!

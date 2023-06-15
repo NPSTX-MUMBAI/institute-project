@@ -25,7 +25,7 @@ export class SignupComponent implements OnInit {
     uploadPAN = false;
     uploadGST = false;
     uploadREG = false;
-    activeTab: string = 'Home';
+    activeTab: string = 'Personal';
 
     constructor(
         private auth: AuthService,
@@ -44,18 +44,25 @@ export class SignupComponent implements OnInit {
         if (this.stateSvc.getUserData('userId')) {
             this.activeIndex = 1;
             this.personalInfoComplete = true;
+            this.activeTab = 'Institute';
         }
         if (this.stateSvc.getUserData('schoolId')) {
             this.activeIndex = 2;
             this.instituteInfoComplete = true;
+            this.activeTab = 'Bank';
+            this.setActiveTab('Bank');
         }
         if (this.stateSvc.getUserData('ifsc')) {
             this.activeIndex = 3;
             this.bankInfoComplete = true;
+            this.activeTab = 'Kyc';
+            this.setActiveTab('Kyc');
         }
         if (this.stateSvc.getUserData('PAN')) {
             this.activeIndex = 4;
             this.kycInfoComplete = true;
+            this.activeTab = 'Status';
+            this.setActiveTab('Status');
         }
     }
 
@@ -123,6 +130,11 @@ export class SignupComponent implements OnInit {
                 });
 
                 this.stateSvc.setUserData('schoolId', res.data.schoolId);
+                this.activeTab = 'Bank';
+                this.instituteInfoComplete = true;
+
+                this.setActiveTab('Bank');
+
                 this.activeIndex++;
             } else {
                 this.msg.add({
@@ -154,6 +166,10 @@ export class SignupComponent implements OnInit {
                     detail: 'Bank created successfully',
                 });
                 this.stateSvc.setUserData('ifsc', res.data.ifsc);
+                this.activeTab = 'Kyc';
+                this.bankInfoComplete = true;
+
+                this.setActiveTab('Kyc');
 
                 this.activeIndex++;
             } else {
@@ -206,6 +222,11 @@ export class SignupComponent implements OnInit {
                     this.uploadGST &&
                     this.uploadREG
                 ) {
+                    this.activeTab = 'Status';
+                    this.kycInfoComplete = true;
+
+                    this.setActiveTab('Status');
+
                     this.activeIndex++;
                 }
             }
@@ -213,22 +234,22 @@ export class SignupComponent implements OnInit {
     }
     tabs = [
         {
-            title: 'Home',
+            title: 'Personal',
             content:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Home content goes here.',
         },
         {
-            title: 'About',
+            title: 'Institute',
             content:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. About content goes here.',
         },
         {
-            title: 'Contact',
+            title: 'Bank',
             content:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Contact content goes here.',
         },
         {
-            title: 'Dashboard',
+            title: 'Kyc',
             content:
                 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dashboard content goes here.',
         },

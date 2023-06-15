@@ -30,12 +30,9 @@ import { log } from 'console';
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
     InstituteInfo!: FormGroup;
-    submitted = false;
-    showError = false;
 
     board!: Board[];
     // newBoardName: any;
-
     selectedBoard!: Board;
     loading = false;
     addressDetails!: AddressDetails;
@@ -69,20 +66,17 @@ export class InstituteInfoComponent implements OnInit {
     }
     async submit() {
         let myUserId: any = this.stateSvc.getUserData('userId');
-
-        // this.loading = true;
+        this.loading = true;
         if (this.InstituteInfo.invalid) {
-            this.showError = true;
             this.msg.add({
                 severity: 'error',
                 summary: 'Invalid',
                 detail: 'All fields are Required',
             });
-            // this.loading = false;
+            this.loading = false;
 
             return;
         }
-        this.showError = false;
 
         const myInstitute = this.InstituteInfo.value;
         const selectedInsType =
@@ -119,7 +113,7 @@ export class InstituteInfoComponent implements OnInit {
             this.onSaveInstInfo.emit(instituteInfoObj);
         }
     }
-
+    submitForm() {}
     instituteTypes = [
         { name: 'Bank' },
         { name: 'School' },
@@ -187,8 +181,5 @@ export class InstituteInfoComponent implements OnInit {
                 }
             });
         }
-    }
-    onSubmit() {
-        this.submitted = true;
     }
 }

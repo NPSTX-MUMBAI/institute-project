@@ -61,35 +61,46 @@
 </div>
 <div class="tabs">
     <div class="tab-header">
-        <div [class.active]="activeTab === 'Home'" (click)="setActiveTab('Home')">Personal</div>
-        <div [class.active]="activeTab === 'About'" (click)="setActiveTab('About')">Institute</div>
-        <div [class.active]="activeTab === 'Contact'" (click)="setActiveTab('Contact')">Bank</div>
-        <div [class.active]="activeTab === 'Dashboard'" (click)="setActiveTab('Dashboard')">Kyc</div>
-        <div [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')">Status</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Personal'" (click)="setActiveTab('Personal')"
+            [class.disabled]="activeTab !== 'Personal'">Personal</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Institute'" (click)="setActiveTab('Institute')"
+            [class.disabled]="activeTab !== 'Institute'">Institute</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Bank'" (click)="setActiveTab('Bank')"
+            [class.disabled]="activeTab !== 'Bank'">Bank</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Kyc'" (click)="setActiveTab('Kyc')"
+            [class.disabled]="activeTab !== 'Kyc'">
+            Kyc</div>
+        <div class="cursor-disabled" [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')"
+            [class.disabled]="activeTab !== 'Status'">Status</div>
+        <!-- <div [class.active]="activeTab === 'Personal'" (click)="setActiveTab('Personal')">Personal</div>
+        <div [class.active]="activeTab === 'Institute'" (click)="setActiveTab('Institute')">Institute</div>
+        <div [class.active]="activeTab === 'Bank'" (click)="setActiveTab('Bank')">Bank</div>
+        <div [class.active]="activeTab === 'Kyc'" (click)="setActiveTab('Kyc')">Kyc</div>
+        <div [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')">Status</div> -->
 
     </div>
     <div class="tab-indicator" [style.left.%]="getActiveTabIndex()* (100 / tabs.length)"></div>
     <div class="tab-body">
-        <div [class.active]="activeTab === 'Home'">
+        <div [class.active]="activeTab === 'Personal'">
             <p>
 
                 <app-personal-info (onSavePersonalInfo)="onSavePersonalInfo($event)"></app-personal-info>
             </p>
         </div>
-        <div [class.active]="activeTab === 'About'">
+        <div [class.active]="activeTab === 'Institute'">
             <p>
                 <app-institute-info (onSaveInstInfo)="onSaveInstInfo($event)"></app-institute-info>
 
             </p>
         </div>
-        <div [class.active]="activeTab === 'Contact'">
+        <div [class.active]="activeTab === 'Bank'">
 
             <p>
                 <app-bank-info (onSaveBankInfo)="onSaveBankInfo($event)"></app-bank-info>
 
             </p>
         </div>
-        <div [class.active]="activeTab === 'Dashboard'">
+        <div [class.active]="activeTab === 'Kyc'">
             <p>
                 <app-kyc-info (onKycUpload)="KycUploadfn($event)" [aadhaarStatus]="uploadAadhaar"
                     [PANStatus]="uploadPAN" [REGStatus]="uploadREG" [GSTStatus]="uploadGST"></app-kyc-info>
