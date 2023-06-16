@@ -35,7 +35,7 @@ export class AddStdDivComponent implements OnInit {
 
     schoolId: any;
 
-    addStdDiv!: FormGroup;
+    addStdGrp!: FormGroup;
     addDivGrp!: FormGroup;
 
     Stdvisible = false;
@@ -50,7 +50,7 @@ export class AddStdDivComponent implements OnInit {
     ) {}
 
     ngOnInit(): void {
-        this.addStdDiv = this.fb.group({
+        this.addStdGrp = this.fb.group({
             std: ['', Validators.required],
         });
         this.addDivGrp = this.fb.group({
@@ -69,9 +69,9 @@ export class AddStdDivComponent implements OnInit {
         let finalArray = [];
 
         this.schoolId = this.route.snapshot.queryParamMap.get('schoolId');
-        console.log(this.addStdDiv.value.std);
+        console.log(this.addStdGrp.value.std);
 
-        for (let i of this.addStdDiv.value.std) {
+        for (let i of this.addStdGrp.value.std) {
             finalArray.push(i.name);
         }
 
@@ -89,11 +89,12 @@ export class AddStdDivComponent implements OnInit {
                     summary: 'created',
                     detail: `Added selected standards in your school`,
                 });
+
                 this.getAllStd();
             }
         });
 
-        // this.stds = this.addStdDiv.value.std;
+        // this.stds = this.addStdGrp.value.std;
     }
 
     async getAllStd() {
@@ -127,6 +128,7 @@ export class AddStdDivComponent implements OnInit {
                     summary: 'created',
                     detail: `Added selected divisions in your school`,
                 });
+                this.addDivGrp.value.div = null;
             }
         });
     }

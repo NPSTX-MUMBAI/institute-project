@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { InstituteService } from '../../../services/institute.service';
+import { StateService } from '../../../services/state.service';
 import {
     FormBuilder,
     FormControl,
@@ -13,12 +15,22 @@ import {
 })
 export class AddStudentComponent implements OnInit {
     studentForm!: FormGroup;
-    boards = [{ name: 'CBSE' }, { name: 'ICSE' }, { name: 'MSBSE' }];
-    standard = [{ name: 'I' }, { name: 'II' }, { name: 'III' }];
-    division = [{ name: 'A' }, { name: 'B' }, { name: 'C' }];
-    constructor(private fb: FormBuilder) {}
+    boards: any[] = [];
+    standard: any[] = [];
+    division: any[] = [];
+    stds = [];
+
+    schoolId: any;
+    constructor(
+        private fb: FormBuilder,
+        private instSvc: InstituteService,
+        private stateSvc: StateService
+    ) {}
 
     ngOnInit(): void {
+        this.schoolId = this.stateSvc.getUserData('schoolId');
+        this.getInstitueDetails();
+        this.getAllStd();
         this.studentForm = this.fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -40,21 +52,65 @@ export class AddStudentComponent implements OnInit {
             state: ['', Validators.required],
             city: ['', Validators.required],
             locality: ['', Validators.required],
-            fatherFirstName: ['', Validators.required],
-            fatherLastName: ['', Validators.required],
-            fatherEmail: ['', Validators.required],
-            fatherMobile: ['', Validators.required],
-            motherFirstName: ['', Validators.required],
-            motherLastName: ['', Validators.required],
-            motherEmail: ['', Validators.required],
-            motherMobile: ['', Validators.required],
-            guardianFirstName: ['', Validators.required],
-            guardianLastName: ['', Validators.required],
-            guardianEmail: ['', Validators.required],
-            guardianMobile: ['', Validators.required],
+            fatherFirstName: [''],
+            fatherLastName: [''],
+            fatherEmail: [''],
+            fatherMobile: [''],
+            motherFirstName: [''],
+            motherLastName: [''],
+            motherEmail: [''],
+            motherMobile: [''],
+            guardianFirstName: [''],
+            guardianLastName: [''],
+            guardianEmail: [''],
+            guardianMobile: [''],
         });
     }
+
+    async getAllStd() {
+        let tempStdArr: any[] = [];
+        await this.instSvc.getAllStds(this.schoolId).then((res: any) => {
+            for (let i of res.data) {
+                console.log(i);
+                tempStdArr.push({ name: i.std, standardId: i.standardId });
+            }
+            this.standard = tempStdArr;
+        });
+    }
+
+    async getInstitueDetails() {
+        await this.instSvc
+            .getInstituteDetails(this.schoolId)
+            .then((res: any) => {
+                console.log(res.data.board[0]);
+                this.boards.push({ name: res.data.board[0].boardType });
+            });
+    }
     submit() {
-        console.log(this.studentForm.value);
+        let studentFormValue = this.studentForm.value;
+
+        let divId = studentFormValue.div.divisionId;
+
+        let stdId = studentFormValue.std.standardId;
+        let boardType = studentFormValue.board.name;
+        delete studentFormValue.div;
+        delete studentFormValue.std;
+        delete studentFormValue.board;
+        studentFormValue.standardId = stdId;
+        studentFormValue.divisionId = divId;
+        studentFormValue.boardType = boardType;
+        console.log(studentFormValue);
+    }
+    async setStd(event: any) {
+        let tempDivArr: any[] = [];
+        console.log(event);
+
+        await this.instSvc.getAllDivs(event.standardId).then((res: any) => {
+            for (let i of res.data) {
+                console.log(i);
+                tempDivArr.push({ div: i.div, divisionId: i.divisionId });
+            }
+            this.division = tempDivArr;
+        });
     }
 }

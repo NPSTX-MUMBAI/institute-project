@@ -147,7 +147,7 @@
                         <div class="field col-12 md:col-4">
                             <label htmlFor="std">Select Standard<span class="text-red-600"> *</span></label>
                             <p-dropdown [options]="standard" placeholder="Select Standard" optionLabel="name"
-                                formControlName="std"></p-dropdown>
+                                formControlName="std" (ngModelChange)="setStd($event)"></p-dropdown>
 
                             <!-- <input pInputText id="std" type="text" formControlName="std"
                                 placeholder="Select Standard" /> -->
@@ -162,7 +162,7 @@
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="FatherReligion">Select Division<span class="text-red-600"> *</span></label>
-                            <p-dropdown [options]="division" placeholder="Select Division" optionLabel="name"
+                            <p-dropdown [options]="division" placeholder="Select Division" optionLabel="div"
                                 formControlName="div"></p-dropdown>
 
                             <div *ngIf="studentForm.controls['div'].touched ">
@@ -177,7 +177,7 @@
                         <div class="field col-12 md:col-4">
                             <label htmlFor="FatherReligion">Opening Balance</label>
                             <input pInputText id="FatherReligion" type="text" placeholder="Balance" minlength="10"
-                                maxlength="10" type="phone" formControlName="balance" type="number" />
+                                maxlength="10" type="phone" formControlName="balance" type="text" />
 
                         </div>
                     </div>
