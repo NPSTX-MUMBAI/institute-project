@@ -139,7 +139,7 @@
                     <label htmlFor="board">Board<span class="text-red-600"> *</span></label>
                     <div class="dropdown-wrapper">
                         <p-dropdown [options]="board" formControlName="boardType" placeholder="Select a Board"
-                            optionLabel="name">
+                            optionLabel="name" #myInputField8>
                             <ng-template #renderTemplate3>
                                 <div class="container">
                                     <input (keyup)="onKeyUp()" style="width:10%"
@@ -171,7 +171,7 @@
 
 
                     </div>
-                    <div *ngIf="myInputField4.value === '' && submitted" class="error-message"
+                    <div *ngIf="myInputField8.value === '' && submitted" class="error-message"
                         style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Please select board!
 
 

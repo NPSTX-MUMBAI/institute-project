@@ -50,7 +50,10 @@ export class KycInfoComponent implements OnInit {
     uploadedFiles!: any[];
 
     img1!: string;
-
+    showIcon: boolean = true;
+    showIconaadhar: boolean = true;
+    showIcongst: boolean = true;
+    showIconreg: boolean = true;
     constructor(
         private fb: FormBuilder,
         private messageService: MessageService,
@@ -85,6 +88,9 @@ export class KycInfoComponent implements OnInit {
                 detail: 'Gst Number Required',
             });
         } else {
+            this.gstFile = event.files;
+
+            this.showIcongst = false;
             this.gstformData.append('schoolId', mySchoolId.toString());
             this.gstformData.append(
                 'number',
@@ -121,6 +127,9 @@ export class KycInfoComponent implements OnInit {
                 detail: 'Gst Number Required',
             });
         } else {
+            this.regDetails = event.files;
+
+            this.showIconreg = false;
             this.regformData.append('schoolId', mySchoolId.toString());
             this.regformData.append(
                 'number',
@@ -161,6 +170,9 @@ export class KycInfoComponent implements OnInit {
                 detail: 'Aadhar  Number Required',
             });
         } else {
+            this.udymaFile = event.files;
+
+            this.showIconaadhar = false;
             this.aadhaarformData.append('schoolId', mySchoolId.toString());
             this.aadhaarformData.append(
                 'number',
@@ -203,6 +215,10 @@ export class KycInfoComponent implements OnInit {
                 detail: 'Pan Card Number Required',
             });
         } else {
+            this.panFile = event.files;
+
+            this.showIcon = false;
+
             this.PANformData.append('schoolId', mySchoolId.toString());
             this.PANformData.append(
                 'number',
