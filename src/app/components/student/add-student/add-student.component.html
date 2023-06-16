@@ -42,13 +42,13 @@
 
                         </div>
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="regId">Unique ID<span class="text-red-600"> *</span></label>
-                            <input pInputTextarea id="regId" rows="4" placeholder="registered ID" maxlength="15"
-                                formControlName="regId" />
-                            <div *ngIf="studentForm.controls['regId'].touched ">
-                                <div *ngIf=" studentForm.controls['regId'].hasError('required')"
+                            <label htmlFor="studentUniqueId">UniqueId<span class="text-red-600"> *</span></label>
+                            <input pInputTextarea id="studentUniqueId" rows="4" placeholder="Unique ID" maxlength="15"
+                                formControlName="studentUniqueId" />
+                            <div *ngIf="studentForm.controls['studentUniqueId'].touched ">
+                                <div *ngIf=" studentForm.controls['studentUniqueId'].hasError('required')"
                                     style="color: red;text-align: left;margin-top: 6px;">
-                                    Enter your Reg ID!
+                                    Enter student's Unique ID!
 
                                 </div>
                             </div>
@@ -77,7 +77,7 @@
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Date of Birth </label>
-                            <input pInputText id="dob" type="text" placeholder="Dob" formControlName="dob" />
+                            <p-calendar placeholder="Dob" formControlName="dob"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">

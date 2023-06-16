@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { InstituteService } from '../../../services/institute.service';
 import { StateService } from '../../../services/state.service';
+import { StudentService } from '../../../services/student.service';
 import {
     FormBuilder,
     FormControl,
@@ -21,10 +22,12 @@ export class AddStudentComponent implements OnInit {
     stds = [];
 
     schoolId: any;
+    uniqueId: any;
     constructor(
         private fb: FormBuilder,
         private instSvc: InstituteService,
-        private stateSvc: StateService
+        private stateSvc: StateService,
+        private studSvc: StudentService
     ) {}
 
     ngOnInit(): void {
@@ -34,7 +37,7 @@ export class AddStudentComponent implements OnInit {
         this.studentForm = this.fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
-            regId: ['', Validators.required],
+            studentUniqueId: ['', Validators.required],
             rollNo: ['', Validators.required],
             gender: ['', Validators.required],
             email: ['', Validators.required],
@@ -84,22 +87,33 @@ export class AddStudentComponent implements OnInit {
             .then((res: any) => {
                 console.log(res.data.board[0]);
                 this.boards.push({ name: res.data.board[0].boardType });
+
+                this.uniqueId = res.data.school.uniqueId;
             });
     }
-    submit() {
+    async submit() {
         let studentFormValue = this.studentForm.value;
+
+        console.log(studentFormValue);
 
         let divId = studentFormValue.div.divisionId;
 
         let stdId = studentFormValue.std.standardId;
         let boardType = studentFormValue.board.name;
-        delete studentFormValue.div;
-        delete studentFormValue.std;
+        studentFormValue.div = studentFormValue.div.div;
+        studentFormValue.std = studentFormValue.std.name;
         delete studentFormValue.board;
         studentFormValue.standardId = stdId;
         studentFormValue.divisionId = divId;
         studentFormValue.boardType = boardType;
+        studentFormValue.schoolId = this.schoolId;
+        studentFormValue.uniqueId = this.uniqueId;
+
         console.log(studentFormValue);
+
+        await this.studSvc.createStudent(studentFormValue).then((res: any) => {
+            console.log(res);
+        });
     }
     async setStd(event: any) {
         let tempDivArr: any[] = [];
