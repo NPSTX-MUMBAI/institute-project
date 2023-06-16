@@ -30,6 +30,7 @@ import { log } from 'console';
 export class InstituteInfoComponent implements OnInit {
     @Output() onSaveInstInfo = new EventEmitter();
     instituteInfo!: FormGroup;
+    submitted = false;
 
     board!: Board[];
     // newBoardName: any;
@@ -67,7 +68,10 @@ export class InstituteInfoComponent implements OnInit {
             spocEmail: ['', Validators.required],
         });
     }
-    async submit() {
+
+    async submit1() {
+        this.submitted = true;
+
         let myUserId: any = this.stateSvc.getUserData('userId');
 
         // this.loading = true;

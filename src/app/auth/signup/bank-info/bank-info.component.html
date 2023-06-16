@@ -9,11 +9,16 @@
             <div class="p-fluid p-formgrid grid">
                 <div class="field col-12 md:col-4">
                     <label htmlFor="name">Account Holder's name<span class="text-red-600"> *</span></label>
-                    <input pInputText id="name" type="text" placeholder=" Enter your account name"
+                    <input #myInputField1 pInputText id="name" type="text" placeholder=" Enter your account name"
                         formControlName="accountHolderName" pattern="^[A-Za-z ]{2,}$">
+                    <div *ngIf="myInputField1.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter account holder name!
+
+                    </div>
+
                     <div
                         *ngIf="bankDetails.controls['accountHolderName'].touched && bankDetails.controls['accountHolderName'].errors">
-                        <div *ngIf="bankDetails.controls['accountHolderName'].hasError('required')"
+                        <div *ngIf="bankDetails.controls['accountHolderName'].hasError('required') && !submitted"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter account holder name!
                         </div>
@@ -27,11 +32,26 @@
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="state">Account Type <span class="text-red-600"> *</span></label>
-                    <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder=" Enter your account Type"
-                        formControlName="accountType"></p-dropdown>
-                    <div *ngIf="bankDetails.controls['accountType'].invalid && bankDetails.controls['accountType'].touched"
+                    <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder=" Select a Type"
+                        formControlName="accountType" #myInputField></p-dropdown>
+                    <!-- <div *ngIf="bankDetails.controls['accountType'].invalid && bankDetails.controls['accountType'].touched"
                         style="color: red;text-align: left;margin-top: 6px;">
                         Please select an account type.
+                    </div> -->
+                    <div *ngIf="myInputField.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Please select an account
+                        type.
+
+
+                    </div>
+
+                    <div *ngIf="bankDetails.controls['accountType'].touched ">
+                        <div *ngIf=" bankDetails.controls['accountType'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Please select an account type.
+
+                        </div>
+
                     </div>
 
                 </div>
@@ -39,10 +59,14 @@
 
                 <div class="field col-12 md:col-4">
                     <label htmlFor="Accountno">Account no:<span class="text-red-600"> *</span></label>
-                    <input pInputText id="Accountno" type="text" placeholder="Enter your account no"
+                    <input #myInputField2 pInputText id="Accountno" type="text" placeholder="Enter your account no"
                         formControlName="accountNo" pattern="^[0-9]{9,18}$">
+                    <div *ngIf="myInputField2.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter your account number!
+
+                    </div>
                     <div *ngIf="bankDetails.controls['accountNo'].touched && bankDetails.controls['accountNo'].errors">
-                        <div *ngIf="bankDetails.controls['accountNo'].hasError('required')"
+                        <div *ngIf="bankDetails.controls['accountNo'].hasError('required') && !submitted"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter your account number!
 
@@ -88,11 +112,15 @@
                 </div> -->
                 <div class="field col-12 md:col-4">
                     <label htmlFor="IFSCCode">IFSC Code <span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code"
+                    <input #myInputField3 pInputTextarea id="IFSCCode" rows="4" placeholder=" Enter your IFSC Code"
                         formControlName="ifsc" pattern="^[A-Z]{4}[0][\d]{6}$" maxlength="11" minlength="11"
                         (blur)="getBank()" type="search" />
+                    <div *ngIf="myInputField3.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter IFSC code!
+
+                    </div>
                     <div *ngIf="bankDetails.controls['ifsc'].touched && bankDetails.controls['ifsc'].errors">
-                        <div *ngIf="bankDetails.controls['ifsc'].hasError('required')"
+                        <div *ngIf="bankDetails.controls['ifsc'].hasError('required')&& !submitted"
                             style="color: red;text-align: left;margin-top: 6px;">
                             Enter IFSC code!
 
@@ -139,7 +167,24 @@
                     <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
                         formControlName="pinCode" pattern="^\d{6}$" maxlength="7" minlength="6" />
 
+                    <div *ngIf="myInputField3.value === '' && submitted" class="error-message"
+                        style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter pin code!
 
+
+                    </div>
+
+                    <div *ngIf="bankDetails.controls['pinCode'].touched ">
+                        <div *ngIf=" bankDetails.controls['pinCode'].hasError('required') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;font-size: 14px;">
+                            Enter pin code!
+
+                        </div>
+                        <div *ngIf="bankDetails.controls['pinCode'].hasError('pattern') && !submitted"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter valid pin code!
+                        </div>
+
+                    </div>
                 </div>
 
                 <!-- <div class="field col-12 md:col-3">

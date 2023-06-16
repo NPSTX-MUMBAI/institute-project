@@ -18,6 +18,7 @@ import { Bank } from 'src/app/models/bank.model';
 })
 export class BankInfoComponent implements OnInit {
     @Output() onSaveBankInfo = new EventEmitter();
+    submitted = false;
 
     bankDetails!: FormGroup;
     loading = false;
@@ -56,6 +57,8 @@ export class BankInfoComponent implements OnInit {
         { name: 'FD account', code: 'FD  account' },
     ];
     async submit() {
+        this.submitted = true;
+
         let mySchoolId = this.stateSvc.getUserData('schoolId');
         this.loading = true;
         if (this.bankDetails.invalid) {
