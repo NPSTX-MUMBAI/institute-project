@@ -164,10 +164,10 @@
                 </div>
                 <div class="field col-12 md:col-3">
                     <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
-                    <input pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
+                    <input #myInputField9 pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
                         formControlName="pinCode" pattern="^\d{6}$" maxlength="7" minlength="6" />
 
-                    <div *ngIf="myInputField3.value === '' && submitted" class="error-message"
+                    <div *ngIf="myInputField9.value === '' && submitted" class="error-message"
                         style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter pin code!
 
 

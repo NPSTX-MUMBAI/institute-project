@@ -12,7 +12,14 @@
             <p-fileUpload [auto]="false" [files]="panFile" #panUpload [customUpload]="true"
                 (uploadHandler)="panDetailsUpload($event,panUpload)" [showCancelButton]="false" chooseLabel="Choose"
                 name="demo[]" [multiple]="false" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+                <i class="pi pi-check" [style.display]="showIcon ? 'inline' : 'none'"
+                    style="margin-left: 20px;padding: 11px 10px;"></i>
+
                 <ng-template pTemplate="toolbar">
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                        style="margin-left: 20px;padding: 11px 10px;" (click)="showIcon = true"
+                        [style.display]="!showIcon ? 'inline' : 'none'"></button>
+
                     <div class="py-3">
                         <ul>
                             <li>
@@ -26,6 +33,31 @@
                 </ng-template>
             </p-fileUpload>
 
+            <!-- <p-fileUpload [auto]="false" [files]="panFile" #panUpload [customUpload]="true"
+                (uploadHandler)="panDetailsUpload($event,panUpload)" [showCancelButton]="false" chooseLabel="Choose"
+                name="demo[]" [multiple]="false" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000"> <i
+                    class="pi pi-check"></i>
+
+                <ng-template pTemplate="toolbar">
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                        style="margin-left: 20px;"></button>
+
+                    <div class="py-3">
+                        <ul>
+                            <li>
+                                Maximum file size: [1 MB]
+                            </li>
+                            <li>
+                                Accepted file formats: [png, jpg, jpeg, pdf]
+                            </li>
+                        </ul>
+                    </div>
+                </ng-template>
+
+            </p-fileUpload> -->
+
+
+
         </div>
 
         <div class="col-12 lg:col-6 md:col-12">
@@ -38,7 +70,14 @@
             <p-fileUpload [auto]="false" [customUpload]="true" [showCancelButton]="false" chooseLabel="Choose"
                 name="demo[]" (uploadHandler)="aadharUpload($event)" [multiple]="false" [files]="udymaFile"
                 accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+                <i class="pi pi-check" [style.display]="showIconaadhar ? 'inline' : 'none'"
+                    style="margin-left: 20px;padding: 11px 10px;"></i>
+
                 <ng-template pTemplate="toolbar">
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                        style="margin-left: 20px;padding: 11px 10px;" (click)="showIconaadhar = true"
+                        [style.display]="!showIconaadhar ? 'inline' : 'none'"></button>
+
                     <div class="py-3">
                         <ul>
                             <li>
@@ -62,7 +101,14 @@
             <p-fileUpload #gstUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
                 chooseLabel="Choose" name="demo[]" (uploadHandler)="gstDetailsUpload($event , gstUpload)"
                 [multiple]="false" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+                <i class="pi pi-check" [style.display]="showIcongst? 'inline' : 'none'"
+                    style="margin-left: 20px;padding: 11px 10px;"></i>
+
                 <ng-template pTemplate="toolbar">
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                        style="margin-left: 20px;padding: 11px 10px;" (click)="showIcongst = true"
+                        [style.display]="!showIcongst ? 'inline' : 'none'"></button>
+
                     <div class="py-3">
                         <ul>
                             <li>
@@ -93,7 +139,13 @@
             <p-fileUpload #regUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
                 chooseLabel="Choose" name="demo[]" (uploadHandler)="regDocUpload($event , regUpload)" [multiple]="false"
                 accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+                <i class="pi pi-check" [style.display]="showIconreg? 'inline' : 'none'"
+                    style="margin-left: 20px;padding: 11px 10px;"></i>
                 <ng-template pTemplate="toolbar">
+                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                        style="margin-left: 20px;padding: 11px 10px;" (click)="showIconreg = true"
+                        [style.display]="!showIconreg ? 'inline' : 'none'"></button>
+
                     <div class="py-3">
                         <ul>
                             <li>
