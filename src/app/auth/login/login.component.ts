@@ -4,6 +4,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { AuthService } from '../../services/auth.service';
 import { MessageService } from 'primeng/api';
 import { StateService } from '../../services/state.service';
+import { Location } from '@angular/common';
 
 @Component({
     selector: 'app-login',
@@ -20,7 +21,8 @@ export class LoginComponent implements OnInit {
         private fb: FormBuilder,
         private authSvc: AuthService,
         private msgSvc: MessageService,
-        private stateSvc: StateService
+        private stateSvc: StateService,
+        private location: Location
     ) {}
 
     togglePasswordVisibility() {
@@ -80,6 +82,7 @@ export class LoginComponent implements OnInit {
                         );
                         this.stateSvc.setUserData('user', loggedInUser);
                         this.loading = false;
+                        this.location.replaceState('/'); // to prevent going back to login
 
                         this.router.navigate(['/main/admin-dashboard']);
                     }
