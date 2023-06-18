@@ -4,6 +4,7 @@ import { AddStudentComponent } from './add-student/add-student.component';
 import { ListStudentComponent } from './list-student/list-student.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UiModule } from 'src/app/ui/ui.module';
+import { BulkUploadComponent } from './bulk-upload/bulk-upload.component';
 
 const routes: Routes = [
     { path: '', component: ListStudentComponent },
@@ -11,10 +12,18 @@ const routes: Routes = [
         path: 'add',
         component: AddStudentComponent,
     },
+    {
+        path: 'bulkUpload',
+        component: BulkUploadComponent,
+    },
 ];
 
 @NgModule({
-    declarations: [AddStudentComponent, ListStudentComponent],
+    declarations: [
+        AddStudentComponent,
+        ListStudentComponent,
+        BulkUploadComponent,
+    ],
     imports: [CommonModule, UiModule, RouterModule.forChild(routes)],
 })
 export class StudentModule {}

@@ -37,6 +37,7 @@ import { DynamicDialogModule } from 'primeng/dynamicdialog';
 import { InputSwitchModule } from 'primeng/inputswitch';
 import { TimelineModule } from 'primeng/timeline';
 import { MenubarModule } from 'primeng/menubar';
+import { NgxUiLoaderConfig } from 'ngx-ui-loader';
 const arrays = [
     CommonModule,
     CarouselModule,
@@ -84,6 +85,37 @@ const arrays = [
     TimelineModule,
     MenubarModule,
 ];
+
+export const loaderConf: NgxUiLoaderConfig = {
+    bgsColor: 'red',
+    bgsOpacity: 0.5,
+    bgsPosition: 'bottom-right',
+    bgsSize: 60,
+    bgsType: 'wandering-cubes',
+    blur: 5,
+    delay: 0,
+    fastFadeOut: true,
+    fgsColor: '#9D4BFF',
+    fgsPosition: 'center-center',
+    fgsSize: 60,
+    fgsType: 'square-jelly-box',
+    gap: 24,
+    logoPosition: 'center-center',
+    logoSize: 120,
+    logoUrl: '',
+    masterLoaderId: 'master',
+    overlayBorderRadius: '0',
+    overlayColor: 'rgba(40, 40, 40, 0.8)',
+    pbColor: 'red',
+    pbDirection: 'ltr',
+    pbThickness: 3,
+    hasProgressBar: true,
+    text: '',
+    textColor: '#FFFFFF',
+    textPosition: 'center-center',
+    maxTime: -1,
+    minTime: 300,
+};
 @NgModule({
     imports: arrays,
     exports: arrays,

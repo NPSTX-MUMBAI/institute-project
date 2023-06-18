@@ -1,14 +1,16 @@
-<button pButton pRipple label="+ Add Student" (click)="navigateToAddStudents()"></button>
+<button pButton pRipple label="+ Add Student" (click)="addStudent()"></button>
+<button pButton pRipple label="Bulk Upload" (click)="bulkUpload()"></button>
 
-<div *ngIf="school" style="margin-top:8%;">
 
-    <p-table #dt2 [value]="school" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+<div *ngIf="students" style="margin-top:8%;">
+
+    <p-table #dt2 [value]="students" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
         <div class="flex-container">
-            <h2>List of Students</h2>
+            <h2>List of studentss</h2>
 
         </div>
     </ng-template> -->
@@ -16,12 +18,11 @@
             <tr>
                 <th>REG ID</th>
                 <th>FIRST NAME</th>
-                <th>LAST TIME</th>
+                <th>LAST NAME</th>
                 <th>ROLL NO</th>
                 <th>GENDER</th>
                 <th>STD</th>
                 <th>DIV</th>
-                <th>BOARD</th>
                 <th>EMAIL</th>
                 <th>PHONE</th>
 
@@ -31,20 +32,19 @@
 
 
         </ng-template>
-        <ng-template pTemplate="body" let-school>
+        <ng-template pTemplate="body" let-students>
             <tr>
 
 
-                <td style="color:#01A9F1;font-weight: bold;">{{ school.RegId }}</td>
-                <td>{{ school.FirstName }}</td>
-                <td>{{ school.LastName }}</td>
-                <td>{{ school.RollNo }}</td>
-                <td>{{ school.Gender }}</td>
-                <td>{{ school.Std }}</td>
-                <td>{{ school.Div }}</td>
-                <td>{{ school.Board }}</td>
-                <td>{{ school.Email}}</td>
-                <td>{{ school.Phone }}</td>
+                <td style="color:#01A9F1;font-weight: bold;">{{ students.uniqueId }}</td>
+                <td>{{ students.firstName }}</td>
+                <td>{{ students.lastName }}</td>
+                <td>{{ students.rollNo }}</td>
+                <td>{{ students.gender }}</td>
+                <td>{{ students.std }}</td>
+                <td>{{ students.div }}</td>
+                <td>{{ students.email}}</td>
+                <td>{{ students.mobileNo }}</td>
 
 
 
@@ -55,8 +55,9 @@
     </p-table>
 </div>
 
-<div *ngIf="!school">
-    <div class="card"> 
-        <img src="src=../../../assets/layout/images/no-data-loader.gif" style="margin-left: 410px; border-radius: 5px 5px 0 0;">
+<div *ngIf="!students">
+    <div class="card">
+        <img src="src=../../../assets/layout/images/no-data-loader.gif"
+            style="margin-left: 410px; border-radius: 5px 5px 0 0;">
     </div>
 </div>

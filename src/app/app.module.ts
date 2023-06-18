@@ -13,7 +13,7 @@ import { NodeService } from './demo/service/node.service';
 import { PhotoService } from './demo/service/photo.service';
 import { DashboardComponent } from './components/dashboard/dashboard.component';
 import { MessageService } from 'primeng/api';
-import { UiModule } from './ui/ui.module';
+import { UiModule, loaderConf } from './ui/ui.module';
 import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { AuthInterceptor } from './guards/authInterceptor';
 // import { StudentModule } from './components/student/student.module';
@@ -21,14 +21,14 @@ import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, DashboardComponent,],
+    declarations: [AppComponent, NotfoundComponent, DashboardComponent],
     imports: [
         AppRoutingModule,
         AppLayoutModule,
         HttpClientModule,
         UiModule,
         HttpClientModule,
-        NgxUiLoaderModule,
+        NgxUiLoaderModule.forRoot(loaderConf),
         NgxUiLoaderHttpModule.forRoot({
             showForeground: true,
         }),
