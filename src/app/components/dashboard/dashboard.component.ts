@@ -3,6 +3,7 @@ import { StateService } from '../../services/state.service';
 import { ChartOptions } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { InstituteService } from '../../services/institute.service';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-dashboard',
@@ -12,8 +13,15 @@ import { InstituteService } from '../../services/institute.service';
 export class DashboardComponent implements OnInit {
     constructor(
         private stateSvc: StateService,
-        private instSvc: InstituteService
-    ) {}
+        private instSvc: InstituteService,
+        private router: Router
+    ) {
+        this.instSvc.getErrorObservable().subscribe((error) => {
+            if (error) {
+                this.router.navigate(['auth/login']);
+            }
+        });
+    }
 
     chartData: any;
     chartOptions: any;
@@ -148,6 +156,4 @@ export class DashboardComponent implements OnInit {
             },
         });
     }
-
-
 }

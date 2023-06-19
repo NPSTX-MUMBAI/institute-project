@@ -3,11 +3,19 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { environment } from 'src/environments/environment';
 import { InstituteInfoModel } from '../models/institute-info.model';
 import { StateService } from './state.service';
+import { Router } from '@angular/router';
+import { BehaviorSubject } from 'rxjs';
 @Injectable({
     providedIn: 'root',
 })
 export class InstituteService {
-    constructor(private http: HttpClient, private stateSvc: StateService) {}
+    private errorSubject = new BehaviorSubject<any>(null);
+
+    constructor(
+        private http: HttpClient,
+        private stateSvc: StateService,
+        private router: Router
+    ) {}
 
     createInstitute(instituteData: InstituteInfoModel) {
         return new Promise(async (resolve, reject) => {
@@ -27,6 +35,7 @@ export class InstituteService {
                 );
         });
     }
+
     getInstitutesForUser(userId: string) {
         let token = this.stateSvc.getUserData('accessToken');
 
@@ -51,12 +60,12 @@ export class InstituteService {
                         }
                     },
                     (error) => {
+                        this.errorSubject.next(error);
                         reject(error);
                     }
                 );
         });
     }
-
     addStd(data: any) {
         let token = this.stateSvc.getUserData('accessToken');
 
@@ -205,5 +214,9 @@ export class InstituteService {
                     }
                 );
         });
+    }
+
+    getErrorObservable() {
+        return this.errorSubject.asObservable();
     }
 }
