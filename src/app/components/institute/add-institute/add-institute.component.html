@@ -240,7 +240,7 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="zipcode">Zip Code<span class="text-red-600"> *</span></label>
                     <input pInputTextarea id="zipcode" rows="4" placeholder="Zip Code" formControlName="zipcode"
-                        pattern="[0-9]{5}" />
+                        pattern="[0-9]{6}" />
 
                     <div *ngIf="listInstitute.controls['zipcode'].touched && listInstitute.controls['zipcode'].errors">
                         <div *ngIf="listInstitute.controls['zipcode'].hasError('required')"

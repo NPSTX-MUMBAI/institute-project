@@ -1,14 +1,28 @@
 <div class="card">
 
     <form class="pt-4" [formGroup]="addStdGrp">
-
         <p-multiSelect [style]="{'width':'25rem'}" defaultLabel="Select a Standard " [virtualScroll]="true"
+            [filter]="false" [virtualScrollItemSize]="43" [options]="standards" formControlName="std" optionLabel="name"
+            [panelStyleClass]="showContainer ? 'show-container' : ''">
+            <ng-template pTemplate="header">
+                <div class="container" *ngIf="showContainer">
+                    <input [style]="{'width':'100%'}" pInputText id="name" (keyup)="onKey()" style="width: 10%"
+                        type="text"
+                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        nz-input #inputElement />
+                    <button pButton pRipple label="Add" class="add-item"
+                        (click)="addStd(inputElement.value); inputElement.value = ''"
+                        style="margin-left: 10px;"></button>
+                </div>
+            </ng-template>
+        </p-multiSelect>
+
+        <!-- <p-multiSelect [style]="{'width':'25rem'}" defaultLabel="Select a Standard " [virtualScroll]="true"
             [filter]="false" [virtualScrollItemSize]="43" [options]="standards" formControlName="std"
             optionLabel="name">
             <ng-template pTemplate="header">
 
-
-                <div class="container">
+                <div class="container" *ngIf="showContainer">
                     <input [style]="{'width':'100%'}" pInputText id="name" (keyup)="onKey()" style="width: 10%"
                         type="text"
                         oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '').replace(/(\..*)\./g, '$1');"
@@ -20,14 +34,11 @@
 
                     </button>
 
-
                 </div>
-
             </ng-template>
 
-
-        </p-multiSelect>
-
+        </p-multiSelect> -->
+        <p-button icon="pi pi-plus" (click)="showContainer = !showContainer"></p-button>
 
         <!-- <ng-template #renderTemplate> -->
 
@@ -36,10 +47,6 @@
         <br>
         <br>
         <br>
-
-
-
-
 
     </form>
 
@@ -76,7 +83,7 @@
             </ng-template>
             <ng-template pTemplate="body" let-stds>
                 <tr>
-                    <td>{{ stds.std  }}</td>
+                    <td>{{ stds.std }}</td>
 
                     <td>
 
