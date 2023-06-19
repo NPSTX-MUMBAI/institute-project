@@ -2,4 +2,9 @@
     flex: 0 0 auto;
     padding: 8px;
     display: block;
-  }
+}
+.show-container .p-multiselect-panel {
+    display: block !important;
+    opacity: 1 !important;
+    pointer-events: auto !important;
+}

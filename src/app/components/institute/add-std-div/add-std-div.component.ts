@@ -7,7 +7,7 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { InstituteService } from '../../../services/institute.service';
-import { MessageService } from 'primeng/api';
+import { MenuItem, MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-add-std-div',
@@ -34,20 +34,41 @@ export class AddStdDivComponent implements OnInit {
     stds = [];
 
     schoolId: any;
+    items!: MenuItem[];
 
     addStdGrp!: FormGroup;
     addDivGrp!: FormGroup;
+    showContainer = false;
 
     Stdvisible = false;
     show = false;
     index = 0;
+    appendToContainer: any;
 
     constructor(
         private fb: FormBuilder,
         private route: ActivatedRoute,
         private instSvc: InstituteService,
         private msg: MessageService
-    ) {}
+    ) {
+        this.items = [
+            {
+                label: 'Update',
+                icon: 'pi pi-refresh',
+            },
+            {
+                label: 'Delete',
+                icon: 'pi pi-times',
+            },
+            {
+                label: 'Angular.io',
+                icon: 'pi pi-info',
+                url: 'http://angular.io',
+            },
+            { separator: true },
+            { label: 'Setup', icon: 'pi pi-cog', routerLink: ['/setup'] },
+        ];
+    }
 
     ngOnInit(): void {
         this.addStdGrp = this.fb.group({
@@ -96,6 +117,13 @@ export class AddStdDivComponent implements OnInit {
 
         // this.stds = this.addStdGrp.value.std;
     }
+    onDropdownClick(event: Event) {
+        event.preventDefault();
+        if (!this.showContainer) {
+            this.showContainer = true;
+            this.toggleDropdown();
+        }
+    }
 
     async getAllStd() {
         this.show = true;
@@ -131,5 +159,18 @@ export class AddStdDivComponent implements OnInit {
                 this.addDivGrp.value.div = null;
             }
         });
+    }
+    toggleDropdown() {
+        const dropdown = this.appendToContainer.nativeElement.querySelector(
+            '.p-multiselect-panel'
+        );
+        if (dropdown) {
+            dropdown.style.display = this.showContainer ? 'block' : 'none';
+        }
+    }
+
+    onPlusButtonClick() {
+        this.showContainer = true;
+        this.toggleDropdown();
     }
 }
