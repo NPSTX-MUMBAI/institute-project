@@ -1,57 +1,39 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { AuthService } from '../../../services/auth.service';
+import { StateService } from '../../../services/state.service';
 
 @Component({
     selector: 'app-list-staff',
     templateUrl: './list-staff.component.html',
     styleUrls: ['./list-staff.component.scss'],
 })
-export class ListStaffComponent {
-    staff: any = [
-        {
-            FirstName: 'Amit',
-            LastName: 'Sharma',
-            Email: 'amit@gmail.com',
-            MobileNo: '8989565623',
-        },
-        {
-            FirstName: 'Meet',
-            LastName: 'Varma',
-            Email: 'meet@gmail.com',
-            MobileNo: '5969565623',
-        },
-        {
-            FirstName: 'Yash',
-            LastName: 'Sharma',
-            Email: 'yash@gmail.com',
-            MobileNo: '9989565125',
-        },
-        {
-            FirstName: 'yuvi',
-            LastName: 'Sharma',
-            Email: 'yvi@gmail.com',
-            MobileNo: '6689565626',
-        },
-        {
-            FirstName: 'Yash',
-            LastName: 'Sharma',
-            Email: 'yash@gmail.com',
-            MobileNo: '9989565125',
-        },
-        {
-            FirstName: 'yuvi',
-            LastName: 'Sharma',
-            Email: 'yvi@gmail.com',
-            MobileNo: '6689565626',
-        },
-        {
-            FirstName: 'Yash',
-            LastName: 'Sharma',
-            Email: 'yash@gmail.com',
-            MobileNo: '9989565125',
-        },
-    ];
-    constructor(private router: Router) {}
+export class ListStaffComponent implements OnInit {
+    staff: any = [];
+    schoolId: any;
+    constructor(
+        private router: Router,
+        private authSvc: AuthService,
+        private stateSvc: StateService
+    ) {}
+
+    ngOnInit(): void {
+        this.schoolId = this.stateSvc.getUserData('schoolId');
+
+        this.getAllStaff();
+    }
+
+    async getAllStaff() {
+        let data = {
+            schoolId: this.schoolId,
+            userType: 'STAFF',
+        };
+        await this.authSvc.getStaff(data).then((res: any) => {
+            console.log(res);
+
+            this.staff = res.data;
+        });
+    }
     navigateToAddBank() {
         this.router.navigate(['/main/institute/staff/add']);
     }

@@ -102,7 +102,7 @@ export const loaderConf: NgxUiLoaderConfig = {
     gap: 24,
     logoPosition: 'center-center',
     logoSize: 120,
-    logoUrl: '',
+    logoUrl: '../../assets/layout/images/society_loading.gif',
     masterLoaderId: 'master',
     overlayBorderRadius: '0',
     overlayColor: 'rgba(40, 40, 40, 0.8)',
