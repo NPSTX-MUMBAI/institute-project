@@ -2,6 +2,24 @@
 
     <form class="pt-4" [formGroup]="addStdGrp">
         <p-multiSelect [style]="{'width':'25rem'}" defaultLabel="Select a Standard " [virtualScroll]="true"
+            [filter]="false" [virtualScrollItemSize]="43" [options]=" standards" formControlName="std"
+            optionLabel="name" [panelStyleClass]="showContainer ? 'show-container' : ''" #multiSelect>
+            <ng-template pTemplate="header">
+                <div class="container" *ngIf="showContainer">
+                    <input [style]="{'width':'100%','margin-right':'20px'}" pInputText id="name" (keyup)="onKey()"
+                        style="width: 10%" type="text"
+                        oninput="this.value = this.value.replace(/[^a-zA-Z0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        nz-input #inputElement />
+                    <button pButton pRipple label="Add" class="add-item"
+                        (click)="addStd(inputElement.value); inputElement.value = ''"
+                        style="margin-right: 20px;"></button>
+                </div>
+            </ng-template>
+        </p-multiSelect>
+        <p-button icon="pi pi-plus" [(ngModel)]="showContainer" (click)="multiSelect.show()"
+            (click)="addDivision() "></p-button>
+
+        <!-- <p-multiSelect [style]="{'width':'25rem'}" defaultLabel="Select a Standard " [virtualScroll]="true"
             [filter]="false" [virtualScrollItemSize]="43" [options]="standards" formControlName="std" optionLabel="name"
             [panelStyleClass]="showContainer ? 'show-container' : ''">
             <ng-template pTemplate="header">
@@ -15,7 +33,7 @@
                         style="margin-left: 10px;"></button>
                 </div>
             </ng-template>
-        </p-multiSelect>
+        </p-multiSelect> -->
 
         <!-- <p-multiSelect [style]="{'width':'25rem'}" defaultLabel="Select a Standard " [virtualScroll]="true"
             [filter]="false" [virtualScrollItemSize]="43" [options]="standards" formControlName="std"
@@ -38,7 +56,7 @@
             </ng-template>
 
         </p-multiSelect> -->
-        <p-button icon="pi pi-plus" (click)="showContainer = !showContainer"></p-button>
+        <!-- <p-button icon="pi pi-plus" (click)="showContainer = !showContainer"></p-button> -->
 
         <!-- <ng-template #renderTemplate> -->
 
@@ -51,12 +69,6 @@
     </form>
 
     <button pButton pRipple label="Submit" (click)="submit()"></button>
-
-
-
-
-
-
 
     <div *ngIf="show">
         <p-table #dt2 [value]="stds" dataKey="id" [rows]="10">

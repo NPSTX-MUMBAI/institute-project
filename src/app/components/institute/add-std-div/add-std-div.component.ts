@@ -169,8 +169,7 @@ export class AddStdDivComponent implements OnInit {
         }
     }
 
-    onPlusButtonClick() {
+    addDivision() {
         this.showContainer = true;
-        this.toggleDropdown();
     }
 }

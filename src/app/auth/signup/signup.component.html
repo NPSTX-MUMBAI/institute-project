@@ -72,11 +72,6 @@
             Kyc</div>
         <div class="cursor-disabled" [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')"
             [class.disabled]="activeTab !== 'Status'">Status</div>
-        <!-- <div [class.active]="activeTab === 'Personal'" (click)="setActiveTab('Personal')">Personal</div>
-        <div [class.active]="activeTab === 'Institute'" (click)="setActiveTab('Institute')">Institute</div>
-        <div [class.active]="activeTab === 'Bank'" (click)="setActiveTab('Bank')">Bank</div>
-        <div [class.active]="activeTab === 'Kyc'" (click)="setActiveTab('Kyc')">Kyc</div>
-        <div [class.active]="activeTab === 'Status'" (click)="setActiveTab('Status')">Status</div> -->
 
     </div>
     <div class="tab-indicator" [style.left.%]="getActiveTabIndex()* (100 / tabs.length)"></div>
