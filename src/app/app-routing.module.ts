@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { NotfoundComponent } from './demo/components/notfound/notfound.component';
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
+import { CollectionModule } from './components/collection/collection.module';
 
 const routes: Routes = [
     {
@@ -54,6 +55,15 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./components/student/student.module').then(
                         (m) => m.StudentModule
+                    ),
+            },
+
+            {
+                path: 'collection',
+
+                loadChildren: () =>
+                    import('./components/collection/collection.module').then(
+                        (m) => m.CollectionModule
                     ),
             },
         ],

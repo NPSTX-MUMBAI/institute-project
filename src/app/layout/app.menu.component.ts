@@ -50,7 +50,6 @@ export class AppMenuComponent implements OnInit {
                 },
 
                 {
-
                     items: [
                         {
                             label: 'Manage Institutes ',
@@ -100,20 +99,20 @@ export class AppMenuComponent implements OnInit {
                 {
                     label: 'Collections',
                     items: [
-                        {
-                            label: 'Charges ',
-                            icon: 'pi pi-fw pi-id-card',
-                            routerLink: ['/main/student'],
-                        },
-                        {
-                            label: 'Charge group ',
-                            icon: 'pi pi-fw pi-id-card',
-                            routerLink: ['/student'],
-                        },
+                        // {
+                        //     label: 'Charges ',
+                        //     icon: 'pi pi-fw pi-id-card',
+                        //     routerLink: ['/main/student'],
+                        // },
+                        // {
+                        //     label: 'Charge group ',
+                        //     icon: 'pi pi-fw pi-id-card',
+                        //     routerLink: ['/student'],
+                        // },
                         {
                             label: 'Collections ',
                             icon: 'pi pi-fw pi-id-card',
-                            routerLink: ['/student'],
+                            routerLink: ['/main/collection/add'],
                         },
                     ],
                 },
