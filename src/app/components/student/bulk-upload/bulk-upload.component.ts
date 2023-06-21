@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { MessageService } from 'primeng/api';
 import { StateService } from '../../../services/state.service';
 import { StudentService } from '../../../services/student.service';
+import { Router } from '@angular/router';
 
 interface UploadEvent {
     originalEvent: Event;
@@ -23,7 +24,8 @@ export class BulkUploadComponent implements OnInit {
     constructor(
         private messageService: MessageService,
         private stateSvc: StateService,
-        private studSvc: StudentService
+        private studSvc: StudentService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -52,6 +54,8 @@ export class BulkUploadComponent implements OnInit {
                         summary: 'File Uploaded',
                         detail: '',
                     });
+
+                    this.router.navigate(['main/student']);
                 } else {
                     this.messageService.add({
                         severity: 'warn',

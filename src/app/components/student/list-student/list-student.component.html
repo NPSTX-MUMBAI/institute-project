@@ -2,6 +2,15 @@
 <button pButton pRipple label="Bulk Upload" (click)="bulkUpload()"></button>
 
 
+
+
+
+<p-confirmPopup></p-confirmPopup>
+<p-toast></p-toast>
+
+
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
+
 <div *ngIf="students" style="margin-top:8%;">
 
     <p-table #dt2 [value]="students" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
@@ -25,6 +34,8 @@
                 <th>DIV</th>
                 <th>EMAIL</th>
                 <th>PHONE</th>
+                <th>ACTION</th>
+
 
 
 
@@ -45,6 +56,14 @@
                 <td>{{ students.div }}</td>
                 <td>{{ students.email}}</td>
                 <td>{{ students.mobileNo }}</td>
+                <td style="color:#0257FF;font-weight: bold;">
+
+
+                    <p-button (click)="handleClick( students.schoolId ); menu.toggle($event)" icon="pi pi-ellipsis-v"
+                        styleClass="p-button-rounded p-button-text">
+
+                    </p-button>
+                </td>
 
 
 
