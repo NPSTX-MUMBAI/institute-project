@@ -1,1 +1,86 @@
-<p>add-collection works!</p>
+<p-accordion [multiple]="true" [activeIndex]="[0]">
+    <p-accordionTab header="Collection Details">
+        <div>
+            <div class="col-12">
+
+                <form class="pt-4">
+
+                    <div class="p-fluid p-formgrid grid">
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="firstname2">Collection Name <span class="text-red-600"> *</span></label>
+                            <input pInputText id="Name" type="text" placeholder="Collection Name" />
+
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="lastname2">Description <span class="text-red-600"> *</span></label>
+                            <input pInputText id="Description" type="text" placeholder="Description here" />
+
+
+                        </div>
+
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Charge Group</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                        </div>
+
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Raise Source</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Select VPA Id</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="state">Frequency (in months)</label>
+                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="dob">Start Date <span class="text-red-600"> *</span></label>
+                            <p-calendar inputId="calendar"></p-calendar>
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="dob">End Date <span class="text-red-600"> *</span></label>
+                            <p-calendar inputId="calendar"></p-calendar>
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="dob">Raising Day <span class="text-red-600"> *</span></label>
+                            <p-calendar inputId="calendar"></p-calendar>
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="dob">Invoice Date <span class="text-red-600"> *</span></label>
+                            <p-calendar inputId="calendar"></p-calendar>
+
+                        </div>
+                        <div class="field col-12 md:col-4">
+                            <label htmlFor="dob">Due Date <span class="text-red-600"> *</span></label>
+                            <p-calendar inputId="calendar"></p-calendar>
+
+                        </div>
+
+                    </div>
+
+
+                </form>
+
+            </div>
+        </div>
+
+    </p-accordionTab>
+
+
+
+    <p-accordionTab header="Charge Details">
+
+    </p-accordionTab>
+
+
+
+    <p-accordionTab header="Applicable On">
+        <app-list-student></app-list-student>
+
+    </p-accordionTab>
