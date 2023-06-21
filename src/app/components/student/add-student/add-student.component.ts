@@ -8,6 +8,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 @Component({
     selector: 'app-add-student',
@@ -22,18 +23,26 @@ export class AddStudentComponent implements OnInit {
     stds = [];
 
     schoolId: any;
+    studentId: any;
     uniqueId: any;
     constructor(
         private fb: FormBuilder,
         private instSvc: InstituteService,
         private stateSvc: StateService,
-        private studSvc: StudentService
+        private studSvc: StudentService,
+        private route: ActivatedRoute
     ) {}
 
     ngOnInit(): void {
         this.schoolId = this.stateSvc.getUserData('schoolId');
+        this.studentId = this.route.snapshot.queryParamMap.get('studentId');
+
         this.getInstitueDetails();
         this.getAllStd();
+
+        if (this.studentId) {
+            this.getStudentDetails();
+        }
         this.studentForm = this.fb.group({
             firstName: ['', Validators.required],
             lastName: ['', Validators.required],
@@ -67,6 +76,52 @@ export class AddStudentComponent implements OnInit {
             guardianLastName: [''],
             guardianEmail: [''],
             guardianMobile: [''],
+        });
+    }
+
+    async getStudentDetails() {
+        let data = {
+            schoolId: this.schoolId,
+            studentId: this.studentId,
+        };
+        await this.studSvc.getStudentDetails(data).then((res: any) => {
+            console.log(res.data[0]);
+            let myStudent = res.data[0];
+
+            this.studentForm = this.fb.group({
+                firstName: [myStudent.firstName, Validators.required],
+                lastName: [myStudent.lastName, Validators.required],
+                studentUniqueId: ['', Validators.required],
+                rollNo: ['', Validators.required],
+                gender: ['', Validators.required],
+                email: ['', Validators.required],
+                mobileNo: ['', Validators.required],
+                board: ['', Validators.required],
+                std: ['', Validators.required],
+                div: ['', Validators.required],
+                dob: ['', Validators.required],
+                balance: ['', Validators.required],
+                line1: ['', Validators.required],
+                line2: ['', Validators.required],
+                landmark: ['', Validators.required],
+                zip: ['', Validators.required],
+                country: ['', Validators.required],
+                state: ['', Validators.required],
+                city: ['', Validators.required],
+                locality: ['', Validators.required],
+                fatherFirstName: [''],
+                fatherLastName: [''],
+                fatherEmail: [''],
+                fatherMobile: [''],
+                motherFirstName: [''],
+                motherLastName: [''],
+                motherEmail: [''],
+                motherMobile: [''],
+                guardianFirstName: [''],
+                guardianLastName: [''],
+                guardianEmail: [''],
+                guardianMobile: [''],
+            });
         });
     }
 

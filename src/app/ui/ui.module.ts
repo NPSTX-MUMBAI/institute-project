@@ -106,7 +106,7 @@ export const loaderConf: NgxUiLoaderConfig = {
     masterLoaderId: 'master',
     overlayBorderRadius: '0',
     overlayColor: 'rgba(40, 40, 40, 0.8)',
-    pbColor: 'red',
+    pbColor: '#9D4BFF',
     pbDirection: 'ltr',
     pbThickness: 3,
     hasProgressBar: true,

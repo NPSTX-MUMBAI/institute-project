@@ -44,6 +44,24 @@ export class StudentService {
         });
     }
 
+    getStudentDetails(data: any) {
+        let token = this.stateSvc.getUserData('accessToken');
+
+        const headers = new HttpHeaders().set(
+            'Authorization',
+            `Bearer ${token}`
+        );
+        return new Promise((resolve, reject) => {
+            this.http
+                .post(environment.url + '/student/get/student', data, {
+                    headers,
+                })
+                .subscribe((res) => {
+                    resolve(res);
+                });
+        });
+    }
+
     bulkUpload(data: any) {
         let token = this.stateSvc.getUserData('accessToken');
 

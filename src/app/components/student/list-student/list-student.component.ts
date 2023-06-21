@@ -35,23 +35,17 @@ export class ListStudentComponent {
     }
 
     handleClick(id: any) {
-        console.log(event);
+        console.log(id);
 
         this.items = [
             {
                 label: 'Update',
                 icon: 'pi pi-pencil',
-                routerLink: ['/main/institute/add'],
-                queryParams: { schoolId: id },
+                routerLink: ['/main/student/add-student'],
+                queryParams: { studentId: id },
                 queryParamsHandling: 'merge',
             },
-            {
-                label: 'Add std & div',
-                icon: 'pi pi-pencil',
-                routerLink: ['/main/institute/addstddiv'],
-                queryParams: { schoolId: id },
-                queryParamsHandling: 'merge',
-            },
+
             {
                 label: 'Delete',
                 icon: 'pi pi-trash',
