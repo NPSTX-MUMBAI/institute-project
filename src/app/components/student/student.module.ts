@@ -9,7 +9,7 @@ import { BulkUploadComponent } from './bulk-upload/bulk-upload.component';
 const routes: Routes = [
     { path: '', component: ListStudentComponent },
     {
-        path: 'add',
+        path: 'add-student',
         component: AddStudentComponent,
     },
     {
@@ -25,5 +25,6 @@ const routes: Routes = [
         BulkUploadComponent,
     ],
     imports: [CommonModule, UiModule, RouterModule.forChild(routes)],
+    exports: [ListStudentComponent],
 })
 export class StudentModule {}

@@ -41,7 +41,7 @@ export class ListStudentComponent {
     }
 
     addStudent() {
-        this.router.navigate(['/main/student/add']);
+        this.router.navigate(['/main/student/add-student']);
     }
 
     bulkUpload() {

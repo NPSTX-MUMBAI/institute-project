@@ -17,23 +17,53 @@ export class ListStaffComponent implements OnInit {
         private stateSvc: StateService
     ) {}
 
+    // ngOnInit(): void {
+    //     this.schoolId = this.stateSvc.getUserData('schoolId');
+
+    //     this.getAllStaff();
+    //     this.stateSvc.getData().subscribe((response: any) => {
+    //         console.log('ins--->', response);
+    //         this.getAllStaff();
+    //     });
+    // }
     ngOnInit(): void {
         this.schoolId = this.stateSvc.getUserData('schoolId');
 
+        this.stateSvc.getData().subscribe((response: any) => {
+            if (this.schoolId) {
+                this.getAllStaff();
+            }
+        });
+
+        // Fetch initial bank and staff lists
         this.getAllStaff();
     }
 
+    // async getAllStaff() {
+    //     let data = {
+    //         schoolId: this.schoolId,
+    //         userType: 'STAFF',
+    //     };
+    //     await this.authSvc.getStaff(data).then((res: any) => {
+    //         console.log(res);
+
+    //         this.staff = res.data;
+    //     });
+    // }
     async getAllStaff() {
+        this.schoolId = this.stateSvc.getUserData('schoolId');
+
         let data = {
             schoolId: this.schoolId,
             userType: 'STAFF',
         };
+
         await this.authSvc.getStaff(data).then((res: any) => {
             console.log(res);
-
             this.staff = res.data;
         });
     }
+
     navigateToAddBank() {
         this.router.navigate(['/main/institute/staff/add']);
     }
