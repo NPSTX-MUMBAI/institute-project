@@ -12,7 +12,7 @@ import { StudentService } from 'src/app/services/student.service';
 export class ListStudentComponent {
     students: any = [];
     schoolId: any;
-
+    selectedSchool: any;
     constructor(
         private router: Router,
         private studSvc: StudentService,
@@ -31,6 +31,8 @@ export class ListStudentComponent {
     }
 
     async getAllStudents() {
+        this.schoolId = this.stateSvc.getUserData('schoolId');
+
         try {
             const res: any = await this.studSvc.getStudents(this.schoolId);
             console.log(res);

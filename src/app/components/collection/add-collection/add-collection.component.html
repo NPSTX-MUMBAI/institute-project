@@ -3,66 +3,79 @@
         <div>
             <div class="col-12">
 
-                <form class="pt-4">
+                <form class="pt-4" [formGroup]="collection">
 
                     <div class="p-fluid p-formgrid grid">
                         <div class="field col-12 md:col-4">
                             <label htmlFor="firstname2">Collection Name <span class="text-red-600"> *</span></label>
-                            <input pInputText id="Name" type="text" placeholder="Collection Name" />
+                            <input pInputText id="Name" type="text" placeholder="Collection Name"
+                                formControlName="name" />
 
 
                         </div>
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="lastname2">Description <span class="text-red-600"> *</span></label>
-                            <input pInputText id="Description" type="text" placeholder="Description here" />
+                            <label htmlFor="lastname2">Description </label>
+                            <input pInputText id="Description" type="text" placeholder="Description here"
+                                formControlName="description" />
 
 
                         </div>
 
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="state">Charge Group</label>
-                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                            <label htmlFor="state">Charge Group <span class="text-red-600"> *</span></label>
+                            <p-dropdown [options]="chargeItems" optionLabel="name"
+                                placeholder="Please select Charge group" formControlName="chargeGroups"></p-dropdown>
                         </div>
 
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="state">Raise Source</label>
-                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                            <label htmlFor="state">Raise Source <span class="text-red-600"> *</span></label>
+                            <p-dropdown [options]="rasieSource" optionLabel="name" formControlName="sources"
+                                placeholder="Select Source"></p-dropdown>
                         </div>
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="state">Select VPA Id</label>
-                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                            <label htmlFor="state">Select VPA Id <span class="text-red-600"> *</span></label>
+                            <p-dropdown [options]="vpaId" optionLabel="name"
+                                placeholder="Please select source of collection" formControlName="vpa"></p-dropdown>
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="state">Frequency (in months)</label>
-                            <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
+                            <p-dropdown [options]="frequencyMonth" optionLabel="name"
+                                placeholder="Please select applicable frequency in month"
+                                formControlName="freq"></p-dropdown>
                         </div>
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="dob">Start Date <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar"></p-calendar>
+                            <label htmlFor="dob">Start Date </label>
+                            <p-calendar inputId="calendar" placeholder="Select Date"
+                                formControlName="startDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
-                            <label htmlFor="dob">End Date <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar"></p-calendar>
+                            <label htmlFor="dob">End Date </label>
+                            <p-calendar inputId="calendar" placeholder="End Date"
+                                formControlName="endDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Raising Day <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar"></p-calendar>
+                            <p-calendar inputId="calendar" placeholder="Please select applicable date of month"
+                                formControlName="notificationDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Invoice Date <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar"></p-calendar>
+                            <p-calendar inputId="calendar" placeholder="Select Date"
+                                formControlName="invoiceDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Due Date <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar"></p-calendar>
+                            <p-calendar inputId="calendar" placeholder="Select Date"
+                                formControlName="dueDate"></p-calendar>
 
                         </div>
 
                     </div>
+                    <button pButton pRipple label="Submit" (click)="submit()"></button>
 
 
                 </form>

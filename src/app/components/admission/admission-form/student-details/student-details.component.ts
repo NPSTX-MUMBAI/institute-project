@@ -111,7 +111,6 @@ export class StudentDetailsComponent implements OnInit {
             });
     }
     dropdownItems = [
-        { name: 'Select Gender', code: 'Select Gender' },
         { name: 'Male', code: 'Male' },
         { name: 'Female', code: 'Female' },
         { name: 'Transgender', code: 'Transgender' },
