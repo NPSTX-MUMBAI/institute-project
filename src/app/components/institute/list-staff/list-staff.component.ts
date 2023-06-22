@@ -1,16 +1,19 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { StateService } from '../../../services/state.service';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-list-staff',
     templateUrl: './list-staff.component.html',
     styleUrls: ['./list-staff.component.scss'],
 })
-export class ListStaffComponent implements OnInit {
+export class ListStaffComponent implements OnInit, OnDestroy {
     staff: any = [];
     schoolId: any;
+    private dataSubscription!: Subscription;
+
     constructor(
         private router: Router,
         private authSvc: AuthService,
@@ -29,14 +32,19 @@ export class ListStaffComponent implements OnInit {
     ngOnInit(): void {
         this.schoolId = this.stateSvc.getUserData('schoolId');
 
-        this.stateSvc.getData().subscribe((response: any) => {
-            if (this.schoolId) {
-                this.getAllStaff();
-            }
-        });
+        this.dataSubscription = this.stateSvc
+            .getData()
+            .subscribe((response: any) => {
+                if (this.schoolId) {
+                    this.getAllStaff();
+                }
+            });
 
         // Fetch initial bank and staff lists
         this.getAllStaff();
+    }
+    ngOnDestroy() {
+        this.dataSubscription.unsubscribe();
     }
 
     // async getAllStaff() {

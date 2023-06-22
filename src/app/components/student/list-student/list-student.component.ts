@@ -1,6 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable, from } from 'rxjs';
+import { Observable, Subscription, from } from 'rxjs';
 import { StateService } from 'src/app/services/state.service';
 import { StudentService } from 'src/app/services/student.service';
 import { ConfirmationService } from 'primeng/api';
@@ -12,12 +12,14 @@ import { DialogService } from 'primeng/dynamicdialog';
     styleUrls: ['./list-student.component.scss'],
     providers: [ConfirmationService, DialogService],
 })
-export class ListStudentComponent {
+export class ListStudentComponent implements OnInit, OnDestroy {
     students: any = [];
     schoolId: any;
     items: any;
 
     selectedSchool: any;
+    private dataSubscription!: Subscription;
+
     constructor(
         private router: Router,
         private studSvc: StudentService,
@@ -32,13 +34,20 @@ export class ListStudentComponent {
         //     return;
         // }
         this.getAllStudents();
+        this.dataSubscription = this.stateSvc
+            .getData()
+            .subscribe((response: any) => {
+                console.log('ins--->', response);
+                this.getAllStudents();
+            });
 
-        this.stateSvc.getData().subscribe((response: any) => {
-            console.log('ins--->', response);
-            this.getAllStudents();
-        });
-
-        this.getAllStudents();
+        // this.stateSvc.getData().subscribe((response: any) => {
+        //     console.log('ins--->', response);
+        //     this.getAllStudents();
+        // });
+    }
+    ngOnDestroy() {
+        this.dataSubscription.unsubscribe();
     }
 
     handleClick(id: any) {

@@ -1,9 +1,10 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { StateService } from '../../../services/state.service';
 import { BankService } from '../../../services/bank.service';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { Subscription } from 'rxjs';
 
 @Component({
     selector: 'app-list-bank',
@@ -11,10 +12,11 @@ import { DialogService } from 'primeng/dynamicdialog';
     styleUrls: ['./list-bank.component.scss'],
     providers: [ConfirmationService, DialogService],
 })
-export class ListBankComponent implements OnInit {
+export class ListBankComponent implements OnInit, OnDestroy {
     bank = [];
     items!: MenuItem[];
     schoolId: any;
+    private dataSubscription!: Subscription;
 
     constructor(
         private router: Router,
@@ -25,12 +27,16 @@ export class ListBankComponent implements OnInit {
     ngOnInit(): void {
         this.updateBankList();
 
-        this.stateSvc.getData().subscribe((response: any) => {
-            console.log('ins--->', response);
-            this.updateBankList();
-        });
+        this.dataSubscription = this.stateSvc
+            .getData()
+            .subscribe((response: any) => {
+                console.log('ins--->', response);
+                this.updateBankList();
+            });
     }
-
+    ngOnDestroy() {
+        this.dataSubscription.unsubscribe();
+    }
     async updateBankList() {
         this.schoolId = this.stateSvc.getUserData('schoolId');
 
