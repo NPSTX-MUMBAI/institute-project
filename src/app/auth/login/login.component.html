@@ -76,44 +76,45 @@
 
 
 
-        <div class="login">          
-            <div class="login__content" >
-               
-                <div class="login__img" style="display: flex;flex-direction: column;">
-                    <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
-                        <div class="time" style=" width: 45%;margin-top: 10px;">
-                        <img src="../../../assets/layout/images/TimePay.png" >
-                        </div>
-                        <h4 style="text-align:center;" >School App</h4>
-                        <i class="intro-text" style="text-align: center;">"Investing in education pays the best interest."</i> 
-                    
-                    </div>
-                    <img src="../../../assets/layout/images/Thesis-pana (2).svg" alt="">
-                   
-                    <!-- <img src="../../../assets/layout/images/school3.gif" alt="school"> -->
-                   
+<div class="login">
+    <div class="login__content">
+
+        <div class="login__img" style="display: flex;flex-direction: column;">
+            <div style="display: flex;justify-content: center;flex-direction: column;align-items: center;">
+                <div class="time" style=" width: 45%;margin-top: 10px;">
+                    <img src="../../../assets/layout/images/TimePay.png">
                 </div>
-                
-                <div class="login__forms">
-                    <form action="" class="login__registre" id="login-in" [formGroup]="loginGrp">
-                        <h1 class="login__title">Sign In</h1>
-    
-                        <div class="login__box">
-                            <i class='bx bx-user login__icon'></i>
-                            <input type="text" placeholder="MobileNo" class="login__input" formControlName="mobileNo" required appOnlyNumber maxlength="10" minlength="0" required
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                            pattern="[- +()0-9]{10,12}">
+                <h4 style="text-align:center;">School App</h4>
+                <i class="intro-text" style="text-align: center;">"Investing in education pays the best interest."</i>
 
-                        </div>
-                        <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
-                            <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
-                                style="color: red;margin-bottom: 5px; text-align: left;">
-                                Enter Mobile No!
+            </div>
+            <img src="../../../assets/layout/images/Thesis-pana (2).svg" alt="">
 
-                            </div>
-                        </div>
-    
-                        <!--<div class="login__box">
+            <!-- <img src="../../../assets/layout/images/school3.gif" alt="school"> -->
+
+        </div>
+
+        <div class="login__forms">
+            <form action="" class="login__registre" id="login-in" [formGroup]="loginGrp">
+                <h1 class="login__title">Sign In</h1>
+
+                <div class="login__box">
+                    <i class='bx bx-user login__icon'></i>
+                    <input type="text" placeholder="MobileNo" class="login__input" formControlName="mobileNo" required
+                        appOnlyNumber maxlength="10" minlength="0" required
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                        pattern="[- +()0-9]{10,12}">
+
+                </div>
+                <div *ngIf="loginGrp.controls['mobileNo'].touched && loginGrp.controls['mobileNo'].errors">
+                    <div *ngIf="loginGrp.controls['mobileNo'].hasError('required')"
+                        style="color: red;margin-bottom: 5px; text-align: left;">
+                        Enter Mobile No!
+
+                    </div>
+                </div>
+
+                <!--<div class="login__box">
                             <i class='bx bx-lock-alt login__icon'></i>
                             <input type="password" placeholder="Password" class="login__input"  formControlName="password" type="{{ Password ? 'password' : 'text' }}"   >
                             <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (!hidePassword ? 'fa-eye' : 'fa-eye-slash')" ></i></span>
@@ -121,48 +122,211 @@
                            
                         </div> -->
 
-                        <div class="login__box">
-                            <i class="bx bx-lock-alt login__icon"></i>
-                            <input type="{{ hidePassword ? 'password' : 'text' }}" placeholder="Password" class="login__input" formControlName="password">
-                            <span class="password-toggle" (click)="togglePasswordVisibility()">
-                              <i id="toggle-icon" [class]="!hidePassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
-                            </span>
-                          </div>
-                          
-                        
-                        <div>
+                <div class="login__box">
+                    <i class="bx bx-lock-alt login__icon"></i>
+                    <input type="{{ hidePassword ? 'password' : 'text' }}" placeholder="Password" class="login__input"
+                        formControlName="password">
+                    <span class="password-toggle" (click)="togglePasswordVisibility()">
+                        <i id="toggle-icon" [class]="!hidePassword ? 'fa fa-eye' : 'fa fa-eye-slash'"></i>
+                    </span>
+                </div>
 
-                            <div *ngIf="loginGrp.controls['password'].touched && loginGrp.controls['password'].errors">
-                                <div *ngIf="loginGrp.controls['password'].hasError('required')"
-                                    style="color: red;margin-bottom: 5px; text-align: left;">
-                                    Enter your password!
-    
-                                </div>
-                            </div>
 
+                <div>
+
+                    <div *ngIf="loginGrp.controls['password'].touched && loginGrp.controls['password'].errors">
+                        <div *ngIf="loginGrp.controls['password'].hasError('required')"
+                            style="color: red;margin-bottom: 5px; text-align: left;">
+                            Enter your password!
+
+                        </div>
                     </div>
 
-                        
-                        <a href="#" class="login__forgot">Forgot password?</a>
-
-                       <!--<a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>-->
-                       <button class="learn-more">
-                        <span class="circle" aria-hidden="true">
-                        <span class="icon arrow"></span>
-                        </span>
-                        <span class="button-text"   (click)="signin()">Sign In</span>
-                      </button>
-
-
-                        
-
-                        <div>
-                            <span class="login__account">Don't have an Account ?</span>
-                            <span class="login__signin" id="sign-up" routerLink="/auth/signup">Sign Up</span>
-                        </div>
-                    </form>
-
-                  
                 </div>
-            </div>
+
+
+                <a href="#" class="login__forgot">Forgot password?</a>
+
+                <!--<a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>-->
+                <button class="learn-more">
+                    <span class="circle" aria-hidden="true">
+                        <span class="icon arrow"></span>
+                    </span>
+                    <span class="button-text" (click)="signin()">Sign In</span>
+                </button>
+
+
+
+
+                <div>
+                    <span class="login__account">Don't have an Account ?</span>
+                    <span class="login__signin" id="sign-up" routerLink="/auth/signup">Sign Up</span>
+                </div>
+            </form>
+
+
         </div>
+    </div>
+</div>
+<div class="flex flex-wrap shadow-2">
+    <div class="w-full lg:w-6 px-0 py-4 lg:p-7 bg-blue-50"><img src="assets/images/blocks/logos/bastion-700.svg"
+            alt="Image" height="35" class="mb-6"><p-carousel indicatorstyleclass="hover:bg-primary-500"
+            class="p-element">
+            <div id="pr_id_1" class="p-carousel p-component p-carousel-horizontal"><!---->
+                <div class="p-carousel-content">
+                    <div class="p-carousel-container"><!---->
+                        <div class="p-carousel-items-content" style="height: auto;">
+                            <div class="p-carousel-items-container" style="transform: translate3d(0%, 0px, 0px);">
+                                <!---->
+                                <div
+                                    class="p-carousel-item p-carousel-item-active p-carousel-item-start p-carousel-item-end ng-star-inserted">
+                                    <div class="text-center mb-8 ng-star-inserted"><img alt="Image" class="mb-6 w-6"
+                                            src="assets/images/blocks/illustration/live-collaboration.svg">
+                                        <div class="mx-auto font-medium text-xl mb-4 text-blue-900">Unlimited Inbox
+                                        </div>
+                                        <p class="m-0 text-blue-700 line-height-3">Lorem ipsum dolor sit amet,
+                                            consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
+                                            dolore magna aliqua.</p>
+                                    </div><!---->
+                                </div>
+                                <div class="p-carousel-item ng-star-inserted">
+                                    <div class="text-center mb-8 ng-star-inserted"><img alt="Image" class="mb-6 w-6"
+                                            src="assets/images/blocks/illustration/security.svg">
+                                        <div class="mx-auto font-medium text-xl mb-4 text-blue-900">Data Security</div>
+                                        <p class="m-0 text-blue-700 line-height-3">Ut enim ad minim veniam, quis nostrud
+                                            exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
+                                    </div><!---->
+                                </div>
+                                <div class="p-carousel-item ng-star-inserted">
+                                    <div class="text-center mb-8 ng-star-inserted"><img alt="Image" class="mb-6 w-6"
+                                            src="assets/images/blocks/illustration/subscribe.svg">
+                                        <div class="mx-auto font-medium text-xl mb-4 text-blue-900">Cloud Backup
+                                            Williams</div>
+                                        <p class="m-0 text-blue-700 line-height-3">Duis aute irure dolor in
+                                            reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
+                                            pariatur.</p>
+                                    </div><!---->
+                                </div><!----><!---->
+                            </div>
+                        </div><!---->
+                    </div>
+                    <ul class="p-carousel-indicators p-reset ng-star-inserted">
+                        <li class="p-carousel-indicator p-highlight ng-star-inserted"><button type="button"
+                                class="hover:bg-primary-500 p-link"></button></li>
+                        <li class="p-carousel-indicator ng-star-inserted"><button type="button"
+                                class="hover:bg-primary-500 p-link"></button></li>
+                        <li class="p-carousel-indicator ng-star-inserted"><button type="button"
+                                class="hover:bg-primary-500 p-link"></button></li><!---->
+                    </ul><!---->
+                </div><!---->
+            </div>
+        </p-carousel></div>
+    <div class="w-full lg:w-6 p-4 lg:p-7 surface-card">
+        <div class="flex align-items-center justify-content-between mb-7"><span
+                class="text-2xl font-medium text-900">Login to Bastion</span><a tabindex="0"
+                class="font-medium text-blue-500 hover:text-blue-700 cursor-pointer transition-colors transition-duration-150">Sign
+                up</a></div>
+        <div class="flex justify-content-between"><button pripple=""
+                class="p-ripple p-element mr-2 w-6 font-medium border-1 surface-border surface-100 py-3 px-2 p-component hover:surface-200 active:surface-300 text-900 cursor-pointer transition-colors transition-duration-150 inline-flex align-items-center justify-content-center"><i
+                    class="pi pi-facebook text-indigo-500 mr-2"></i><span>Sign in With Facebook</span><span
+                    class="p-ink"></span></button><button pripple=""
+                class="p-ripple p-element ml-2 w-6 font-medium border-1 surface-border surface-100 py-3 px-2 p-component hover:surface-200 active:surface-300 text-900 cursor-pointer transition-colors transition-duration-150 inline-flex align-items-center justify-content-center"><i
+                    class="pi pi-google text-red-500 mr-2"></i><span>Sign in With Google</span><span
+                    class="p-ink"></span></button></div><p-divider align="center" styleclass="my-4" class="p-element">
+            <div role="separator"
+                class="my-4 p-divider p-component p-divider-horizontal p-divider-solid p-divider-center">
+                <div class="p-divider-content"><span class="text-600 font-normal text-sm">OR</span></div>
+            </div>
+        </p-divider><label for="email4" class="block text-900 font-medium mb-2">Email</label><input id="email4"
+            type="text" placeholder="Email address" pinputtext=""
+            class="p-inputtext p-component p-element w-full mb-3 p-3"><label for="password4"
+            class="block text-900 font-medium mb-2">Password</label><input id="password4" type="password"
+            placeholder="Password" pinputtext="" class="p-inputtext p-component p-element w-full mb-3 p-3">
+        <div class="flex align-items-center justify-content-between mb-6">
+            <div class="flex align-items-center"><p-checkbox id="rememberme4" styleclass="mr-2" class="p-element">
+                    <div class="mr-2 p-checkbox p-component">
+                        <div class="p-hidden-accessible"><input type="checkbox" value="undefined" aria-checked="false">
+                        </div>
+                        <div class="p-checkbox-box"><!----></div>
+                    </div><!---->
+                </p-checkbox><label for="rememberme4">Remember me</label></div><a
+                class="font-medium text-blue-500 hover:text-blue-700 cursor-pointer transition-colors transition-duration-150">Forgot
+                password?</a>
+        </div><button pbutton="" pripple="" label="Sign In"
+            class="p-element p-ripple w-full py-3 font-medium p-button p-component"><span class="p-button-label">Sign
+                In</span><span class="p-ink"></span></button>
+    </div>
+</div>
+
+<div class="px-4 py-8 md:px-6 lg:px-8"
+    style="background: url('assets/images/blocks/signin/signin-2.jpg') no-repeat; background-size: cover;">
+    <div class="flex flex-wrap">
+        <div class="w-full lg:w-6 p-4 lg:p-7" style="background-color: rgba(255,255,255,.7);"><img
+                src="assets/images/blocks/logos/bastion-purple.svg" alt="Image" height="50" class="mb-6">
+            <div class="text-xl text-900 font-500 mb-3">Welcome to Bastion</div>
+            <p class="text-600 line-height-3 mt-0 mb-6">Quis vel eros donec ac odio tempor orci dapibus. In hac
+                habitasse platea dictumst quisque.</p>
+            <ul class="list-none p-0 m-0">
+                <li class="flex align-items-start mb-4">
+                    <div><span class="flex align-items-center justify-content-center bg-purple-400"
+                            style="width: 38px; height: 38px; border-radius: 10px;"><i
+                                class="text-xl text-white pi pi-inbox"></i></span></div>
+                    <div class="ml-3"><span class="font-medium text-900">Unlimited Inbox</span>
+                        <p class="mt-2 mb-0 text-600 line-height-3">Tincidunt nunc pulvinar sapien et. Vitae purus
+                            faucibus ornare suspendisse sed nisi lacus sed viverra. </p>
+                    </div>
+                </li>
+                <li class="flex align-items-start mb-4">
+                    <div><span class="flex align-items-center justify-content-center bg-purple-400"
+                            style="width: 38px; height: 38px; border-radius: 10px;"><i
+                                class="text-xl text-white pi pi-shield"></i></span></div>
+                    <div class="ml-3"><span class="font-medium text-900">Premium Security</span>
+                        <p class="mt-2 mb-0 text-600 line-height-3">Scelerisque purus semper eget duis at tellus at
+                            urna. Sed risus pretium quam vulputate.</p>
+                    </div>
+                </li>
+                <li class="flex align-items-start">
+                    <div><span class="flex align-items-center justify-content-center bg-purple-400"
+                            style="width: 38px; height: 38px; border-radius: 10px;"><i
+                                class="text-xl text-white pi pi-globe"></i></span></div>
+                    <div class="ml-3"><span class="font-medium text-900">Cloud Backups Inbox</span>
+                        <p class="mt-2 mb-0 text-600 line-height-3">Egestas sed tempus urna et. Auctor elit sed
+                            vulputate mi sit amet mauris commodo.</p>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        <div class="w-full lg:w-6 p-4 lg:p-7 surface-card">
+            <div class="text-900 text-2xl font-medium mb-6">Login</div><label for="email3"
+                class="block text-900 font-medium mb-2">Email</label><input id="email3" type="text"
+                placeholder="Email address" pinputtext="" class="p-inputtext p-component p-element w-full mb-4"><label
+                for="password3" class="block text-900 font-medium mb-2">Password</label><input id="password3"
+                type="password" placeholder="Password" pinputtext=""
+                class="p-inputtext p-component p-element w-full mb-4">
+            <div class="flex align-items-center justify-content-between mb-6">
+                <div class="flex align-items-center"><p-checkbox id="rememberme3" styleclass="mr-2" class="p-element">
+                        <div class="mr-2 p-checkbox p-component">
+                            <div class="p-hidden-accessible"><input type="checkbox" value="undefined"
+                                    aria-checked="false"></div>
+                            <div class="p-checkbox-box"><!----></div>
+                        </div><!---->
+                    </p-checkbox><label for="rememberme3">Remember me</label></div><a
+                    class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
+            </div><button pbutton="" pripple="" label="Login" icon="pi pi-user"
+                class="p-element p-ripple w-full p-button p-component"><span
+                    class="p-button-icon p-button-icon-left pi pi-user" aria-hidden="true"></span><span
+                    class="p-button-label">Login</span><span class="p-ink"></span></button><p-divider align="center"
+                styleclass="my-6" class="p-element">
+                <div role="separator"
+                    class="my-6 p-divider p-component p-divider-horizontal p-divider-solid p-divider-center">
+                    <div class="p-divider-content"><span class="text-600 font-normal text-sm">OR</span></div>
+                </div>
+            </p-divider><button pbutton="" pripple="" label="Sign In with GitHub" icon="pi pi-github"
+                class="p-element p-ripple w-full p-button-secondary p-button p-component"><span
+                    class="p-button-icon p-button-icon-left pi pi-github" aria-hidden="true"></span><span
+                    class="p-button-label">Sign In with GitHub</span><span class="p-ink"></span></button>
+            <div class="mt-6 text-center text-600"> Don't have an account? <a tabindex="0"
+                    class="font-medium text-blue-500">Sign up</a></div>
+        </div>
+    </div>
+</div>

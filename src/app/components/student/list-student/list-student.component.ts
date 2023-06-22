@@ -26,11 +26,17 @@ export class ListStudentComponent {
     ngOnInit(): void {
         this.schoolId = this.stateSvc.getUserData('schoolId');
 
-        if (!this.schoolId) {
-            this.router.navigate(['/']);
+        // if (!this.schoolId) {
+        //     this.router.navigate(['/']);
 
-            return;
-        }
+        //     return;
+        // }
+        this.getAllStudents();
+
+        this.stateSvc.getData().subscribe((response: any) => {
+            console.log('ins--->', response);
+            this.getAllStudents();
+        });
 
         this.getAllStudents();
     }
@@ -57,14 +63,18 @@ export class ListStudentComponent {
 
     async getAllStudents() {
         this.schoolId = this.stateSvc.getUserData('schoolId');
-
-        try {
-            const res: any = await this.studSvc.getStudents(this.schoolId);
+        await this.studSvc.getStudents(this.schoolId).then((res: any) => {
             console.log(res);
+
             this.students = res.data;
-        } catch (error) {
-            console.error(error);
-        }
+        });
+        // try {
+        //     const res: any = await this.studSvc.getStudents(this.schoolId);
+        //     console.log(res);
+        //     this.students = res.data;
+        // } catch (error) {
+        //     console.error(error);
+        // }
     }
 
     addStudent() {

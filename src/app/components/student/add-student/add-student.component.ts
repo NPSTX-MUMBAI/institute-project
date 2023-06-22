@@ -87,41 +87,51 @@ export class AddStudentComponent implements OnInit {
         await this.studSvc.getStudentDetails(data).then((res: any) => {
             console.log(res.data[0]);
             let myStudent = res.data[0];
+            let i = this.standard.findIndex(
+                (std) => std.name === myStudent.std
+            );
+            let matchedStandard = this.standard[i].name;
+            console.log(matchedStandard);
 
-            this.studentForm = this.fb.group({
-                firstName: [myStudent.firstName, Validators.required],
-                lastName: [myStudent.lastName, Validators.required],
-                studentUniqueId: ['', Validators.required],
-                rollNo: ['', Validators.required],
-                gender: ['', Validators.required],
-                email: ['', Validators.required],
-                mobileNo: ['', Validators.required],
-                board: ['', Validators.required],
-                std: ['', Validators.required],
-                div: ['', Validators.required],
-                dob: ['', Validators.required],
-                balance: ['', Validators.required],
-                line1: ['', Validators.required],
-                line2: ['', Validators.required],
-                landmark: ['', Validators.required],
-                zip: ['', Validators.required],
-                country: ['', Validators.required],
-                state: ['', Validators.required],
-                city: ['', Validators.required],
-                locality: ['', Validators.required],
-                fatherFirstName: [''],
-                fatherLastName: [''],
-                fatherEmail: [''],
-                fatherMobile: [''],
-                motherFirstName: [''],
-                motherLastName: [''],
-                motherEmail: [''],
-                motherMobile: [''],
-                guardianFirstName: [''],
-                guardianLastName: [''],
-                guardianEmail: [''],
-                guardianMobile: [''],
-            });
+            // [I,II,III]
+            //from db-> std: 'I'
+            // [{name: 'I', standardId: '23786327894', name: 'II', }]
+            setTimeout(() => {
+                this.studentForm = this.fb.group({
+                    firstName: [myStudent.firstName, Validators.required],
+                    lastName: [myStudent.lastName, Validators.required],
+                    studentUniqueId: [myStudent.uniqueId, Validators.required],
+                    rollNo: [myStudent.rollNo, Validators.required],
+                    gender: [myStudent.gender, Validators.required],
+                    email: [myStudent.email, Validators.required],
+                    mobileNo: [myStudent.mobileNo, Validators.required],
+                    board: [myStudent.board, Validators.required],
+                    std: [this.standard[i], Validators.required],
+                    div: [myStudent.div, Validators.required],
+                    dob: [myStudent.dob, Validators.required],
+                    balance: [myStudent.balance, Validators.required],
+                    line1: [myStudent.line1, Validators.required],
+                    line2: [myStudent.line2, Validators.required],
+                    landmark: [myStudent.landmark, Validators.required],
+                    zip: [myStudent.zip, Validators.required],
+                    country: [myStudent.country, Validators.required],
+                    state: [myStudent.state, Validators.required],
+                    city: [myStudent.city, Validators.required],
+                    locality: [myStudent.locality, Validators.required],
+                    fatherFirstName: [myStudent.fatherFirstName],
+                    fatherLastName: [myStudent.fatherLastName],
+                    fatherEmail: [myStudent.fatherEmail],
+                    fatherMobile: [myStudent.fatherPhone],
+                    motherFirstName: [myStudent.motherFirstName],
+                    motherLastName: [myStudent.motherLastName],
+                    motherEmail: [myStudent.motherEmail],
+                    motherMobile: [myStudent.motherPhone],
+                    guardianFirstName: [myStudent.guardianFirstName],
+                    guardianLastName: [myStudent.guardianLastName],
+                    guardianEmail: [myStudent.guardianEmail],
+                    guardianMobile: [myStudent.guardianPhone],
+                });
+            }, 2000);
         });
     }
 
@@ -133,6 +143,9 @@ export class AddStudentComponent implements OnInit {
                 tempStdArr.push({ name: i.std, standardId: i.standardId });
             }
             this.standard = tempStdArr;
+            console.log(this.standard, 'shivaniiiiiiiiiiiiiiiiiiii');
+
+            console.log(this.standard[10]);
         });
     }
 
@@ -180,6 +193,7 @@ export class AddStudentComponent implements OnInit {
                 tempDivArr.push({ div: i.div, divisionId: i.divisionId });
             }
             this.division = tempDivArr;
+            console.log(this.division, 'helloooooooooooooooooooooo');
         });
     }
 }
