@@ -5,7 +5,12 @@ import { StateService } from 'src/app/services/state.service';
 import { StudentService } from 'src/app/services/student.service';
 import { ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
-
+import {
+    FormBuilder,
+    FormControl,
+    FormGroup,
+    Validators,
+} from '@angular/forms';
 @Component({
     selector: 'app-list-student',
     templateUrl: './list-student.component.html',
@@ -16,6 +21,7 @@ export class ListStudentComponent implements OnInit, OnDestroy {
     students: any = [];
     schoolId: any;
     items: any;
+    studentFilter!: FormGroup;
 
     selectedSchool: any;
     private dataSubscription!: Subscription;
@@ -23,9 +29,21 @@ export class ListStudentComponent implements OnInit, OnDestroy {
     constructor(
         private router: Router,
         private studSvc: StudentService,
-        private stateSvc: StateService
+        private stateSvc: StateService,
+        private fb: FormBuilder
     ) {}
     ngOnInit(): void {
+        this.studentFilter = this.fb.group({
+            uniqueId: [''],
+            firstName: [''],
+            lastName: [''],
+            email: [''],
+            mobileNo: [''],
+            rollNo: [''],
+            gender: [''],
+            std: [''],
+            div: [''],
+        });
         this.schoolId = this.stateSvc.getUserData('schoolId');
 
         // if (!this.schoolId) {
@@ -84,6 +102,10 @@ export class ListStudentComponent implements OnInit, OnDestroy {
         // } catch (error) {
         //     console.error(error);
         // }
+    }
+
+    filteredValues() {
+        console.log(this.studentFilter.value);
     }
 
     addStudent() {

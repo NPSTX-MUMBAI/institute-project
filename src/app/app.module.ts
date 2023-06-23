@@ -19,6 +19,7 @@ import { AuthInterceptor } from './guards/authInterceptor';
 // import { StudentModule } from './components/student/student.module';
 import { JwtModule, JWT_OPTIONS, JwtHelperService } from '@auth0/angular-jwt';
 import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
+import { FilterComponent } from './utility/filter/filter.component';
 
 @NgModule({
     declarations: [AppComponent, NotfoundComponent, DashboardComponent],

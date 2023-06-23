@@ -4,6 +4,7 @@ import { NotfoundComponent } from './demo/components/notfound/notfound.component
 import { AppLayoutComponent } from './layout/app.layout.component';
 import { AuthGuardGuard } from './guards/auth-guard.guard';
 import { CollectionModule } from './components/collection/collection.module';
+import { UtilityModule } from './utility/utility/utility.module';
 
 const routes: Routes = [
     {
@@ -64,6 +65,14 @@ const routes: Routes = [
                 loadChildren: () =>
                     import('./components/collection/collection.module').then(
                         (m) => m.CollectionModule
+                    ),
+            },
+            {
+                path: 'utility',
+
+                loadChildren: () =>
+                    import('./utility/utility/utility.module').then(
+                        (m) => m.UtilityModule
                     ),
             },
         ],

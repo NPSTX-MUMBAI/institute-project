@@ -5,6 +5,7 @@ import { ListStudentComponent } from './list-student/list-student.component';
 import { RouterModule, Routes } from '@angular/router';
 import { UiModule } from 'src/app/ui/ui.module';
 import { BulkUploadComponent } from './bulk-upload/bulk-upload.component';
+import { UtilityModule } from 'src/app/utility/utility/utility.module';
 
 const routes: Routes = [
     { path: '', component: ListStudentComponent },
@@ -24,7 +25,12 @@ const routes: Routes = [
         ListStudentComponent,
         BulkUploadComponent,
     ],
-    imports: [CommonModule, UiModule, RouterModule.forChild(routes)],
+    imports: [
+        CommonModule,
+        UiModule,
+        UtilityModule,
+        RouterModule.forChild(routes),
+    ],
     exports: [ListStudentComponent],
 })
 export class StudentModule {}

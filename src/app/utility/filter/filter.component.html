@@ -1,0 +1,459 @@
+<div class="surface-section px-4 py-8 md:px-6 lg:px-8">
+    <div class="text-900 font-bold text-3xl">Category Title</div>
+    <div class="grid grid-nogutter">
+        <div class="col-12 p-0 mt-5 flex flex-column lg:flex-row align-items-center mb-4"><button
+                (click)="showFIlters()" pbutton="" label="Filters" iconpos="right" pstyleclass=".filter-container"
+                enterclass="hidden" enteractiveclass="slidedown" leavetoclass="hidden" leaveactiveclass="slideup"
+                class="p-element p-button-rounded bg-gray-900 text-white px-5 lg:mr-4 sm w-full lg:w-auto border-none p-button p-component"><span
+                    class="p-button-icon p-button-icon-right pi pi-chevron-down ml-3" aria-hidden="true"></span><span
+                    class="p-button-label">Filters</span></button>
+
+
+            <div *ngIf="show" class="grid flex-column lg:flex-row w-full h-full">
+                <div class="col-12 lg:col flex align-items-center flex-wrap gap-1">
+                    <p-chips styleclass="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0" removeicon="pi pi-times"
+                        class="p-element ng-star-inserted">
+                        <div class="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0 p-chips p-component ng-star-inserted"
+                            style="border-radius: 50px;">
+                            <!---->
+                            <!---->
+                            <!---->
+                            <div class="p-chip-text ng-star-inserted">Alfred</div>
+                            <!----><span tabindex="0" class="pi pi-times pi-chip-remove-icon ng-star-inserted"></span>
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                    </p-chips>
+                    <p-chips styleclass="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0" removeicon="pi pi-times"
+                        class="p-element ng-star-inserted">
+                        <div class="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0 p-chip p-component ng-star-inserted"
+                            style="border-radius: 50px;">
+                            <!---->
+                            <!---->
+                            <!---->
+                            <div class="p-chip-text ng-star-inserted">Hyper</div>
+                            <!----><span tabindex="0" class="pi pi-times pi-chip-remove-icon ng-star-inserted"></span>
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                    </p-chips>
+                    <p-chips styleclass="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0" removeicon="pi pi-times"
+                        class="p-element ng-star-inserted">
+                        <div class="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0 p-chip p-component ng-star-inserted"
+                            style="border-radius: 50px;">
+                            <!---->
+                            <!---->
+                            <!---->
+                            <div class="p-chip-text ng-star-inserted">Bastion</div>
+                            <!----><span tabindex="0" class="pi pi-times pi-chip-remove-icon ng-star-inserted"></span>
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                    </p-chips>
+                    <p-chips styleclass="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0" removeicon="pi pi-times"
+                        class="p-element ng-star-inserted">
+                        <div class="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0 p-chip p-component ng-star-inserted"
+                            style="border-radius: 50px;">
+                            <!---->
+                            <!---->
+                            <!---->
+                            <div class="p-chip-text ng-star-inserted">28x28</div>
+                            <!----><span tabindex="0" class="pi pi-times pi-chip-remove-icon ng-star-inserted"></span>
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                    </p-chips>
+                    <p-chips styleclass="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0" removeicon="pi pi-times"
+                        class="p-element ng-star-inserted">
+                        <div class="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0 p-chip p-component ng-star-inserted"
+                            style="border-radius: 50px;">
+                            <!---->
+                            <!---->
+                            <!---->
+                            <div class="p-chip-text ng-star-inserted">28x30</div>
+                            <!----><span tabindex="0" class="pi pi-times pi-chip-remove-icon ng-star-inserted"></span>
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                    </p-chips>
+                    <p-chips styleclass="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0" removeicon="pi pi-times"
+                        class="p-element ng-star-inserted">
+                        <div class="mr-3 h-auto lg:h-full px-4 mt-3 lg:mt-0 p-chip p-component ng-star-inserted"
+                            style="border-radius: 50px;">
+                            <!---->
+                            <!---->
+                            <!---->
+                            <div class="p-chip-text ng-star-inserted">28x32</div>
+                            <!----><span tabindex="0" class="pi pi-times pi-chip-remove-icon ng-star-inserted"></span>
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                            <!---->
+                        </div>
+                        <!---->
+                    </p-chips>
+                    <!----><a pripple="" tabindex="0"
+                        class="p-ripple p-element text-900 cursor-pointer text-center px-3 py-2 mt-3 lg:mt-0 border-1 border-200 lg:border-none inline-block hover:bg-primary hover:border-primary transition-duration-150 ng-star-inserted"
+                        style="border-radius: 50px; max-width: 7rem;">Clear All<span class="p-ink"
+                            style="height: 91px; width: 91px; top: -40.5625px; left: -5.73438px;"></span></a>
+                    <!---->
+                </div>
+            </div>
+        </div>
+        <div *ngIf="show"
+            class="filter-container col-12 overflow-hidden transition-all transition-duration-400 transition-ease-in-out"
+            style="">
+            <div class="grid grid-nogutter flex-column lg:flex-row">
+                <div
+                    class="flex-auto lg:flex-1 col mt-0 lg:mt-2 mr-0 lg:mr-4 p-4 flex-column border-1 surface-border border-round">
+                    <a tabindex="0"
+                        class="cursor-pointer text-900 font-medium mb-3 flex justify-content-between w-full hover:text-primary transition-duration-150">Brand
+                        (3)</a>
+                    <div class="flex flex-column">
+                        <div class="mb-3"><span class="p-input-icon-right w-full"><i class="pi pi-search"></i><input
+                                    type="text" pinputtext="" placeholder="Search"
+                                    class="p-inputtext p-component p-element w-full"></span></div>
+                        <div class="flex w-full justify-content-between">
+                            <div class="field-checkbox">
+                                <p-checkbox value="Alfred" inputid="alfred2"
+                                    class="p-element ng-valid ng-dirty ng-touched">
+                                    <div class="p-checkbox p-component p-checkbox-checked">
+                                        <div class="p-hidden-accessible"><input type="checkbox" value="Alfred"
+                                                id="alfred2" aria-checked="true"></div>
+                                        <div class="p-checkbox-box p-highlight">
+                                            <!---->
+                                            <!-- <checkicon class="p-element p-icon-wrapper ng-star-inserted"><svg width="14"
+                                                    height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg" class="p-checkbox-icon p-icon"
+                                                    aria-hidden="true">
+                                                    <path
+                                                        d="M4.86199 11.5948C4.78717 11.5923 4.71366 11.5745 4.64596 11.5426C4.57826 11.5107 4.51779 11.4652 4.46827 11.4091L0.753985 7.69483C0.683167 7.64891 0.623706 7.58751 0.580092 7.51525C0.536478 7.44299 0.509851 7.36177 0.502221 7.27771C0.49459 7.19366 0.506156 7.10897 0.536046 7.03004C0.565935 6.95111 0.613367 6.88 0.674759 6.82208C0.736151 6.76416 0.8099 6.72095 0.890436 6.69571C0.970973 6.67046 1.05619 6.66385 1.13966 6.67635C1.22313 6.68886 1.30266 6.72017 1.37226 6.76792C1.44186 6.81567 1.4997 6.8786 1.54141 6.95197L4.86199 10.2503L12.6397 2.49483C12.7444 2.42694 12.8689 2.39617 12.9932 2.40745C13.1174 2.41873 13.2343 2.47141 13.3251 2.55705C13.4159 2.64268 13.4753 2.75632 13.4938 2.87973C13.5123 3.00315 13.4888 3.1292 13.4271 3.23768L5.2557 11.4091C5.20618 11.4652 5.14571 11.5107 5.07801 11.5426C5.01031 11.5745 4.9368 11.5923 4.86199 11.5948Z"
+                                                        fill="currentColor"></path>
+                                                </svg></checkicon> -->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!---->
+                                </p-checkbox><label for="alfred2" class="text-900">Alfred</label>
+                            </div>
+                            <p-badge styleclass="mr-2 bg-gray-200 text-gray-900 p-0 border-circle" class="p-element">
+                                <span
+                                    class="mr-2 bg-gray-200 text-gray-900 p-0 border-circle p-badge p-component ng-star-inserted">42</span>
+                                <!---->
+                            </p-badge>
+                        </div>
+                        <div class="flex w-full justify-content-between">
+                            <div class="field-checkbox">
+                                <p-checkbox value="Hyper" inputid="hyper2"
+                                    class="p-element ng-valid ng-dirty ng-touched">
+                                    <div class="p-checkbox p-component p-checkbox-checked">
+                                        <div class="p-hidden-accessible"><input type="checkbox" value="Hyper"
+                                                id="hyper2" aria-checked="true"></div>
+                                        <div class="p-checkbox-box p-highlight">
+                                            <!---->
+                                            <!-- <checkicon class="p-element p-icon-wrapper ng-star-inserted"><svg width="14"
+                                                    height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg" class="p-checkbox-icon p-icon"
+                                                    aria-hidden="true">
+                                                    <path
+                                                        d="M4.86199 11.5948C4.78717 11.5923 4.71366 11.5745 4.64596 11.5426C4.57826 11.5107 4.51779 11.4652 4.46827 11.4091L0.753985 7.69483C0.683167 7.64891 0.623706 7.58751 0.580092 7.51525C0.536478 7.44299 0.509851 7.36177 0.502221 7.27771C0.49459 7.19366 0.506156 7.10897 0.536046 7.03004C0.565935 6.95111 0.613367 6.88 0.674759 6.82208C0.736151 6.76416 0.8099 6.72095 0.890436 6.69571C0.970973 6.67046 1.05619 6.66385 1.13966 6.67635C1.22313 6.68886 1.30266 6.72017 1.37226 6.76792C1.44186 6.81567 1.4997 6.8786 1.54141 6.95197L4.86199 10.2503L12.6397 2.49483C12.7444 2.42694 12.8689 2.39617 12.9932 2.40745C13.1174 2.41873 13.2343 2.47141 13.3251 2.55705C13.4159 2.64268 13.4753 2.75632 13.4938 2.87973C13.5123 3.00315 13.4888 3.1292 13.4271 3.23768L5.2557 11.4091C5.20618 11.4652 5.14571 11.5107 5.07801 11.5426C5.01031 11.5745 4.9368 11.5923 4.86199 11.5948Z"
+                                                        fill="currentColor"></path>
+                                                </svg></checkicon> -->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!---->
+                                </p-checkbox><label for="hyper2" class="text-900">Hyper</label>
+                            </div>
+                            <p-badge styleclass="mr-2 bg-gray-200 text-gray-900 p-0 border-circle" class="p-element">
+                                <span
+                                    class="mr-2 bg-gray-200 text-gray-900 p-0 border-circle p-badge p-component ng-star-inserted">18</span>
+                                <!---->
+                            </p-badge>
+                        </div>
+                        <div class="flex w-full justify-content-between">
+                            <div class="field-checkbox">
+                                <p-checkbox value="Bastion" inputid="bastion2"
+                                    class="p-element ng-valid ng-dirty ng-touched">
+                                    <div class="p-checkbox p-component p-checkbox-checked">
+                                        <div class="p-hidden-accessible"><input type="checkbox" value="Bastion"
+                                                id="bastion2" aria-checked="true"></div>
+                                        <div class="p-checkbox-box p-highlight">
+                                            <!---->
+                                            <!-- <checkicon class="p-element p-icon-wrapper ng-star-inserted"><svg width="14"
+                                                    height="14" viewBox="0 0 14 14" fill="none"
+                                                    xmlns="http://www.w3.org/2000/svg" class="p-checkbox-icon p-icon"
+                                                    aria-hidden="true">
+                                                    <path
+                                                        d="M4.86199 11.5948C4.78717 11.5923 4.71366 11.5745 4.64596 11.5426C4.57826 11.5107 4.51779 11.4652 4.46827 11.4091L0.753985 7.69483C0.683167 7.64891 0.623706 7.58751 0.580092 7.51525C0.536478 7.44299 0.509851 7.36177 0.502221 7.27771C0.49459 7.19366 0.506156 7.10897 0.536046 7.03004C0.565935 6.95111 0.613367 6.88 0.674759 6.82208C0.736151 6.76416 0.8099 6.72095 0.890436 6.69571C0.970973 6.67046 1.05619 6.66385 1.13966 6.67635C1.22313 6.68886 1.30266 6.72017 1.37226 6.76792C1.44186 6.81567 1.4997 6.8786 1.54141 6.95197L4.86199 10.2503L12.6397 2.49483C12.7444 2.42694 12.8689 2.39617 12.9932 2.40745C13.1174 2.41873 13.2343 2.47141 13.3251 2.55705C13.4159 2.64268 13.4753 2.75632 13.4938 2.87973C13.5123 3.00315 13.4888 3.1292 13.4271 3.23768L5.2557 11.4091C5.20618 11.4652 5.14571 11.5107 5.07801 11.5426C5.01031 11.5745 4.9368 11.5923 4.86199 11.5948Z"
+                                                        fill="currentColor"></path>
+                                                </svg></checkicon> -->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!---->
+                                </p-checkbox><label for="bastion2" class="text-900">Bastion</label>
+                            </div>
+                            <p-badge styleclass="mr-2 bg-gray-200 text-gray-900 p-0 border-circle" class="p-element">
+                                <span
+                                    class="mr-2 bg-gray-200 text-gray-900 p-0 border-circle p-badge p-component p-badge-no-gutter ng-star-inserted">7</span>
+                                <!---->
+                            </p-badge>
+                        </div>
+                        <div class="flex w-full justify-content-between">
+                            <div class="field-checkbox">
+                                <p-checkbox value="Peak" inputid="peak2"
+                                    class="p-element ng-untouched ng-pristine ng-valid">
+                                    <div class="p-checkbox p-component">
+                                        <div class="p-hidden-accessible"><input type="checkbox" value="Peak" id="peak2"
+                                                aria-checked="false"></div>
+                                        <div class="p-checkbox-box">
+                                            <!---->
+                                        </div>
+                                    </div>
+                                    <!---->
+                                </p-checkbox><label for="peak2" class="text-900">Peak</label>
+                            </div>
+                            <p-badge styleclass="mr-2 bg-gray-200 text-gray-900 p-0 border-circle" class="p-element">
+                                <span
+                                    class="mr-2 bg-gray-200 text-gray-900 p-0 border-circle p-badge p-component ng-star-inserted">36</span>
+                                <!---->
+                            </p-badge>
+                        </div><a tabindex="0" class="cursor-pointer text-primary font-medium mb-3">Show all...</a>
+                    </div>
+                </div>
+                <div
+                    class="flex-auto lg:flex-1 col mt-4 lg:mt-2 lg:mr-4 p-4 flex-column border-1 surface-border border-round">
+                    <a tabindex="0"
+                        class="cursor-pointer text-900 font-medium mb-3 flex justify-content-between w-full hover:text-primary transition-duration-150">Color
+                        (0)</a>
+                    <div class="grid mb-3">
+                        <div class="col-4 flex flex-column align-items-center">
+                            <div
+                                class="w-3rem h-3rem border-circle bg-gray-900 cursor-pointer border-none flex justify-content-center align-items-center">
+                                <!---->
+                            </div>
+                            <p class="text-900 text-sm text-center mt-1">Black</p>
+                        </div>
+                        <div class="col-4 flex flex-column align-items-center">
+                            <div
+                                class="w-3rem h-3rem border-circle bg-orange-500 cursor-pointer border-none flex justify-content-center align-items-center">
+                                <!---->
+                            </div>
+                            <p class="text-900 text-sm text-center mt-1">Orange</p>
+                        </div>
+                        <div class="col-4 flex flex-column align-items-center">
+                            <div
+                                class="w-3rem h-3rem border-circle bg-indigo-500 cursor-pointer border-none flex justify-content-center align-items-center">
+                                <!---->
+                            </div>
+                            <p class="text-900 text-sm text-center mt-1">Indigo</p>
+                        </div>
+                        <div class="col-4 flex flex-column align-items-center">
+                            <div
+                                class="w-3rem h-3rem border-circle bg-gray-500 cursor-pointer border-none flex justify-content-center align-items-center">
+                                <!---->
+                            </div>
+                            <p class="text-900 text-sm text-center mt-1">Gray</p>
+                        </div>
+                        <div class="col-4 flex flex-column align-items-center">
+                            <div
+                                class="w-3rem h-3rem border-circle bg-cyan-500 cursor-pointer border-none flex justify-content-center align-items-center">
+                                <!---->
+                            </div>
+                            <p class="text-900 text-sm text-center mt-1">Cyan</p>
+                        </div>
+                        <div class="col-4 flex flex-column align-items-center">
+                            <div
+                                class="w-3rem h-3rem border-circle bg-pink-500 cursor-pointer border-none flex justify-content-center align-items-center">
+                                <!---->
+                            </div>
+                            <p class="text-900 text-sm text-center mt-1">Pink</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="flex-auto lg:flex-1 col mt-4 lg:mt-2 p-4 border-1 surface-border border-round"><a
+                        tabindex="0"
+                        class="cursor-pointer text-900 font-medium mb-3 flex justify-content-between w-full hover:text-primary transition-duration-150">Size
+                        (3)</a>
+                    <p-galleria containerclass="h-full" class="p-element ng-tns-c48-20 ng-star-inserted">
+                        <ng-template pTemplate="header" class="ng-tns-c48-20 ng-star-inserted">
+                            <div id="pr_id_12"
+                                class="h-full p-galleria-indicators-bottom p-galleria p-component ng-star-inserted">
+                                <!---->
+                                <!---->
+                                <div class="p-galleria-content">
+                                    <ng-template pTemplate="item">
+                                        <div class="p-galleria-item-wrapper">
+                                            <div class="p-galleria-item-container">
+                                                <!---->
+                                                <ng-template pTemplate="item" type="item" class="p-galleria-item">
+                                                    <div
+                                                        class="flex flex-wrap justify-content-between w-full h-full mb-5 overflow-hidden gap-1 ng-star-inserted">
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round ng-star-inserted bg-blue-200">
+                                                            28x28<span class="p-ink"
+                                                                style="height: 80px; width: 80px; top: -15.5625px; left: -3px;"></span>
+                                                        </div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round ng-star-inserted bg-blue-200">
+                                                            28x30<span class="p-ink"
+                                                                style="height: 80px; width: 80px; top: -16.5625px; left: -15.5px;"></span>
+                                                        </div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round ng-star-inserted bg-blue-200">
+                                                            28x32<span class="p-ink"
+                                                                style="height: 80px; width: 80px; top: -17.5625px; left: 11px;"></span>
+                                                        </div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round ng-star-inserted surface-100">
+                                                            28x34<span class="p-ink"
+                                                                style="height: 80px; width: 80px; top: -34.5625px; left: 6px;"></span>
+                                                        </div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            29x28<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            29x30<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round ng-star-inserted surface-100">
+                                                            29x32<span class="p-ink"
+                                                                style="height: 80px; width: 80px; top: -26.5625px; left: -3px;"></span>
+                                                        </div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            29x34<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            30x28<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            30x30<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            30x32<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            30x34<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            31x28<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            31x30<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            31x32<span class="p-ink"></span></div>
+                                                        <div pripple=""
+                                                            class="p-ripple p-element w-5rem h-3rem text-900 flex justify-content-center align-items-center text-sm cursor-pointer border-round surface-100 ng-star-inserted">
+                                                            31x34<span class="p-ink"></span></div>
+                                                        <!---->
+                                                    </div>
+                                                    <!---->
+                                                    <!---->
+                                                    <!---->
+                                                </ng-template>
+                                                <!---->
+                                                <!---->
+                                            </div>
+                                            <ul class="p-galleria-indicators p-reset ng-star-inserted">
+                                                <li tabindex="0"
+                                                    class="p-galleria-indicator p-highlight ng-star-inserted"><button
+                                                        type="button" tabindex="-1"
+                                                        class="p-link ng-star-inserted"></button>
+                                                    <!---->
+                                                    <ng-template pTemplate="item" type="indicator">
+                                                        <!---->
+                                                    </ng-template>
+                                                </li>
+                                                <li tabindex="0" class="p-galleria-indicator ng-star-inserted"><button
+                                                        type="button" tabindex="-1"
+                                                        class="p-link ng-star-inserted"></button>
+                                                    <!---->
+                                                    <ng-template pTemplate="item">
+                                                        <!---->
+                                                    </ng-template>
+                                                </li>
+                                                <li tabindex="0" class="p-galleria-indicator ng-star-inserted"><button
+                                                        type="button" tabindex="-1"
+                                                        class="p-link ng-star-inserted"></button>
+                                                    <!---->
+                                                    <ng-template pTemplate="item">
+                                                        <!---->
+                                                    </ng-template>
+                                                </li>
+                                                <!---->
+                                            </ul>
+                                            <!---->
+                                        </div>
+                                    </ng-template>
+                                    <!---->
+                                </div>
+                                <!---->
+                            </div>
+                            <!---->
+                        </ng-template>
+                        <!---->
+                        <!---->
+                    </p-galleria>
+                </div>
+            </div>
+        </div>
+        <p-divider class="p-element w-full">
+            <div role="separator" class="p-divider p-component p-divider-horizontal p-divider-solid p-divider-left">
+                <div class="p-divider-content"></div>
+            </div>
+        </p-divider>
+        <div class="col-12 border-2 border-dashed border-round surface-border surface-section"
+            style="min-height: 25rem;"></div>
+    </div>
+</div>

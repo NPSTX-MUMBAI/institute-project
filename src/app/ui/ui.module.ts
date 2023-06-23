@@ -38,6 +38,10 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { TimelineModule } from 'primeng/timeline';
 import { MenubarModule } from 'primeng/menubar';
 import { NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { ChipsModule } from 'primeng/chips';
+import { BadgeModule } from 'primeng/badge';
+import { GalleriaModule } from 'primeng/galleria';
+
 const arrays = [
     CommonModule,
     CarouselModule,
@@ -84,6 +88,9 @@ const arrays = [
     FormsModule,
     TimelineModule,
     MenubarModule,
+    ChipsModule,
+    BadgeModule,
+    GalleriaModule,
 ];
 
 export const loaderConf: NgxUiLoaderConfig = {

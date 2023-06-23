@@ -13,6 +13,132 @@
 
 <div *ngIf="students" style="margin-top:8%;">
 
+    <form [formGroup]="studentFilter">
+        <p-accordion [activeIndex]="1">
+            <p-accordionTab header="Apply Filter">
+
+                <div class="formgrid grid">
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Unique Id</label>
+                        <div class="p-inputgroup">
+
+                            <input placeholder="Enter student Unique id" type="text" formControlName="uniqueId"
+                                pInputText />
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="field col-12 lg:col-4 md:col-12 ">
+                        <label for="firstname2">First Name</label>
+
+                        <div class="p-inputgroup">
+                            <input formControlName="firstName" placeholder="Enter First Name" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Last Name</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="lastName" placeholder="Enter Last Name" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Roll No.</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="rollNo" placeholder="Enter Roll No" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Gender</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="gender" placeholder="Enter Gender" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">STD</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="std" placeholder="Enter standard" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">DIV</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="div" placeholder="Enter Division" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+
+
+                    <div class="field col-12 lg:col-4 md:col-12 ">
+                        <label for="firstname2">Email</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="email" placeholder="Enter email" type="text" pInputText />
+
+                        </div>
+
+                    </div>
+
+
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Mobile no.</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="mobileNo" placeholder="Enter mobile no." type="text" pInputText />
+
+                        </div>
+
+
+                    </div>
+
+                </div>
+
+
+                <br>
+
+                <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+
+
+
+            </p-accordionTab>
+
+        </p-accordion>
+
+    </form>
+
+    <br>
     <p-table #dt2 [value]="students" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
