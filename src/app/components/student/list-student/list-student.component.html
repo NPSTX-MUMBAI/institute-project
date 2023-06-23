@@ -143,13 +143,24 @@
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
-        <!-- <ng-template pTemplate="caption">
-        <div class="flex-container">
-            <h2>List of studentss</h2>
+        <ng-template pTemplate="caption">
+            <div class="flex-container">
+                <h2>List of studentss</h2>
+                <p-splitButton icon="pi pi-download" label="Export" [model]="this.saveOptions"
+                    styleClass="p-button-outlined mr-2 mb-2">
+                </p-splitButton>
 
-        </div>
-    </ng-template> -->
+            </div>
+        </ng-template>
+
+
+
+
         <ng-template pTemplate="header">
+
+
+
+
             <tr>
                 <th>REG ID</th>
                 <th>FIRST NAME</th>

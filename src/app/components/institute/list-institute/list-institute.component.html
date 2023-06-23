@@ -6,7 +6,99 @@
 
 <p-menu #menu [model]="items" [popup]="true"></p-menu>
 
-<div  *ngIf="institute" style="margin-top:4%;">
+<div *ngIf="institute" style="margin-top:4%;">
+
+    <form [formGroup]="instituteFilter">
+        <p-accordion [activeIndex]="1">
+            <p-accordionTab header="Apply Filter">
+
+                <div class="formgrid grid">
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Unique no.</label>
+                        <div class="p-inputgroup">
+
+                            <input placeholder="Enter  Unique no" type="text" formControlName="uniqueNo" pInputText />
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="field col-12 lg:col-4 md:col-12 ">
+                        <label for="firstname2"> Name</label>
+
+                        <div class="p-inputgroup">
+                            <input formControlName="name" placeholder="Enter Institute Name" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                        </div>
+
+
+                    </div>
+
+
+
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Type</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="type" placeholder="Enter Type" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Phone</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="phoneNo" placeholder="Enter Phone No" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">City</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="city" placeholder="Enter city" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">State</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="state" placeholder="Enter state" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+
+
+
+                </div>
+
+
+                <br>
+
+                <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+
+
+
+            </p-accordionTab>
+
+        </p-accordion>
+
+    </form>
+    <br>
     <p-table #dt2 [value]="institute" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }"
         [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [lazy]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
@@ -55,9 +147,10 @@
 
 </div>
 
-<div  *ngIf="!institute" >
+<div *ngIf="!institute">
 
-    <div class="card"> 
-    <img src="src=../../../assets/layout/images/no-data-loader.gif" style="margin-left: 410px; border-radius: 5px 5px 0 0;">
-</div>
+    <div class="card">
+        <img src="src=../../../assets/layout/images/no-data-loader.gif"
+            style="margin-left: 410px; border-radius: 5px 5px 0 0;">
+    </div>
 </div>

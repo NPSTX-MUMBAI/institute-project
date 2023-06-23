@@ -11,6 +11,9 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+
+// import * as FileSaver from 'file-saver';
+import * as XLSX from 'xlsx';
 @Component({
     selector: 'app-list-student',
     templateUrl: './list-student.component.html',
@@ -22,6 +25,7 @@ export class ListStudentComponent implements OnInit, OnDestroy {
     schoolId: any;
     items: any;
     studentFilter!: FormGroup;
+    saveOptions!: any[];
 
     selectedSchool: any;
     private dataSubscription!: Subscription;
@@ -33,6 +37,22 @@ export class ListStudentComponent implements OnInit, OnDestroy {
         private fb: FormBuilder
     ) {}
     ngOnInit(): void {
+        this.saveOptions = [
+            {
+                label: 'Download as Excel',
+                icon: 'pi pi-file-excel',
+                command: () => {
+                    // this.exportTableData('xlsx');
+                },
+            },
+            {
+                label: 'Download as CSV',
+                icon: 'pi pi-file',
+                command: () => {
+                    // this.exportTableData('csv');
+                },
+            },
+        ];
         this.studentFilter = this.fb.group({
             uniqueId: [''],
             firstName: [''],

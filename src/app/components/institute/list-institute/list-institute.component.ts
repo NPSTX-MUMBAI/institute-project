@@ -21,9 +21,11 @@ import { DialogService } from 'primeng/dynamicdialog';
 export class ListInstituteComponent implements OnInit {
     value5: any;
     listInstitute!: FormGroup;
+    instituteFilter!: FormGroup;
+
     institute!: Institute[];
     items!: MenuItem[];
-    selectedInstitute:any
+    selectedInstitute: any;
 
     //dropdownItems=[]
 
@@ -50,34 +52,15 @@ export class ListInstituteComponent implements OnInit {
 
             console.log(this.institute);
         });
-        this.listInstitute = this.fb.group({
-            instituteName: ['', Validators.required],
-            instituteType: ['', Validators.required],
-            institutephoneno: ['', Validators.required],
-            institutewebsite: ['', Validators.required],
-            instituteemail: ['', Validators.required],
-            instituteboard: ['', Validators.required],
-            institutestd: ['', Validators.required],
-            institutediv: ['', Validators.required],
 
-            spocname: ['', Validators.required],
-            spocNumber: ['', Validators.required],
-            spocemail: ['', Validators.required],
-
-            address1: ['', Validators.required],
-            address2: ['', Validators.required],
-            zipcode: ['', Validators.required],
-            country: ['', Validators.required],
-            state: ['', Validators.required],
-            location: ['', Validators.required],
-
-            instpan: ['', Validators.required],
-            instregno: ['', Validators.required],
-            instgstno: ['', Validators.required],
+        this.instituteFilter = this.fb.group({
+            uniqueNo: [''],
+            name: [''],
+            type: [''],
+            phoneNo: [''],
+            city: [''],
+            state: [''],
         });
-    }
-    submit() {
-        console.log(this.listInstitute.value);
     }
 
     handleClick(id: any) {
@@ -114,5 +97,9 @@ export class ListInstituteComponent implements OnInit {
     ];
     AddInstitute() {
         this.router.navigate(['/main/institute/add']);
+    }
+
+    filteredValues() {
+        console.log(this.instituteFilter.value);
     }
 }
