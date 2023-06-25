@@ -99,8 +99,9 @@
 
     </form>
     <br>
-    <p-table #dt2 [value]="institute" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }"
-        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true" [lazy]="true"
+    <p-table [scrollable]="true" #dt2 [value]="institute" dataKey="id" [rows]="10"
+        [tableStyle]="{ 'min-width': '75rem' }" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+        [paginator]="true" [lazy]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
 
 
@@ -113,7 +114,7 @@
 
                 <th> CITY</th>
                 <th> STATE</th>
-                <th> ACTION</th>
+                <th alignFrozen="right" pFrozenColumn> ACTION</th>
 
             </tr>
 
@@ -130,7 +131,7 @@
 
                 <td>{{ institute.city }}</td>
                 <td>{{ institute.state }}</td>
-                <td style="color:#0257FF;font-weight: bold;">
+                <td alignFrozen="right" pFrozenColumn style="color:#0257FF;font-weight: bold;">
 
 
                     <p-button (click)="handleClick( institute.schoolId ); menu.toggle($event)" icon="pi pi-ellipsis-v"

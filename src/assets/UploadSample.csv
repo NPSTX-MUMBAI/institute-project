@@ -1,0 +1,3 @@
+firstName,lastName,regId,rollNo,gender,email,mobileNo,div,std,board,line1,line2,landmark,zip,country,state,city,locality,fatherFirstName,fatherLastName,fatherEmail,fatherPhone,motherFirstName,motherLastName,motherEmail,motherPhone,guardianFirstName,guardianLastName,guardianEmail,guardianPhone,boardType
+test1,test1,test1,test1,test1,test1,test1 test1,A,I,CBSE,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,test1,CBSE
+test2,test2,test2,test2,test2,test2,test2,B,II,CBSE,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,test2,CBSE

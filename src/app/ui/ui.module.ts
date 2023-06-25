@@ -42,6 +42,7 @@ import { ChipsModule } from 'primeng/chips';
 import { BadgeModule } from 'primeng/badge';
 import { GalleriaModule } from 'primeng/galleria';
 import { SplitterModule } from 'primeng/splitter';
+import { ConfirmDialogModule } from 'primeng/confirmdialog';
 
 const arrays = [
     CommonModule,
@@ -91,7 +92,9 @@ const arrays = [
     MenubarModule,
     ChipsModule,
     BadgeModule,
-    GalleriaModule,SplitterModule
+    GalleriaModule,
+    SplitterModule,
+    ConfirmDialogModule,
 ];
 
 export const loaderConf: NgxUiLoaderConfig = {
