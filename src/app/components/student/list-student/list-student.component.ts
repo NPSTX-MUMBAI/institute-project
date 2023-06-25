@@ -12,7 +12,7 @@ import {
     Validators,
 } from '@angular/forms';
 
-// import * as FileSaver from 'file-saver';
+import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
 @Component({
     selector: 'app-list-student',
@@ -41,15 +41,16 @@ export class ListStudentComponent implements OnInit, OnDestroy {
             {
                 label: 'Download as Excel',
                 icon: 'pi pi-file-excel',
+
                 command: () => {
-                    // this.exportTableData('xlsx');
+                    this.exportTableData('xlsx');
                 },
             },
             {
                 label: 'Download as CSV',
                 icon: 'pi pi-file',
                 command: () => {
-                    // this.exportTableData('csv');
+                    this.exportTableData('csv');
                 },
             },
         ];
@@ -123,6 +124,56 @@ export class ListStudentComponent implements OnInit, OnDestroy {
         //     console.error(error);
         // }
     }
+
+    exportTableData(format: any) {
+        // this.messageService.showSuccess('Your file is being downloaded. Please wait...');
+        const rows = [];
+        const columns = [
+            'REG No',
+            'FIRST Name',
+            'LAST Name',
+            'ROLL No',
+            'GENDER',
+            'STD',
+            'DIV',
+            'EMAIL',
+            'PHONE',
+            'ACTION',
+        ];
+        rows.push(columns);
+        for (const student of this.students) {
+            rows.push([
+                student.uniqueId,
+                student.firstName,
+                student.lastName,
+                student.rollNo,
+                student.gender,
+                student.std,
+                student.div,
+                student.email,
+                student.mobileNo,
+            ]);
+        }
+        const workbook = XLSX.utils.book_new();
+        const worksheet = XLSX.utils.aoa_to_sheet(rows);
+
+        XLSX.utils.book_append_sheet(workbook, worksheet, 'Students');
+        let bookType: any, fileName;
+        if (format === 'csv') {
+            bookType = 'csv';
+            fileName = 'students.csv';
+        } else if (format === 'xlsx') {
+            bookType = 'xlsx';
+            fileName = 'students.xlsx';
+        }
+
+        const buffer = XLSX.write(workbook, { bookType, type: 'array' });
+
+        const file = new Blob([buffer], { type: 'application/octet-stream' });
+        FileSaver.saveAs(file, fileName);
+    }
+
+    
 
     filteredValues() {
         console.log(this.studentFilter.value);

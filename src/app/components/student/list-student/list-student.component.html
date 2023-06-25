@@ -139,14 +139,14 @@
     </form>
 
     <br>
-    <p-table #dt2 [value]="students" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+    <p-table [scrollable]="true" #dt2 [value]="students" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <ng-template pTemplate="caption">
             <div class="flex-container">
-                <h2>List of studentss</h2>
-                <p-splitButton icon="pi pi-download" label="Export" [model]="this.saveOptions"
+                <h2>List of students</h2>
+                <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
                     styleClass="p-button-outlined mr-2 mb-2">
                 </p-splitButton>
 
@@ -171,7 +171,7 @@
                 <th>DIV</th>
                 <th>EMAIL</th>
                 <th>PHONE</th>
-                <th>ACTION</th>
+                <th alignFrozen="right" pFrozenColumn> ACTION</th>
 
 
 
@@ -184,7 +184,7 @@
             <tr>
 
 
-                <td style="color:#01A9F1;font-weight: bold;">{{ students.uniqueId }}</td>
+                <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ students.uniqueId }}</td>
                 <td>{{ students.firstName }}</td>
                 <td>{{ students.lastName }}</td>
                 <td>{{ students.rollNo }}</td>
@@ -193,7 +193,7 @@
                 <td>{{ students.div }}</td>
                 <td>{{ students.email}}</td>
                 <td>{{ students.mobileNo }}</td>
-                <td style="color:#0257FF;font-weight: bold;">
+                <td alignFrozen="right" pFrozenColumn [style]="{'color':'#0257FF','font-weight': 'bold'}">
 
 
                     <p-button (click)="handleClick( students.studentId ); menu.toggle($event)" icon="pi pi-ellipsis-v"
