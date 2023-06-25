@@ -115,6 +115,11 @@ export class BulkUploadComponent implements OnInit {
         });
     }
 
+    onSelect(event:any){
+        console.log(event)
+        
+    }
+
     downloadExcelFile() {
         const filePath = 'assets/UploadSample.csv';
         const fileName = 'UploadSample.csv';
