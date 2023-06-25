@@ -19,7 +19,15 @@
     <div #topbarmenu class="layout-topbar-menu"
         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <p-dropdown [options]="institute" [(ngModel)]="selectedInstitute" (ngModelChange)="setSchool($event)"
-            optionLabel="instituteName"></p-dropdown>
+            optionLabel="instituteName">
+            <ng-template pTemplate="item">
+
+                <div class="dropdown-loading" *ngIf="!institute">
+                    <i class="fa fa-spinner fa-spin"></i>
+                </div>
+            </ng-template>
+
+        </p-dropdown>
 
         <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
             <i class="pi pi-user"></i>

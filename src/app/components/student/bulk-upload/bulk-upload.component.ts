@@ -40,7 +40,7 @@ export class BulkUploadComponent implements OnInit {
     ngOnInit(): void {
         this.schoolId = this.stateSvc.getUserData('schoolId');
 
-        this.confirmPosition('top');
+        this.showPopup();
     }
 
     onUpload(event: UploadEvent) {
@@ -79,9 +79,7 @@ export class BulkUploadComponent implements OnInit {
             console.log(this.uploadedFiles);
         }
     }
-    confirmPosition(position: string) {
-        console.log('in top');
-        this.position = position;
+    showPopup() {
 
         this.confirmationService.confirm({
             message: `You are expected to have an Excel file in the proper format to upload the list of students. If you don't have it yet, you can download it now.`,

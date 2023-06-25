@@ -1,7 +1,16 @@
 <div class="card flex justify-content-center">
     <p-toast></p-toast>
+
+
     <p-fileUpload name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)"
         [multiple]="false" accept=".xls,.xlsx,.csv" [maxFileSize]="1000000">
+
+
+        <ng-template pTemplate="toolbar">
+            <p-button (click)="showPopup()" icon="pi pi-info-circle" styleClass="p-button-link"></p-button>
+
+        </ng-template>
+
         <ng-template pTemplate="content">
             <ul *ngIf="uploadedFiles.length">
                 <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
@@ -10,5 +19,6 @@
     </p-fileUpload>
 </div>
 
-<p-confirmDialog acceptLabel="Download Excel" acceptIcon="pi pi-download" rejectLabel="No, thanks" [style]="{ width: '50vw' }" key="positionDialog"
-    [position]="position" rejectButtonStyleClass="p-button-outlined"></p-confirmDialog>
+<p-confirmDialog acceptLabel="Download Excel" acceptIcon="pi pi-download" rejectLabel="No, thanks"
+    [style]="{ width: '50vw' }" key="positionDialog" [position]="position" rejectButtonStyleClass="p-button-outlined">
+</p-confirmDialog>
