@@ -2,12 +2,15 @@
     <p-toast></p-toast>
 
 
-    <p-fileUpload [showCancelButton]=false name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php" (onUpload)="onUpload($event)"
-        [multiple]="false" accept=".xls,.xlsx,.csv" [maxFileSize]="1000000" (onSelect)="onSelect($event)" >
+    <p-fileUpload [showCancelButton]=false name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
+        (onUpload)="onUpload($event)" [multiple]="false" accept=".xls,.xlsx,.csv" [maxFileSize]="1000000"
+        (onSelect)="onSelect($event)">
 
 
         <ng-template pTemplate="toolbar">
             <p-button (click)="showPopup()" icon="pi pi-info-circle" styleClass="p-button-link"></p-button>
+            <p-button [disabled]=visible (click)="showDialog()" icon="pi pi-eye"
+                styleClass="p-button-link"></p-button>
 
         </ng-template>
 
@@ -25,3 +28,49 @@
 <p-confirmDialog acceptLabel="Download Excel" acceptIcon="pi pi-download" rejectLabel="No, thanks"
     [style]="{ width: '50vw' }" key="positionDialog" [position]="position" rejectButtonStyleClass="p-button-outlined">
 </p-confirmDialog>
+<p-dialog header="Sample Sheet" [(visible)]="visible" [style]="{width: '50vw'}" [maximizable]="true">
+
+    <p-table *ngIf="visible" [scrollable]="true" #dt2 [value]="newData" dataKey="id" [rows]="10"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [tableStyle]="{ 'min-width': '75rem' }">
+        <ng-template pTemplate="header" let-headers>
+            <tr>
+                <th>REG ID</th>
+                <th>FIRST NAME</th>
+                <th>LAST NAME</th>
+                <th>ROLL NO</th>
+                <th>GENDER</th>
+                <th>STD</th>
+                <th>DIV</th>
+                <th>EMAIL</th>
+                <th>PHONE</th>
+
+            </tr>
+
+
+        </ng-template>
+        <ng-template pTemplate="body" let-students>
+            <tr>
+
+
+                <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ students.uniqueId }}</td>
+                <td>{{ students.firstName }}</td>
+                <td>{{ students.lastName }}</td>
+                <td>{{ students.rollNo }}</td>
+                <td>{{ students.gender }}</td>
+                <td>{{ students.std }}</td>
+                <td>{{ students.div }}</td>
+                <td>{{ students.email}}</td>
+                <td>{{ students.mobileNo }}</td>
+
+
+            </tr>
+        </ng-template>
+
+    </p-table>
+
+
+
+
+</p-dialog>

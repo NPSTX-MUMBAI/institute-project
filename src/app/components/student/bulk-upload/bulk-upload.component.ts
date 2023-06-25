@@ -9,6 +9,7 @@ import { StudentService } from '../../../services/student.service';
 import { Router } from '@angular/router';
 import { DialogService } from 'primeng/dynamicdialog';
 import { HttpClient } from '@angular/common/http';
+import * as XLSX from 'xlsx';
 
 interface UploadEvent {
     originalEvent: Event;
@@ -27,7 +28,12 @@ export class BulkUploadComponent implements OnInit {
     studentBulk = new FormData();
     schoolId: any;
     position: string = 'top';
-    location = 'here';
+    visible = false;
+    data: any[] = [];
+
+    resultdata: any[] = [];
+    newData:any[]=[]
+
     constructor(
         private messageService: MessageService,
         private stateSvc: StateService,
@@ -80,7 +86,6 @@ export class BulkUploadComponent implements OnInit {
         }
     }
     showPopup() {
-
         this.confirmationService.confirm({
             message: `You are expected to have an Excel file in the proper format to upload the list of students. If you don't have it yet, you can download it now.`,
             header: 'Student Bulk Upload',
@@ -115,11 +120,6 @@ export class BulkUploadComponent implements OnInit {
         });
     }
 
-    onSelect(event:any){
-        console.log(event)
-        
-    }
-
     downloadExcelFile() {
         const filePath = 'assets/UploadSample.csv';
         const fileName = 'UploadSample.csv';
@@ -137,5 +137,68 @@ export class BulkUploadComponent implements OnInit {
                 console.error('Error downloading the file:', error);
             }
         );
+    }
+    onSelect(evt: any) {
+        console.log(evt);
+
+        this.visible = true;
+        const target: DataTransfer = <DataTransfer>evt.originalEvent.target;
+        if (target.files.length !== 1)
+            throw new Error('Cannot upload more than 1 file');
+
+        const reader: FileReader = new FileReader();
+
+        reader.onload = (e: any) => {
+            const bstr: string = e.target.result;
+            const wb: XLSX.WorkBook = XLSX.read(bstr, { type: 'binary' });
+            const wsname: string = wb.SheetNames[0];
+            const ws: XLSX.WorkSheet = wb.Sheets[wsname];
+            this.data = XLSX.utils.sheet_to_json(ws, { header: 1 }) as [];
+
+            let filterHeader = this.data[0];
+
+            let studentData = [];
+
+            this.data.forEach((el: any, idx: number) => {
+                if (idx == 0) return;
+                let temp = el.reduce(function (
+                    result: any,
+                    field: any,
+                    index: any
+                ) {
+                    result[filterHeader[index]] = field;
+                    return result;
+                },
+                {});
+                if (temp !== undefined && temp !== null) {
+                    this.resultdata.push(temp);
+                }
+
+                //*********** */
+            });
+            console.log(this.resultdata);
+            console.log(this.data);
+
+            const keys = this.data[0];
+
+            for (let i = 1; i < this.data.length; i++) {
+                const row = this.data[i];
+                const obj:any = {};
+
+                for (let j = 0; j < keys.length; j++) {
+                    const key = keys[j];
+                    obj[key] = row[j];
+                }
+
+                this.newData.push(obj);
+            }
+
+            console.log(this.newData);
+        };
+        reader.readAsBinaryString(target.files[0]);
+    }
+
+    showDialog(){
+        this.visible=true
     }
 }
