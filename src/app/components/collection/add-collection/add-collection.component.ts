@@ -1,19 +1,29 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import {
     FormBuilder,
     FormControl,
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
+import { AddChargeComponent } from '../add-charge/add-charge.component';
 @Component({
     selector: 'app-add-collection',
     templateUrl: './add-collection.component.html',
     styleUrls: ['./add-collection.component.scss'],
+    providers: [DialogService, MessageService],
 })
-export class AddCollectionComponent implements OnInit {
+export class AddCollectionComponent implements OnInit, OnDestroy {
     collection!: FormGroup;
+    ref: DynamicDialogRef | undefined;
 
-    constructor(private fb: FormBuilder) {}
+    myCharge: any[] = [];
+    constructor(
+        private fb: FormBuilder,
+        public dialogService: DialogService,
+        public messageService: MessageService
+    ) {}
 
     ngOnInit(): void {
         this.collection = this.fb.group({
@@ -48,4 +58,42 @@ export class AddCollectionComponent implements OnInit {
         { name: '3' },
         { name: '4' },
     ];
+
+    show() {
+        this.ref = this.dialogService.open(AddChargeComponent, {
+            header: 'Add a charge',
+            width: '70%',
+            contentStyle: { overflow: 'auto' },
+            baseZIndex: 10000,
+            maximizable: true,
+        });
+
+        this.ref.onClose.subscribe((charge: any) => {
+            if (charge) {
+                console.log(charge);
+
+                this.myCharge.push(charge);
+                this.messageService.add({
+                    severity: 'info',
+                    summary: 'Product Selected',
+                    detail: charge.name,
+                });
+            }
+            console.log(this.myCharge);
+        });
+
+        this.ref.onMaximize.subscribe((value) => {
+            this.messageService.add({
+                severity: 'info',
+                summary: 'Maximized',
+                detail: `maximized: ${value.maximized}`,
+            });
+        });
+    }
+
+    ngOnDestroy() {
+        if (this.ref) {
+            this.ref.close();
+        }
+    }
 }

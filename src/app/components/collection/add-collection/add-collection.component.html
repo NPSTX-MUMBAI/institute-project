@@ -1,3 +1,6 @@
+<p-toast></p-toast>
+
+
 <p-accordion [multiple]="true" [activeIndex]="[0]">
     <p-accordionTab header="Collection Details">
         <div>
@@ -88,6 +91,8 @@
 
 
     <p-accordionTab header="Charge Details">
+        <p-button (click)="show()" icon="pi pi-plus-circle" label="Add charge"></p-button>
+
 
     </p-accordionTab>
 
@@ -97,3 +102,4 @@
         <app-list-student></app-list-student>
 
     </p-accordionTab>
+

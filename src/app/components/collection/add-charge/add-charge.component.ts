@@ -5,13 +5,14 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { DynamicDialogRef } from 'primeng/dynamicdialog';
 @Component({
     selector: 'app-add-charge',
     templateUrl: './add-charge.component.html',
     styleUrls: ['./add-charge.component.scss'],
 })
 export class AddChargeComponent implements OnInit {
-    constructor(private fb: FormBuilder) {}
+    constructor(private fb: FormBuilder, public ref: DynamicDialogRef) {}
 
     addCharge!: FormGroup;
 
@@ -24,8 +25,10 @@ export class AddChargeComponent implements OnInit {
     }
 
     save() {
-console.log( this.addCharge.value)
+        this.selectCharge(this.addCharge.value);
+    }
 
-
+    selectCharge(charge: any) {
+        this.ref.close(charge);
     }
 }
