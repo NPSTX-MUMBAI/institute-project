@@ -43,6 +43,7 @@ import { BadgeModule } from 'primeng/badge';
 import { GalleriaModule } from 'primeng/galleria';
 import { SplitterModule } from 'primeng/splitter';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 const arrays = [
     CommonModule,
@@ -95,6 +96,7 @@ const arrays = [
     GalleriaModule,
     SplitterModule,
     ConfirmDialogModule,
+    ProgressBarModule,
 ];
 
 export const loaderConf: NgxUiLoaderConfig = {

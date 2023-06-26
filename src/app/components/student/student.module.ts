@@ -6,6 +6,7 @@ import { RouterModule, Routes } from '@angular/router';
 import { UiModule } from 'src/app/ui/ui.module';
 import { BulkUploadComponent } from './bulk-upload/bulk-upload.component';
 import { UtilityModule } from 'src/app/utility/utility/utility.module';
+import { ProgressBarModule } from 'primeng/progressbar';
 
 const routes: Routes = [
     { path: '', component: ListStudentComponent },
@@ -30,6 +31,7 @@ const routes: Routes = [
         UiModule,
         UtilityModule,
         RouterModule.forChild(routes),
+        ProgressBarModule,
     ],
     exports: [ListStudentComponent],
 })

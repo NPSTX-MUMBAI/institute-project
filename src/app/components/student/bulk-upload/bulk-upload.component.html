@@ -3,14 +3,13 @@
 
 
     <p-fileUpload [showCancelButton]=false name="demo[]" url="https://www.primefaces.org/cdn/api/upload.php"
-        (onUpload)="onUpload($event)" [multiple]="false" accept=".xls,.xlsx,.csv" [maxFileSize]="1000000"
-        (onSelect)="onSelect($event)">
+        (onUpload)="onUpload($event); notification()" [multiple]="false" accept=".xls,.xlsx,.csv"
+        [maxFileSize]="1000000" (onSelect)="onSelect($event)">
 
 
         <ng-template pTemplate="toolbar">
             <p-button (click)="showPopup()" icon="pi pi-info-circle" styleClass="p-button-link"></p-button>
-            <p-button [disabled]=visible (click)="showDialog()" icon="pi pi-eye"
-                styleClass="p-button-link"></p-button>
+            <p-button [disabled]=visible (click)="showDialog()" icon="pi pi-eye" styleClass="p-button-link"></p-button>
 
         </ng-template>
 
@@ -23,54 +22,89 @@
             </ul>
         </ng-template>
     </p-fileUpload>
-</div>
+    </div>
 
-<p-confirmDialog acceptLabel="Download Excel" acceptIcon="pi pi-download" rejectLabel="No, thanks"
-    [style]="{ width: '50vw' }" key="positionDialog" [position]="position" rejectButtonStyleClass="p-button-outlined">
-</p-confirmDialog>
-<p-dialog header="Sample Sheet" [(visible)]="visible" [style]="{width: '50vw'}" [maximizable]="true">
+    <p-confirmDialog acceptLabel="Download Excel" acceptIcon="pi pi-download" rejectLabel="No, thanks"
+        [style]="{ width: '50vw' }" key="positionDialog" [position]="position"
+        rejectButtonStyleClass="p-button-outlined">
+    </p-confirmDialog>
+    <p-dialog header="Sample Sheet" [(visible)]="visible" [style]="{width: '50vw'}" [maximizable]="true">
 
-    <p-table *ngIf="visible" [scrollable]="true" #dt2 [value]="newData" dataKey="id" [rows]="10"
-        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-        [tableStyle]="{ 'min-width': '75rem' }">
-        <ng-template pTemplate="header" let-headers>
-            <tr>
-                <th>REG ID</th>
-                <th>FIRST NAME</th>
-                <th>LAST NAME</th>
-                <th>ROLL NO</th>
-                <th>GENDER</th>
-                <th>STD</th>
-                <th>DIV</th>
-                <th>EMAIL</th>
-                <th>PHONE</th>
+        <p-table *ngIf="visible" [scrollable]="true" #dt2 [value]="newData" dataKey="id" [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [tableStyle]="{ 'min-width': '75rem' }">
+            <ng-template pTemplate="header" let-headers>
+                <tr>
+                    <th>REG ID</th>
+                    <th>FIRST NAME</th>
+                    <th>LAST NAME</th>
+                    <th>ROLL NO</th>
+                    <th>GENDER</th>
+                    <th>STD</th>
+                    <th>DIV</th>
+                    <th>EMAIL</th>
+                    <th>PHONE</th>
 
-            </tr>
-
-
-        </ng-template>
-        <ng-template pTemplate="body" let-students>
-            <tr>
+                </tr>
 
 
-                <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ students.uniqueId }}</td>
-                <td>{{ students.firstName }}</td>
-                <td>{{ students.lastName }}</td>
-                <td>{{ students.rollNo }}</td>
-                <td>{{ students.gender }}</td>
-                <td>{{ students.std }}</td>
-                <td>{{ students.div }}</td>
-                <td>{{ students.email}}</td>
-                <td>{{ students.mobileNo }}</td>
+            </ng-template>
+            <ng-template pTemplate="body" let-students>
+                <tr>
 
 
-            </tr>
-        </ng-template>
+                    <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ students.uniqueId }}</td>
+                    <td>{{ students.firstName }}</td>
+                    <td>{{ students.lastName }}</td>
+                    <td>{{ students.rollNo }}</td>
+                    <td>{{ students.gender }}</td>
+                    <td>{{ students.std }}</td>
+                    <td>{{ students.div }}</td>
+                    <td>{{ students.email}}</td>
+                    <td>{{ students.mobileNo }}</td>
 
-    </p-table>
+
+                </tr>
+            </ng-template>
+
+        </p-table>
 
 
 
 
-</p-dialog>
+    </p-dialog>
+
+    <div *ngIf="showNotification" style="width:35%;background-color: white;border-radius: 10px;box-shadow: 0 12px 34px 0 rgba(57, 67, 87, 0.1);
+position: absolute;top:15%;right: 20px;
+" role="alert" aria-live="assertive" aria-atomic="true" class="p-toast-message-content ng-tns-c69-46 p-3"
+        class="p-toast-message-content ng-tns-c69-46 p-3 slide-in">
+        <article class="flex gap-3 w-full ng-star-inserted"><i class="pi pi-cloud-upload text-primary-500 text-2xl"></i>
+            <div class="flex flex-column gap-3 w-full">
+                <p class="m-0 font-semibold text-base text-900">Uploading Your Files</p>
+                <p class="m-0 text-base text-700">Please wait till the end...</p>
+                <div class="flex flex-column gap-2">
+                    <p-progressBar [value]="value"></p-progressBar>
+
+
+                    <label class="text-right text-xs text-700">{{value}}% uploaded...</label>
+                </div>
+                <div class="flex gap-3"><button pbutton="" pripple="" label="Another Upload?"
+                        class="p-element p-ripple p-button-text p-0 p-button p-component"><span
+                            class="p-button-label">Another Upload?</span><span class="p-ink"></span></button><button
+                        pbutton="" pripple="" label="Cancel"
+                        class="p-element p-ripple p-button-text text-500 p-0 p-button p-component"><span
+                            class="p-button-label">Cancel</span><span class="p-ink"></span></button></div>
+            </div>
+        </article>
+        <!----><button type="button" pripple=""
+            class="p-ripple p-element p-toast-icon-close p-link ng-tns-c69-46 ng-star-inserted" (click)="cross()">
+
+            <i class="pi pi-times"></i>
+
+
+
+            <!----><span class="p-ink ng-tns-c69-46"></span>
+        </button>
+        <!---->
+    </div>
