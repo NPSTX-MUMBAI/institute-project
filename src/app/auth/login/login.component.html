@@ -64,7 +64,7 @@
 
                     <button class="sign-button" pButton pRipple label="Sign In" (click)="signin()"></button>
 
-                  
+
                 </div>
             </div>
 
@@ -118,8 +118,8 @@
                             <i class='bx bx-lock-alt login__icon'></i>
                             <input type="password" placeholder="Password" class="login__input"  formControlName="password" type="{{ Password ? 'password' : 'text' }}"   >
                             <span class="password-toggle" (click)="togglePasswordVisibility()"><i id="toggle-icon" [class]="'fa ' + (!hidePassword ? 'fa-eye' : 'fa-eye-slash')" ></i></span>
-            
-                           
+
+
                         </div> -->
 
                 <div class="login__box">
@@ -144,8 +144,9 @@
 
                 </div>
 
+                <a routerLink="/auth/forgot-password" class="login__forgot">Forgot password?</a>
 
-                <a href="#" class="login__forgot">Forgot password?</a>
+
 
                 <!--<a href="#" class="login__button" pButton pRipple  (click)="signin()">Sign In</a>-->
                 <button class="learn-more">
@@ -158,10 +159,11 @@
 
 
 
-                <div>
-                    <span class="login__account">Don't have an Account ?</span>
-                    <span class="login__signin" id="sign-up" routerLink="/auth/signup">Sign Up</span>
-                </div>
+
+            <div>
+                <span class="login__account">Don't have an Account ?</span>
+                <span class="login__signin" id="sign-up" routerLink="/auth/signup">Sign Up</span>
+            </div>
             </form>
 
 
@@ -170,11 +172,13 @@
 </div>
 <div class="flex flex-wrap shadow-2">
     <div class="w-full lg:w-6 px-0 py-4 lg:p-7 bg-blue-50"><img src="assets/images/blocks/logos/bastion-700.svg"
-            alt="Image" height="35" class="mb-6"><p-carousel indicatorstyleclass="hover:bg-primary-500"
-            class="p-element">
-            <div id="pr_id_1" class="p-carousel p-component p-carousel-horizontal"><!---->
+            alt="Image" height="35" class="mb-6">
+        <p-carousel indicatorstyleclass="hover:bg-primary-500" class="p-element">
+            <div id="pr_id_1" class="p-carousel p-component p-carousel-horizontal">
+                <!---->
                 <div class="p-carousel-content">
-                    <div class="p-carousel-container"><!---->
+                    <div class="p-carousel-container">
+                        <!---->
                         <div class="p-carousel-items-content" style="height: auto;">
                             <div class="p-carousel-items-container" style="transform: translate3d(0%, 0px, 0px);">
                                 <!---->
@@ -187,7 +191,8 @@
                                         <p class="m-0 text-blue-700 line-height-3">Lorem ipsum dolor sit amet,
                                             consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
                                             dolore magna aliqua.</p>
-                                    </div><!---->
+                                    </div>
+                                    <!---->
                                 </div>
                                 <div class="p-carousel-item ng-star-inserted">
                                     <div class="text-center mb-8 ng-star-inserted"><img alt="Image" class="mb-6 w-6"
@@ -195,7 +200,8 @@
                                         <div class="mx-auto font-medium text-xl mb-4 text-blue-900">Data Security</div>
                                         <p class="m-0 text-blue-700 line-height-3">Ut enim ad minim veniam, quis nostrud
                                             exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.</p>
-                                    </div><!---->
+                                    </div>
+                                    <!---->
                                 </div>
                                 <div class="p-carousel-item ng-star-inserted">
                                     <div class="text-center mb-8 ng-star-inserted"><img alt="Image" class="mb-6 w-6"
@@ -205,10 +211,14 @@
                                         <p class="m-0 text-blue-700 line-height-3">Duis aute irure dolor in
                                             reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
                                             pariatur.</p>
-                                    </div><!---->
-                                </div><!----><!---->
+                                    </div>
+                                    <!---->
+                                </div>
+                                <!---->
+                                <!---->
                             </div>
-                        </div><!---->
+                        </div>
+                        <!---->
                     </div>
                     <ul class="p-carousel-indicators p-reset ng-star-inserted">
                         <li class="p-carousel-indicator p-highlight ng-star-inserted"><button type="button"
@@ -216,11 +226,15 @@
                         <li class="p-carousel-indicator ng-star-inserted"><button type="button"
                                 class="hover:bg-primary-500 p-link"></button></li>
                         <li class="p-carousel-indicator ng-star-inserted"><button type="button"
-                                class="hover:bg-primary-500 p-link"></button></li><!---->
-                    </ul><!---->
-                </div><!---->
+                                class="hover:bg-primary-500 p-link"></button></li>
+                        <!---->
+                    </ul>
+                    <!---->
+                </div>
+                <!---->
             </div>
-        </p-carousel></div>
+        </p-carousel>
+    </div>
     <div class="w-full lg:w-6 p-4 lg:p-7 surface-card">
         <div class="flex align-items-center justify-content-between mb-7"><span
                 class="text-2xl font-medium text-900">Login to Bastion</span><a tabindex="0"
@@ -232,7 +246,8 @@
                     class="p-ink"></span></button><button pripple=""
                 class="p-ripple p-element ml-2 w-6 font-medium border-1 surface-border surface-100 py-3 px-2 p-component hover:surface-200 active:surface-300 text-900 cursor-pointer transition-colors transition-duration-150 inline-flex align-items-center justify-content-center"><i
                     class="pi pi-google text-red-500 mr-2"></i><span>Sign in With Google</span><span
-                    class="p-ink"></span></button></div><p-divider align="center" styleclass="my-4" class="p-element">
+                    class="p-ink"></span></button></div>
+        <p-divider align="center" styleclass="my-4" class="p-element">
             <div role="separator"
                 class="my-4 p-divider p-component p-divider-horizontal p-divider-solid p-divider-center">
                 <div class="p-divider-content"><span class="text-600 font-normal text-sm">OR</span></div>
@@ -243,13 +258,18 @@
             class="block text-900 font-medium mb-2">Password</label><input id="password4" type="password"
             placeholder="Password" pinputtext="" class="p-inputtext p-component p-element w-full mb-3 p-3">
         <div class="flex align-items-center justify-content-between mb-6">
-            <div class="flex align-items-center"><p-checkbox id="rememberme4" styleclass="mr-2" class="p-element">
+            <div class="flex align-items-center">
+                <p-checkbox id="rememberme4" styleclass="mr-2" class="p-element">
                     <div class="mr-2 p-checkbox p-component">
                         <div class="p-hidden-accessible"><input type="checkbox" value="undefined" aria-checked="false">
                         </div>
-                        <div class="p-checkbox-box"><!----></div>
-                    </div><!---->
-                </p-checkbox><label for="rememberme4">Remember me</label></div><a
+                        <div class="p-checkbox-box">
+                            <!---->
+                        </div>
+                    </div>
+                    <!---->
+                </p-checkbox><label for="rememberme4">Remember me</label>
+            </div><a
                 class="font-medium text-blue-500 hover:text-blue-700 cursor-pointer transition-colors transition-duration-150">Forgot
                 password?</a>
         </div><button pbutton="" pripple="" label="Sign In"
@@ -304,19 +324,24 @@
                 type="password" placeholder="Password" pinputtext=""
                 class="p-inputtext p-component p-element w-full mb-4">
             <div class="flex align-items-center justify-content-between mb-6">
-                <div class="flex align-items-center"><p-checkbox id="rememberme3" styleclass="mr-2" class="p-element">
+                <div class="flex align-items-center">
+                    <p-checkbox id="rememberme3" styleclass="mr-2" class="p-element">
                         <div class="mr-2 p-checkbox p-component">
                             <div class="p-hidden-accessible"><input type="checkbox" value="undefined"
                                     aria-checked="false"></div>
-                            <div class="p-checkbox-box"><!----></div>
-                        </div><!---->
-                    </p-checkbox><label for="rememberme3">Remember me</label></div><a
-                    class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot password?</a>
+                            <div class="p-checkbox-box">
+                                <!---->
+                            </div>
+                        </div>
+                        <!---->
+                    </p-checkbox><label for="rememberme3">Remember me</label>
+                </div><a class="font-medium no-underline ml-2 text-blue-500 text-right cursor-pointer">Forgot
+                    password?</a>
             </div><button pbutton="" pripple="" label="Login" icon="pi pi-user"
                 class="p-element p-ripple w-full p-button p-component"><span
                     class="p-button-icon p-button-icon-left pi pi-user" aria-hidden="true"></span><span
-                    class="p-button-label">Login</span><span class="p-ink"></span></button><p-divider align="center"
-                styleclass="my-6" class="p-element">
+                    class="p-button-label">Login</span><span class="p-ink"></span></button>
+            <p-divider align="center" styleclass="my-6" class="p-element">
                 <div role="separator"
                     class="my-6 p-divider p-component p-divider-horizontal p-divider-solid p-divider-center">
                     <div class="p-divider-content"><span class="text-600 font-normal text-sm">OR</span></div>

@@ -339,7 +339,9 @@ img{
     
     &__content{
         display: grid;
-        background-color: #e9e7e7;
+       // background-color: #e9e7e7;
+       //background-image: linear-gradient(to right top, #afa3bd, #ae9dbc, #ae96bb, #af90b9, #b089b7);
+       background-image: linear-gradient(to left top, #b7adc4, #ad9eba, #a38eb0, #9b7fa5, #936f99);
 
        
     }
