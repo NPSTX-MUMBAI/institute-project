@@ -112,7 +112,7 @@ export class AppMenuComponent implements OnInit {
                         {
                             label: 'Collections ',
                             icon: 'pi pi-fw pi-id-card',
-                            routerLink: ['/main/collection/add'],
+                            routerLink: ['/main/collection/list'],
                         },
                     ],
                 },
