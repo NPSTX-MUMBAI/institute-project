@@ -17,9 +17,10 @@ interface UploadEvent {
 })
 export class BulkUploadComponent implements OnInit {
     uploadedFiles: any[] = [];
-
+    showNotification: boolean = false;
     studentBulk = new FormData();
     schoolId: any;
+    value = 0;
 
     constructor(
         private messageService: MessageService,
@@ -54,18 +55,50 @@ export class BulkUploadComponent implements OnInit {
                         summary: 'File Uploaded',
                         detail: '',
                     });
+                    this.value = 100;
 
-                    this.router.navigate(['main/student']);
+                    // this.router.navigate(['main/student']);
                 } else {
                     this.messageService.add({
                         severity: 'warn',
                         summary: 'Data exists!',
                         detail: 'uniqueId is present aleady',
                     });
+                    this.showNotification = false;
                 }
             });
 
             console.log(this.uploadedFiles);
         }
+    }
+    notification() {
+        this.showNotification = true;
+
+        const notifications = [
+            { delay: 1000, value: 33 },
+            { delay: 2000, value: 66 },
+            { delay: 3000, value: 99 },
+        ];
+
+        let i = 0;
+        while (i < notifications.length) {
+            const notification = notifications[i];
+            setTimeout(() => {
+                this.value = notification.value;
+            }, notification.delay);
+            i++;
+        }
+        setTimeout(() => {
+            this.hideNotification();
+        }, 5000);
+    }
+    hideNotification() {
+        this.showNotification = false;
+    }
+
+    cross() {
+        console.log('shivaniiiiiiiiiiiiii');
+
+        this.showNotification = false;
     }
 }

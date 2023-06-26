@@ -38,6 +38,8 @@ import { InputSwitchModule } from 'primeng/inputswitch';
 import { TimelineModule } from 'primeng/timeline';
 import { MenubarModule } from 'primeng/menubar';
 import { NgxUiLoaderConfig } from 'ngx-ui-loader';
+import { ProgressBarModule } from 'primeng/progressbar';
+
 const arrays = [
     CommonModule,
     CarouselModule,
@@ -84,6 +86,7 @@ const arrays = [
     FormsModule,
     TimelineModule,
     MenubarModule,
+    ProgressBarModule,
 ];
 
 export const loaderConf: NgxUiLoaderConfig = {
