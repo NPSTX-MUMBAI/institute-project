@@ -66,16 +66,66 @@
 
 <!-- </div>  -->
 
-<div style="border: 1px solid black;">
-    <div style="display: flex;flex-direction: row;">
-        <div class="card" style="display: flex;flex-direction: column;">
-            <div style="width: 40%;height: 40%;border: 1px solid black;"></div>
-            <div style="width: 40%;height: 40%;border: 1px solid black;"></div>
+<div style="height:640px">
+    <div style="display: flex;flex-direction: row;height:640px;">
+        <div class="card"
+            style="display: flex;flex-direction: column;width:70%;height:645px;background-color: #eef2fc;">
+            <div style="width: 100%;height:260px;display: flex;flex-direction: row;padding: 10px;">
+                <div style="width: 340px;height: 220px;border-radius: 20px;margin-right: 20px;background-color: #dbd4f7;background-image: linear-gradient(to bottom right, #cbd3fc,#edd0fe);
+                    padding: 20px;">
+                    <div>
+                        <p style="text-align: center;margin-top: 10px;">NO. OF STUDENTS</p>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <i class="fa-solid fa-graduation-cap"
+                                style="font-size:50px;margin-top: 15px;color: #563bb7;"></i>
 
+                        </div>
+
+                        <P style="text-align: center;margin-top: 10px;font-weight: bold;">3</P>
+                        <P style="text-align: center;">In our school till Jun 2023</P>
+
+                    </div>
+
+
+                </div>
+                <div style="width: 340px;height: 220px;border-radius: 20px;margin-right: 20px;background-image: linear-gradient(to bottom right, #cbd3fc,#edd0fe  );
+                    padding: 20px;">
+                    <div>
+
+                        <p style="text-align: center;margin-top: 10px;">NO. OF ADMINS</p>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <i class="fa-solid fa-users" style="font-size:50px;margin-top: 15px;"></i>
+                        </div>
+                        <P style="text-align: center;margin-top: 10px;font-weight: bold;">1</P>
+                        <P style="text-align: center;">In our school till Jun 2023</P>
+
+                    </div>
+                </div>
+                <div style="width: 340px;height: 220px;border-radius: 20px;margin-right: 20px;background-image: linear-gradient(to bottom right, #cbd3fc,#edd0fe  );
+                    padding: 20px;">
+                    <div>
+                        <p style="text-align: center;margin-top: 10px;">FEES COLLECTED THIS MONTH</p>
+                        <div style="display: flex;justify-content: center;align-items: center;">
+                            <i class="fa-solid fa-money-bill" style="font-size:45px;color: green;"></i>
+                        </div>
+                        <P style="text-align: center;margin-top: 10px;font-weight: bold;">3000</P>
+                        <P style="text-align: center;">Since previous month</P>
+
+                    </div>
+                </div>
+            </div>
+            <div style="width: 100%;height:300px;margin-top:20px;">
+                <canvas width="500" #mychart></canvas>
+            </div>
         </div>
-        <div class="card">
-            <div style="width: 40%;height: 40%;border: 1px solid black;"></div>
-            <div style="width: 40%;height: 40%;border: 1px solid black;"></div>
+        <div style="height:620px;width: 450px;margin-left: 20px;">
+            <div style="width: 100%;height:340px;border-radius: 20px;">
+                <img src="../../../assets/layout/images/88012-student-animated-icon.gif" width="300px">
+                <p style="text-align: center;font-weight: bold;">SHOAIB SALIM MULLA</p>
+            </div>
+            <div style="width: 100%;height: 290px;border-radius: 20px;margin-top: 10px;">
+                <app-pie-chart></app-pie-chart>
+            </div>
 
         </div>
     </div>

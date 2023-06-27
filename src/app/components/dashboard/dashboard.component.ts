@@ -4,13 +4,15 @@ import { ChartOptions } from 'chart.js';
 import Chart from 'chart.js/auto';
 import { InstituteService } from '../../services/institute.service';
 import { Router } from '@angular/router';
-
 @Component({
     selector: 'app-dashboard',
     templateUrl: './dashboard.component.html',
     styleUrls: ['./dashboard.component.scss'],
 })
 export class DashboardComponent implements OnInit {
+    data: any;
+
+    options: any;
     constructor(
         private stateSvc: StateService,
         private instSvc: InstituteService,
@@ -100,6 +102,15 @@ export class DashboardComponent implements OnInit {
                         borderWidth: 3.5,
                         pointRadius: 2,
                     },
+                    {
+                        tension: 0.2,
+                        label: 'collection',
+                        data: data6,
+                        backgroundColor: '#754ecf',
+                        borderColor: '#754ecf',
+                        borderWidth: 3.5,
+                        pointRadius: 2,
+                    },
                 ],
                 labels: [
                     'Jan',
@@ -126,34 +137,5 @@ export class DashboardComponent implements OnInit {
 
         const data1 = [250, 120, 50];
         const total: any = data1.reduce((a: any, b: any) => a + b);
-
-        const doooo = new Chart(this.ctx, {
-            type: 'doughnut',
-
-            options: {
-                plugins: {
-                    title: { display: true, text: `Fees payment status` },
-                },
-            },
-            data: {
-                datasets: [
-                    {
-                        label: 'Current Vallue',
-                        data: data1,
-                        backgroundColor: [
-                            '#7a4fef',
-                            '#F8C1FF',
-                            '#E1F1FF',
-                            'rgb(255, 99, 132)',
-                            '#CAD5E2',
-                        ],
-                        borderColor: '#000',
-                        borderWidth: 0.5,
-                        hoverOffset: 8,
-                    },
-                ],
-                labels: ['Fees Paid', 'Not-Paid', 'Not-Applicable'],
-            },
-        });
     }
 }
