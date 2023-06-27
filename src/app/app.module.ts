@@ -22,7 +22,7 @@ import { NgxUiLoaderHttpModule, NgxUiLoaderModule } from 'ngx-ui-loader';
 import { FilterComponent } from './utility/filter/filter.component';
 
 @NgModule({
-    declarations: [AppComponent, NotfoundComponent, DashboardComponent],
+    declarations: [AppComponent, NotfoundComponent],
     imports: [
         AppRoutingModule,
         AppLayoutModule,
