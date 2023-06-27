@@ -64,9 +64,18 @@ export class DashboardComponent implements OnInit {
                 scales: {
                     y: {
                         min: 50,
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0)', // Set the gridlines color to transparent
+                        },
+                    },
+                    x: {
+                        grid: {
+                            color: 'rgba(0, 0, 0, 0)', // Set the gridlines color to transparent
+                        },
                     },
                 },
             },
+
             data: {
                 datasets: [
                     // {

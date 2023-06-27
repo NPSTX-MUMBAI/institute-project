@@ -19,15 +19,7 @@ export class PieChartComponent implements OnInit {
             datasets: [
                 {
                     data: [300, 50, 100],
-                    backgroundColor: [
-                        '#754ECF',
-                        '#01A9F1',
-                        '#f0ccff',
-
-                        // documentStyle.getPropertyValue('--blue-500'),
-                        // documentStyle.getPropertyValue('--yellow-500'),
-                        // documentStyle.getPropertyValue('--green-500'),
-                    ],
+                    backgroundColor: ['#754ECF', '#01A9F1', '#f0ccff'],
                     hoverBackgroundColor: ['#754ECF', '#01A9F1', '#f0ccff'],
                 },
             ],

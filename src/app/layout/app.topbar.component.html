@@ -9,6 +9,7 @@
     <button #menubutton class="p-link layout-menu-button layout-topbar-button" (click)="layoutService.onMenuToggle()"
         style="margin-right:62%;">
         <i class="pi pi-bars"></i>
+
     </button>
 
     <button #topbarmenubutton class="p-link layout-topbar-menu-button layout-topbar-button"
@@ -20,6 +21,8 @@
         [ngClass]="{'layout-topbar-menu-mobile-active': layoutService.state.profileSidebarVisible}">
         <p-dropdown [options]="institute" [(ngModel)]="selectedInstitute" (ngModelChange)="setSchool($event)"
             optionLabel="instituteName"></p-dropdown>
+
+
 
         <button class="p-link layout-topbar-button" (click)="menu.toggle($event)">
             <i class="pi pi-user"></i>
