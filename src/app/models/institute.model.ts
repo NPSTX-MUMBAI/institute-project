@@ -3,6 +3,7 @@ import { Address } from "./address.model";
 import { User } from "./user.model";
 
 export interface Institute {
+  
   _id?: string;
   currency?: string;
   instituteName: string;

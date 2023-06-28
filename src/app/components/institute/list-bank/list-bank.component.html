@@ -6,14 +6,127 @@
 
 <button pButton pRipple label="+ Add Bank" (click)="navigateToAddBank()"></button>
 
+
 <div  *ngIf="bank" style="margin-top:8%;">
-    <p-table #dt2 [value]="bank" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }">
+
+
+    <form [formGroup]="bankFilter">
+        <p-accordion [activeIndex]="1">
+            <p-accordionTab header="Apply Filter">
+
+                <div class="formgrid grid">
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Account Name</label>
+                        <div class="p-inputgroup">
+
+                            <input placeholder="Enter Account Name" type="text" formControlName="accountname"
+                                pInputText />
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="field col-12 lg:col-4 md:col-12 ">
+                        <label for="firstname2">Account Type</label>
+
+                        <div class="p-inputgroup">
+                            <input formControlName="accounttype" placeholder="Enter Account Type" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                        </div>
+
+
+                    </div>
+
+
+
+                    
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Account No</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="accountno" placeholder="Enter Account No" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">IFSC Code</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="ifsccode" placeholder="Enter Ifsc code" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Bank Name</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="bankname" placeholder="Enter Bank Name" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Branch Name</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="branchname" placeholder="Enter Branch Name" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+
+
+                   
+
+
+                    
+                </div>
+
+
+                <br>
+
+                <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+
+
+
+            </p-accordionTab>
+
+        </p-accordion>
+
+    </form>
+
+    <br>
+
+
+    <p-table  [scrollable]="true" #dt2 [value]="bank" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
                 <h2>List of Bank</h2>
 
             </div>
         </ng-template> -->
+
+        <ng-template pTemplate="caption">
+            <div class="flex-container">
+                <h2>List of Bank</h2>
+                <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
+                    styleClass="p-button-outlined mr-2 mb-2">
+                </p-splitButton>
+
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th>ACCOUNT NAME</th>
@@ -22,7 +135,7 @@
                 <th>IFSC CODE</th>
                 <th>BANK NAME</th>
                 <th>BRANCH NAME</th>
-                <th> ACTION</th>
+                <th alignFrozen="right" pFrozenColumn> ACTION</th>
 
 
 
@@ -38,14 +151,15 @@
                 <td>{{ bank.ifsc | uppercase }}</td>
                 <td>{{ bank.bankName | uppercase  }}</td>
                 <td>{{ bank.branch | uppercase }}</td>
-                <td style="color:#0257FF;font-weight: bold;">
+                <td alignFrozen="right" pFrozenColumn [style]="{'color':'#0257FF','font-weight': 'bold'}">
 
 
-                    <p-button (click)="handleClick( bank.accountNo ); menu.toggle($event)" icon="pi pi-ellipsis-v"
+                    <p-button (click)="handleClick( bank.studentId ); menu.toggle($event)" icon="pi pi-ellipsis-v"
                         styleClass="p-button-rounded p-button-text">
 
                     </p-button>
                 </td>
+                
 
 
 
