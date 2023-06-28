@@ -1,20 +1,12 @@
-button{
+button {
     float: right;
-    border-radius: 10px 20px ;
-    background-image: linear-gradient(to right,#835dea
-    ,#462EA5 );
+    border-radius: 10px 20px;
+    background-image: linear-gradient(to right, #835dea, #462ea5);
     border: none;
-
 }
 
-.card{
-    //margin-left: 410px;
+.card {
     border-radius: 5px 5px 0 0;
-    padding:0 !important;
-
-    width: 15%;
-    margin-top: 115px;
-    margin-right: auto;
-    margin-left: auto;
-    
+    width: 100%;
+    height: 570px;
 }
