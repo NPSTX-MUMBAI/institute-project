@@ -1,7 +1,88 @@
+<p-menu #menu [model]="items" [popup]="true"></p-menu>
+
 <button pButton pRipple label="+ Add Staff" (click)="navigateToAddBank()"></button>
 
 <div *ngIf="staff" style="margin-top:8%;">
-    <p-table #dt2 [value]="staff" dataKey="id" [rows]="10"
+
+
+    <form [formGroup]="staffFilter">
+        <p-accordion [activeIndex]="1">
+            <p-accordionTab header="Apply Filter">
+
+                <div class="formgrid grid">
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">First name</label>
+                        <div class="p-inputgroup">
+
+                            <input placeholder="Enter First name" type="text" formControlName="firstName"
+                                pInputText />
+
+                        </div>
+
+
+                    </div>
+
+                    <div class="field col-12 lg:col-4 md:col-12 ">
+                        <label for="firstname2">Last name</label>
+
+                        <div class="p-inputgroup">
+                            <input formControlName="lastName" placeholder="Enter Last name" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                        </div>
+
+
+                    </div>
+
+
+
+                    
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Email</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="email" placeholder="Enter Email" type="text" pInputText
+                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+
+                        </div>
+
+
+                    </div>
+                    <div class="field col-12 lg:col-4 md:col-12">
+                        <label for="firstname2">Mobile no</label>
+                        <div class="p-inputgroup">
+
+                            <input formControlName="mobileNo" placeholder="Enter Mobile no" pInputText
+                              minlength="10" maxlength="10" type="mobileNo" />
+
+                        </div>
+
+
+                    </div>
+                    
+
+
+                   
+
+
+                    
+                </div>
+
+
+                <br>
+
+                <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+
+
+
+            </p-accordionTab>
+
+        </p-accordion>
+
+    </form>
+
+    <br>
+
+    <p-table  [scrollable]="true" #dt2 [value]="staff" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
@@ -9,12 +90,24 @@
 
             </div>
         </ng-template> -->
+
+
+        <ng-template pTemplate="caption">
+            <div class="flex-container">
+                <h2>List of Staff</h2>
+                <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
+                    styleClass="p-button-outlined mr-2 mb-2">
+                </p-splitButton>
+
+            </div>
+        </ng-template>
         <ng-template pTemplate="header">
             <tr>
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
                 <th>EMAIL</th>
                 <th>MOBILE NO</th>
+                <th alignFrozen="right" pFrozenColumn> ACTION</th>
 
 
 
@@ -28,6 +121,14 @@
                 <td>{{ staff.lastName }}</td>
                 <td>{{ staff.email }}</td>
                 <td>{{ staff.mobileNo }}</td>
+                <td alignFrozen="right" pFrozenColumn [style]="{'color':'#0257FF','font-weight': 'bold'}">
+
+
+                    <p-button (click)="handleClick( staff.userId ); menu.toggle($event)" icon="pi pi-ellipsis-v"
+                        styleClass="p-button-rounded p-button-text">
+
+                    </p-button>
+                </td>
 
 
 

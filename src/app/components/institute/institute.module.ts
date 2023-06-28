@@ -11,6 +11,7 @@ import { UiModule } from '../../ui/ui.module';
 import { Routes, RouterModule } from '@angular/router';
 import { AdmissionModule } from '../admission/admission.module';
 import { AddStdDivComponent } from './add-std-div/add-std-div.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
     { path: 'list', component: ListInstituteComponent },
@@ -40,6 +41,8 @@ const routes: Routes = [
         UiModule,
         RouterModule.forChild(routes),
         AdmissionModule,
+        FormsModule,
+        ReactiveFormsModule
     ],
 })
 export class InstituteModule {}

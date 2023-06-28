@@ -129,10 +129,10 @@ export class ListStudentComponent implements OnInit, OnDestroy {
         // this.messageService.showSuccess('Your file is being downloaded. Please wait...');
         const rows = [];
         const columns = [
-            'REG No',
-            'FIRST Name',
-            'LAST Name',
-            'ROLL No',
+            'REG NO',
+            'FIRST NAME',
+            'LAST NAME',
+            'ROLL NO',
             'GENDER',
             'STD',
             'DIV',

@@ -52,8 +52,8 @@
                         <label for="firstname2">Phone</label>
                         <div class="p-inputgroup">
 
-                            <input formControlName="phoneNo" placeholder="Enter Phone No" type="text" pInputText
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                            <input formControlName="phoneNo" placeholder="Enter Phone No" type="phoneNo"  pInputText
+                            minlength="10" maxlength="10" type="mobileNo" />
 
                         </div>
 
@@ -99,10 +99,21 @@
 
     </form>
     <br>
+
     <p-table [scrollable]="true" #dt2 [value]="institute" dataKey="id" [rows]="10"
         [tableStyle]="{ 'min-width': '75rem' }" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
         [paginator]="true" [lazy]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+        <ng-template pTemplate="caption">
+            <div class="flex-container">
+                <h2>List of Institute</h2>
+                <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
+                    styleClass="p-button-outlined mr-2 mb-2">
+                </p-splitButton>
+
+            </div>
+        </ng-template>
 
 
         <ng-template pTemplate="header">
