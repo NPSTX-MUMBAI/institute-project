@@ -6,7 +6,7 @@
 
 <button pButton pRipple label="+ Add Bank" (click)="navigateToAddBank()"></button>
 
-<div  *ngIf="bank" style="margin-top:8%;">
+<div *ngIf="bank" style="margin-top:8%;">
     <p-table #dt2 [value]="bank" dataKey="id" [rows]="10" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
@@ -32,11 +32,11 @@
         </ng-template>
         <ng-template pTemplate="body" let-bank>
             <tr>
-                <td>{{ bank.accountHolderName | uppercase  }}</td>
+                <td>{{ bank.accountHolderName | uppercase }}</td>
                 <td>{{ bank.accountType | uppercase }}</td>
                 <td>{{ bank.accountNo }}</td>
                 <td>{{ bank.ifsc | uppercase }}</td>
-                <td>{{ bank.bankName | uppercase  }}</td>
+                <td>{{ bank.bankName | uppercase }}</td>
                 <td>{{ bank.branch | uppercase }}</td>
                 <td style="color:#0257FF;font-weight: bold;">
 
@@ -54,13 +54,14 @@
 
     </p-table>
 
-    
+
 </div>
 
-<div  *ngIf="!bank" >
+<div *ngIf="!bank">
 
-    <div class="card"> 
-    <img src="src=../../../assets/layout/images/no-data-loader.gif">
+    <div class="card" style="display: flex;justify-content: center;align-items: center;border: none;">
+        <img src="../../../../assets/layout/images/25943-nodata (1).gif" width="100%;">
+        <!-- <img src=" src=../../../assets/layout/images/no-data-loader.gif"
+            width="500px;height:500px;margin-bottom:700px"> -->
+    </div>
 </div>
-</div>
-
