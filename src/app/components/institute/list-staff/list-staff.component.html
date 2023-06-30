@@ -14,8 +14,7 @@
                         <label for="firstname2">First name</label>
                         <div class="p-inputgroup">
 
-                            <input placeholder="Enter First name" type="text" formControlName="firstName"
-                                pInputText />
+                            <input placeholder="Enter First name" type="text" formControlName="firstName" pInputText />
 
                         </div>
 
@@ -35,7 +34,7 @@
 
 
 
-                    
+
                     <div class="field col-12 lg:col-4 md:col-12">
                         <label for="firstname2">Email</label>
                         <div class="p-inputgroup">
@@ -51,20 +50,20 @@
                         <label for="firstname2">Mobile no</label>
                         <div class="p-inputgroup">
 
-                            <input formControlName="mobileNo" placeholder="Enter Mobile no" pInputText
-                              minlength="10" maxlength="10" type="mobileNo" />
+                            <input formControlName="mobileNo" placeholder="Enter Mobile no" pInputText minlength="10"
+                                maxlength="10" type="mobileNo" />
 
                         </div>
 
 
                     </div>
-                    
 
 
-                   
 
 
-                    
+
+
+
                 </div>
 
 
@@ -82,7 +81,7 @@
 
     <br>
 
-    <p-table  [scrollable]="true" #dt2 [value]="staff" dataKey="id" [rows]="10"
+    <p-table [scrollable]="true" #dt2 [value]="staff" dataKey="id" [rows]="10"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <!-- <ng-template pTemplate="caption">
             <div class="flex-container">
@@ -140,9 +139,16 @@
 </div>
 
 <div *ngIf="!staff">
+    <div
+        style="background-color: #F4F6FF;height:600px;display: flex; justify-content: center; align-items: center;width: 100%;">
+        <div style="width:20%;border-radius:10px;box-shadow: rgba(94, 93, 102, 0.08) 1px 1px 0px 0px, rgba(94, 93, 102, 0.1) 2px 2px 3px 0px;
+       ">
 
-    <div class="card">
-        <img src="src=../../../assets/layout/images/no-data-loader.gif"
-            style="margin-left: 410px; border-radius: 5px 5px 0 0;">
+            <!-- <img src="src=../../../assets/layout/images/no-data-loader.gif"
+            style="margin-left: 410px; border-radius: 5px 5px 0 0;"> -->
+            <img src="../../../../assets/layout/images/25943-nodata (1).gif" width="100%;">
+
+        </div>
+
     </div>
 </div>
