@@ -125,7 +125,7 @@
 
                 </div>
 
-                        
+
                 <br>
 
                 <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
@@ -162,7 +162,7 @@
 
 
             <tr>
-                <th>REG ID</th>
+                <th alignFrozen="left" pFrozenColumn>REG ID</th>
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
                 <th>ROLL NO</th>
@@ -184,7 +184,8 @@
             <tr>
 
 
-                <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ students.uniqueId }}</td>
+                <td alignFrozen="left" pFrozenColumn [style]="{'color':'#01A9F1','font-weight': 'bold'}">
+                    {{ students.uniqueId }}</td>
                 <td>{{ students.firstName }}</td>
                 <td>{{ students.lastName }}</td>
                 <td>{{ students.rollNo }}</td>

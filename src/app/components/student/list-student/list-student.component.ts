@@ -111,18 +111,16 @@ export class ListStudentComponent implements OnInit, OnDestroy {
 
     async getAllStudents() {
         this.schoolId = this.stateSvc.getUserData('schoolId');
-        await this.studSvc.getStudents(this.schoolId).then((res: any) => {
-            console.log(res);
 
-            this.students = res.data;
-        });
-        // try {
-        //     const res: any = await this.studSvc.getStudents(this.schoolId);
-        //     console.log(res);
-        //     this.students = res.data;
-        // } catch (error) {
-        //     console.error(error);
-        // }
+        await this.studSvc.getStudents(this.schoolId).subscribe(
+            (students: any) => {
+                this.students = students;
+                console.log(this.students);
+            },
+            (error) => {
+                console.log('some error', error);
+            }
+        );
     }
 
     exportTableData(format: any) {
@@ -172,8 +170,6 @@ export class ListStudentComponent implements OnInit, OnDestroy {
         const file = new Blob([buffer], { type: 'application/octet-stream' });
         FileSaver.saveAs(file, fileName);
     }
-
-    
 
     filteredValues() {
         console.log(this.studentFilter.value);
