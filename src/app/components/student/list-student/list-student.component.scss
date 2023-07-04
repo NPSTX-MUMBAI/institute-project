@@ -4,6 +4,7 @@
     background-image: linear-gradient(to right,#835dea
     ,#462EA5 );
     border: none;
+    margin-left: 20px;
 
 }
 
@@ -17,4 +18,16 @@
     margin-right: auto;
     margin-left: auto;
     
+}
+
+
+ 
+
+
+
+
+.p-splitbutton.p-button-outlined > .p-button {
+    background-color: transparent;
+    color: #6366F1;
+    border-radius: 20px;
 }
