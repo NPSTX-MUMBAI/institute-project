@@ -34,6 +34,7 @@ export class PieChartComponent implements OnInit {
                     },
                 },
             },
+            height: '300px', // Set your desired height here
         };
     }
 }

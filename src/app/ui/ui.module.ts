@@ -44,6 +44,7 @@ import { GalleriaModule } from 'primeng/galleria';
 import { SplitterModule } from 'primeng/splitter';
 import { ConfirmDialogModule } from 'primeng/confirmdialog';
 import { ProgressBarModule } from 'primeng/progressbar';
+import { NgOtpInputModule } from 'ng-otp-input';
 
 const arrays = [
     CommonModule,
@@ -97,6 +98,7 @@ const arrays = [
     SplitterModule,
     ConfirmDialogModule,
     ProgressBarModule,
+    NgOtpInputModule,
 ];
 
 export const loaderConf: NgxUiLoaderConfig = {
