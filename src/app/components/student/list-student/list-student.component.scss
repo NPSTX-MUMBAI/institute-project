@@ -3,17 +3,27 @@ button {
     border-radius: 10px 20px;
     background-image: linear-gradient(to right, #835dea, #462ea5);
     border: none;
-    margin-right: 10px;
+    margin-left: 20px;
 }
 
-// .card{
-//     //margin-left: 410px;
-//     border-radius: 5px 5px 0 0;
-//     padding:0 !important;
+.card {
+    //     //margin-left: 410px;
+    //     border-radius: 5px 5px 0 0;
+    //     padding:0 !important;
 
-//     width: 15%;
-//     margin-top: 115px;
-//     margin-right: auto;
-//     margin-left: auto;
+    //     width: 15%;
+    //     margin-top: 115px;
+    //     margin-right: auto;
+    //     margin-left: auto;
 
-// }
+    width: 15%;
+    margin-top: 115px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.p-splitbutton.p-button-outlined > .p-button {
+    background-color: transparent;
+    color: #6366f1;
+    border-radius: 20px;
+}

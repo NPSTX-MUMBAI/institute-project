@@ -91,6 +91,91 @@
     <p-accordionTab header="Charge Details">
         <p-button (click)="show()" icon="pi pi-plus-circle" label="Add charge"></p-button>
 
+<!-- <p-table [scrollable]="true" #dt2  dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+[rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+[globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }" >
+
+
+<ng-template pTemplate="header">
+
+
+
+
+    <tr>
+        <th>CHARGE NAME</th>
+        <th>RATE</th>
+        <th>DESCRIPTION</th>
+        <th>shivani</th>
+    </tr>
+
+
+</ng-template>
+<ng-template pTemplate="body" let-collection>
+    <tr *ngFor="let value of collection">
+
+
+        <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ collection.uniqueId }}</td>
+        <td>{{ collection.chargename }}</td>
+        <td>{{ collection.rate}}</td>
+        <td>{{ collection.description }}</td>
+        
+
+    </ng-template>
+
+        
+</p-table> -->
+<!-- <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
+         
+  <ng-template pTemplate="header">
+    <tr>
+      <th>CHARGE NAME</th>
+      <th>RATE</th>
+      <th>DESCRIPTION</th>
+    </tr>
+  </ng-template>
+  
+  <ng-template pTemplate="body" let-value>
+    <tr *ngFor="let collection of value">
+      <td [style]="{'color':'red','font-weight': 'bold'}">{{ collection.uniqueId }}</td>
+      <td>{{ collection.chargeName }}</td>
+      <td>{{ collection.rate }}</td>
+      <td>{{ collection.description }}</td>
+    </tr>
+  </ng-template>
+        
+</p-table> -->
+<p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="uniqueId" [rows]="10" [showCurrentPageReport]="true"
+         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+         [globalFilterFields]="['chargename', 'rate', 'description']" [style]="{ 'min-width': '50rem' }">
+         
+  <ng-template pTemplate="header">
+    <tr>
+      <th>CHARGE NAME</th>
+      <th>RATE</th>
+      <th>DESCRIPTION</th>
+    </tr>
+  </ng-template>
+  
+  <ng-template pTemplate="body" let-value>
+    <tr>
+      <!-- <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ value.uniqueId }}</td> -->
+      <td>{{ value.chargeName }}</td>
+      <td>{{ value.rate }}</td>
+      <td>{{ value.description }}</td>
+    </tr>
+  </ng-template>
+        
+</p-table>
+
+
+
+  
+
 
     </p-accordionTab>
 

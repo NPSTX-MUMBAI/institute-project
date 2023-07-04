@@ -39,9 +39,17 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
             invoiceDate: ['', Validators.required],
             dueDate: ['', Validators.required],
         });
+        const storedData = localStorage.getItem('myChargeData');
+        if (storedData) {
+          this.myCharge = JSON.parse(storedData);
+        } else {
+          this.myCharge = []; // Initialize the array if no data is found
+        }
+      
     }
 
     submit() {
+        
         console.log(this.collection.value);
     }
     chargeItems = [{ name: 'test group' }];
@@ -62,7 +70,7 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
     show() {
         this.ref = this.dialogService.open(AddChargeComponent, {
             header: 'Add a charge',
-            width: '70%',
+           // width: '40%',
             contentStyle: { overflow: 'auto' },
             baseZIndex: 10000,
             maximizable: true,
@@ -73,15 +81,32 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
                 console.log(charge);
 
                 this.myCharge.push(charge);
+               // console.log(this.myCharge,"shivaniiiiiiiiiiiiiii");
+                localStorage.setItem('myChargeData', JSON.stringify(this.myCharge)); 
+
                 this.messageService.add({
                     severity: 'info',
                     summary: 'Product Selected',
                     detail: charge.name,
                 });
             }
+          
+
+           // this.myCharge= [
+                //{ column1: 'Value 1' , column2: 'Value 2' },
+                //{ column1: 'Value 3', column2: 'Value 4' },
+                // Add more data rows here
+              //];
+
+        
+              
             console.log(this.myCharge);
+        
+           
+
         });
 
+    
         this.ref.onMaximize.subscribe((value) => {
             this.messageService.add({
                 severity: 'info',

@@ -2016,6 +2016,7 @@ p-treeselect.p-treeselect-clearable .p-treeselect-clear-icon {
   color: #ffffff;
   background: #64748B;
   border: 1px solid #64748B;
+  border-radius: 10px 20px; /*download split button*/ 
 }
 .p-button.p-button-secondary:enabled:hover, .p-buttonset.p-button-secondary > .p-button:enabled:hover, .p-splitbutton.p-button-secondary > .p-button:enabled:hover {
   background: #475569;

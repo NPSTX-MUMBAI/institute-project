@@ -5,6 +5,7 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+
 import { DynamicDialogRef } from 'primeng/dynamicdialog';
 @Component({
     selector: 'app-add-charge',
@@ -18,9 +19,9 @@ export class AddChargeComponent implements OnInit {
 
     ngOnInit(): void {
         this.addCharge = this.fb.group({
-            chargeName: [''],
-            description: [''],
-            rate: [''],
+            chargeName: ['', Validators.required],
+            description: ['', Validators.required],
+            rate: ['', Validators.required],
         });
     }
 

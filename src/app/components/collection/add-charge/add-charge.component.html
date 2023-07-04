@@ -2,12 +2,23 @@
 
 
     <div class="formgrid grid">
-        <div class="field col-12 lg:col-4 md:col-12">
+        <div class="field col-12 lg:col-6 md:col-12">
             <label for="firstname2">Charge Name</label>
-            <div class="p-inputgroup">
+            <div style="display: flex;flex-direction: column;">
+                <div class="p-inputgroup">
+                    <input placeholder="Enter charge name" type="text" formControlName="chargeName" pInputText />
 
-                <input placeholder="Enter charge name" type="text" formControlName="chargeName" pInputText />
-
+                </div>
+                <div *ngIf="addCharge.controls['chargeName'].touched && addCharge.controls['chargeName'].errors">
+                    <div *ngIf="addCharge.controls['chargeName'].hasError('required')"
+                        style="color: red;text-align: left;margin-top: 6px;">
+                        Enter Charge Name
+                    </div>
+                    <div *ngIf="addCharge.controls['chargeName'].hasError('pattern')"
+                        style="color: red;text-align: left;margin-top: 6px;">
+                        Enter a valid Institute name!
+                    </div>
+                </div>
             </div>
 
 
@@ -16,40 +27,57 @@
 
 
 
-        <div class="field col-12 lg:col-4 md:col-12">
+        <div class="field col-12 lg:col-6 md:col-12 ">
             <label for="firstname2">Rate</label>
-            <div class="p-inputgroup">
+            <div></div>
+            <div style="display: flex;flex-direction: column;">
+                <div class="p-inputgroup">
+                    <input formControlName="rate" placeholder="Enter Rate" type="text" pInputText
+                        oninput="this.value = this.value.replace(/[^0-9]/g, '')" />
+                </div>
 
-                <input formControlName="rate" placeholder="Enter Rate" type="text" pInputText
-                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                <div *ngIf="addCharge.controls['rate'].touched && addCharge.controls['rate'].errors">
+                    <div *ngIf="addCharge.controls['rate'].hasError('required') "
+                        style="color: red;text-align:left;margin-top: 6px;">
+                        Enter Rate
+                    </div>
+                    <div *ngIf="addCharge.controls['rate'].hasError('pattern')"
+                        style="color: red;text-align: left;margin-top: 6px;">
+                        Enter a valid Institute name!
+                    </div>
+                </div>
+
 
             </div>
 
 
         </div>
-        <div class="field col-12 lg:col-4 md:col-12 ">
-            <label for="firstname2">Description</label>
-
-            <div class="p-inputgroup">
 
 
-                <textarea rows="5" cols="30" formControlName="description" placeholder="Enter description" type="text"
-                    pInputTextarea></textarea>
-
-            </div>
-
-
-        </div>
 
 
 
     </div>
 
 
+    <div class="field col-12 lg:col-12 md:col-12 ">
+
+        <label for="firstname2">Description</label>
+
+        <div class="p-inputgroup">
+
+
+            <textarea rows="5" cols="40" formControlName="description" placeholder="Enter description" type="text"
+                pInputTextarea style="border-radius: 7px;text-align: center;"></textarea>
+
+        </div>
+
+
+    </div>
+
     <br>
 
     <p-button [style]="{'margin-left':'12px'}" [label]="'SAVE'" (click)="save()"></p-button>
-
 
 
 
