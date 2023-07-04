@@ -6,16 +6,11 @@
         (onUpload)="onUpload($event); notification()" [multiple]="false" accept=".xls,.xlsx,.csv"
         [maxFileSize]="1000000" (onSelect)="onSelect($event)">
 
-
         <ng-template pTemplate="toolbar">
             <p-button (click)="showPopup()" icon="pi pi-info-circle" styleClass="p-button-link"></p-button>
             <p-button [disabled]=visible (click)="showDialog()" icon="pi pi-eye" styleClass="p-button-link"></p-button>
 
         </ng-template>
-
-
-
-
         <ng-template pTemplate="content">
             <ul *ngIf="uploadedFiles.length">
                 <li *ngFor="let file of uploadedFiles">{{ file.name }} - {{ file.size }} bytes</li>
@@ -46,8 +41,6 @@
                 <th>PHONE</th>
 
             </tr>
-
-
         </ng-template>
         <ng-template pTemplate="body" let-students>
             <tr>

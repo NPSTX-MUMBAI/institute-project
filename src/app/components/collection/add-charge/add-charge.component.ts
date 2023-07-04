@@ -25,6 +25,8 @@ export class AddChargeComponent implements OnInit {
     }
 
     save() {
+        console.log(this.addCharge.value, 'shivaniiiiiiiiiiii');
+
         this.selectCharge(this.addCharge.value);
     }
 
