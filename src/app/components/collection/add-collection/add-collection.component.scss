@@ -9,3 +9,26 @@ p-checkbox {
     margin-left: 20px;
     padding-bottom: 6px;
 }
+
+/*button{
+    border-radius: 10px 20px;
+    background-image: linear-gradient(to right, #835dea, #462ea5);
+    border: none;
+    margin-left: 20px;
+}*/
+
+// :host::ng-deep .addCharge{
+//     background-color: red;
+
+// }
+
+:host::ng-deep .p-button {
+    color: #ffffff;
+    background-image: linear-gradient(to right, #835dea, #462ea5);
+
+    padding: 0.75rem 1.25rem;
+    font-size: 1rem;
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s,
+        box-shadow 0.2s;
+    border-radius: 10px 20px;
+}

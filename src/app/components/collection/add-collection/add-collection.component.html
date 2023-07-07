@@ -43,8 +43,8 @@
                         <div class="field col-12 md:col-4">
                             <label htmlFor="state">Frequency (in months)</label>
                             <p-dropdown [options]="frequencyMonth" optionLabel="name"
-                                placeholder="Please select applicable frequency in month"
-                                formControlName="freq"></p-dropdown>
+                                placeholder="Please select applicable frequency in month" formControlName="freq">
+                            </p-dropdown>
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Start Date </label>
@@ -61,8 +61,8 @@
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Raising Day <span class="text-red-600"> *</span></label>
                             <p-calendar inputId="calendar" (onSelect)="dateFormat($event)" dateFormat="yy-mm-dd"
-                                placeholder="Please select applicable date of month"
-                                formControlName="raisingDate"></p-calendar>
+                                placeholder="Please select applicable date of month" formControlName="raisingDate">
+                            </p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
@@ -94,7 +94,9 @@
     </p-accordionTab>
 
     <p-accordionTab header="Charge Details">
-        <p-button (click)="show()" icon="pi pi-plus-circle" label="Add charge"></p-button>
+        <p-button class="addCharge" (click)="show()" icon="pi pi-plus-circle" label="Add charge" style="float: right; ">
+        </p-button>
+        <br> <br>
 
         <!-- <p-table [scrollable]="true" #dt2  dataKey="id" [rows]="10" [showCurrentPageReport]="true"
 [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
@@ -124,17 +126,17 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         <td>{{ collection.chargename }}</td>
         <td>{{ collection.rate}}</td>
         <td>{{ collection.description }}</td>
-        
+
 
     </ng-template>
 
-        
+
 </p-table> -->
         <!-- <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
          [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
-         
+
   <ng-template pTemplate="header">
     <tr>
       <th>CHARGE NAME</th>
@@ -142,7 +144,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       <th>DESCRIPTION</th>
     </tr>
   </ng-template>
-  
+
   <ng-template pTemplate="body" let-value>
     <tr *ngFor="let collection of value">
       <td [style]="{'color':'red','font-weight': 'bold'}">{{ collection.uniqueId }}</td>
@@ -151,7 +153,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
       <td>{{ collection.description }}</td>
     </tr>
   </ng-template>
-        
+
 </p-table> -->
         <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="uniqueId" [rows]="10"
             [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
