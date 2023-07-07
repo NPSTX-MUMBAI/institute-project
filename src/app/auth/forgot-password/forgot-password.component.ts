@@ -135,8 +135,10 @@ export class ForgotPasswordComponent implements OnInit {
         }
     }
     async sendOtp() {
-        console.log(this.otp, 'sivaniiiiiiiiiiii');
+        console.log(this.otp, 'shivaniiiiiiiiiiii');
+        // this.resetPassword = false;
         this.enteredOTP = this.otp;
+        // this.resetPassword2 = true;
 
         this.OTP = this.otp;
         let data = {
@@ -153,8 +155,8 @@ export class ForgotPasswordComponent implements OnInit {
                     severity: 'success',
                     detail: 'Otp verified',
                 });
-                this.resetPassword = false;
                 this.resetPassword2 = true;
+                this.resetPassword = false;
             } else {
                 this.otpFilled = false;
                 this.msg.add({
@@ -162,7 +164,7 @@ export class ForgotPasswordComponent implements OnInit {
                     summary: 'error',
                     detail: 'Invalid Otp',
                 });
-
+                this.resetPassword2 = false;
                 // this.loading = false;
             }
 
@@ -176,7 +178,7 @@ export class ForgotPasswordComponent implements OnInit {
             console.error(error);
         }
     }
-    sendPassword() {
+    async sendPassword() {
         let newPassword = this.resetPasswordform.controls['password'].value;
         let confirmPassword =
             this.resetPasswordform.controls['confirmPassword'].value;
@@ -186,9 +188,41 @@ export class ForgotPasswordComponent implements OnInit {
         console.log(this.resetPasswordform.value);
         if (newPassword === confirmPassword) {
             console.log('Password Reset');
+            //new fn from service
+            try {
+                const data = {
+                    mobileNo: this.resetForm.value.phone,
+
+                    password: confirmPassword, // Use the user-entered mobile number here
+                };
+                console.log(data, '_____________________');
+
+                const res: any = await this.otpSvc.resetPassword(data);
+                if (res.status) {
+                    this.msg.add({
+                        severity: 'success',
+                        detail: 'password reset sucessfully ',
+                    });
+                }
+            } catch (error) {
+                this.msg.add({
+                    severity: 'warn',
+                    summary: 'Error',
+                    detail: 'Something went wrong while resending OTP',
+                });
+                console.error(error);
+            }
         } else {
-            console.log('Please try again');
+            this.msg.add({
+                severity: 'warn',
+                summary: 'Error',
+                detail: 'password n confirm password not matched',
+            });
         }
+        //  else {
+        //     console.log('Please try again');
+        //     //notify msg to show not match
+        // }
     }
 
     public configOptions = {

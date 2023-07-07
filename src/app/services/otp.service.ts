@@ -49,4 +49,25 @@ export class OtpService {
             );
         });
     }
+
+    resetPassword(data: any) {
+        console.log(data);
+        return new Promise((resolve, reject) => {
+            this.http
+                .post(environment.url + '/auth/update/password', data)
+                .subscribe(
+                    (res: any) => {
+                        console.log(res);
+                        if (res.status) {
+                            resolve(res);
+                        } else {
+                            resolve(res);
+                        }
+                    },
+                    (error) => {
+                        reject(error);
+                    }
+                );
+        });
+    }
 }
