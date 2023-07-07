@@ -1,4 +1,11 @@
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import {
+    Component,
+    OnDestroy,
+    OnInit,
+    Output,
+    EventEmitter,
+    Input,
+} from '@angular/core';
 import { Router } from '@angular/router';
 import { Observable, Subscription, from } from 'rxjs';
 import { StateService } from 'src/app/services/state.service';
@@ -11,9 +18,11 @@ import {
     FormGroup,
     Validators,
 } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
 
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+
 @Component({
     selector: 'app-list-student',
     templateUrl: './list-student.component.html',
@@ -21,20 +30,26 @@ import * as XLSX from 'xlsx';
     providers: [ConfirmationService, DialogService],
 })
 export class ListStudentComponent implements OnInit, OnDestroy {
+    @Output() onSelectedStudent: EventEmitter<any> = new EventEmitter();
     students: any = [];
+    selectedStudents: any[] = [];
+    @Input() showButton = true;
     schoolId: any;
     items: any;
     studentFilter!: FormGroup;
     saveOptions!: any[];
+    showButtons: boolean = false;
 
     selectedSchool: any;
     private dataSubscription!: Subscription;
+    isOutOfStock: any;
 
     constructor(
         private router: Router,
         private studSvc: StudentService,
         private stateSvc: StateService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private route: ActivatedRoute
     ) {}
     ngOnInit(): void {
         this.saveOptions = [
@@ -87,6 +102,15 @@ export class ListStudentComponent implements OnInit, OnDestroy {
     }
     ngOnDestroy() {
         this.dataSubscription.unsubscribe();
+    }
+
+    isSelected(student: any): boolean {
+        return (
+            this.selectedStudents &&
+            this.selectedStudents.some(
+                (selectedStudent) => selectedStudent.id === student.id
+            )
+        );
     }
 
     handleClick(id: any) {
@@ -181,5 +205,55 @@ export class ListStudentComponent implements OnInit, OnDestroy {
 
     bulkUpload() {
         this.router.navigate(['/main/student/bulkUpload']);
+    }
+
+    // onSelectAllChange(event: any): void {
+    //     console.log(event);
+
+    //     const isChecked = event.target.checked;
+    //     console.log(isChecked);
+
+    //     if (isChecked) {
+    //         // "select all" checkbox was checked
+
+    //         console.log('All checkboxes are checked');
+    //     } else {
+    //         // "select all" checkbox was unchecked
+
+    //         console.log('All checkboxes are unchecked');
+    //     }
+
+    //     // if (event.checked) {
+
+    //     //   this.showSendBtn = true;
+
+    //     //   this.customers = this.selectedCustomers.slice();
+
+    //     // } else {
+
+    //     //   this.showSendBtn = false;
+
+    //     //   this.customers = [];
+
+    //     // }
+    // }
+    onSelectAllChange(event: any) {
+        const selectedCount = this.selectedStudents.length;
+        const totalCount = this.students.length;
+
+        if (selectedCount === totalCount) {
+            console.log('Select All checkbox selected');
+        } else {
+            console.log('Select All checkbox not matched');
+        }
+    }
+
+    onCheckboxClick(students: any) {
+        // console.log('Checkbox clicked for customer with id:', students.userId);
+        console.log('Checkbox clicked:', students, 'shivaniiiiiiiiiiiiiiii');
+
+        console.log(this.selectedStudents);
+
+        this.onSelectedStudent.emit(this.selectedStudents);
     }
 }

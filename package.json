@@ -27,6 +27,7 @@
         "jspdf": "^2.5.1",
         "jspdf-autotable": "^3.5.29",
         "jwt-decode": "^3.1.2",
+        "moment": "^2.29.4",
         "ng-otp-input": "^1.9.2",
         "ngx-ui-loader": "^13.0.0",
         "primeflex": "^3.2.1",

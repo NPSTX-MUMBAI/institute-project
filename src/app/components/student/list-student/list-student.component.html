@@ -1,5 +1,5 @@
-<button pButton pRipple label="+ Add Student" (click)="addStudent()"></button>
-<button pButton pRipple label="Bulk Upload" (click)="bulkUpload()" ></button>
+<button *ngIf="showButton" pButton pRipple label="+ Add Student" (click)="addStudent()"></button>
+<button *ngIf="showButton" pButton pRipple label="Bulk Upload" (click)="bulkUpload()"></button>
 
 
 
@@ -139,8 +139,8 @@
     </form>
 
     <br>
-    <p-table [scrollable]="true" #dt2 [value]="students" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
-        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+    <p-table [scrollable]="true" #dt2 [value]="students" [(selection)]="selectedStudents" dataKey="uniqueId" [rows]="10"
+        [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
         [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
         <ng-template pTemplate="caption">
@@ -155,14 +155,16 @@
         </ng-template>
 
 
-
-
         <ng-template pTemplate="header">
 
 
 
 
             <tr>
+                <th>
+                    <p-tableHeaderCheckbox [disabled]="!students || students.length === 0"
+                        (click)="onSelectAllChange($event)"></p-tableHeaderCheckbox>
+                </th>
                 <th alignFrozen="left" pFrozenColumn>REG ID</th>
                 <th>FIRST NAME</th>
                 <th>LAST NAME</th>
@@ -184,7 +186,10 @@
         <ng-template pTemplate="body" let-students>
             <tr>
 
-
+                <td>
+                    <p-tableCheckbox checked="isSelected(students)" (click)="onCheckboxClick(students)"
+                        [value]="students"></p-tableCheckbox>
+                </td>
                 <td alignFrozen="left" pFrozenColumn [style]="{'color':'#01A9F1','font-weight': 'bold'}">
                     {{ students.uniqueId }}</td>
                 <td>{{ students.firstName }}</td>

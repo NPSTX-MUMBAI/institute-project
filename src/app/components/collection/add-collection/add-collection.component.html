@@ -27,18 +27,18 @@
                         <div class="field col-12 md:col-4">
                             <label htmlFor="state">Charge Group <span class="text-red-600"> *</span></label>
                             <p-dropdown [options]="chargeItems" optionLabel="name"
-                                placeholder="Please select Charge group" formControlName="chargeGroups"></p-dropdown>
+                                placeholder="Please select Charge group" formControlName="chargeGp"></p-dropdown>
                         </div>
 
                         <div class="field col-12 md:col-4">
                             <label htmlFor="state">Raise Source <span class="text-red-600"> *</span></label>
-                            <p-dropdown [options]="rasieSource" optionLabel="name" formControlName="sources"
+                            <p-dropdown [options]="rasieSource" optionLabel="name" formControlName="Channels"
                                 placeholder="Select Source"></p-dropdown>
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="state">Select VPA Id <span class="text-red-600"> *</span></label>
                             <p-dropdown [options]="vpaId" optionLabel="name"
-                                placeholder="Please select source of collection" formControlName="vpa"></p-dropdown>
+                                placeholder="Please select source of collection" formControlName="Vpa"></p-dropdown>
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="state">Frequency (in months)</label>
@@ -48,38 +48,43 @@
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Start Date </label>
-                            <p-calendar inputId="calendar" placeholder="Select Date"
-                                formControlName="startDate"></p-calendar>
+                            <p-calendar inputId="calendar" (onSelect)="startDateFormat($event)" dateFormat="yy-mm-dd"
+                                placeholder="Select Date" formControlName="startDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">End Date </label>
-                            <p-calendar inputId="calendar" placeholder="End Date"
-                                formControlName="endDate"></p-calendar>
+                            <p-calendar inputId="calendar" (onSelect)="EnddateFormat($event)" dateFormat="yy-mm-dd"
+                                placeholder="End Date" formControlName="endDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Raising Day <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar" placeholder="Please select applicable date of month"
-                                formControlName="notificationDate"></p-calendar>
+                            <p-calendar inputId="calendar" (onSelect)="dateFormat($event)" dateFormat="yy-mm-dd"
+                                placeholder="Please select applicable date of month"
+                                formControlName="raisingDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Invoice Date <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar" placeholder="Select Date"
-                                formControlName="invoiceDate"></p-calendar>
+                            <p-calendar inputId="calendar" (onSelect)="invoiceDateformat($event)" dateFormat="yy-mm-dd"
+                                placeholder="Select Date" formControlName="invoiceDate"></p-calendar>
 
                         </div>
                         <div class="field col-12 md:col-4">
                             <label htmlFor="dob">Due Date <span class="text-red-600"> *</span></label>
-                            <p-calendar inputId="calendar" placeholder="Select Date"
-                                formControlName="dueDate"></p-calendar>
+                            <p-calendar inputId="calendar" placeholder="Select Date" (onSelect)="dueDateformat($event)"
+                                dateFormat="yy-mm-dd" formControlName="dueDate"></p-calendar>
+
+                        </div>
+                        <div class="field col-12 md:col-4" style="margin-top: 30px; font-size: 15px;">
+                            <label style="margin-left:5%;">Recurring </label>
+                            <p-checkbox (onChange)=doSomething() formControlName="autoRaising" value="true"
+                                inputId=" ny"></p-checkbox>
 
                         </div>
 
                     </div>
-                    <button pButton pRipple label="Submit" (click)="submit()"></button>
-
 
                 </form>
 
@@ -91,7 +96,7 @@
     <p-accordionTab header="Charge Details">
         <p-button (click)="show()" icon="pi pi-plus-circle" label="Add charge"></p-button>
 
-<!-- <p-table [scrollable]="true" #dt2  dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        <!-- <p-table [scrollable]="true" #dt2  dataKey="id" [rows]="10" [showCurrentPageReport]="true"
 [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
 currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }" >
@@ -125,7 +130,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
 
         
 </p-table> -->
-<!-- <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
+        <!-- <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="id" [rows]="10" [showCurrentPageReport]="true"
          [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
          [globalFilterFields]="['name', 'plan', 'balance', 'adjustments']" [tableStyle]="{ 'min-width': '75rem' }">
@@ -148,40 +153,34 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
   </ng-template>
         
 </p-table> -->
-<p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="uniqueId" [rows]="10" [showCurrentPageReport]="true"
-         [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
-         currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
-         [globalFilterFields]="['chargename', 'rate', 'description']" [style]="{ 'min-width': '50rem' }">
-         
-  <ng-template pTemplate="header">
-    <tr>
-      <th>CHARGE NAME</th>
-      <th>RATE</th>
-      <th>DESCRIPTION</th>
-    </tr>
-  </ng-template>
-  
-  <ng-template pTemplate="body" let-value>
-    <tr>
-      <!-- <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ value.uniqueId }}</td> -->
-      <td>{{ value.chargeName }}</td>
-      <td>{{ value.rate }}</td>
-      <td>{{ value.description }}</td>
-    </tr>
-  </ng-template>
-        
-</p-table>
+        <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="uniqueId" [rows]="10"
+            [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+            [globalFilterFields]="['chargename', 'rate', 'description']" [style]="{ 'min-width': '50rem' }">
 
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>CHARGE NAME</th>
+                    <th>RATE</th>
+                    <th>DESCRIPTION</th>
+                </tr>
+            </ng-template>
 
+            <ng-template pTemplate="body" let-value>
+                <tr>
+                    <!-- <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ value.uniqueId }}</td> -->
+                    <td>{{ value.chargeName }}</td>
+                    <td>{{ value.rate }}</td>
+                    <td>{{ value.description }}</td>
+                </tr>
+            </ng-template>
 
-  
-
+        </p-table>
 
     </p-accordionTab>
-
-
-
     <p-accordionTab header="Applicable On">
-        <app-list-student></app-list-student>
+        <app-list-student [showButton]="false" (onSelectedStudent)="onSelectedStudent2($event)"></app-list-student>
 
     </p-accordionTab>
+</p-accordion>
+<button pButton pRipple label="Submit" (click)="submit()"></button>
