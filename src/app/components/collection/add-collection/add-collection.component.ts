@@ -82,7 +82,7 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
 
                 this.myCharge.push(charge);
                // console.log(this.myCharge,"shivaniiiiiiiiiiiiiii");
-                localStorage.setItem('myChargeData', JSON.stringify(this.myCharge)); 
+               // localStorage.setItem('myChargeData', JSON.stringify(this.myCharge)); 
 
                 this.messageService.add({
                     severity: 'info',

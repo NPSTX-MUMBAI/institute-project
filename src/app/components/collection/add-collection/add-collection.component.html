@@ -89,7 +89,8 @@
     </p-accordionTab>
 
     <p-accordionTab header="Charge Details">
-        <p-button (click)="show()" icon="pi pi-plus-circle" label="Add charge"></p-button>
+        <p-button class="addCharge" (click)="show()" icon="pi pi-plus-circle" label="Add charge" style="float: right; "></p-button>
+        <br> <br>
 
 <!-- <p-table [scrollable]="true" #dt2  dataKey="id" [rows]="10" [showCurrentPageReport]="true"
 [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
@@ -148,6 +149,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
   </ng-template>
         
 </p-table> -->
+<br> <br>
 <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="uniqueId" [rows]="10" [showCurrentPageReport]="true"
          [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
          currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
