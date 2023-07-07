@@ -161,7 +161,7 @@
 
 
             <tr>
-                <th>
+                <th alignFrozen="left" pFrozenColumn>
                     <p-tableHeaderCheckbox [disabled]="!students || students.length === 0"
                         (click)="onSelectAllChange($event)"></p-tableHeaderCheckbox>
                 </th>
@@ -186,7 +186,7 @@
         <ng-template pTemplate="body" let-students>
             <tr>
 
-                <td>
+                <td alignFrozen="left" pFrozenColumn>
                     <p-tableCheckbox checked="isSelected(students)" (click)="onCheckboxClick(students)"
                         [value]="students"></p-tableCheckbox>
                 </td>

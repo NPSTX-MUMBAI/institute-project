@@ -135,10 +135,8 @@ export class ForgotPasswordComponent implements OnInit {
         }
     }
     async sendOtp() {
-        console.log(this.otp, 'shivaniiiiiiiiiiii');
-        this.resetPassword = false;
+        console.log(this.otp, 'sivaniiiiiiiiiiii');
         this.enteredOTP = this.otp;
-        this.resetPassword2 = true;
 
         this.OTP = this.otp;
         let data = {
@@ -155,6 +153,8 @@ export class ForgotPasswordComponent implements OnInit {
                     severity: 'success',
                     detail: 'Otp verified',
                 });
+                this.resetPassword = false;
+                this.resetPassword2 = true;
             } else {
                 this.otpFilled = false;
                 this.msg.add({
