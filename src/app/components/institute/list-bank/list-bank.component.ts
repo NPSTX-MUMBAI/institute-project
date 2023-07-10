@@ -5,7 +5,7 @@ import { BankService } from '../../../services/bank.service';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
-import { FormGroup,FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
@@ -21,9 +21,8 @@ export class ListBankComponent implements OnInit, OnDestroy {
     items!: MenuItem[];
     schoolId: any;
     private dataSubscription!: Subscription;
-    bankFilter!:FormGroup;
+    bankFilter!: FormGroup;
     saveOptions!: any[];
-
 
     constructor(
         private router: Router,
@@ -42,34 +41,32 @@ export class ListBankComponent implements OnInit, OnDestroy {
                 this.updateBankList();
             });
 
+        this.saveOptions = [
+            {
+                label: 'Download as Excel',
+                icon: 'pi pi-file-excel',
 
-            this.saveOptions = [
-                {
-                    label: 'Download as Excel',
-                    icon: 'pi pi-file-excel',
-    
-                    command: () => {
-                        this.exportTableData('xlsx');
-                    },
+                command: () => {
+                    this.exportTableData('xlsx');
                 },
-                {
-                    label: 'Download as CSV',
-                    icon: 'pi pi-file',
-                    command: () => {
-                        this.exportTableData('csv');
-                    },
+            },
+            {
+                label: 'Download as CSV',
+                icon: 'pi pi-file',
+                command: () => {
+                    this.exportTableData('csv');
                 },
-            ];
+            },
+        ];
 
-            this.bankFilter = this.fb.group({
-                accountname: [''],
-                accounttype: [''],
-                accountno: [''],
-                ifsccode: [''],
-                bankname: [''],
-                branchname: [''],
-                
-            });
+        this.bankFilter = this.fb.group({
+            accountname: [''],
+            accounttype: [''],
+            accountno: [''],
+            ifsccode: [''],
+            bankname: [''],
+            branchname: [''],
+        });
     }
     ngOnDestroy() {
         this.dataSubscription.unsubscribe();
@@ -109,7 +106,6 @@ export class ListBankComponent implements OnInit, OnDestroy {
         ];
     }
 
-
     exportTableData(format: any) {
         // this.messageService.showSuccess('Your file is being downloaded. Please wait...');
         const rows = [];
@@ -121,8 +117,6 @@ export class ListBankComponent implements OnInit, OnDestroy {
             'BANK NAME',
             'BRANCH NAME',
             'ACTION',
-            
-           
         ];
         rows.push(columns);
         for (const bank of this.bank) {
@@ -133,8 +127,6 @@ export class ListBankComponent implements OnInit, OnDestroy {
                 bank.ifsccode,
                 bank.bankname,
                 bank.branchname,
-               
-               
             ]);
         }
         const workbook = XLSX.utils.book_new();

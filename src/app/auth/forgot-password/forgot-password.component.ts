@@ -213,6 +213,8 @@ export class ForgotPasswordComponent implements OnInit {
                 console.error(error);
             }
         } else {
+            this.resetPassword = false;
+
             this.msg.add({
                 severity: 'warn',
                 summary: 'Error',
