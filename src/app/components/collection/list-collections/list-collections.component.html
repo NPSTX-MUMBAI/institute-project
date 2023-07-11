@@ -1,2 +1,88 @@
-
 <button pButton pRipple label="+ Create Collection" (click)="addCollection()" style="float: right;"></button>
+
+<form style="margin-top:8%;" [formGroup]=" collection">
+    <p-accordion [activeIndex]="1">
+        <p-accordionTab header="Apply Filter">
+
+            <div class="formgrid grid">
+                <div class="field col-12 lg:col-4 md:col-12">
+                    <label for="firstname2">Collection Name</label>
+                    <div class="p-inputgroup">
+
+                        <input placeholder="Enter collection name" type="text" pInputText formControlName="name" />
+
+                    </div>
+
+
+                </div>
+
+                <div class="field col-12 lg:col-4 md:col-12 ">
+                    <label for="firstname2">Raising Day</label>
+
+                    <div class="p-inputgroup">
+                        <input placeholder="Enter raising day" type="text" pInputText formControlName="raisingDay" />
+                    </div>
+
+
+                </div>
+
+                <div class="field col-12 lg:col-4 md:col-12">
+                    <label for="firstname2">Frequency</label>
+                    <div class="p-inputgroup">
+
+                        <input placeholder="Enter frequency" type="text" pInputText formControlName="frequency" />
+
+                    </div>
+
+
+                </div>
+
+
+
+            </div>
+
+
+            <br>
+
+            <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="submit()"></p-button>
+
+
+
+        </p-accordionTab>
+
+    </p-accordion>
+
+</form>
+
+<div style="margin-top:3%;">
+    <p-table [scrollable]="true" #dt2 [value]="data" dataKey="uniqueId" [rows]="10" [showCurrentPageReport]="true"
+        [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
+        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
+        [globalFilterFields]="['chargename', 'rate', 'description']" [style]="{ 'min-width': '50rem' }">
+
+        <ng-template pTemplate="header">
+            <tr>
+                <th>NAME</th>
+                <th>DESCRIPTION</th>
+                <th>RAISING DAY</th>
+                <th>FREQUENCY(MONTHS)</th>
+                <th>SOURCES</th>
+                <th>ACTION</th>
+            </tr>
+        </ng-template>
+
+        <ng-template pTemplate="body" let-value>
+            <tr>
+                <!-- <td [style]="{'color':'#01A9F1','font-weight': 'bold'}">{{ value.uniqueId }}</td> -->
+                <td>{{ value.NAME }}</td>
+                <td>{{ value.DESCRIPTION }}</td>
+                <td>{{ value.RAISINGDAY }}</td>
+                <td>{{value.FREQUENCY}}</td>
+                <td>{{value.SOURCES}}</td>
+                <td>{{value.ACTION}}</td>
+
+            </tr>
+        </ng-template>
+
+    </p-table>
+</div>

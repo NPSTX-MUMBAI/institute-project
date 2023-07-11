@@ -3,12 +3,11 @@ import { Router } from '@angular/router';
 import { AuthService } from '../../../services/auth.service';
 import { StateService } from '../../../services/state.service';
 import { Subscription } from 'rxjs';
-import { FormGroup,FormBuilder } from '@angular/forms';
+import { FormGroup, FormBuilder } from '@angular/forms';
 import { ConfirmationService, MenuItem } from 'primeng/api';
 
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
-
 
 @Component({
     selector: 'app-list-staff',
@@ -19,16 +18,15 @@ export class ListStaffComponent implements OnInit, OnDestroy {
     staff: any = [];
     schoolId: any;
     private dataSubscription!: Subscription;
-    staffFilter!:FormGroup;
+    staffFilter!: FormGroup;
     saveOptions!: any[];
     items!: MenuItem[];
-
 
     constructor(
         private router: Router,
         private authSvc: AuthService,
         private stateSvc: StateService,
-        private fb: FormBuilder,
+        private fb: FormBuilder
     ) {}
 
     // ngOnInit(): void {
@@ -54,9 +52,6 @@ export class ListStaffComponent implements OnInit, OnDestroy {
         // Fetch initial bank and staff lists
         this.getAllStaff();
 
-
-
-
         this.saveOptions = [
             {
                 label: 'Download as Excel',
@@ -75,14 +70,11 @@ export class ListStaffComponent implements OnInit, OnDestroy {
             },
         ];
 
-
         this.staffFilter = this.fb.group({
-           
             firstName: [''],
             lastName: [''],
             email: [''],
             mobileNo: [''],
-           
         });
     }
     ngOnDestroy() {
@@ -118,8 +110,6 @@ export class ListStaffComponent implements OnInit, OnDestroy {
         this.router.navigate(['/main/institute/staff/add']);
     }
 
-
-
     handleClick(Id: any) {
         console.log(event);
 
@@ -139,7 +129,6 @@ export class ListStaffComponent implements OnInit, OnDestroy {
         ];
     }
 
-
     exportTableData(format: any) {
         // this.messageService.showSuccess('Your file is being downloaded. Please wait...');
         const rows = [];
@@ -149,9 +138,6 @@ export class ListStaffComponent implements OnInit, OnDestroy {
             'EMAIL',
             'MOBILE NO',
             'ACTION',
-           
-            
-           
         ];
         rows.push(columns);
         for (const staff of this.staff) {
@@ -161,8 +147,6 @@ export class ListStaffComponent implements OnInit, OnDestroy {
                 staff.accountno,
                 staff.email,
                 staff.mobileNo,
-                
-               
             ]);
         }
         const workbook = XLSX.utils.book_new();
@@ -184,12 +168,7 @@ export class ListStaffComponent implements OnInit, OnDestroy {
         FileSaver.saveAs(file, fileName);
     }
 
-
-
     filteredValues() {
         console.log(this.staffFilter.value);
     }
-
 }
-
-

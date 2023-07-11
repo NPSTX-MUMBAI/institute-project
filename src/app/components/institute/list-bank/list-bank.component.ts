@@ -77,7 +77,7 @@ export class ListBankComponent implements OnInit, OnDestroy {
         await this.bankSvc
             .getBanksBySchoolId(this.schoolId)
             .then((res: any) => {
-                console.log(res);
+                console.log(res, 'shivaniiiiiiiiiiiiiii');
 
                 //close this after exiting bank component
                 this.bank = res.data;
