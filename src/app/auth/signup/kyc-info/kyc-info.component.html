@@ -9,16 +9,16 @@
 
             </span>
             <br>
-            <p-fileUpload [auto]="false" [files]="panFile" #panUpload [customUpload]="true"
-                (uploadHandler)="panDetailsUpload($event,panUpload)" [showCancelButton]="false" chooseLabel="Choose"
+            <p-fileUpload uploadLabel=" " [auto]="false" [files]="panFile" #panUpload [customUpload]="true"
+                (uploadHandler)="panDetailsUpload($event,panUpload)" [showCancelButton]="false" chooseLabel=" "
                 name="demo[]" [multiple]="false" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
                 <i class="pi pi-check" [style.display]="showIcon ? 'inline' : 'none'"
                     style="margin-left: 20px;padding: 11px 10px;"></i>
 
                 <ng-template pTemplate="toolbar">
-                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                    <!-- <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
                         style="margin-left: 20px;padding: 11px 10px;" (click)="showIcon = true"
-                        [style.display]="!showIcon ? 'inline' : 'none'"></button>
+                        [style.display]="!showIcon ? 'inline' : 'none'"></button> -->
 
                     <div class="py-3">
                         <ul>
@@ -67,16 +67,16 @@
                 <label htmlFor="udyam">Enter Aadhar No.<span class="text-red-600"> *</span></label>
             </span>
             <br>
-            <p-fileUpload [auto]="false" [customUpload]="true" [showCancelButton]="false" chooseLabel="Choose"
-                name="demo[]" (uploadHandler)="aadharUpload($event)" [multiple]="false" [files]="udymaFile"
-                accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+            <p-fileUpload uploadLabel=" " [auto]="false" [customUpload]="true" [showCancelButton]="false"
+                chooseLabel=" " name="demo[]" (uploadHandler)="aadharUpload($event)" [multiple]="false"
+                [files]="udymaFile" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
                 <i class="pi pi-check" [style.display]="showIconaadhar ? 'inline' : 'none'"
                     style="margin-left: 20px;padding: 11px 10px;"></i>
 
                 <ng-template pTemplate="toolbar">
-                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                    <!-- <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
                         style="margin-left: 20px;padding: 11px 10px;" (click)="showIconaadhar = true"
-                        [style.display]="!showIconaadhar ? 'inline' : 'none'"></button>
+                        [style.display]="!showIconaadhar ? 'inline' : 'none'"></button> -->
 
                     <div class="py-3">
                         <ul>
@@ -98,16 +98,16 @@
                 <label htmlFor="gstNo">Enter GST No<span class="text-red-600"> *</span></label>
             </span>
             <br>
-            <p-fileUpload #gstUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
-                chooseLabel="Choose" name="demo[]" (uploadHandler)="gstDetailsUpload($event , gstUpload)"
-                [multiple]="false" accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
+            <p-fileUpload uploadLabel=" " #gstUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
+                chooseLabel=" " name="demo[]" (uploadHandler)="gstDetailsUpload($event , gstUpload)" [multiple]="false"
+                accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
                 <i class="pi pi-check" [style.display]="showIcongst? 'inline' : 'none'"
                     style="margin-left: 20px;padding: 11px 10px;"></i>
 
                 <ng-template pTemplate="toolbar">
-                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                    <!-- <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
                         style="margin-left: 20px;padding: 11px 10px;" (click)="showIcongst = true"
-                        [style.display]="!showIcongst ? 'inline' : 'none'"></button>
+                        [style.display]="!showIcongst ? 'inline' : 'none'"></button> -->
 
                     <div class="py-3">
                         <ul>
@@ -136,15 +136,15 @@
                 <label htmlFor="gstNo">Enter REG No<span class="text-red-600"> *</span></label>
             </span>
             <br>
-            <p-fileUpload #regUpload [auto]="false" [customUpload]="true" [showCancelButton]="false"
-                chooseLabel="Choose" name="demo[]" (uploadHandler)="regDocUpload($event , regUpload)" [multiple]="false"
+            <p-fileUpload #regUpload [auto]="false" [customUpload]="true" [showCancelButton]="false" chooseLabel=" "
+                uploadLabel=" " name="demo[]" (uploadHandler)="regDocUpload($event , regUpload)" [multiple]="false"
                 accept=".png,.jpg,.pdf,.jpeg" [maxFileSize]="1000000">
                 <i class="pi pi-check" [style.display]="showIconreg? 'inline' : 'none'"
                     style="margin-left: 20px;padding: 11px 10px;"></i>
                 <ng-template pTemplate="toolbar">
-                    <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
+                    <!-- <button pButton pRipple type="button" icon="pi pi-check" class="p-button-rounded p-button-outlined"
                         style="margin-left: 20px;padding: 11px 10px;" (click)="showIconreg = true"
-                        [style.display]="!showIconreg ? 'inline' : 'none'"></button>
+                        [style.display]="!showIconreg ? 'inline' : 'none'"></button> -->
 
                     <div class="py-3">
                         <ul>
