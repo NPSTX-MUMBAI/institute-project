@@ -6,9 +6,11 @@ import { ConfirmationService, MenuItem } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
 import { Subscription } from 'rxjs';
 import { FormGroup, FormBuilder } from '@angular/forms';
+import { FilterService } from 'src/app/services/filter.service';
 
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import { MessageService } from 'primeng/api';
 
 @Component({
     selector: 'app-list-bank',
@@ -28,7 +30,9 @@ export class ListBankComponent implements OnInit, OnDestroy {
         private router: Router,
         private stateSvc: StateService,
         private bankSvc: BankService,
-        private fb: FormBuilder
+        private fb: FormBuilder,
+        private filterSvc: FilterService,
+        private msg: MessageService
     ) {}
 
     ngOnInit(): void {
@@ -148,7 +152,44 @@ export class ListBankComponent implements OnInit, OnDestroy {
         FileSaver.saveAs(file, fileName);
     }
 
-    filteredValues() {
+    async filteredValues() {
         console.log(this.bankFilter.value);
+        let data = {
+            accountHolderName: this.bankFilter.value.accountname,
+            accountType: this.bankFilter.value.accounttype,
+            accountNo: this.bankFilter.value.accountno,
+            ifsc: this.bankFilter.value.ifsccode,
+            bankName: this.bankFilter.value.bankname,
+        };
+
+        try {
+            const res: any = await this.filterSvc.bankFilter(data);
+            console.log(data);
+
+            if (res.status) {
+                this.stateSvc.setUserData('userId', res.data);
+
+                this.msg.add({
+                    severity: 'success',
+                    detail: 'shivaniiiiiiiiiiiii',
+                });
+            } else {
+                this.msg.add({
+                    severity: 'warn',
+                    summary: 'error',
+                    detail: 'Invalid shivaniiiiiiiiiii',
+                });
+                // this.loading = false;
+            }
+
+            console.log(res);
+        } catch (error) {
+            this.msg.add({
+                severity: 'warn',
+                summary: 'error',
+                detail: 'Something went wrong',
+            });
+            console.error(error);
+        }
     }
 }

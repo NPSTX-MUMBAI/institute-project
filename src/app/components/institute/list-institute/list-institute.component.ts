@@ -11,9 +11,11 @@ import { StateService } from '../../../services/state.service';
 import { Institute } from 'src/app/models/institute.model';
 import { MenuItem, ConfirmationService } from 'primeng/api';
 import { DialogService } from 'primeng/dynamicdialog';
+import { MessageService } from 'primeng/api';
 
 import * as FileSaver from 'file-saver';
 import * as XLSX from 'xlsx';
+import { FilterService } from 'src/app/services/filter.service';
 
 @Component({
     selector: 'app-list-institute',
@@ -36,8 +38,9 @@ export class ListInstituteComponent implements OnInit {
         private fb: FormBuilder,
         private router: Router,
         private stateSvc: StateService,
-        private instSvc: InstituteService
-        
+        private instSvc: InstituteService,
+        private filterSvc: FilterService,
+        private msg: MessageService
     ) {}
     ngOnInit(): void {
         let myUser: any = this.stateSvc.getUserData('userId');
@@ -57,8 +60,6 @@ export class ListInstituteComponent implements OnInit {
             console.log(this.institute);
         });
 
-
-
         this.saveOptions = [
             {
                 label: 'Download as Excel',
@@ -76,12 +77,12 @@ export class ListInstituteComponent implements OnInit {
                 },
             },
         ];
-        
+
         this.instituteFilter = this.fb.group({
-            uniqueNo: [''],
-            name: [''],
-            type: [''],
-            phoneNo: [''],
+            uniqueId: [''],
+            instituteName: [''],
+            instituteType: [''],
+            institutePhone: [''],
             city: [''],
             state: [''],
         });
@@ -123,7 +124,6 @@ export class ListInstituteComponent implements OnInit {
         this.router.navigate(['/main/institute/add']);
     }
 
-
     exportTableData(format: any) {
         // this.messageService.showSuccess('Your file is being downloaded. Please wait...');
         const rows = [];
@@ -135,8 +135,6 @@ export class ListInstituteComponent implements OnInit {
             'CITY',
             'STATE',
             'ACTION',
-            
-           
         ];
         rows.push(columns);
         for (const institute of this.institute) {
@@ -144,16 +142,12 @@ export class ListInstituteComponent implements OnInit {
                 institute.uniqueno,
                 institute.instituteName,
                 institute.instituteType,
-                institute. mobileNo,
+                institute.mobileNo,
                 institute.city,
                 institute.state,
-               
-               
             ]);
         }
 
-
-        
         const workbook = XLSX.utils.book_new();
         const worksheet = XLSX.utils.aoa_to_sheet(rows);
 
@@ -173,10 +167,45 @@ export class ListInstituteComponent implements OnInit {
         FileSaver.saveAs(file, fileName);
     }
 
-
-
-
-    filteredValues() {
+    async filteredValues() {
         console.log(this.instituteFilter.value);
+        let data = {
+            instituteName: this.instituteFilter.value.instituteName,
+            institutePhone: this.instituteFilter.value.phoneNo,
+            instituteType: this.instituteFilter.value.type,
+            city: this.instituteFilter.value.city,
+            state: this.instituteFilter.value.state,
+            uniqueId: this.instituteFilter.value.uniqueNo,
+        };
+
+        try {
+            const res: any = await this.filterSvc.schoolFilter(data);
+            console.log(data);
+
+            if (res.status) {
+                this.stateSvc.setUserData('userId', res.data);
+
+                this.msg.add({
+                    severity: 'success',
+                    detail: 'shivaniiiiiiiiiiiii',
+                });
+            } else {
+                this.msg.add({
+                    severity: 'warn',
+                    summary: 'error',
+                    detail: 'Invalid shivaniiiiiiiiiii',
+                });
+                // this.loading = false;
+            }
+
+            console.log(res);
+        } catch (error) {
+            this.msg.add({
+                severity: 'warn',
+                summary: 'error',
+                detail: 'Something went wrong',
+            });
+            console.error(error);
+        }
     }
 }

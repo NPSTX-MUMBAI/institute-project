@@ -17,7 +17,7 @@
                         <label for="firstname2">Unique no.</label>
                         <div class="p-inputgroup">
 
-                            <input placeholder="Enter  Unique no" type="text" formControlName="uniqueNo" pInputText />
+                            <input placeholder="Enter  Unique no" type="text" formControlName="uniqueId" pInputText />
 
                         </div>
 
@@ -28,8 +28,8 @@
                         <label for="firstname2"> Name</label>
 
                         <div class="p-inputgroup">
-                            <input formControlName="name" placeholder="Enter Institute Name" type="text" pInputText
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                            <input formControlName="instituteName" placeholder="Enter Institute Name" type="text"
+                                pInputText oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
                         </div>
 
 
@@ -41,7 +41,7 @@
                         <label for="firstname2">Type</label>
                         <div class="p-inputgroup">
 
-                            <input formControlName="type" placeholder="Enter Type" type="text" pInputText
+                            <input formControlName="instituteType" placeholder="Enter Type" type="text" pInputText
                                 oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
                         </div>
@@ -52,8 +52,8 @@
                         <label for="firstname2">Phone</label>
                         <div class="p-inputgroup">
 
-                            <input formControlName="phoneNo" placeholder="Enter Phone No" type="phoneNo" pInputText
-                                minlength="10" maxlength="10" type="mobileNo" />
+                            <input formControlName="institutePhone" placeholder="Enter Phone No" type="phoneNo"
+                                pInputText minlength="10" maxlength="10" type="mobileNo" />
 
                         </div>
 
