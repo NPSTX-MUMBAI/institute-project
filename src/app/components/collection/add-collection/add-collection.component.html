@@ -94,7 +94,7 @@
     </p-accordionTab>
 
     <p-accordionTab header="Charge Details">
-        <p-button class="addCharge" (click)="show()" icon="pi pi-plus-circle" label="Add charge" style="float: right; ">
+        <p-button class="addCharge" (click)="show()" icon="pi pi-plus-circle" label="Add charge" style="float: left; ">
         </p-button>
         <br> <br>
 
@@ -155,6 +155,9 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
   </ng-template>
 
 </p-table> -->
+<br>
+<br>
+<div *ngIf="myCharge.length > 0" >
         <p-table [scrollable]="true" #dt2 [value]="myCharge" dataKey="uniqueId" [rows]="10"
             [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]" [paginator]="true"
             currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
@@ -178,6 +181,7 @@ currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries"
             </ng-template>
 
         </p-table>
+    </div>
 
     </p-accordionTab>
     <p-accordionTab header="Applicable On">
