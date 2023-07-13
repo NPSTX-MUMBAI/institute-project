@@ -9,6 +9,7 @@ import {
     Validators,
 } from '@angular/forms';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-add-student',
@@ -30,7 +31,8 @@ export class AddStudentComponent implements OnInit {
         private instSvc: InstituteService,
         private stateSvc: StateService,
         private studSvc: StudentService,
-        private route: ActivatedRoute
+        private route: ActivatedRoute,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -195,5 +197,8 @@ export class AddStudentComponent implements OnInit {
             this.division = tempDivArr;
             console.log(this.division, 'helloooooooooooooooooooooo');
         });
+    }
+    navigateToRoute() {
+        this.router.navigateByUrl('/main/student');
     }
 }

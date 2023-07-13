@@ -234,4 +234,7 @@ export class BulkUploadComponent implements OnInit {
 
         this.showNotification = false;
     }
+    navigateToRoute() {
+        this.router.navigateByUrl('/main/student');
+    }
 }

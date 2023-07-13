@@ -9,6 +9,7 @@ import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { MessageService } from 'primeng/api';
 import { AddChargeComponent } from '../add-charge/add-charge.component';
 import { Student } from 'src/app/models/student.model';
+import { Router } from '@angular/router';
 
 import * as moment from 'moment';
 @Component({
@@ -29,7 +30,8 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
     constructor(
         private fb: FormBuilder,
         public dialogService: DialogService,
-        public messageService: MessageService
+        public messageService: MessageService,
+        private router: Router
     ) {}
 
     ngOnInit(): void {
@@ -235,5 +237,8 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
         console.log('event select2--->', ev);
 
         this.checkedStudentValue = ev;
+    }
+    navigateToRoute() {
+        this.router.navigateByUrl('/main/collection/list');
     }
 }

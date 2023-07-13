@@ -6,168 +6,171 @@
 
 <p-menu #menu [model]="items" [popup]="true"></p-menu>
 
-<div *ngIf="institute" style="margin-top:4%;">
+<div>
+    <div *ngIf="institute" style="margin-top:4%;">
 
-    <form [formGroup]="instituteFilter">
-        <p-accordion [activeIndex]="1">
-            <p-accordionTab header="Apply Filter">
+        <form [formGroup]="instituteFilter">
+            <p-accordion [activeIndex]="1">
+                <p-accordionTab header="Apply Filter">
 
-                <div class="formgrid grid">
-                    <div class="field col-12 lg:col-4 md:col-12">
-                        <label for="firstname2">Unique no.</label>
-                        <div class="p-inputgroup">
+                    <div class="formgrid grid">
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">Unique no.</label>
+                            <div class="p-inputgroup">
 
-                            <input placeholder="Enter  Unique no" type="text" formControlName="uniqueId" pInputText />
+                                <input placeholder="Enter  Unique no" type="text" formControlName="uniqueId"
+                                    pInputText />
+
+                            </div>
+
+
+                        </div>
+
+                        <div class="field col-12 lg:col-4 md:col-12 ">
+                            <label for="firstname2"> Name</label>
+
+                            <div class="p-inputgroup">
+                                <input formControlName="instituteName" placeholder="Enter Institute Name" type="text"
+                                    pInputText oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
+                            </div>
+
 
                         </div>
 
 
-                    </div>
 
-                    <div class="field col-12 lg:col-4 md:col-12 ">
-                        <label for="firstname2"> Name</label>
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">Type</label>
+                            <div class="p-inputgroup">
 
-                        <div class="p-inputgroup">
-                            <input formControlName="instituteName" placeholder="Enter Institute Name" type="text"
-                                pInputText oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
-                        </div>
+                                <input formControlName="instituteType" placeholder="Enter Type" type="text" pInputText
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
+                            </div>
 
-                    </div>
-
-
-
-                    <div class="field col-12 lg:col-4 md:col-12">
-                        <label for="firstname2">Type</label>
-                        <div class="p-inputgroup">
-
-                            <input formControlName="instituteType" placeholder="Enter Type" type="text" pInputText
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
                         </div>
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">Phone</label>
+                            <div class="p-inputgroup">
 
+                                <input formControlName="institutePhone" placeholder="Enter Phone No" type="phoneNo"
+                                    pInputText minlength="10" maxlength="10" type="mobileNo" />
 
-                    </div>
-                    <div class="field col-12 lg:col-4 md:col-12">
-                        <label for="firstname2">Phone</label>
-                        <div class="p-inputgroup">
+                            </div>
 
-                            <input formControlName="institutePhone" placeholder="Enter Phone No" type="phoneNo"
-                                pInputText minlength="10" maxlength="10" type="mobileNo" />
 
                         </div>
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">City</label>
+                            <div class="p-inputgroup">
 
+                                <input formControlName="city" placeholder="Enter city" type="text" pInputText
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
-                    </div>
-                    <div class="field col-12 lg:col-4 md:col-12">
-                        <label for="firstname2">City</label>
-                        <div class="p-inputgroup">
+                            </div>
 
-                            <input formControlName="city" placeholder="Enter city" type="text" pInputText
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
                         </div>
+                        <div class="field col-12 lg:col-4 md:col-12">
+                            <label for="firstname2">State</label>
+                            <div class="p-inputgroup">
 
+                                <input formControlName="state" placeholder="Enter state" type="text" pInputText
+                                    oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
-                    </div>
-                    <div class="field col-12 lg:col-4 md:col-12">
-                        <label for="firstname2">State</label>
-                        <div class="p-inputgroup">
+                            </div>
 
-                            <input formControlName="state" placeholder="Enter state" type="text" pInputText
-                                oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '')" />
 
                         </div>
 
 
+
                     </div>
 
 
+                    <br>
+
+                    <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+
+
+
+                </p-accordionTab>
+
+            </p-accordion>
+
+        </form>
+        <br>
+
+        <p-table [scrollable]="true" #dt2 [value]="institute" dataKey="id" [rows]="10"
+            [tableStyle]="{ 'min-width': '75rem' }" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
+            [paginator]="true" [lazy]="true"
+            currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+
+            <ng-template pTemplate="caption">
+                <div class="flex-container">
+                    <h2>List of Institute</h2>
+                    <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
+                        styleClass="p-button-outlined mr-2 mb-2">
+                    </p-splitButton>
 
                 </div>
+            </ng-template>
 
 
-                <br>
+            <ng-template pTemplate="header">
+                <tr>
+                    <th>UNIQUE NO.</th>
+                    <th> NAME</th>
+                    <th> TYPE</th>
+                    <th> PHONE</th>
 
-                <p-button [style]="{'margin-left':'12px'}" [label]="'APPLY'" (click)="filteredValues()"></p-button>
+                    <th> CITY</th>
+                    <th> STATE</th>
+                    <th alignFrozen="right" pFrozenColumn> ACTION</th>
+
+                </tr>
+
+            </ng-template>
+            <ng-template pTemplate="body" let-institute>
+                <tr>
+                    <td> {{ institute.uniqueId }} </td>
 
 
 
-            </p-accordionTab>
+                    <td>{{ institute.instituteName }}</td>
+                    <td>{{ institute.instituteType | uppercase }}</td>
+                    <td>{{ institute.institutePhone }}</td>
 
-        </p-accordion>
+                    <td>{{ institute.city }}</td>
+                    <td>{{ institute.state }}</td>
+                    <td alignFrozen="right" pFrozenColumn style="color:#0257FF;font-weight: bold;">
 
-    </form>
-    <br>
 
-    <p-table [scrollable]="true" #dt2 [value]="institute" dataKey="id" [rows]="10"
-        [tableStyle]="{ 'min-width': '75rem' }" [showCurrentPageReport]="true" [rowsPerPageOptions]="[10, 25, 50]"
-        [paginator]="true" [lazy]="true"
-        currentPageReportTemplate="Showing {first} to {last} of {totalRecords} entries">
+                        <p-button (click)="handleClick( institute.schoolId ); menu.toggle($event)"
+                            icon="pi pi-ellipsis-v" styleClass="p-button-rounded p-button-text">
 
-        <ng-template pTemplate="caption">
-            <div class="flex-container">
-                <h2>List of Institute</h2>
-                <p-splitButton icon="pi pi-download" label="Download" [model]="this.saveOptions"
-                    styleClass="p-button-outlined mr-2 mb-2">
-                </p-splitButton>
+                        </p-button>
+                    </td>
+
+                </tr>
+            </ng-template>
+
+        </p-table>
+
+
+    </div>
+
+    <div *ngIf="!institute">
+
+        <div
+            style="background-color: #F4F6FF;height:645px;display: flex; justify-content: center; align-items: center;width: 100%;">
+            <div style="width:20%;border-radius:10px;box-shadow: rgba(94, 93, 102, 0.08) 1px 1px 0px 0px, rgba(94, 93, 102, 0.1) 2px 2px 3px 0px;
+       ">
+                <img src="../../../../assets/layout/images/25943-nodata (1).gif" width="100%;">
 
             </div>
-        </ng-template>
-
-
-        <ng-template pTemplate="header">
-            <tr>
-                <th>UNIQUE NO.</th>
-                <th> NAME</th>
-                <th> TYPE</th>
-                <th> PHONE</th>
-
-                <th> CITY</th>
-                <th> STATE</th>
-                <th alignFrozen="right" pFrozenColumn> ACTION</th>
-
-            </tr>
-
-        </ng-template>
-        <ng-template pTemplate="body" let-institute>
-            <tr>
-                <td> {{ institute.uniqueId }} </td>
-
-
-
-                <td>{{ institute.instituteName }}</td>
-                <td>{{ institute.instituteType | uppercase }}</td>
-                <td>{{ institute.institutePhone }}</td>
-
-                <td>{{ institute.city }}</td>
-                <td>{{ institute.state }}</td>
-                <td alignFrozen="right" pFrozenColumn style="color:#0257FF;font-weight: bold;">
-
-
-                    <p-button (click)="handleClick( institute.schoolId ); menu.toggle($event)" icon="pi pi-ellipsis-v"
-                        styleClass="p-button-rounded p-button-text">
-
-                    </p-button>
-                </td>
-
-            </tr>
-        </ng-template>
-
-    </p-table>
-
-
-</div>
-
-<div *ngIf="!institute">
-
-    <div
-        style="background-color: #F4F6FF;height:645px;display: flex; justify-content: center; align-items: center;width: 100%;">
-        <div style="width:20%;border-radius:10px;box-shadow: rgba(94, 93, 102, 0.08) 1px 1px 0px 0px, rgba(94, 93, 102, 0.1) 2px 2px 3px 0px;
-   ">
-            <img src="../../../../assets/layout/images/25943-nodata (1).gif" width="100%;">
 
         </div>
-
     </div>
 </div>

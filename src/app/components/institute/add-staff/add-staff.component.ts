@@ -46,4 +46,7 @@ export class AddStaffComponent implements OnInit {
             console.log(res);
         });
     }
+    navigateToRoute() {
+        this.router.navigateByUrl('/main/institute/staff');
+    }
 }
