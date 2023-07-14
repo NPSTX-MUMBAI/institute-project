@@ -12,7 +12,7 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="name">Name<span class="text-red-600"> *</span></label>
                     <input #myInputField pInputText id="name" type="text" placeholder=" Enter institute name"
-                        formControlName="instituteName" pattern="^[A-Za-z ]{2,}$" />
+                        formControlName="instituteName" pattern="^[A-Za-z0-9.@#$&() ]{2,}$" />
                     <div *ngIf="myInputField.value === '' && submitted" class="error-message"
                         style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter institute name!
 
@@ -248,7 +248,8 @@
                     <label htmlFor="pincode">Pin Code<span class="text-red-600"> *</span></label>
                     <input #myInputField3 pInputTextarea id="pincode" rows="4" placeholder=" Enter pin code! "
                         formControlName="pinCode" pattern="^\d{6}$" maxlength="6" minlength="6" (keyup)="getPin()"
-                        type="search" />
+                        type="search"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" />
                     <div *ngIf="myInputField3.value === '' && submitted" class="error-message"
                         style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter pin code!
 

@@ -35,7 +35,7 @@ export class BankInfoComponent implements OnInit {
             accountType: ['', Validators.required],
             ifsc: ['', Validators.required],
             accountNo: ['', Validators.required],
-            // upi: ['', Validators.required],
+            upi: ['', Validators.required],
             // SID: ['', Validators.required],
             // mid: ['', Validators.required],
             bankname: ['', Validators.required],

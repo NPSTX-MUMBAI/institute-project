@@ -9,99 +9,95 @@
         margin-left: 2%;">Add Staff</h4>
     </div>
     <div class="col-12">
-        <div class="card">
-            <div class="pt-4" [formGroup]="staffDetails">
+        <div class="pt-4" [formGroup]="staffDetails">
 
-                <div class="p-fluid p-formgrid grid">
-                    <div class="field col-12 md:col-4">
-                        <label htmlFor="name">First name<span class="text-red-600"> *</span></label>
-                        <input pInputText id="name" type="text" placeholder="Enter your first name"
-                            formControlName="firstName" pattern="^[A-Za-z ]{2,}$">
-                        <div
-                            *ngIf="staffDetails.controls['firstName'].touched && staffDetails.controls['firstName'].errors">
-                            <div *ngIf="staffDetails.controls['firstName'].hasError('required')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter your first name!
-                            </div>
-                            <div *ngIf="staffDetails.controls['firstName'].hasError('pattern')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter a valid name!
-                            </div>
+            <div class="p-fluid p-formgrid grid">
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="name">First name<span class="text-red-600"> *</span></label>
+                    <input pInputText id="name" type="text" placeholder="Enter your first name"
+                        formControlName="firstName" pattern="^[A-Za-z ]{2,}$">
+                    <div
+                        *ngIf="staffDetails.controls['firstName'].touched && staffDetails.controls['firstName'].errors">
+                        <div *ngIf="staffDetails.controls['firstName'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter your first name!
                         </div>
-
-                    </div>
-
-                    <div class="field col-12 md:col-4">
-                        <label htmlFor="IFSCCode">Last name <span class="text-red-600"> *</span></label>
-                        <input pInputTextarea id="IFSCCode" rows="4" placeholder="Enter your last name"
-                            formControlName="lastName" pattern="^[A-Za-z ]{2,}$" />
-                        <div
-                            *ngIf="staffDetails.controls['lastName'].touched && staffDetails.controls['lastName'].errors">
-                            <div *ngIf="staffDetails.controls['lastName'].hasError('required')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter your last name!
-                            </div>
-                            <div *ngIf="staffDetails.controls['lastName'].hasError('pattern')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter a valid last name!
-                            </div>
-                        </div>
-
-                    </div>
-                    <div class="field col-12 md:col-4">
-                        <label htmlFor="Accountno">Email<span class="text-red-600"> *</span></label>
-                        <input pInputText id="Accountno" type="text" placeholder="Enter your email Id"
-                            formControlName="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
-                        <div *ngIf="staffDetails.controls['email'].touched && staffDetails.controls['email'].errors">
-                            <div *ngIf="staffDetails.controls['email'].hasError('required')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter your email Id!
-                            </div>
-                            <div *ngIf="staffDetails.controls['email'].hasError('pattern')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter a valid email Id!
-
-                            </div>
+                        <div *ngIf="staffDetails.controls['firstName'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid name!
                         </div>
                     </div>
-                    <div class="field col-12 md:col-4">
-                        <label htmlFor="Accountno">Mobile no<span class="text-red-600"> *</span></label>
-                        <input pInputText id="Accountno" type="text" placeholder="Enter your mobile number"
-                            formControlName="mobileNo" minlength="10" maxlength="10" type="phone"
-                            oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
-                            required pattern="[0-9 ]{10}">
-                        <div
-                            *ngIf="staffDetails.controls['mobileNo'].touched && staffDetails.controls['mobileNo'].errors">
-                            <div *ngIf="staffDetails.controls['mobileNo'].hasError('required')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter Mobile No!
 
-                            </div>
-                            <div *ngIf="staffDetails.controls['mobileNo'].hasError('pattern')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter Valid Mobile No!
-                            </div>
+                </div>
+
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="IFSCCode">Last name <span class="text-red-600"> *</span></label>
+                    <input pInputTextarea id="IFSCCode" rows="4" placeholder="Enter your last name"
+                        formControlName="lastName" pattern="^[A-Za-z ]{2,}$" />
+                    <div *ngIf="staffDetails.controls['lastName'].touched && staffDetails.controls['lastName'].errors">
+                        <div *ngIf="staffDetails.controls['lastName'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter your last name!
+                        </div>
+                        <div *ngIf="staffDetails.controls['lastName'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid last name!
                         </div>
                     </div>
-                    <div class="field col-12 md:col-4">
-                        <label htmlFor="Accountno">Enter/Generate Password<span class="text-red-600"> *</span></label>
-                        <input pInputText id="Accountno" type="text" placeholder="Enter or generate Password"
-                            formControlName="password">
 
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="Accountno">Email<span class="text-red-600"> *</span></label>
+                    <input pInputText id="Accountno" type="text" placeholder="Enter your email Id"
+                        formControlName="email" pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$">
+                    <div *ngIf="staffDetails.controls['email'].touched && staffDetails.controls['email'].errors">
+                        <div *ngIf="staffDetails.controls['email'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter your email Id!
+                        </div>
+                        <div *ngIf="staffDetails.controls['email'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter a valid email Id!
+
+                        </div>
                     </div>
-                    <!-- <div class="field col-12 md:col-4">
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="Accountno">Mobile no<span class="text-red-600"> *</span></label>
+                    <input pInputText id="Accountno" type="text" placeholder="Enter your mobile number"
+                        formControlName="mobileNo" minlength="10" maxlength="10" type="phone"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');" required
+                        pattern="[0-9 ]{10}">
+                    <div *ngIf="staffDetails.controls['mobileNo'].touched && staffDetails.controls['mobileNo'].errors">
+                        <div *ngIf="staffDetails.controls['mobileNo'].hasError('required')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter Mobile No!
+
+                        </div>
+                        <div *ngIf="staffDetails.controls['mobileNo'].hasError('pattern')"
+                            style="color: red;text-align: left;margin-top: 6px;">
+                            Enter Valid Mobile No!
+                        </div>
+                    </div>
+                </div>
+                <div class="field col-12 md:col-4">
+                    <label htmlFor="Accountno">Enter/Generate Password<span class="text-red-600"> *</span></label>
+                    <input pInputText id="Accountno" type="text" placeholder="Enter or generate Password"
+                        formControlName="password">
+
+                </div>
+                <!-- <div class="field col-12 md:col-4">
                         <label htmlFor="Accountno">Enter amount change Pin<span class="text-red-600"> *</span></label>
                         <input pInputText id="Accountno" type="text" placeholder="Enter or generate Pin"
                             formControlName="pin">
     
                     </div> -->
 
-                </div>
-                <button pButton pRipple label=" Submit" (click)="submit()"></button>
             </div>
-
-
+            <button pButton pRipple label=" Submit" (click)="submit()"></button>
         </div>
+
+
 
     </div>
 </div>

@@ -27,6 +27,9 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
     myCharge: any[] = [];
     checkedStudentValue!: string;
     studentObj!: any[];
+    rasieSource!: any[];
+
+    selectedCities!: any[];
     constructor(
         private fb: FormBuilder,
         public dialogService: DialogService,
@@ -55,6 +58,11 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
         } else {
             this.myCharge = []; // Initialize the array if no data is found
         }
+        this.rasieSource = [
+            { name: 'Whatsapp', code: 'Whatsapp' },
+            { name: 'Email', code: 'Email' },
+            { name: 'SMS', code: 'SMS' },
+        ];
     }
     doSomething() {
         const checkboxValue = this.collection.value.autoRaising;
@@ -166,12 +174,43 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
 
         console.log(collgrp);
     }
-    chargeItems = [{ name: 'test group' }];
-    rasieSource = [
+    // chargeItems = [{ name: 'test group' }];
+    // rasieSource = [
+    //     { name: '' },
+    //     { name: 'whatsapp' },
+    //     { name: 'email' },
+    //     { name: 'sms' },
+    // ];
+    NotificationDate = [
         { name: '' },
-        { name: 'whatsapp' },
-        { name: 'email' },
-        { name: 'sms' },
+        { name: '1' },
+        { name: '2' },
+        { name: '3' },
+        { name: '4' },
+        { name: '5' },
+        { name: '6' },
+        { name: '7' },
+        { name: '8' },
+        { name: '9' },
+        { name: '10' },
+        { name: '11' },
+        { name: '12' },
+        { name: '13' },
+        { name: '14' },
+        { name: '15' },
+        { name: '16' },
+        { name: '17' },
+        { name: '18' },
+        { name: '19' },
+        { name: '20' },
+        { name: '21' },
+        { name: '22' },
+        { name: '23' },
+        { name: '24' },
+        { name: '25' },
+        { name: '26' },
+        { name: '27' },
+        { name: '28' },
     ];
     vpaId = [{ name: 'shivani@cosbi' }];
     frequencyMonth = [
@@ -179,6 +218,7 @@ export class AddCollectionComponent implements OnInit, OnDestroy {
         { name: '2' },
         { name: '3' },
         { name: '4' },
+        { name: '6' },
     ];
 
     show() {

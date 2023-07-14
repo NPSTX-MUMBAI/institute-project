@@ -60,7 +60,8 @@
                 <div class="field col-12 md:col-4">
                     <label htmlFor="Accountno">Account no:<span class="text-red-600"> *</span></label>
                     <input #myInputField2 pInputText id="Accountno" type="text" placeholder="Enter your account no"
-                        formControlName="accountNo" pattern="^[0-9]{9,18}$">
+                        formControlName="accountNo" pattern="^[0-9]{5,25}$" maxlength="25"
+                        oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');">
                     <div *ngIf="myInputField2.value === '' && submitted" class="error-message"
                         style="color: red;text-align: left;margin-top: 6px;font-size: 14px;"> Enter your account number!
 
@@ -78,16 +79,11 @@
                     </div>
 
                 </div>
-                <!-- <div class="field col-12 md:col-3">
+                <div class="field col-12 md:col-4">
                     <label htmlFor="UPIid">UPI id<span class="text-red-600"> *</span></label>
                     <input pInputText id="UPIid" type="text" placeholder="Enter your upi id" formControlName="upi"
-                        pattern="^[a-zA-Z0-9]+@[a-zA-Z0-9]{1,10}$" />
-                    <div *ngIf="bankDetails.controls['upi'].touched ">
-                            <div *ngIf="bankDetails.controls['upi'].hasError('required')"
-                                style="color: red;text-align: left;margin-top: 6px;">
-                                Enter upi id!
-                            </div>
-                        </div>
+                        pattern="^[a-zA-Z0-9.&]+@[a-zA-Z0-9.&]{1,15}$" />
+
                     <div *ngIf="bankDetails.controls['upi'].touched && bankDetails.controls['upi'].errors">
                         <div *ngIf="bankDetails.controls['upi'].hasError('required')"
                             style="color: red;text-align: left;margin-top: 6px;">
@@ -101,7 +97,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="field col-12 md:col-3">
+                <!-- <div class="field col-12 md:col-3">
                     <label htmlFor="SID">SID </label>
                     <input pInputTextarea id="SID" rows="4" placeholder=" Enter your SID" formControlName="SID" />
 

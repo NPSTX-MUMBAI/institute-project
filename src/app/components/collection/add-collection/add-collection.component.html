@@ -33,16 +33,20 @@
 
                             </div>
 
-                            <div class="field col-12 md:col-4">
+
+                            <!-- <div class="field col-12 md:col-4">
                                 <label htmlFor="state">Charge Group <span class="text-red-600"> *</span></label>
                                 <p-dropdown [options]="chargeItems" optionLabel="name"
                                     placeholder="Please select Charge group" formControlName="chargeGp"></p-dropdown>
-                            </div>
+                            </div> -->
 
                             <div class="field col-12 md:col-4">
+                                <!-- <p-dropdown [options]="rasieSource" optionLabel="name" formControlName="Channels"
+                                    placeholder="Select Source"></p-dropdown> -->
+
                                 <label htmlFor="state">Raise Source <span class="text-red-600"> *</span></label>
-                                <p-dropdown [options]="rasieSource" optionLabel="name" formControlName="Channels"
-                                    placeholder="Select Source"></p-dropdown>
+                                <p-multiSelect [options]="rasieSource" optionLabel="name" placeholder="Select Source"
+                                    formControlName="Channels" [filter]="false"></p-multiSelect>
                             </div>
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="state">Select VPA Id <span class="text-red-600"> *</span></label>
@@ -68,12 +72,18 @@
                                     placeholder="End Date" formControlName="endDate"></p-calendar>
 
                             </div>
-                            <div class="field col-12 md:col-4">
-                                <label htmlFor="dob">Raising Day <span class="text-red-600"> *</span></label>
+                            <!-- <div class="field col-12 md:col-4">
+                                <label htmlFor="dob">Notification Day <span class="text-red-600"> *</span></label>
                                 <p-calendar inputId="calendar" (onSelect)="dateFormat($event)" dateFormat="yy-mm-dd"
                                     placeholder="Please select applicable date of month" formControlName="raisingDate">
                                 </p-calendar>
 
+                            </div> -->
+                            <div class="field col-12 md:col-4">
+                                <label htmlFor="state">Notification Day <span class="text-red-600"> *</span></label>
+                                <p-dropdown [options]="NotificationDate" optionLabel="name"
+                                    formControlName="raisingDate"
+                                    placeholder="Please select applicable date of month"></p-dropdown>
                             </div>
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="dob">Invoice Date <span class="text-red-600"> *</span></label>
