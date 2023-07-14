@@ -201,4 +201,9 @@ export class AddStudentComponent implements OnInit {
     navigateToRoute() {
         this.router.navigateByUrl('/main/student');
     }
+    dropdownItems = [
+        { name: 'Male', code: 'Male' },
+        { name: 'Female', code: 'Female' },
+        { name: 'Transgender', code: 'Transgender' },
+    ];
 }

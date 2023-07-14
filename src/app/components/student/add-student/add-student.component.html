@@ -93,11 +93,17 @@
 
                             </div>
                             <div class="field col-12 md:col-4">
+                                <label htmlFor="state">Gender</label>
+                                <p-dropdown [options]="dropdownItems" optionLabel="name" placeholder="Select Gender"
+                                    formControlName="gender">
+                                </p-dropdown>
+                            </div>
+                            <!-- <div class="field col-12 md:col-4">
                                 <label htmlFor="Occupation">Gender </label>
                                 <input pInputText id="Occupation" type="text" placeholder="Select Gender"
                                     formControlName="gender" />
 
-                            </div>
+                            </div> -->
                             <!-- <div class="field col-12 md:col-4">
                                 <label htmlFor="state">State</label>
                                  <p-dropdown [options]="dropdownItems" optionLabel="name"></p-dropdown>
@@ -192,8 +198,15 @@
                             </div>
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="FatherReligion">Opening Balance</label>
+
+                                <input pInputText id="FatherReligion" type="text" minlength="0" maxlength="7"
+                                    type="phone" formControlName="balance"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    placeholder="Balance" />
+
+                                <!-- <label htmlFor="FatherReligion">Opening Balance</label>
                                 <input pInputText id="FatherReligion" type="text" placeholder="Balance" minlength="10"
-                                    maxlength="10" type="phone" formControlName="balance" type="text" />
+                                    maxlength="10" type="phone" formControlName="balance" type="text" /> -->
 
                             </div>
                         </div>
@@ -232,8 +245,12 @@
 
                             <div class="field col-12 md:col-4">
                                 <label htmlFor="address">Pincode/Zipcode <span class="text-red-600"> *</span></label>
-                                <input pInputText id="address" type="text" formControlName="zip" placeholder="Pincode"
-                                    required pattern="^\d{6}$" />
+                                <input pInputText id="address" type="text" minlength="0" maxlength="6" type="phone"
+                                    formControlName="zip"
+                                    oninput="this.value = this.value.replace(/[^0-9.]/g, '').replace(/(\..*)\./g, '$1');"
+                                    placeholder="Pincode" required pattern="^\d{6}$" />
+                                <!-- <input pInputText id="address" type="text" formControlName="zip" placeholder="Pincode"
+                                    required pattern="^\d{6}$" /> -->
                                 <div *ngIf="studentForm.controls['zip'].touched && studentForm.controls['zip'].errors">
                                     <div *ngIf="studentForm.controls['zip'].hasError('required')"
                                         style="color: red;text-align: left;margin-top: 6px;">
